@@ -1,9 +1,40 @@
 # precision-medicine-portal-frontend
 React project for the frontend of the Precision Medicine Portal by DC Data Science Node
 
+- [Introduction](#introduction)
+- [Development](#development)
+    - [Step 1: Clone the repository](#step-1-clone-the-repository)
+    - [Step 2: Create a branch and develop](#step-2-create-a-branch-and-develop)
+    - [Step 3: Make a pull request](#step-3-make-a-pull-request)
+
+## Introduction
+
+The [Data Driven Life Science](https://www.scilifelab.se/data-driven/) (DDLS) initiative has appointed four [Data Science Nodes](https://www.scilifelab.se/news/ddls-data-science-nodes-to-be-launched/) (DSNs) to serve as database, data and bioinformatics support for data driven research in life science. This repository contains the code for the frontend of a Precision Medicine Portal by the Precision Medicine DSN, which is hosted at [Karolinska Institutet](https://ki.se/en) and [SciLifeLab](https://www.scilifelab.se).
+
+The short term aim of this portal is to host content related to precision medicine as a starting point for the project.
+
+
+### Step 1: Clone the Repository
+
+#### Git setup
+
+Clone the repository to your machine:
+
+```bash
+git clone https://github.com/ScilifelabDataCentre/precision-medicine-portal-frontend.git
+```
+
+Fetch changes at any time from this remote:
+
+```bash
+git pull upstream dev
+```
+
+The project is set up using npm. If you want to run the project locally, install npm and use it to run the available scripts:
+
 ## Available Scripts
 
-In the project directory, you can run:
+Note that you need to be in the "react-app" directory. In this directory, you can run:
 
 ### `npm start`
 
@@ -38,8 +69,72 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
+You will see that a local development server starts running. You can access the web page by opening a web browser and visiting the URI "localhost:5000". To stop the server press CTRL+C in the terminal.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+#### Docker
+
+You can use the provided Dockerfile to build and run a container.
+
+
+### Step 2: Create a branch and develop
+
+Note that commits need to be signed as per SciLifeLab policy. There are many different ways to sign github commits and how to set it up may vary based on your operating system. An example of how to set it up for MacOS can be seen here: 
+
+https://gist.github.com/troyfontaine/18c9146295168ee9ca2b30c00bd1b41e
+
+To create a new branch and start developing in it:
+
+```bash
+git branch my_branch
+git checkout my_branch
+```
+
+After doing this you can make any changes you want. You must then either add all changed files or specific changed files to your commit:
+
+```bash
+git add -A
+```
+
+or
+
+```bash
+git add my_changed_file
+```
+
+You can then commit and push to your branch:
+
+(NOTE: DO NOT FORGET TO SIGN YOUR COMMITS, by policy only signed commits can be merged into the main branches.)
+
+```bash
+git commit -S -m "My commit"
+git push origin my_branch
+```
+
+The code is now in my_branch in the repository, but you it does not get merged into the main branches without being reviewed as a pull request.
+
+
+### Step 3: Make a pull request
+
+Once you're finished with your edits and they are committed and pushed to your branch, it's time to open a pull request.
+
+You can find full documentation on the [GitHub help website](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests), however in short:
+
+- Visit the dev repository: [https://github.com/ScilifelabDataCentre/precision-medicine-portal-frontend](https://github.com/ScilifelabDataCentre/precision-medicine-portal-frontend)
+- Find the branch my_branch that you created and pushed to
+- Click the button that reads _"New Pull Request"_
+- Add/change title as well as a description of what you've done
+- Add reviewers from the organization to review your pull request
+- Click Create Pull Request
+
+Once created, a member of the website team will review your changes.
+Once approved, they will be merged and deployed.
+
+## How to get help
+
+If in doubt, you can ask for help by emailing [datacentre@scilifelab.se](mailto:datacentre@scilifelab.se).
+
+## Credits
+
+The portal was built by the DDLS Precision Medicine Data Science Node with colleagues at SciLifeLab.
+
