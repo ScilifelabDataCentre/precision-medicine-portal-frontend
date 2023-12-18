@@ -1,5 +1,6 @@
 import React from 'react';
 import FooterComponent from './components/FooterComponent';
+import HeaderComponent from './components/HeaderComponent';
 
 export default function App() {
   let body = (
@@ -9,6 +10,7 @@ export default function App() {
   )
   return (
     <html data-theme="light" className="min-h-screen bg-white">
+      {HeaderComponent()}
       {body}
       {FooterComponent()}
     </html>
