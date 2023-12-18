@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function CustomFooter() {
+export default function FooterComponent() {
   return (
     <footer className="footer p-10 bg-base-300 text-base-content fixed bottom-0">
       <nav>

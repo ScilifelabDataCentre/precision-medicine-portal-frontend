@@ -1,5 +1,5 @@
 import React from 'react';
-import CustomFooter from './CustomFooter';
+import FooterComponent from './components/FooterComponent';
 
 export default function App() {
   let body = (
@@ -10,7 +10,7 @@ export default function App() {
   return (
     <html data-theme="light" className="min-h-screen bg-white">
       {body}
-      {CustomFooter()}
+      {FooterComponent()}
     </html>
   );
 }
