@@ -1,11 +1,16 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import FooterComponent from './components/FooterComponent';
 
 export default function App() {
-  return (
-    <h1 className="text-3xl font-bold underline">
-      Hello world!
-    </h1>
+  let body = (
+      <h1 className="text-3xl font-bold underline">
+        Hello world!
+      </h1>
   )
+  return (
+    <html data-theme="light" className="min-h-screen bg-white">
+      {body}
+      {FooterComponent()}
+    </html>
+  );
 }
