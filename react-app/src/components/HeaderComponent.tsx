@@ -1,38 +1,38 @@
+import {ILink} from '../interfaces/types';
+
 export default function HeaderComponent() {
+    var links: { [id: string] : ILink; } = {
+        'l1': { text: 'Random text for now', classes: 'pointer-events-none', href: '/#' },
+        'l2': { text: 'Data', classes: 'link link-hover', href: '/#' },
+        'l3': { text: 'Events & News', classes: 'link link-hover', href: '/#' },
+        'l4': { text: 'Contact', classes: 'link link-hover', href: '/#' },
+        'l5': { text: 'About', classes: 'link link-hover', href: '/#' },
+    };
+
+    var buttons: { [id: string] : ILink; } = {
+        'b1': { text: 'Sign In', classes: 'btn bg-fuchsia-950 text-white', href: '/#' },
+    };
+
     return (
         // use bg-zinc-200 instead? similar to daisyUI light-theme footer
-        <div className="navbar bg-black text-white">
-        <div className="navbar-start">
-            <div className="dropdown">
-            <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+        <div className="navbar h-[8rem] bg-black text-white">
+            <div className="navbar-start">
+                <a href="/">
+                    <img className="w-[340px] h-[82px] border border-black" src="/images/scilifelogo.jpg" alt="SciLifeLab Logo" />
+                </a>
             </div>
-            <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-                <li><a>Item 1</a></li>
-                <li>
-                <a>Parent</a>
-                <ul className="p-2">
-                    <li><a>Submenu 1</a></li>
-                    <li><a>Submenu 2</a></li>
+            <div className="navbar-center hidden lg:flex">
+                <ul className="menu menu-horizontal px-1">
+                {Object.keys(links).map( key => (
+                    <li>{<a className={links[key].classes} href={links[key].href}>{links[key].text}</a>}</li>
+                ))}
                 </ul>
-                </li>
-                <li><a>Item 3</a></li>
-            </ul>
             </div>
-            <a><img className="w-[340px] h-[82px] border border-black" src="/images/scilifelogo.jpg" /></a>
-        </div>
-        <div className="navbar-center hidden lg:flex">
-            <ul className="menu menu-horizontal px-1">
-            <li><a className="pointer-events-none">Random text for now</a></li>
-            <li><a className="link link-hover" href="/#">Data</a></li>
-            <li><a className="link link-hover" href="/#">Events & News</a></li>
-            <li><a className="link link-hover" href="/#">Contact</a></li>
-            <li><a className="link link-hover" href="/#">About</a></li>
-            </ul>
-        </div>
-        <div className="navbar-end">
-            <a className="btn bg-fuchsia-950 text-white">Sign In</a>
-        </div>
+            {Object.keys(buttons).map( key => (
+                <div className="navbar-end">
+                    {<a className={buttons[key].classes} href={buttons[key].href}>{buttons[key].text}</a>}
+                </div>
+            ))}
         </div>
     )
   }
