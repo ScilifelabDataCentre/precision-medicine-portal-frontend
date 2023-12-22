@@ -1,9 +1,14 @@
-FROM node:21-alpine
-
-WORKDIR /react-app/
-
-COPY /react-app/ /react-app/
-
+FROM node:21-alpine AS development
+ENV NODE_ENV development
+# Add a work directory
+WORKDIR /app
+# Cache and Install dependencies
+COPY ./react-app/package.json .
+COPY ./react-app/package-lock.json .
 RUN npm install
-
-CMD ["npm", "start"]
+# Copy app files
+COPY ./react-app/ .
+# Expose port
+EXPOSE 3000
+# Start the app
+CMD [ "npm", "start" ]
