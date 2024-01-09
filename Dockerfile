@@ -1,11 +1,11 @@
-FROM node:21-alpine AS development
+FROM node:20-alpine AS development
 ENV NODE_ENV development
 # Add a work directory
-WORKDIR /app
+WORKDIR /usr/app
 # Cache and Install dependencies
 COPY ./react-app/package.json .
 COPY ./react-app/package-lock.json .
-RUN npm install
+RUN npm ci
 # Copy app files
 COPY ./react-app/ .
 # Expose port
