@@ -1,11 +1,21 @@
-import Markdown from 'react-markdown'
+import { useState, useEffect } from 'react'
+import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 
 export default function ArticleComponent() {
-    const markdown = `Just a link: www.nasa.gov.`;
+
+    const [content, setContent] = useState('')
+
+    useEffect(() => {
+        fetch("markdown_example.md")
+          .then((res) => res.text())
+          .then((text) => setContent(text));
+      }, []);
 
     return (
-        <Markdown remarkPlugins={[remarkGfm]}>{markdown}</Markdown>
+        <div className="post">
+            <ReactMarkdown className="prose" remarkPlugins={[remarkGfm]} children={content} />
+        </div>
     );
 }
 
