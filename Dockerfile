@@ -4,14 +4,15 @@ WORKDIR /app
 ENV PATH /app/node_modules/.bin:$PATH
 RUN chown -R node:node /app
 RUN chown -R node:node /usr
+RUN chown -R node:node /tmp
 USER node
 # Cache and Install dependencies
-COPY ./react-app/package.json .
-COPY ./react-app/package-lock.json .
+COPY --chown=node:node ./react-app/package.json .
+COPY --chown=node:node ./react-app/package-lock.json .
 RUN npm ci
 RUN npm install react-scripts -g
 # Copy app files
-COPY ./react-app/ .
+COPY --chown=node:node ./react-app/ .
 RUN npm run build
 
 # production environment
