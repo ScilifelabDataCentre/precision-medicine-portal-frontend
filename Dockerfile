@@ -4,6 +4,7 @@ WORKDIR /app
 ENV PATH /app/node_modules/.bin:$PATH
 RUN chown -R node:node /app
 RUN chown -R node:node /usr
+RUN chown -R node:node /tmp
 USER node
 # Cache and Install dependencies
 COPY ./react-app/package.json .
