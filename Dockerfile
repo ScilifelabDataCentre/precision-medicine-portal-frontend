@@ -1,20 +1,19 @@
 FROM node:21-alpine as builder
 # Add a work directory
 WORKDIR /app
-ENV PATH /app/node_modules/.bin:$PATH
 RUN chown -R node:node /app
 USER node
 # Cache and Install dependencies
-COPY --chown=node:node ./react-app/package.json .
-COPY --chown=node:node ./react-app/package-lock.json .
+COPY ./react-app/package.json .
+COPY ./react-app/package-lock.json .
 RUN npm ci
-RUN npm install react-scripts -g
 # Copy app files
-COPY --chown=node:node ./react-app/ .
+COPY ./react-app/ .
 RUN npm run build
 
-# production environment
-FROM nginx:stable-alpine
+FROM nginxinc/nginx-unprivileged:stable-alpine
+RUN sed -i '3 a\    absolute_redirect off;' /etc/nginx/conf.d/default.conf
+RUN sed -i 's/#error_page  404/error_page  404/' /etc/nginx/conf.d/default.conf
 COPY --from=builder /app/build /usr/share/nginx/html
-EXPOSE 80
+EXPOSE 8080
 CMD ["nginx", "-g", "daemon off;"]
