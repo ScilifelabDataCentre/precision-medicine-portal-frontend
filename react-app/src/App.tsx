@@ -10,7 +10,7 @@ export default function App() {
       </h1>
   )
   return (
-    <html data-theme="light" className="min-h-screen bg-white">
+    <html data-theme="dark" className="min-h-screen bg-white">
       {HeaderComponent()}
       {body}
       {ArticleComponent()}
