@@ -2,6 +2,8 @@ import {ILink, ISVG} from '../interfaces/types';
 
 export default function FooterComponent() {
 
+  var footerClasses: string = 'footer p-10 bg-base-300 text-base-content fixed bottom-0';
+  
   var linkClasses: string = 'link link-hover';
   var linksCol1: { [id: string] : ILink; } = {
       'l1': { text: 'Anonymization Tool', classes: linkClasses, href: '/#' },
@@ -26,7 +28,7 @@ export default function FooterComponent() {
 
 
   return (
-    <footer className="footer p-10 bg-base-300 text-base-content fixed bottom-0">
+    <footer className={footerClasses}>
       <nav>
       {Object.keys(linksCol1).map( key => (
           <a className={linksCol1[key].classes} href={linksCol1[key].href}>{linksCol1[key].text}</a>
