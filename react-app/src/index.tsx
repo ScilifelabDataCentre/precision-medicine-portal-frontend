@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { MatomoProvider, createInstance } from '@datapunt/matomo-tracker-react'
+import { MatomoProvider, createInstance } from '@jonkoops/matomo-tracker-react'
 import './index.css';
 import App from './App';
 
@@ -15,7 +15,8 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <App />
-    <MatomoProvider value={instance} />
+    <MatomoProvider value={instance}>
+      <App />
+    </MatomoProvider>
   </React.StrictMode>
 );
