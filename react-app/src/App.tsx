@@ -3,8 +3,16 @@ import FooterComponent from './components/FooterComponent';
 import HeaderComponent from './components/HeaderComponent';
 import ArticleComponent from './components/ArticleComponent';
 import CardComponent from './components/CardComponent';
+import { useMatomo } from '@jonkoops/matomo-tracker-react'
 
 export default function App() {
+  const { trackPageView, trackEvent } = useMatomo()
+
+  // Track page view
+  React.useEffect(() => {
+    trackPageView()
+  }, [])
+
   let body = (
       <h1 className="text-3xl text-black font-bold underline">
         Under Construction
