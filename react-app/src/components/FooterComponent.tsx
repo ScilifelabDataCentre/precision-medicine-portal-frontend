@@ -2,7 +2,7 @@ import {ILink, ISVG} from '../interfaces/types';
 
 export default function FooterComponent() {
 
-  var footerClasses: string = 'footer p-10 bg-base-300 text-base-content fixed bottom-0';
+  var footerClasses: string = 'footer p-10 bg-base-100 text-base-content';
   
   var linkClasses: string = 'link link-hover';
   var linksCol1: { [id: string] : ILink; } = {
