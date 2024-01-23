@@ -4,6 +4,7 @@ import HeaderComponent from './components/HeaderComponent';
 import CardComponent from './components/CardComponent';
 import { useMatomo } from '@jonkoops/matomo-tracker-react'
 import TextBarComponent from './components/TextBarComponent';
+import ImageCarouselComponent from './components/ImageCarouselComponent';
 
 export default function App() {
   const { trackPageView, trackEvent } = useMatomo()
@@ -31,6 +32,7 @@ export default function App() {
       <TextBarComponent classes={textBarClasses} text={textBarContent} />
         <div className="bg-white space-y-14">
         {body}
+        <ImageCarouselComponent />
         <div className="grid grid-cols-2 gap4">
           <div className="flex flex-col space-y-1.5 ...">
             <h1 className={headerOne}>Latest News</h1>
