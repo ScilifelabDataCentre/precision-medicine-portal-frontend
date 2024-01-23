@@ -13,25 +13,18 @@ export default function App() {
   React.useEffect(() => {
     trackPageView()
   }, [])
-
-  let body = (
-      <h1 className="text-3xl text-black font-bold underline">
-        Under Construction
-      </h1>
-  )
   
   var headerOne: string = "text-left text-black text-[40px] font-semibold";
   var whiteTextCardClasses: string = "w-[580px] h-20 bg-white text-black bg-opacity-95 shadow-xl border-2 border-zinc-300";
   var blackCardClasses: string = "w-[700px] h-[253px] bg-base-100 bg-opacity-95 rounded-[10px] shadow border-2";
-  var textBarClasses: string = "bg-gradient-to-b from-base-100 from-90% to-white text-justify text-[48px] font-bold py-12";
-  var textBarContent: string = "Quisque urna enim, placerat non fermentum sed, pharetra sit amet quam. Ut rhoncus ante in metus lobortis, eu euismod magna dignissim. Duis nec condimentum purus.";
+  var textBarClasses: string = "bg-gradient-to-b from-base-100 from-90% to-white text-justify text-[48px] font-bold py-8";
+  var textBarContent: string = "UNDER CONSTRUCTION - Web portal by DDLS Data Science Node";
 
   return (
     <div data-theme="dark">
       <HeaderComponent />
       <TextBarComponent classes={textBarClasses} text={textBarContent} />
-        <div className="bg-white space-y-14">
-        {body}
+      <div className="bg-white space-y-14">
         <ImageCarouselComponent />
         <div className="grid grid-cols-2 gap4">
           <div className="flex flex-col space-y-1.5 ...">
