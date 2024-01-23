@@ -2,7 +2,7 @@ import { ReactElement } from "react";
 
 export default function ImageCarouselComponent(): ReactElement {
     return (
-        <div className="carousel carousel-center rounded-box">
+        <div className="carousel carousel-center rounded-box py-10">
             <div className="carousel-item">
                 <img src="https://daisyui.com/images/stock/photo-1559703248-dcaaec9fab78.jpg" alt="Pizza" />
             </div> 
