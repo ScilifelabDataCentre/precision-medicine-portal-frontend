@@ -22,7 +22,7 @@ export default function HeaderComponent() {
         <div className="navbar h-[8rem] bg-base-100">
             <div className="navbar-start">
                 <Link to="/">
-                    <img className="w-[340px] h-[82px]" src="/images/SciLifeLab logo/Green_NEG/Digital/SciLifeLab_Logotype_Green_NEG.png" alt="SciLifeLab Logo" />
+                    <img className="w-[340px] h-[82px]" src="/images/SciLifeLab logo/NEG/Digital/SciLifeLab_Logotype_NEG.png" alt="SciLifeLab Logo" />
                 </Link>
             </div>
             <div className="navbar-center hidden lg:flex">
