@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import { MatomoProvider, createInstance } from '@jonkoops/matomo-tracker-react'
 import './index.css';
 import App from './App';
+import Routes from './components/Routes';
 
 const instance = createInstance({
   urlBase: 'https://matomo.dc.scilifelab.se/',
@@ -16,7 +17,7 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <MatomoProvider value={instance}>
-      <App />
+      <Routes />
     </MatomoProvider>
   </React.StrictMode>
 );
