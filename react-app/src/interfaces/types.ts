@@ -1,7 +1,7 @@
 export interface ILink {
     text: string;
     classes: string;
-    href: string;
+    link: string;
 };
 
 export interface ISVG {
