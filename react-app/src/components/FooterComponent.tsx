@@ -1,6 +1,7 @@
+import { ReactElement } from 'react';
 import {ILink, ISVG} from '../interfaces/types';
 
-export default function FooterComponent() {
+export default function FooterComponent(): ReactElement {
 
   var footerClasses: string = 'footer p-10 bg-base-100 text-base-content';
   

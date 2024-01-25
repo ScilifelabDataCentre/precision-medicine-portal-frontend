@@ -1,3 +1,4 @@
+import { ReactElement } from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import App from '../App';
 import HomePage from '../pages/HomePage';
@@ -13,7 +14,7 @@ const router = createBrowserRouter([
         element: <App />,
         children: [
             {
-                path: '/',
+                index: true,
                 element: <HomePage />,
             },
             {
@@ -40,6 +41,6 @@ const router = createBrowserRouter([
     },
   ]);
 
-export default function Routes() {
+export default function Routes(): ReactElement {
     return <RouterProvider router={router} />;
 }

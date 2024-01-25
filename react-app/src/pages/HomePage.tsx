@@ -1,13 +1,13 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import { useMatomo } from '@jonkoops/matomo-tracker-react';
 import CardComponent from "../components/CardComponent";
 import ImageCarouselComponent from "../components/ImageCarouselComponent";
 import TextBarComponent from "../components/TextBarComponent";
 
-export default function HomePage() {
+export default function HomePage(): ReactElement {
 
-     const { trackPageView, trackEvent } = useMatomo()
-
+    const { trackPageView, } = useMatomo()
+    // const { trackPageView, trackEvent } = useMatomo() , trackEvent to track clicks and other events
     // Track page view
     React.useEffect(() => {
         trackPageView()

@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import { useMatomo } from '@jonkoops/matomo-tracker-react';
 
-export default function SignInPage() {
-    const { trackPageView, trackEvent } = useMatomo()
+export default function SignInPage(): ReactElement {
+    const { trackPageView, } = useMatomo()
 
     // Track page view
     React.useEffect(() => {
