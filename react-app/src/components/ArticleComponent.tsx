@@ -1,8 +1,8 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, ReactElement } from 'react'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 
-export default function ArticleComponent() {
+export default function ArticleComponent(): ReactElement {
 
     const [content, setContent] = useState('')
 
