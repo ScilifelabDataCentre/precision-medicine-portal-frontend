@@ -1,5 +1,6 @@
 import { ReactElement } from 'react';
 import {ILink, ISVG} from '../interfaces/types';
+import { Link } from 'react-router-dom';
 
 export default function FooterComponent(): ReactElement {
 
@@ -17,7 +18,7 @@ export default function FooterComponent(): ReactElement {
       'l1': { text: 'About us', classes: linkClasses, link: '/' },
       'l2': { text: 'Contact', classes: linkClasses, link: '/' },
       'l3': { text: 'Open Source Contribution', classes: linkClasses, link: '/' },
-      'l4': { text: 'Privacy Policy', classes: linkClasses, link: '/' },
+      'l4': { text: 'Privacy Policy', classes: linkClasses, link: '/privacy' },
   };
 
   var svgConfig: string[] = ['/', 'http://www.w3.org/2000/svg', '24', '24', '0 0 24 24', 'fill-current']
@@ -32,12 +33,12 @@ export default function FooterComponent(): ReactElement {
     <footer className={footerClasses}>
       <nav>
       {Object.keys(linksCol1).map( key => (
-          <a className={linksCol1[key].classes} href={linksCol1[key].link}>{linksCol1[key].text}</a>
+          <Link className={linksCol1[key].classes} to={linksCol1[key].link}>{linksCol1[key].text}</Link>
       ))}
       </nav> 
       <nav>
       {Object.keys(linksCol2).map( key => (
-          <a className={linksCol2[key].classes} href={linksCol2[key].link}>{linksCol2[key].text}</a>
+          <Link className={linksCol2[key].classes} to={linksCol2[key].link}>{linksCol2[key].text}</Link>
       ))}
       </nav> 
       <nav>
