@@ -1,23 +1,22 @@
 import { ReactElement } from 'react';
 import {ILink, ISVG} from '../interfaces/types';
+import { Link } from 'react-router-dom';
+import { LINK_CLASSES } from '../constants';
 
 export default function FooterComponent(): ReactElement {
-
-  var footerClasses: string = 'footer p-10 bg-base-100 text-base-content';
   
-  var linkClasses: string = 'link link-hover';
   var linksCol1: { [id: string] : ILink; } = {
-      'l1': { text: 'Anonymization Tool', classes: linkClasses, link: '/' },
-      'l2': { text: 'Data Search', classes: linkClasses, link: '/' },
-      'l3': { text: 'Data Types', classes: linkClasses, link: '/' },
-      'l4': { text: 'Events & News', classes: linkClasses, link: '/' },
+      'l1': { text: 'Anonymization Tool', classes: LINK_CLASSES, link: '/' },
+      'l2': { text: 'Data Search', classes: LINK_CLASSES, link: '/' },
+      'l3': { text: 'Data Types', classes: LINK_CLASSES, link: '/' },
+      'l4': { text: 'Events & News', classes: LINK_CLASSES, link: '/' },
   };
 
   var linksCol2: { [id: string] : ILink; } = {
-      'l1': { text: 'About us', classes: linkClasses, link: '/' },
-      'l2': { text: 'Contact', classes: linkClasses, link: '/' },
-      'l3': { text: 'Open Source Contribution', classes: linkClasses, link: '/' },
-      'l4': { text: 'Privacy Policy', classes: linkClasses, link: '/' },
+      'l1': { text: 'About us', classes: LINK_CLASSES, link: '/' },
+      'l2': { text: 'Contact', classes: LINK_CLASSES, link: '/' },
+      'l3': { text: 'Open Source Contribution', classes: LINK_CLASSES, link: '/' },
+      'l4': { text: 'Privacy Policy', classes: LINK_CLASSES, link: '/privacy' },
   };
 
   var svgConfig: string[] = ['/', 'http://www.w3.org/2000/svg', '24', '24', '0 0 24 24', 'fill-current']
@@ -29,15 +28,15 @@ export default function FooterComponent(): ReactElement {
 
 
   return (
-    <footer className={footerClasses}>
+    <footer className='footer p-10 bg-base-100 text-base-content'>
       <nav>
       {Object.keys(linksCol1).map( key => (
-          <a className={linksCol1[key].classes} href={linksCol1[key].link}>{linksCol1[key].text}</a>
+          <Link className={linksCol1[key].classes} to={linksCol1[key].link}>{linksCol1[key].text}</Link>
       ))}
       </nav> 
       <nav>
       {Object.keys(linksCol2).map( key => (
-          <a className={linksCol2[key].classes} href={linksCol2[key].link}>{linksCol2[key].text}</a>
+          <Link className={linksCol2[key].classes} to={linksCol2[key].link}>{linksCol2[key].text}</Link>
       ))}
       </nav> 
       <nav>

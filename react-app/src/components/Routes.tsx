@@ -7,6 +7,7 @@ import ContactPage from '../pages/ContactPage';
 import DataPage from '../pages/DataPage';
 import EventsAndNewsPage from '../pages/EventsAndNewsPage';
 import SignInPage from '../pages/SignInPage';
+import PrivacyPage from '../pages/PrivacyPage';
 
 const router = createBrowserRouter([
     {
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
             {
                 path: 'signin',
                 element: <SignInPage />,
+            },
+            {
+                path: 'privacy',
+                element: <PrivacyPage />,
             },
         ]
     },
