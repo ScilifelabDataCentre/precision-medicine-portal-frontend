@@ -18,14 +18,14 @@ export default function HeaderComponent() {
 
     return (
         // use bg-zinc-200 instead? similar to daisyUI light-theme footer
-        <div className="navbar h-[8rem] bg-base-100">
+        <div className="navbar bg-base-100 px-8">
             <div className="navbar-start">
                 <Link to="/">
-                    <img className="w-[340px] h-[82px]" src="/images/SciLifeLab logo/NEG/Digital/SciLifeLab_Logotype_NEG.png" alt="SciLifeLab Logo" />
+                    <img className="h-auto w-80" src="/images/SciLifeLab logo/NEG/Digital/SciLifeLab_Logotype_NEG.png" alt="SciLifeLab Logo" />
                 </Link>
             </div>
-            <div className="navbar-center hidden lg:flex">
-                <ul className="menu menu-horizontal px-1">
+            <div className="navbar-center lg:flex">
+                <ul className="menu menu-horizontal">
                 {Object.keys(links).map( key => (
                     <li>{<NavLink className={links[key].classes} to={links[key].link}>{links[key].text}</NavLink>}</li>
                 ))}
