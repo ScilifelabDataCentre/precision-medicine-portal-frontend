@@ -1,6 +1,13 @@
 import React, { ReactElement } from 'react';
 import { useMatomo } from '@jonkoops/matomo-tracker-react';
 import TextBarComponent from '../components/TextBarComponent';
+import {
+    BODY_CLASSES,
+    BUTTON_TYPE_ONE,
+    BUTTON_TYPE_TWO,
+    HEADER_ONE,
+    PAGE_DESCRIPTION_TEXT_BAR_CLASSES,
+} from '../constants';
 
 export default function PrivacyPage(): ReactElement {
     const { trackPageView,} = useMatomo()
@@ -10,8 +17,6 @@ export default function PrivacyPage(): ReactElement {
         trackPageView()
     }, [])
 
-    var headerOne: string = "text-left text-black text-[40px] font-semibold";
-    var textBarClasses: string = "bg-gradient-to-b from-base-100 from-90% to-white text-justify text-[48px] font-bold py-8";
     var textBarContent: string = "Transparency is one of our guiding principles. Get acquainted with how we're creating a secure space for you.";
     var privacyDescription = `
                             Ut rhoncus ante in metus lobortis, eu euismod magna dignissim. Duis nec condimentum purus. 
@@ -35,13 +40,11 @@ export default function PrivacyPage(): ReactElement {
                             `;
 
     var alertMessage = "we use cookies for no reason.";
-    var buttonDenyClasses = "btn btn-sm";
-    var buttonAcceptClasses = "btn btn-sm btn-primary";
 
     return (
         <>
-            <TextBarComponent classes={textBarClasses} text={textBarContent} />
-            <div className="bg-white space-y-6 p-14">
+            <TextBarComponent classes={PAGE_DESCRIPTION_TEXT_BAR_CLASSES} text={textBarContent} />
+            <div className={BODY_CLASSES}>
                 <div className="text-sm breadcrumbs">
                 <ul>
                     <li><a>Home</a></li> 
@@ -49,7 +52,7 @@ export default function PrivacyPage(): ReactElement {
                     <li>Add Document</li>
                 </ul>
                 </div>
-                <div className={headerOne}>Privacy Policy</div>
+                <div className={HEADER_ONE}>Privacy Policy</div>
                 <div className="divider">Default</div>
                 <p>{privacyDescription}</p>
                 <div className="divider">Default</div>
@@ -57,9 +60,9 @@ export default function PrivacyPage(): ReactElement {
                 <div role="alert" className="alert">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="stroke-info shrink-0 w-6 h-6"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                     <span>{alertMessage}</span>
-                    <div>
-                        <button className={buttonDenyClasses}>Deny</button>
-                        <button className={buttonAcceptClasses}>Accept</button>
+                    <div className="space-x-2">
+                        <button className={BUTTON_TYPE_TWO}>Deny</button>
+                        <button className={BUTTON_TYPE_ONE}>Accept</button>
                     </div>
                 </div>
             </div>
