@@ -20,7 +20,7 @@ export default function HomePage(): ReactElement {
 
     var cardConfig: { [id: string] : ICardConfig; } = {
         'whiteCard': { 
-            cardClasses: "w-[55rem] bg-white text-black bg-opacity-95 shadow-xl border-2 border-zinc-300", 
+            cardClasses: "w-[40rem] bg-white text-black bg-opacity-95 shadow-xl border-2 border-zinc-300", 
             titleClasses: cardTitleClasses, 
             textClasses: cardTextClasses, 
             buttonClasses: "", 
