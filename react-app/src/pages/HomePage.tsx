@@ -20,7 +20,7 @@ export default function HomePage(): ReactElement {
 
     var cardConfig: { [id: string] : ICardConfig; } = {
         'whiteCard': { 
-            cardClasses: "w-[580px] h-20 bg-white text-black bg-opacity-95 shadow-xl border-2 border-zinc-300", 
+            cardClasses: "w-[55rem] bg-white text-black bg-opacity-95 shadow-xl border-2 border-zinc-300", 
             titleClasses: cardTitleClasses, 
             textClasses: cardTextClasses, 
             buttonClasses: "", 
@@ -60,24 +60,23 @@ export default function HomePage(): ReactElement {
             <TextBarComponent classes={PAGE_DESCRIPTION_TEXT_BAR_CLASSES} text={textBarContent} />
             <div className={BODY_CLASSES}>
                 <ImageCarouselComponent />
-                <div className="grid grid-cols-2 gap4">
+                <div className="flex flex-row space-x-16">
                     <div className="flex flex-col space-y-1.5 ...">
                         <h1 className={H_1}>Latest News</h1>
                         <CardComponent cardConfig={cardConfig['whiteCard']} cardContent={cardContent['whiteCard1']} />
                         <CardComponent cardConfig={cardConfig['whiteCard']} cardContent={cardContent['whiteCard1']} />
                         <CardComponent cardConfig={cardConfig['whiteCard']} cardContent={cardContent['whiteCard1']} />
                         <CardComponent cardConfig={cardConfig['whiteCard']} cardContent={cardContent['whiteCard1']} />
+                        <CardComponent cardConfig={cardConfig['blackCard']} cardContent={cardContent['blackCard1']} />
                     </div>
                     <div className="flex flex-col space-y-1.5 ...">
-                        <h1 className={H_1}>Upcoming Events</h1>
+                        <h1 className={H_1}>Latest News</h1>
                         <CardComponent cardConfig={cardConfig['whiteCard']} cardContent={cardContent['whiteCard1']} />
                         <CardComponent cardConfig={cardConfig['whiteCard']} cardContent={cardContent['whiteCard1']} />
                         <CardComponent cardConfig={cardConfig['whiteCard']} cardContent={cardContent['whiteCard1']} />
+                        <CardComponent cardConfig={cardConfig['whiteCard']} cardContent={cardContent['whiteCard1']} />
+                        <CardComponent cardConfig={cardConfig['blackCard']} cardContent={cardContent['blackCard1']} />
                     </div>
-                </div>
-                <div className="grid grid-cols-2">
-                    <CardComponent cardConfig={cardConfig['blackCard']} cardContent={cardContent['blackCard1']} />
-                    <CardComponent cardConfig={cardConfig['blackCard']} cardContent={cardContent['blackCard1']} />
                 </div>
             </div>
         </div>
