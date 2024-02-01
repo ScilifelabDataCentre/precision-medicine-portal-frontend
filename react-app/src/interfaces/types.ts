@@ -13,3 +13,19 @@ export interface ISVG {
     classes: string;
     svg: string;
 };
+
+export interface ICardConfig {
+    cardClasses: string;
+    titleClasses: string;
+    textClasses: string;
+    buttonClasses: string;
+    buttonPlacement: string;
+};
+
+export interface ICardContent {
+    title: string; 
+    text: string; 
+    buttonText: string;
+    imageSrc: string;
+    imageAlt: string;
+};

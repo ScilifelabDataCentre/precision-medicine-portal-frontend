@@ -1,5 +1,5 @@
 // reused tailwind classes
-export const HEADER_ONE: string = "text-left text-black text-[40px] font-semibold";
+export const H_1: string = "text-left text-black text-[40px] font-semibold";
 
 export const PAGE_DESCRIPTION_TEXT_BAR_CLASSES: string = "bg-gradient-to-b from-base-100 from-90% to-white text-justify text-[48px] font-bold p-6";
 
@@ -9,3 +9,5 @@ export const BUTTON_TYPE_TWO: string = 'btn bg-gray-950 text-white hover:bg-gray
 export const BODY_CLASSES: string = "bg-white space-y-4 py-4 px-12";
 
 export const LINK_CLASSES: string = 'link link-hover';
+
+export const FLEX_ROW_CLASS_BASE: string = "flex flex-row space-x-";
