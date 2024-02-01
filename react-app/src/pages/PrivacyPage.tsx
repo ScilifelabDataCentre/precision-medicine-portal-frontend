@@ -5,7 +5,7 @@ import {
     BODY_CLASSES,
     BUTTON_TYPE_ONE,
     BUTTON_TYPE_TWO,
-    HEADER_ONE,
+    H_1,
     PAGE_DESCRIPTION_TEXT_BAR_CLASSES,
 } from '../constants';
 import { Link } from 'react-router-dom';
@@ -61,7 +61,7 @@ export default function PrivacyPage(): ReactElement {
                 ))}
                 </ul>
                 </div>
-                <div className={HEADER_ONE}>Privacy Policy</div>
+                <div className={H_1}>Privacy Policy</div>
                 <div className="divider">{dividers[0]}</div>
                 <p>{privacyDescription}</p>
                 <div className="divider">{dividers[1]}</div>

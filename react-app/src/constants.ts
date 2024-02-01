@@ -1,5 +1,5 @@
 // reused tailwind classes
-export const HEADER_ONE: string = "text-left text-black text-[40px] font-semibold";
+export const H_1: string = "text-left text-black text-[40px] font-semibold";
 
 export const PAGE_DESCRIPTION_TEXT_BAR_CLASSES: string = "bg-gradient-to-b from-base-100 from-90% to-white text-justify text-[48px] font-bold p-6";
 
