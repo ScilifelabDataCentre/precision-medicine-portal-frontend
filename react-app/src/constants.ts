@@ -9,3 +9,5 @@ export const BUTTON_TYPE_TWO: string = 'btn bg-gray-950 text-white hover:bg-gray
 export const BODY_CLASSES: string = "bg-white space-y-4 py-4 px-12";
 
 export const LINK_CLASSES: string = 'link link-hover';
+
+export const FLEX_ROW_CLASS_BASE: string = "flex flex-row space-x-";
