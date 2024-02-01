@@ -59,25 +59,25 @@ export default function HomePage(): ReactElement {
         <div>
             <TextBarComponent classes={PAGE_DESCRIPTION_TEXT_BAR_CLASSES} text={textBarContent} />
             <div className={BODY_CLASSES}>
-            <ImageCarouselComponent />
-            <div className="grid grid-cols-2 gap4">
-                <div className="flex flex-col space-y-1.5 ...">
-                    <h1 className={H_1}>Latest News</h1>
-                    <CardComponent CardConfig={cardConfig['whiteCard']} CardContent={cardContent['whiteCard1']} />
-                    <CardComponent CardConfig={cardConfig['whiteCard']} CardContent={cardContent['whiteCard1']} />
-                    <CardComponent CardConfig={cardConfig['whiteCard']} CardContent={cardContent['whiteCard1']} />
-                    <CardComponent CardConfig={cardConfig['whiteCard']} CardContent={cardContent['whiteCard1']} />
+                <ImageCarouselComponent />
+                <div className="grid grid-cols-2 gap4">
+                    <div className="flex flex-col space-y-1.5 ...">
+                        <h1 className={H_1}>Latest News</h1>
+                        <CardComponent cardConfig={cardConfig['whiteCard']} cardContent={cardContent['whiteCard1']} />
+                        <CardComponent cardConfig={cardConfig['whiteCard']} cardContent={cardContent['whiteCard1']} />
+                        <CardComponent cardConfig={cardConfig['whiteCard']} cardContent={cardContent['whiteCard1']} />
+                        <CardComponent cardConfig={cardConfig['whiteCard']} cardContent={cardContent['whiteCard1']} />
+                    </div>
+                    <div className="flex flex-col space-y-1.5 ...">
+                        <h1 className={H_1}>Upcoming Events</h1>
+                        <CardComponent cardConfig={cardConfig['whiteCard']} cardContent={cardContent['whiteCard1']} />
+                        <CardComponent cardConfig={cardConfig['whiteCard']} cardContent={cardContent['whiteCard1']} />
+                        <CardComponent cardConfig={cardConfig['whiteCard']} cardContent={cardContent['whiteCard1']} />
+                    </div>
                 </div>
-                <div className="flex flex-col space-y-1.5 ...">
-                    <h1 className={H_1}>Upcoming Events</h1>
-                    <CardComponent CardConfig={cardConfig['whiteCard']} CardContent={cardContent['whiteCard1']} />
-                    <CardComponent CardConfig={cardConfig['whiteCard']} CardContent={cardContent['whiteCard1']} />
-                    <CardComponent CardConfig={cardConfig['whiteCard']} CardContent={cardContent['whiteCard1']} />
-                </div>
-            </div>
                 <div className="grid grid-cols-2">
-                    <CardComponent CardConfig={cardConfig['blackCard']} CardContent={cardContent['blackCard1']} />
-                    <CardComponent CardConfig={cardConfig['blackCard']} CardContent={cardContent['blackCard1']} />
+                    <CardComponent cardConfig={cardConfig['blackCard']} cardContent={cardContent['blackCard1']} />
+                    <CardComponent cardConfig={cardConfig['blackCard']} cardContent={cardContent['blackCard1']} />
                 </div>
             </div>
         </div>

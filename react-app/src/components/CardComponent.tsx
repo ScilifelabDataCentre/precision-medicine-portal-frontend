@@ -1,29 +1,29 @@
 import { ReactElement } from "react";
 import { ICardConfig, ICardContent } from "../interfaces/types";
 
-export default function CardComponent(prop: { CardConfig: ICardConfig, CardContent: ICardContent }): ReactElement {
+export default function CardComponent(prop: { cardConfig: ICardConfig, cardContent: ICardContent }): ReactElement {
     const title: ReactElement = (
-        <h2 className={prop.CardConfig.titleClasses}>{prop.CardContent.title}</h2>
+        <h2 className={prop.cardConfig.titleClasses}>{prop.cardContent.title}</h2>
     );
 
     const image: ReactElement = (
-        <figure><img src={prop.CardContent.imageSrc} alt={prop.CardContent.imageAlt} /></figure>
+        <figure><img src={prop.cardContent.imageSrc} alt={prop.cardContent.imageAlt} /></figure>
     );
 
-    var buttonClasses: string = "card-actions " + prop.CardConfig.buttonPlacement;
+    var buttonClasses: string = "card-actions " + prop.cardConfig.buttonPlacement;
     const button: ReactElement = (
         <div className={buttonClasses}>
-            <button className={prop.CardConfig.buttonClasses}>{prop.CardContent.buttonText}</button>
+            <button className={prop.cardConfig.buttonClasses}>{prop.cardContent.buttonText}</button>
         </div>
     );
     
     return (
-        <div className={"card " + prop.CardConfig.cardClasses}>
-            {prop.CardContent.imageSrc && image}
+        <div className={"card " + prop.cardConfig.cardClasses}>
+            {prop.cardContent.imageSrc && image}
             <div className="card-body">
-                {prop.CardContent.title && title}
-                <p className={prop.CardConfig.textClasses}>{prop.CardContent.text}</p>
-                {prop.CardContent.buttonText && button}
+                {prop.cardContent.title && title}
+                <p className={prop.cardConfig.textClasses}>{prop.cardContent.text}</p>
+                {prop.cardContent.buttonText && button}
             </div>
         </div>
     );
