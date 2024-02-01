@@ -68,8 +68,10 @@ export default function AboutPage(): ReactElement {
         },
     };
 
-    var teamCardsSpacing: number = 24;
-    var fundersAndPartnersCardsSpacing: number = 8;
+    // apparently concatenating strings for tailwind classes does not work for some reason, leave hardcoding
+    var teamCardsSpacing: string = "flex flex-row space-x-24";
+    var fundersAndPartnersSpacing: string = "flex flex-row space-x-8";
+
 
     var breadcrumbs: { [id: string] : ILink; } = {
         'l1': { text: 'Home', classes: '', link: '/' },
@@ -93,7 +95,7 @@ export default function AboutPage(): ReactElement {
                 <div className="divider">{dividers[0]}</div>
                 <p>{PMDDescription}</p>
                 <div className="divider">{dividers[1]}</div>
-                    <div className={FLEX_ROW_CLASS_BASE + teamCardsSpacing.toString()}>
+                    <div className={teamCardsSpacing}>
                         <CardComponent cardConfig={cardConfig['teamCard']} cardContent={cardContent['teamCard1']} />
                         <CardComponent cardConfig={cardConfig['teamCard']} cardContent={cardContent['teamCard1']} />
                         <CardComponent cardConfig={cardConfig['teamCard']} cardContent={cardContent['teamCard1']} />
@@ -104,12 +106,12 @@ export default function AboutPage(): ReactElement {
                     </div>
                 <div className="divider">{dividers[2]}</div>
                 <div className="divider">{dividers[3]}</div>
-                <div className={FLEX_ROW_CLASS_BASE + fundersAndPartnersCardsSpacing.toString()}>
+                <div className={fundersAndPartnersSpacing}>
                     <CardComponent cardConfig={cardConfig['fundersAndPartnersCard']} cardContent={cardContent['fundersAndPartnersCard1']} />
                     <CardComponent cardConfig={cardConfig['fundersAndPartnersCard']} cardContent={cardContent['fundersAndPartnersCard1']} />
                 </div>
                 <div className="divider">{dividers[4]}</div>
-                <div className={FLEX_ROW_CLASS_BASE + fundersAndPartnersCardsSpacing.toString()}>
+                <div className={fundersAndPartnersSpacing}>
                     <CardComponent cardConfig={cardConfig['fundersAndPartnersCard']} cardContent={cardContent['fundersAndPartnersCard1']} />
                     <CardComponent cardConfig={cardConfig['fundersAndPartnersCard']} cardContent={cardContent['fundersAndPartnersCard1']} />
                 </div>
