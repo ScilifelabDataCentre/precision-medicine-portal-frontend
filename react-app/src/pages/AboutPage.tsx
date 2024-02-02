@@ -3,13 +3,13 @@ import { useMatomo } from '@jonkoops/matomo-tracker-react';
 import TextBarComponent from '../components/TextBarComponent';
 import {
     BODY_CLASSES,
-    FLEX_ROW_CLASS_BASE,
     H_1,
     PAGE_DESCRIPTION_TEXT_BAR_CLASSES,
 } from '../constants';
 import { Link } from 'react-router-dom';
 import { ILink, ICardConfig, ICardContent } from '../interfaces/types';
 import CardComponent from '../components/CardComponent';
+import AccordionComponent from '../components/AccordionComponent';
 
 export default function AboutPage(): ReactElement {
     const { trackPageView,} = useMatomo()
@@ -39,8 +39,8 @@ export default function AboutPage(): ReactElement {
             cardClasses: "card w-96 bg-base-100 shadow-xl", 
             titleClasses: "card-title", 
             textClasses: "", 
-            buttonClasses: "btn btn-primary", 
-            buttonPlacement: "justify-end",  
+            buttonClasses: "", 
+            buttonPlacement: "",  
         },
         'fundersAndPartnersCard': {
             cardClasses: "card lg:card-side bg-base-100 shadow-xl", 
@@ -55,7 +55,7 @@ export default function AboutPage(): ReactElement {
         'teamCard1': {
             title: "Shoes!", 
             text: "If a dog chews shoes whose shoes does he choose?", 
-            buttonText: "Buy Now",
+            buttonText: "",
             imageSrc: "https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg",
             imageAlt: "Shoes",
         },
@@ -67,10 +67,6 @@ export default function AboutPage(): ReactElement {
             imageAlt: "Album",
         },
     };
-
-    // apparently concatenating strings for tailwind classes does not work for some reason, leave hardcoding
-    var teamCardsSpacing: string = "flex flex-row space-x-24";
-    var fundersAndPartnersSpacing: string = "flex flex-row space-x-8";
 
 
     var breadcrumbs: { [id: string] : ILink; } = {
@@ -95,23 +91,28 @@ export default function AboutPage(): ReactElement {
                 <div className="divider">{dividers[0]}</div>
                 <p>{PMDDescription}</p>
                 <div className="divider">{dividers[1]}</div>
-                    <div className={teamCardsSpacing}>
-                        <CardComponent cardConfig={cardConfig['teamCard']} cardContent={cardContent['teamCard1']} />
-                        <CardComponent cardConfig={cardConfig['teamCard']} cardContent={cardContent['teamCard1']} />
-                        <CardComponent cardConfig={cardConfig['teamCard']} cardContent={cardContent['teamCard1']} />
-                    </div>
-                    <div className={FLEX_ROW_CLASS_BASE + teamCardsSpacing.toString()}>
+                <div className="flex flex-row justify-between">
+                    <div className="flex flex-col">
                         <CardComponent cardConfig={cardConfig['teamCard']} cardContent={cardContent['teamCard1']} />
                         <CardComponent cardConfig={cardConfig['teamCard']} cardContent={cardContent['teamCard1']} />
                     </div>
+                    <div className="flex flex-col">
+                        <CardComponent cardConfig={cardConfig['teamCard']} cardContent={cardContent['teamCard1']} />
+                        <CardComponent cardConfig={cardConfig['teamCard']} cardContent={cardContent['teamCard1']} />
+                    </div>
+                    <div className="flex flex-col">
+                        <CardComponent cardConfig={cardConfig['teamCard']} cardContent={cardContent['teamCard1']} />
+                    </div>
+                </div>
                 <div className="divider">{dividers[2]}</div>
+                <AccordionComponent />
                 <div className="divider">{dividers[3]}</div>
-                <div className={fundersAndPartnersSpacing}>
+                <div className="flex flex-row space-x-4 justify-between">
                     <CardComponent cardConfig={cardConfig['fundersAndPartnersCard']} cardContent={cardContent['fundersAndPartnersCard1']} />
                     <CardComponent cardConfig={cardConfig['fundersAndPartnersCard']} cardContent={cardContent['fundersAndPartnersCard1']} />
                 </div>
                 <div className="divider">{dividers[4]}</div>
-                <div className={fundersAndPartnersSpacing}>
+                <div className="flex flex-row space-x-4 justify-between">
                     <CardComponent cardConfig={cardConfig['fundersAndPartnersCard']} cardContent={cardContent['fundersAndPartnersCard1']} />
                     <CardComponent cardConfig={cardConfig['fundersAndPartnersCard']} cardContent={cardContent['fundersAndPartnersCard1']} />
                 </div>
