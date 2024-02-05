@@ -48,17 +48,17 @@ export default function AboutProductPage(): ReactElement {
         <>
             <div className="divider">Product</div>
             <p>{PMDDescription}</p>
-            <div className="divider">Team</div>
+            <div className="divider pt-16">Team & Contributions</div>
             <div className="flex flex-row justify-between">
-                <div className="flex flex-col">
+                <div className="flex flex-col space-y-8">
                     <CardComponent cardConfig={cardConfig['teamCard']} cardContent={cardContent['teamCard1']} />
                     <CardComponent cardConfig={cardConfig['teamCard']} cardContent={cardContent['teamCard1']} />
                 </div>
-                <div className="flex flex-col">
+                <div className="flex flex-col space-y-8">
                     <CardComponent cardConfig={cardConfig['teamCard']} cardContent={cardContent['teamCard1']} />
                     <CardComponent cardConfig={cardConfig['teamCard']} cardContent={cardContent['teamCard1']} />
                 </div>
-                <div className="flex flex-col">
+                <div className="flex flex-col space-y-8">
                     <CardComponent cardConfig={cardConfig['teamCard']} cardContent={cardContent['teamCard1']} />
                 </div>
             </div>
