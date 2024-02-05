@@ -6,10 +6,8 @@ import {
     H_1,
     PAGE_DESCRIPTION_TEXT_BAR_CLASSES,
 } from '../constants';
-import { Link } from 'react-router-dom';
+import { Link, NavLink, Outlet } from 'react-router-dom';
 import { ILink, ICardConfig, ICardContent } from '../interfaces/types';
-import CardComponent from '../components/CardComponent';
-import AccordionComponent from '../components/AccordionComponent';
 
 export default function AboutPage(): ReactElement {
     const { trackPageView,} = useMatomo()
@@ -89,38 +87,11 @@ export default function AboutPage(): ReactElement {
                 </div>
                 <div className={H_1}>{pageTitle}</div>
                 <div role="tablist" className="tabs tabs-lifted">
-                    <a role="tab" className="tab">Product</a>
-                    <a role="tab" className="tab tab-active">FAQ</a>
-                    <a role="tab" className="tab">Partners</a>
+                    <NavLink to='/about/product' role='tab' className={({ isActive }) => `tab ${ isActive ? 'tab-active' : ''}`}>Product</NavLink>
+                    <NavLink to='/about/faq' role='tab' className={({ isActive }) => `tab ${ isActive ? 'tab-active' : ''}`}>FAQ</NavLink>
+                    <NavLink to='/about/partners' role='tab' className={({ isActive }) => `tab ${ isActive ? 'tab-active' : ''}`}>Partners</NavLink>
                 </div>
-                <div className="divider">{dividers[0]}</div>
-                <p>{PMDDescription}</p>
-                <div className="divider">{dividers[1]}</div>
-                <div className="flex flex-row justify-between">
-                    <div className="flex flex-col">
-                        <CardComponent cardConfig={cardConfig['teamCard']} cardContent={cardContent['teamCard1']} />
-                        <CardComponent cardConfig={cardConfig['teamCard']} cardContent={cardContent['teamCard1']} />
-                    </div>
-                    <div className="flex flex-col">
-                        <CardComponent cardConfig={cardConfig['teamCard']} cardContent={cardContent['teamCard1']} />
-                        <CardComponent cardConfig={cardConfig['teamCard']} cardContent={cardContent['teamCard1']} />
-                    </div>
-                    <div className="flex flex-col">
-                        <CardComponent cardConfig={cardConfig['teamCard']} cardContent={cardContent['teamCard1']} />
-                    </div>
-                </div>
-                <div className="divider">{dividers[2]}</div>
-                <AccordionComponent />
-                <div className="divider">{dividers[3]}</div>
-                <div className="flex flex-row space-x-4 justify-between">
-                    <CardComponent cardConfig={cardConfig['fundersAndPartnersCard']} cardContent={cardContent['fundersAndPartnersCard1']} />
-                    <CardComponent cardConfig={cardConfig['fundersAndPartnersCard']} cardContent={cardContent['fundersAndPartnersCard1']} />
-                </div>
-                <div className="divider">{dividers[4]}</div>
-                <div className="flex flex-row space-x-4 justify-between">
-                    <CardComponent cardConfig={cardConfig['fundersAndPartnersCard']} cardContent={cardContent['fundersAndPartnersCard1']} />
-                    <CardComponent cardConfig={cardConfig['fundersAndPartnersCard']} cardContent={cardContent['fundersAndPartnersCard1']} />
-                </div>
+                <Outlet />
             </div>
         </>
     );
