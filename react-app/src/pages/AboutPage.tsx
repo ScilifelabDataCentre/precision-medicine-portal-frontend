@@ -88,6 +88,11 @@ export default function AboutPage(): ReactElement {
                 </ul>
                 </div>
                 <div className={H_1}>{pageTitle}</div>
+                <div role="tablist" className="tabs tabs-lifted">
+                    <a role="tab" className="tab">Product</a>
+                    <a role="tab" className="tab tab-active">FAQ</a>
+                    <a role="tab" className="tab">Partners</a>
+                </div>
                 <div className="divider">{dividers[0]}</div>
                 <p>{PMDDescription}</p>
                 <div className="divider">{dividers[1]}</div>
