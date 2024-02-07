@@ -13,7 +13,7 @@ export default function FooterComponent(): ReactElement {
   };
 
   var linksCol2: { [id: string] : ILink; } = {
-      'l1': { text: 'About us', classes: LINK_CLASSES, link: '/' },
+      'l1': { text: 'About us', classes: LINK_CLASSES, link: '/about' },
       'l2': { text: 'Contact', classes: LINK_CLASSES, link: '/' },
       'l3': { text: 'Open Source Contribution', classes: LINK_CLASSES, link: '/' },
       'l4': { text: 'Privacy Policy', classes: LINK_CLASSES, link: '/privacy' },

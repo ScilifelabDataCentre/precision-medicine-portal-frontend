@@ -1,22 +1,29 @@
 import { ReactElement } from "react";
+import { ICardConfig, ICardContent } from "../interfaces/types";
 
-export default function CardComponent(prop: { classes: string, title: string, text: string, button: string, buttonClasses: string }): ReactElement {
+export default function CardComponent(prop: { cardConfig: ICardConfig, cardContent: ICardContent }): ReactElement {
     const title: ReactElement = (
-        <h2 className="text-center text-white text-xl font-semibold">{prop.title}</h2>
+        <h2 className={prop.cardConfig.titleClasses}>{prop.cardContent.title}</h2>
     );
 
+    const image: ReactElement = (
+        <figure><img src={prop.cardContent.imageSrc} alt={prop.cardContent.imageAlt} /></figure>
+    );
+
+    var buttonClasses: string = "card-actions " + prop.cardConfig.buttonPlacement;
     const button: ReactElement = (
-        <div className="card-actions justify-center">
-            <button className={prop.buttonClasses}>{prop.button}</button>
+        <div className={buttonClasses}>
+            <button className={prop.cardConfig.buttonClasses}>{prop.cardContent.buttonText}</button>
         </div>
     );
     
     return (
-        <div className={"card " + prop.classes}>
+        <div className={"card " + prop.cardConfig.cardClasses}>
+            {prop.cardContent.imageSrc && image}
             <div className="card-body">
-                {prop.title && title}
-                <p className="text-center content-end">{prop.text}</p>
-                {prop.button && button}
+                {prop.cardContent.title && title}
+                <p className={prop.cardConfig.textClasses}>{prop.cardContent.text}</p>
+                {prop.cardContent.buttonText && button}
             </div>
         </div>
     );

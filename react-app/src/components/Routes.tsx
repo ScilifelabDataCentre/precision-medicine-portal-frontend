@@ -1,5 +1,5 @@
 import { ReactElement } from 'react';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { createBrowserRouter, redirect, RouterProvider } from 'react-router-dom';
 import App from '../App';
 import HomePage from '../pages/HomePage';
 import AboutPage from '../pages/AboutPage';
@@ -8,6 +8,9 @@ import DataPage from '../pages/DataPage';
 import EventsAndNewsPage from '../pages/EventsAndNewsPage';
 import SignInPage from '../pages/SignInPage';
 import PrivacyPage from '../pages/PrivacyPage';
+import AboutProductPage from '../pages/AboutProductPage';
+import AboutFAQPage from '../pages/AboutFAQPage';
+import AboutPartnersPage from '../pages/AboutPartnersPage';
 
 const router = createBrowserRouter([
     {
@@ -21,6 +24,24 @@ const router = createBrowserRouter([
             {
                 path: 'about',
                 element: <AboutPage />,
+                children: [
+                    {
+                        index: true,
+                        loader: async () => redirect('product')
+                    },
+                    {
+                        path: 'product',
+                        element: <AboutProductPage />,
+                    },
+                    {
+                        path: 'faq',
+                        element: <AboutFAQPage />,
+                    },
+                    {
+                        path: 'partners',
+                        element: <AboutPartnersPage />,
+                    },
+                ]
             },
             {
                 path: 'contact',
@@ -48,4 +69,8 @@ const router = createBrowserRouter([
 
 export default function Routes(): ReactElement {
     return <RouterProvider router={router} />;
+}
+
+function async(): import("react-router-dom").LoaderFunction<any> | undefined {
+    throw new Error('Function not implemented.');
 }
