@@ -12,8 +12,8 @@ COPY ./react-app/ .
 RUN npm run build
 
 FROM nginxinc/nginx-unprivileged:stable-alpine
-RUN sed -i '3 a\    absolute_redirect off;' /etc/nginx/conf.d/default.conf
-RUN sed -i 's/#error_page  404/error_page  404/' /etc/nginx/conf.d/default.conf
+USER 101
+COPY ./conf/nginx.conf /etc/nginx/conf.d/default.conf
 COPY --from=builder /app/build /usr/share/nginx/html
 EXPOSE 8080
 CMD ["nginx", "-g", "daemon off;"]
