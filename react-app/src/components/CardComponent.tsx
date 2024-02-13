@@ -10,7 +10,7 @@ export default function CardComponent(prop: { cardConfig: ICardConfig, cardConte
         <figure><img src={prop.cardContent.imageSrc} alt={prop.cardContent.imageAlt} /></figure>
     );
 
-    var buttonClasses: string = "card-actions " + prop.cardConfig.buttonPlacement;
+    let buttonClasses: string = "card-actions " + prop.cardConfig.buttonPlacement;
     const button: ReactElement = (
         <div className={buttonClasses}>
             <button className={prop.cardConfig.buttonClasses}>{prop.cardContent.buttonText}</button>
