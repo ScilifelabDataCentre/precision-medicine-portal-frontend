@@ -4,7 +4,7 @@ import { BUTTON_TYPE_ONE, LINK_CLASSES } from '../constants';
 
 export default function HeaderComponent() {
     
-    var links: { [id: string] : ILink; } = {
+    let links: { [id: string] : ILink; } = {
         'l1': { text: 'Random text for now', classes: 'pointer-events-none', link: '/#' },
         'l2': { text: 'Data', classes: LINK_CLASSES, link: 'data' },
         'l3': { text: 'Events & News', classes: LINK_CLASSES, link: 'eventsandnews' },
@@ -12,7 +12,7 @@ export default function HeaderComponent() {
         'l5': { text: 'About', classes: LINK_CLASSES, link: 'about' },
     };
 
-    var buttons: { [id: string] : ILink; } = {
+    let buttons: { [id: string] : ILink; } = {
         'b1': { text: 'Sign In', classes: BUTTON_TYPE_ONE, link: 'signin' },
     };
 
