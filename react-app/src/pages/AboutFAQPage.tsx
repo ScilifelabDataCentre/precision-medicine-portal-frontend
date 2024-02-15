@@ -1,14 +1,9 @@
 import React, { ReactElement } from 'react';
-import { useMatomo } from '@jonkoops/matomo-tracker-react';
 import AccordionComponent from '../components/AccordionComponent';
+import { TrackPageViewIfEnabled } from '../util/cookiesHandling';
 
 export default function AboutFAQPage(): ReactElement {
-    const { trackPageView,} = useMatomo()
-
-    // Track page view
-    React.useEffect(() => {
-        trackPageView()
-    }, [])
+    TrackPageViewIfEnabled();
     
     return (
         <>

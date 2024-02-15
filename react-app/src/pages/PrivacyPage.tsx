@@ -10,14 +10,12 @@ import {
 } from '../constants';
 import { Link } from 'react-router-dom';
 import { ILink } from '../interfaces/types';
+import Cookies from 'js-cookie';
+import { cookieIsSetToTrue, TrackPageViewIfEnabled } from '../util/cookiesHandling';
 
 export default function PrivacyPage(): ReactElement {
-    const { trackPageView,} = useMatomo()
 
-    // Track page view
-    React.useEffect(() => {
-        trackPageView()
-    }, [])
+    TrackPageViewIfEnabled();
 
     var textBarContent: string = "Transparency is one of our guiding principles. Get acquainted with how we're creating a secure space for you.";
     var policyText: string = `
@@ -81,7 +79,11 @@ export default function PrivacyPage(): ReactElement {
         'Contact Us',
     ];
 
-    var alertMessage: string = "we use cookies for no reason.";
+    var alertMessage: string = "Opt out of tracking?";
+
+    const handleOptOut = () => {
+        Cookies.set('trackingEnabled', 'false', { expires: 365 });
+    };
     
     return (
         <>
@@ -103,8 +105,7 @@ export default function PrivacyPage(): ReactElement {
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="stroke-info shrink-0 w-6 h-6"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                     <span>{alertMessage}</span>
                     <div className="space-x-2">
-                        <button className={BUTTON_TYPE_TWO}>Deny</button>
-                        <button className={BUTTON_TYPE_ONE}>Accept</button>
+                        <button onClick={handleOptOut} className={BUTTON_TYPE_ONE}>Opt Out</button>
                     </div>
                 </div>
                 <div className="divider">{dividers[2]}</div>
