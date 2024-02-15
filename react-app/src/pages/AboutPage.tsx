@@ -1,5 +1,4 @@
 import React, { ReactElement } from 'react';
-import { useMatomo } from '@jonkoops/matomo-tracker-react';
 import TextBarComponent from '../components/TextBarComponent';
 import {
     BODY_CLASSES,
@@ -8,14 +7,10 @@ import {
 } from '../constants';
 import { Link, NavLink, Outlet } from 'react-router-dom';
 import { ILink, } from '../interfaces/types';
+import { TrackPageViewIfEnabled } from '../util/cookiesHandling';
 
 export default function AboutPage(): ReactElement {
-    const { trackPageView,} = useMatomo()
-
-    // Track page view
-    React.useEffect(() => {
-        trackPageView()
-    }, [])
+    TrackPageViewIfEnabled();
 
     var pageTitle: string = "About Us";
     var textBarContent: string = "Get to know about the team behind the [product name] and our mission to connect you with the data you need.";

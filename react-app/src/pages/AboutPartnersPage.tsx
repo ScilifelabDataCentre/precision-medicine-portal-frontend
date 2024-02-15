@@ -1,15 +1,10 @@
 import React, { ReactElement } from 'react';
-import { useMatomo } from '@jonkoops/matomo-tracker-react';
 import { ICardConfig, ICardContent } from '../interfaces/types';
 import CardComponent from '../components/CardComponent';
+import { TrackPageViewIfEnabled } from '../util/cookiesHandling';
 
 export default function AboutPartnersPage(): ReactElement {
-    const { trackPageView,} = useMatomo()
-
-    // Track page view
-    React.useEffect(() => {
-        trackPageView()
-    }, [])
+    TrackPageViewIfEnabled();
 
     var cardConfig: { [id: string] : ICardConfig; } = {
         'fundersAndPartnersCard': {

@@ -1,13 +1,8 @@
 import React, { ReactElement } from 'react';
-import { useMatomo } from '@jonkoops/matomo-tracker-react';
+import { TrackPageViewIfEnabled } from '../util/cookiesHandling';
 
 export default function EventsAndNewsPage(): ReactElement {
-    const { trackPageView, } = useMatomo()
-
-    // Track page view
-    React.useEffect(() => {
-        trackPageView()
-    }, [])
+    TrackPageViewIfEnabled();
 
     return (
         <div>

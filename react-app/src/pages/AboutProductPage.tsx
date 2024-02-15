@@ -1,15 +1,10 @@
 import React, { ReactElement } from 'react';
-import { useMatomo } from '@jonkoops/matomo-tracker-react';
 import { ICardConfig, ICardContent } from '../interfaces/types';
 import CardComponent from '../components/CardComponent';
+import { TrackPageViewIfEnabled } from '../util/cookiesHandling';
 
 export default function AboutProductPage(): ReactElement {
-    const { trackPageView,} = useMatomo()
-
-    // Track page view
-    React.useEffect(() => {
-        trackPageView()
-    }, [])
+    TrackPageViewIfEnabled();
 
     var PMDDescription: string = `
                             Ut rhoncus ante in metus lobortis, eu euismod magna dignissim. Duis nec condimentum purus. 

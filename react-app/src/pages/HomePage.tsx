@@ -5,15 +5,10 @@ import ImageCarouselComponent from "../components/ImageCarouselComponent";
 import TextBarComponent from "../components/TextBarComponent";
 import { BODY_CLASSES, BUTTON_TYPE_ONE, H_1, PAGE_DESCRIPTION_TEXT_BAR_CLASSES } from '../constants';
 import { ICardConfig, ICardContent } from '../interfaces/types';
+import { TrackPageViewIfEnabled } from '../util/cookiesHandling';
 
 export default function HomePage(): ReactElement {
-
-    const { trackPageView, } = useMatomo()
-    // const { trackPageView, trackEvent } = useMatomo() , trackEvent to track clicks and other events
-    // Track page view
-    React.useEffect(() => {
-        trackPageView()
-    }, [])
+    TrackPageViewIfEnabled();
 
     var cardTitleClasses: string = "text-center text-white text-xl font-semibold";
     var cardTextClasses: string = "text-center";

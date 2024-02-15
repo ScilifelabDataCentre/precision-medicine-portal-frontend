@@ -4,20 +4,18 @@ import TextBarComponent from '../components/TextBarComponent';
 import {
     BODY_CLASSES,
     BUTTON_TYPE_ONE,
+    BUTTON_TYPE_TWO,
     H_1,
     PAGE_DESCRIPTION_TEXT_BAR_CLASSES,
 } from '../constants';
 import { Link } from 'react-router-dom';
 import { ILink } from '../interfaces/types';
 import Cookies from 'js-cookie';
+import { cookieIsSetToTrue, TrackPageViewIfEnabled } from '../util/cookiesHandling';
 
 export default function PrivacyPage(): ReactElement {
-    const { trackPageView,} = useMatomo()
 
-    // Track page view
-    React.useEffect(() => {
-        trackPageView()
-    }, [])
+    TrackPageViewIfEnabled();
 
     var textBarContent: string = "Transparency is one of our guiding principles. Get acquainted with how we're creating a secure space for you.";
     var policyText: string = `
