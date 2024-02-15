@@ -84,7 +84,7 @@ export default function PrivacyPage(): ReactElement {
     var alertMessage: string = "Opt out of tracking?";
 
     const handleOptOut = () => {
-        Cookies.set('trackingEnabled', 'false');
+        Cookies.set('trackingEnabled', 'false', { expires: 365 });
     };
     
     return (

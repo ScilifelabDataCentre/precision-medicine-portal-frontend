@@ -14,7 +14,7 @@ export default function App(): ReactElement {
 
   // only set a new cookie to 'true' if no cookies have been set yet
   if (!isTrackingCookieSet) {
-    Cookies.set('trackingEnabled', 'true');
+    Cookies.set('trackingEnabled', 'true', { expires: 365 });
     setTrackingCookie(true);
   };
 
