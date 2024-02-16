@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import React, { ReactElement, useEffect, useState } from 'react';
 import { useMatomo } from '@jonkoops/matomo-tracker-react';
 import TextBarComponent from '../components/TextBarComponent';
 import {
@@ -79,10 +79,21 @@ export default function PrivacyPage(): ReactElement {
         'Contact Us',
     ];
 
-    var alertMessage: string = "Opt out of tracking?";
+    const optInOrOutTextActive = (isTrackingEnabled: Boolean): String[] => {
+        if (isTrackingEnabled) {
+            return ["Click on the button to the right to opt out", "Opt Out"]
+        }
+        else {
+            return ["Click on the button to the right to opt in", "Opt In"]
+        }
+    }
+
+    const [ optInText, setOptInText ] = useState(optInOrOutTextActive(cookieIsSetToTrue('trackingEnabled')))
 
     const handleOptOut = () => {
-        Cookies.set('trackingEnabled', 'false', { expires: 365 });
+        let trackingEnabledCookie: Boolean = cookieIsSetToTrue('trackingEnabled');
+        setOptInText(optInOrOutTextActive(!trackingEnabledCookie))
+        Cookies.set('trackingEnabled', String(!trackingEnabledCookie), { expires: 365 });
     };
     
     return (
@@ -103,9 +114,9 @@ export default function PrivacyPage(): ReactElement {
                 <p>{visitorStatisticsText}</p>
                 <div role="alert" className="alert bg-zinc-300 text-black">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="stroke-info shrink-0 w-6 h-6"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                    <span>{alertMessage}</span>
+                    <span>{optInText[0]}</span>
                     <div className="space-x-2">
-                        <button onClick={handleOptOut} className={BUTTON_TYPE_ONE}>Opt Out</button>
+                        <button onClick={handleOptOut} className={BUTTON_TYPE_ONE}>{optInText[1]}</button>
                     </div>
                 </div>
                 <div className="divider">{dividers[2]}</div>
