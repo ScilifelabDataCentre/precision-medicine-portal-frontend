@@ -54,8 +54,8 @@ export default function HomePage(): ReactElement {
             <TextBarComponent classes={PAGE_DESCRIPTION_TEXT_BAR_CLASSES} text={textBarContent} />
             <div className={BODY_CLASSES}>
                 <ImageCarouselComponent />
-                <div className="flex flex-row space-x-16">
-                    <div className="flex flex-col space-y-1.5 ...">
+                <div className="flex flex-row justify-between">
+                    <div className="flex flex-col space-y-1.5">
                         <h1 className={H_1}>Latest News</h1>
                         <CardComponent cardConfig={cardConfig['whiteCard']} cardContent={cardContent['whiteCard1']} />
                         <CardComponent cardConfig={cardConfig['whiteCard']} cardContent={cardContent['whiteCard1']} />
@@ -63,7 +63,7 @@ export default function HomePage(): ReactElement {
                         <CardComponent cardConfig={cardConfig['whiteCard']} cardContent={cardContent['whiteCard1']} />
                         <CardComponent cardConfig={cardConfig['blackCard']} cardContent={cardContent['blackCard1']} />
                     </div>
-                    <div className="flex flex-col space-y-1.5 ...">
+                    <div className="flex flex-col space-y-1.5">
                         <h1 className={H_1}>Latest News</h1>
                         <CardComponent cardConfig={cardConfig['whiteCard']} cardContent={cardContent['whiteCard1']} />
                         <CardComponent cardConfig={cardConfig['whiteCard']} cardContent={cardContent['whiteCard1']} />
