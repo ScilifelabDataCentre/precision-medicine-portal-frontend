@@ -14,30 +14,7 @@ export default function ContactFormComponent(): ReactElement {
         message: ""
     });
 
-    const validateValues = (inputValues: {[key: string]: string}) => {
-        let errors_tmp = {
-            name: "",
-            email: "",
-            message: ""
-        };
-        if (!inputValues.name.match(/^[A-Za-zŽžÀ-ÿ]+$/)) {
-            errors_tmp.name = "Invalid character in name.";
-        }
-
-        if (!inputValues.email.match(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)) {
-            errors_tmp.email = "Invalid E-Mail adress.";
-        }
-
-        if (inputValues.message.length > 10) {
-            errors_tmp.message = "Message exceeds limit.";
-        }
-        let key: keyof typeof errors;
-        for (key in errors) {
-            console.log(key);
-            setErrors({ ...errors, [key]: errors_tmp[key]})
-        };
-
-    };
+    const messageCharLimit = 10;
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -71,7 +48,7 @@ export default function ContactFormComponent(): ReactElement {
             errors_tmp.email = "Invalid E-Mail adress.";
         }
 
-        if (inputFields.message.length > 10 && inputFields.message.length > 0) {
+        if (inputFields.message.length > messageCharLimit && inputFields.message.length > 0) {
             errors_tmp.message = "Message exceeds limit.";
         }
         setErrors({ name: errors_tmp.name, email: errors_tmp.email, message: errors_tmp.message });
@@ -79,7 +56,7 @@ export default function ContactFormComponent(): ReactElement {
 
     return(
         <form onSubmit={handleSubmit} className="bg-white">
-            <label>First Name</label>
+            <label>Name</label>
             <input 
                 type="text"
                 name="name"
@@ -113,17 +90,19 @@ export default function ContactFormComponent(): ReactElement {
             <input 
                 type="text"
                 name="message"
-                placeholder="Type here" 
+                placeholder={"Max length " + messageCharLimit + " characters"} 
                 className="input bg-white input-bordered w-full max-w-xs"
                 defaultValue={inputFields.message} 
                 onChange={handleChange} 
                 required 
             />
-            {errors.message ? (
+            {(inputFields.message.length <= messageCharLimit) ? 
+                (<p>
+                    {(messageCharLimit - inputFields.message.length) + " characters left"}
+                </p>) : 
                 <p className="error">
                     {errors.message}
-                </p>
-                ) : null}
+                </p> }
             <button className={BUTTON_TYPE_ONE}>Submit</button>
         </form>
     );
