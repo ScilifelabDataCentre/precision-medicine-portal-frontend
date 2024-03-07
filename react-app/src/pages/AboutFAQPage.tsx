@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import { ReactElement } from 'react';
 import AccordionComponent from '../components/AccordionComponent';
 import { TrackPageViewIfEnabled } from '../util/cookiesHandling';
 

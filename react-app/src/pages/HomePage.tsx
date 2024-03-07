@@ -1,5 +1,4 @@
-import React, { ReactElement } from 'react';
-import { useMatomo } from '@jonkoops/matomo-tracker-react';
+import { ReactElement } from 'react';
 import CardComponent from "../components/CardComponent";
 import ImageCarouselComponent from "../components/ImageCarouselComponent";
 import TextBarComponent from "../components/TextBarComponent";

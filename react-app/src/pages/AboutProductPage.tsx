@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import { ReactElement } from 'react';
 import { ICardConfig, ICardContent } from '../interfaces/types';
 import CardComponent from '../components/CardComponent';
 import { TrackPageViewIfEnabled } from '../util/cookiesHandling';

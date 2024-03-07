@@ -1,5 +1,4 @@
 import { ChangeEvent, FormEvent, ReactElement, useState } from "react";
-import { BUTTON_TYPE_ONE } from "../constants";
 import React from "react";
 
 export default function ContactFormComponent(): ReactElement {
