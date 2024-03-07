@@ -14,7 +14,7 @@ export default function ContactFormComponent(): ReactElement {
         message: ""
     });
 
-    const messageCharLimit = 10;
+    const messageCharLimit = 800;
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -22,15 +22,20 @@ export default function ContactFormComponent(): ReactElement {
         let key: keyof typeof errors;
         for (key in errors) {
             if (errors[key]) {
-                //console.log(errors[key]);
                 validForm = false;
-            };
-        };
-        console.log(errors);
-        validForm ? console.log(inputFields) : console.log("WRONG!!!")
+            }
+        }
+        if (validForm) {
+            console.log("Valid form:");
+            console.log(inputFields);
+         }
+         else { 
+            console.log("Non valid form.");
+            console.log(errors);
+         }
     };
     
-    function handleChange(e: ChangeEvent<HTMLInputElement>) { 
+    function handleChange(e: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLTextAreaElement>) { 
         setInputFields({ ...inputFields, [e.target.name]: e.target.value});
     }
 
@@ -40,7 +45,7 @@ export default function ContactFormComponent(): ReactElement {
             email: "",
             message: ""
         };
-        if (!inputFields.name.match(/^[A-Za-zŽžÀ-ÿ]+$/) && inputFields.name.length > 0) {
+        if (!inputFields.name.match(/^[A-Za-zŽžÀ-ÿ\s\-]+$/) && inputFields.name.length > 0) {
             errors_tmp.name = "Invalid character in name.";
         }
 
@@ -55,55 +60,68 @@ export default function ContactFormComponent(): ReactElement {
     }, [inputFields]);
 
     return(
-        <form onSubmit={handleSubmit} className="bg-white">
-            <label>Name</label>
-            <input 
-                type="text"
-                name="name"
-                placeholder="Type here" 
-                className="input bg-white input-bordered w-full max-w-xs"
-                defaultValue={inputFields.name} 
-                onChange={handleChange} 
-                required 
-            />
-            {errors.name ? (
-                <p className="error">
-                    {errors.name}
-                </p>
-                ) : null}
-            <label>E-Mail</label>
-            <input 
-                type="text"
-                name="email"
-                placeholder="Type here" 
-                className="input bg-white input-bordered w-full max-w-xs"
-                defaultValue={inputFields.email} 
-                onChange={handleChange} 
-                required 
-            />
-            {errors.email ? (
-                <p className="error">
-                    {errors.email}
-                </p>
-                ) : null}
-            <label>Message</label>
-            <input 
-                type="text"
-                name="message"
-                placeholder={"Max length " + messageCharLimit + " characters"} 
-                className="input bg-white input-bordered w-full max-w-xs"
-                defaultValue={inputFields.message} 
-                onChange={handleChange} 
-                required 
-            />
-            {(inputFields.message.length <= messageCharLimit) ? 
-                (<p>
-                    {(messageCharLimit - inputFields.message.length) + " characters left"}
-                </p>) : 
-                <p className="error">
-                    {errors.message}
-                </p> }
-            <button className={BUTTON_TYPE_ONE}>Submit</button>
-        </form>
+        <div className="bg-white bg-opacity-95 rounded-[10px] shadow border-2 border-zinc-300">
+            <form onSubmit={handleSubmit} className="bg-white">
+                <div className="flex flex-col space-y-8 py-10 px-12 pb-10">
+                    <div className="flex flex-row space-x-36">
+                        <div className="flex flex-col space-y-2">
+                            <label>Name</label>
+                            <input 
+                                type="text"
+                                name="name"
+                                placeholder="Type here" 
+                                className="input bg-white input-bordered border-zinc-300 w-full max-w-xs"
+                                defaultValue={inputFields.name} 
+                                onChange={handleChange} 
+                                required 
+                            />
+                            {errors.name ? (
+                                <p className="error text-red-400">
+                                    {errors.name}
+                                </p>
+                                ) : null}
+                        </div>
+                        <div className="flex flex-col space-y-2">
+                            <label>E-Mail</label>
+                            <input 
+                                type="text"
+                                name="email"
+                                placeholder="Type here" 
+                                className="input bg-white input-bordered border-zinc-300 w-full max-w-xs"
+                                defaultValue={inputFields.email} 
+                                onChange={handleChange} 
+                                required 
+                            />
+                            {errors.email ? (
+                                <p className="error text-red-400">
+                                    {errors.email}
+                                </p>
+                                ) : null}
+                        </div>
+                    </div>
+                    <div className="flex flex-col space-y-2">
+                        <label>Message</label>
+                        <textarea
+                            name="message"
+                            className="textarea bg-white textarea-bordered border-zinc-300 w-full h-48" 
+                            placeholder={"Max length " + messageCharLimit + " characters"}
+                            defaultValue={inputFields.message} 
+                            onChange={handleChange} 
+                            required 
+                        />
+                        {(inputFields.message.length <= messageCharLimit) ? 
+                            (<p>
+                                {(messageCharLimit - inputFields.message.length) + " characters left"}
+                            </p>) : 
+                            <p className="error text-red-400">
+                                {errors.message}
+                            </p> }
+                    </div>
+                    <div className="flex flex-col items-center">
+                        <button className="btn btn-wide bg-fuchsia-950 text-white hover:bg-fuchsia-800 active:bg-fuchsia-900 focus:outline-none focus:ring focus:ring-fuchsia-300">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
     );
 }
