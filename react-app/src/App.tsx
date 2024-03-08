@@ -1,4 +1,3 @@
-//import React from 'react';
 import { ReactElement, useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import FooterComponent from './components/FooterComponent';

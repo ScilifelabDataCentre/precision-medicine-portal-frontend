@@ -1,7 +1,6 @@
-import React, { ReactElement } from 'react';
+import { ReactElement } from 'react';
 import { TrackPageViewIfEnabled } from '../util/cookiesHandling';
-import ContactFormComponent from '../components/ContactFormComponent';
-import { BODY_CLASSES, BUTTON_TYPE_ONE, H_1 } from '../constants';
+import { BODY_CLASSES, H_1 } from '../constants';
 import { ILink } from '../interfaces/types';
 import { Link } from 'react-router-dom';
 

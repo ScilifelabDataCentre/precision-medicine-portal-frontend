@@ -1,10 +1,8 @@
-import React, { ReactElement, useEffect, useState } from 'react';
-import { useMatomo } from '@jonkoops/matomo-tracker-react';
+import { ReactElement, useState } from 'react';
 import TextBarComponent from '../components/TextBarComponent';
 import {
     BODY_CLASSES,
     BUTTON_TYPE_ONE,
-    BUTTON_TYPE_TWO,
     H_1,
     PAGE_DESCRIPTION_TEXT_BAR_CLASSES,
 } from '../constants';
