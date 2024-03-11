@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import { ReactElement } from 'react';
 import TextBarComponent from '../components/TextBarComponent';
 import {
     BODY_CLASSES,
