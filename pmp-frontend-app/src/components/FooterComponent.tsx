@@ -28,25 +28,40 @@ export default function FooterComponent(): ReactElement {
 
 
   return (
-    <footer className='footer p-10 bg-base-100 text-base-content'>
-      <nav>
-      {Object.keys(linksCol1).map( key => (
-          <Link className={linksCol1[key].classes} to={linksCol1[key].link}>{linksCol1[key].text}</Link>
-      ))}
-      </nav> 
-      <nav>
-      {Object.keys(linksCol2).map( key => (
-          <Link className={linksCol2[key].classes} to={linksCol2[key].link}>{linksCol2[key].text}</Link>
-      ))}
-      </nav> 
-      <nav>
-        <header className="footer-title">Social</header> 
-        <div className="grid grid-flow-col gap-4">
-          {Object.keys(svgs).map( key => (
-            <a href={svgs[key].href}><svg xmlns={svgs[key].xmlns} width={svgs[key].width} height={svgs[key].height} viewBox={svgs[key].viewBox} className={svgs[key].classes}><path d={svgs[key].svg}></path></svg></a>
-          ))}
+    <>
+      <footer className='footer p-10 bg-base-100 text-base-content'>
+        <nav>
+        {Object.keys(linksCol1).map( key => (
+            <Link className={linksCol1[key].classes} to={linksCol1[key].link}>{linksCol1[key].text}</Link>
+        ))}
+        </nav> 
+        <nav>
+        {Object.keys(linksCol2).map( key => (
+            <Link className={linksCol2[key].classes} to={linksCol2[key].link}>{linksCol2[key].text}</Link>
+        ))}
+        </nav> 
+        <nav>
+          <header className="footer-title">Social</header> 
+          <div className="grid grid-flow-col gap-4">
+            {Object.keys(svgs).map( key => (
+              <a href={svgs[key].href}><svg xmlns={svgs[key].xmlns} width={svgs[key].width} height={svgs[key].height} viewBox={svgs[key].viewBox} className={svgs[key].classes}><path d={svgs[key].svg}></path></svg></a>
+            ))}
+          </div>
+        </nav>
+      </footer>
+      <div className="flex flex-col bg-white items-center py-4">
+        <p>
+          Website code is available on Github:
+        </p>
+        <div className="flex flex-row space-x-4">
+          <a href="https://github.com/ScilifelabDataCentre/precision-medicine-portal-frontend">
+            Frontend
+          </a>
+          <a href="https://github.com/ScilifelabDataCentre/precision-medicine-portal">
+            Backend
+          </a>
         </div>
-      </nav>
-    </footer>
+      </div>
+    </>
   )
 }
