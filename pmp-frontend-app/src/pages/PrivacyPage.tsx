@@ -50,10 +50,10 @@ export default function PrivacyPage(): ReactElement {
                 </ul>
                 </div>
                 <div className={H_1}>Privacy Policy</div>
-                <div className="divider">{PrivacyPageContent.headers[0]}</div>
-                <p>{PrivacyPageContent.bodyTexts[0]}</p>
-                <div className="divider">{PrivacyPageContent.headers[1]}</div>
-                <p>{PrivacyPageContent.bodyTexts[1]}</p>
+                <div className="divider">{PrivacyPageContent.content[0].header}</div>
+                <p>{PrivacyPageContent.content[0].body}</p>
+                <div className="divider">{PrivacyPageContent.content[1].header}</div>
+                <p>{PrivacyPageContent.content[1].body}</p>
                 <div role="alert" className="alert bg-zinc-300 text-black">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="stroke-info shrink-0 w-6 h-6"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                     <span>{optInText[0]}</span>
@@ -61,14 +61,14 @@ export default function PrivacyPage(): ReactElement {
                         <button onClick={handleOptOut} className={BUTTON_TYPE_ONE}>{optInText[1]}</button>
                     </div>
                 </div>
-                <div className="divider">{PrivacyPageContent.headers[2]}</div>
-                <p>{PrivacyPageContent.bodyTexts[2]}</p>
-                <div className="divider">{PrivacyPageContent.headers[3]}</div>
-                <p>{PrivacyPageContent.bodyTexts[3]}</p>
-                <div className="divider">{PrivacyPageContent.headers[4]}</div>
-                <p>{PrivacyPageContent.bodyTexts[4]}</p>
-                <div className="divider">{PrivacyPageContent.headers[5]}</div>
-                <p>{PrivacyPageContent.bodyTexts[5]}</p>
+                <div className="divider">{PrivacyPageContent.content[2].header}</div>
+                <p>{PrivacyPageContent.content[2].body}</p>
+                <div className="divider">{PrivacyPageContent.content[3].header}</div>
+                <p>{PrivacyPageContent.content[3].body}</p>
+                <div className="divider">{PrivacyPageContent.content[4].header}</div>
+                <p>{PrivacyPageContent.content[4].body}</p>
+                <div className="divider">{PrivacyPageContent.content[5].header}</div>
+                <p>{PrivacyPageContent.content[5].body}</p>
             </div>
         </>
     );
