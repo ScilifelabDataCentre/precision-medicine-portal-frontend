@@ -1,3 +1,6 @@
+import NatTeamPic from '../assets/TeamPics/NatTeamPic.jpg';
+import SebTeamPic from '../assets/TeamPics/SebTeamPic.jpg';
+
 export const PrivacyPageContent = {
     textBar: 'Transparency is one of our guiding principles. Get acquainted with how we\'re creating a secure space for you.',
     content: [
@@ -117,6 +120,7 @@ export const TeamDescriptions = {
             in Business Informatics. He possesses management and leadership experience from his previous roles 
             in management consultancy and from serving on the boards of startups.
             `,
+            img: '',
         },
         {
             name: 'Natashia',
@@ -128,6 +132,7 @@ export const TeamDescriptions = {
             in high-impact journals. She is currently involved in content development and ensuring data 
             quality at the PMD DSN.
             `,
+            img: NatTeamPic,
         },
         {
             name: 'Sebastian',
@@ -138,6 +143,7 @@ export const TeamDescriptions = {
             data engineering consultant, building platforms and pipelines handling analytical data flows. 
             Currently, he's working with web development at the PMD DSN.
             `,
+            img: SebTeamPic,
         },
         {
             name: 'Saman',
@@ -147,6 +153,7 @@ export const TeamDescriptions = {
             Saman has a MSc in Computer Science and Engineering from KTH. He is focusing on Kubernetes and 
             back-end development at the PMD DSN. He is also supporting the TEF-Health initiative.
             `,
+            img: '',
         },
         {
             name: 'Maria',
@@ -158,6 +165,7 @@ export const TeamDescriptions = {
             hospitals, with a particular expertise in ethics and contractual matters related to handling 
             sensitive data.
             `,
+            img: '',
         },
     ]
 }
