@@ -1,5 +1,8 @@
 import NatTeamPic from '../assets/TeamPics/NatTeamPic.jpg';
 import SebTeamPic from '../assets/TeamPics/SebTeamPic.jpg';
+import JanTeamPic from '../assets/TeamPics/JanTeamPic.jpg';
+import MarTeamPic from '../assets/TeamPics/MarTeamPic.jpg';
+import SamTeamPic from '../assets/TeamPics/SamTeamPic.jpg';
 
 export const PrivacyPageContent = {
     textBar: 'Transparency is one of our guiding principles. Get acquainted with how we\'re creating a secure space for you.',
@@ -120,7 +123,7 @@ export const TeamDescriptions = {
             in Business Informatics. He possesses management and leadership experience from his previous roles 
             in management consultancy and from serving on the boards of startups.
             `,
-            img: '',
+            img: JanTeamPic,
         },
         {
             name: 'Natashia',
@@ -153,7 +156,7 @@ export const TeamDescriptions = {
             Saman has a MSc in Computer Science and Engineering from KTH. He is focusing on Kubernetes and 
             back-end development at the PMD DSN. He is also supporting the TEF-Health initiative.
             `,
-            img: '',
+            img: SamTeamPic,
         },
         {
             name: 'Maria',
@@ -165,7 +168,7 @@ export const TeamDescriptions = {
             hospitals, with a particular expertise in ethics and contractual matters related to handling 
             sensitive data.
             `,
-            img: '',
+            img: MarTeamPic,
         },
     ]
 }
