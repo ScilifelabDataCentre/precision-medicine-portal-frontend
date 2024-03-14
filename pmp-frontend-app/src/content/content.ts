@@ -1,5 +1,5 @@
 import NatTeamPic from '../assets/TeamPics/NatTeamPic.jpg';
-import SebTeamPic from '../assets/TeamPics/SebTeamPic.jpg';
+import SebTeamPic from '../assets/TeamPics/SebTeamPic.png';
 import JanTeamPic from '../assets/TeamPics/JanTeamPic.jpg';
 import MarTeamPic from '../assets/TeamPics/MarTeamPic.png';
 import SamTeamPic from '../assets/TeamPics/SamTeamPic.jpg';
