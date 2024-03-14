@@ -3,11 +3,14 @@ import { ICardConfig, ICardContent } from "../interfaces/types";
 
 export default function CardComponent(prop: { cardConfig: ICardConfig, cardContent: ICardContent }): ReactElement {
     const title: ReactElement = (
-        <h2 className={prop.cardConfig.titleClasses}>{prop.cardContent.title}</h2>
+        <>
+            <h2 className={prop.cardConfig.titleClasses}>{prop.cardContent.title}</h2>
+            { prop.cardContent.subTitle && (<h2 className={prop.cardConfig.subTitleClasses}>{prop.cardContent.subTitle}</h2>) }
+        </>
     );
 
     const image: ReactElement = (
-        <figure><img src={prop.cardContent.imageSrc} alt={prop.cardContent.imageAlt} /></figure>
+        <figure><img src={prop.cardContent.imageSrc} alt={prop.cardContent.imageAlt} className={prop.cardConfig.imgClasses} /></figure>
     );
 
     let buttonClasses: string = "card-actions " + prop.cardConfig.buttonPlacement;

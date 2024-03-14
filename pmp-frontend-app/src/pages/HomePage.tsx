@@ -16,14 +16,18 @@ export default function HomePage(): ReactElement {
         'whiteCard': { 
             cardClasses: "w-[40rem] bg-white text-black bg-opacity-95 shadow-xl border-2 border-zinc-300", 
             titleClasses: cardTitleClasses, 
-            textClasses: cardTextClasses, 
+            subTitleClasses: "",
+            textClasses: cardTextClasses,
+            imgClasses: "", 
             buttonClasses: "", 
             buttonPlacement: "",  
         },
         'blackCard': { 
             cardClasses: "bg-base-100 bg-opacity-95 rounded-[10px] shadow border-2", 
             titleClasses: cardTitleClasses, 
-            textClasses: cardTextClasses, 
+            subTitleClasses: "",
+            textClasses: cardTextClasses,
+            imgClasses: "",
             buttonClasses: BUTTON_TYPE_ONE, 
             buttonPlacement: "justify-center", 
         }
@@ -31,7 +35,8 @@ export default function HomePage(): ReactElement {
 
     var cardContent: { [id: string] : ICardContent } = {
         'whiteCard1': {
-            title: "", 
+            title: "",
+            subTitle: "",
             text: "If a dog chews shoes whose shoes does he choose?", 
             buttonText: "",
             imageSrc: "",
@@ -39,6 +44,7 @@ export default function HomePage(): ReactElement {
         },
         'blackCard1': {
             title: "Data Search", 
+            subTitle: "",
             text: "Some text; under development", 
             buttonText: "Sign In",
             imageSrc: "",

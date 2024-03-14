@@ -1,3 +1,9 @@
+import NatTeamPic from '../assets/TeamPics/NatTeamPic.jpg';
+import SebTeamPic from '../assets/TeamPics/SebTeamPic.jpg';
+import JanTeamPic from '../assets/TeamPics/JanTeamPic.jpg';
+import MarTeamPic from '../assets/TeamPics/MarTeamPic.png';
+import SamTeamPic from '../assets/TeamPics/SamTeamPic.jpg';
+
 export const PrivacyPageContent = {
     textBar: 'Transparency is one of our guiding principles. Get acquainted with how we\'re creating a secure space for you.',
     content: [
@@ -107,57 +113,72 @@ export const ContactPageContent = {
 }
 
 export const TeamDescriptions = {
-    teamMembers: [
-        {
-            name: 'Jan',
-            title: 'Product Owner',
-            description: 
-            `
-            Jan holds a Master's degree in Health Informatics from Karolinska Institute and a Bachelor's degree 
-            in Business Informatics. He possesses management and leadership experience from his previous roles 
-            in management consultancy and from serving on the boards of startups.
-            `,
-        },
-        {
-            name: 'Natashia',
-            title: 'Data Steward',
-            description: 
-            `
-            Natashia holds a MSc in Behavioural Genetics and a BSc in Psychology. She has numerous years of 
-            hands-on experience with NGS data and bioinformatics at King's College London with several publications 
-            in high-impact journals. She is currently involved in content development and ensuring data 
-            quality at the PMD DSN.
-            `,
-        },
-        {
-            name: 'Sebastian',
-            title: 'Software Developer',
-            description: 
-            `
-            Sebastian has a BSc in Computer Science from Stockholm University. He has previously worked as a 
-            data engineering consultant, building platforms and pipelines handling analytical data flows. 
-            Currently, he's working with web development at the PMD DSN.
-            `,
-        },
-        {
-            name: 'Saman',
-            title: 'Software Engineer',
-            description: 
-            `
-            Saman has a MSc in Computer Science and Engineering from KTH. He is focusing on Kubernetes and 
-            back-end development at the PMD DSN. He is also supporting the TEF-Health initiative.
-            `,
-        },
-        {
-            name: 'Maria',
-            title: 'Coordinator',
-            description: 
-            `
-            Maria holds a PhD in Physiology from Karolinska Institutet and a bachelor’s degree in Chemistry 
-            from Stockholm University. She has coordinated several research studies at both universities and 
-            hospitals, with a particular expertise in ethics and contractual matters related to handling 
-            sensitive data.
-            `,
-        },
-    ]
+    teamMembers: {
+        jan: 
+            {
+                name: 'Jan Lorenz',
+                title: 'Product Owner',
+                description: 
+                `
+                Jan holds a Master's degree in Health Informatics from Karolinska Institute and a Bachelor's degree 
+                in Business Informatics. He possesses management and leadership experience from his previous roles 
+                in management consultancy and from serving on the boards of startups.
+                `,
+                img: JanTeamPic,
+                imgAlt: "Jan Lorenz - Product Owner",
+            },
+        natashia: 
+            {
+                name: 'Natashia Benzian Olsson',
+                title: 'Data Steward',
+                description: 
+                `
+                Natashia holds a MSc in Behavioural Genetics and a BSc in Psychology. She has numerous years of 
+                hands-on experience with NGS data and bioinformatics at King's College London with several publications 
+                in high-impact journals. She is currently involved in content development and ensuring data 
+                quality at the PMD DSN.
+                `,
+                img: NatTeamPic,
+                imgAlt: "Natashia Benzian Olsson - Data Steward",
+            },
+        sebastian:
+            {
+                name: 'Sebastian Lindbom Gunnari',
+                title: 'Software Engineer',
+                description: 
+                `
+                Sebastian has a BSc in Computer Science from Stockholm University. He has previously worked as a 
+                data engineering consultant, building platforms and pipelines handling analytical data flows. 
+                Currently, he's working with web development at the PMD DSN.
+                `,
+                img: SebTeamPic,
+                imgAlt: "Sebastian Lindbom Gunnari - Software Engineer",
+            },
+        saman:
+            {
+                name: 'Saman Rassam',
+                title: 'Software Engineer',
+                description: 
+                `
+                Saman has a MSc in Computer Science and Engineering from KTH. He is focusing on Kubernetes and 
+                back-end development at the PMD DSN. He is also supporting the TEF-Health initiative.
+                `,
+                img: SamTeamPic,
+                imgAlt: "Saman Rassam - Software Engineer",
+            },
+        maria:
+            {
+                name: 'Maria Ahlsén',
+                title: 'Coordinator',
+                description: 
+                `
+                Maria holds a PhD in Physiology from Karolinska Institutet and a bachelor’s degree in Chemistry 
+                from Stockholm University. She has coordinated several research studies at both universities and 
+                hospitals, with a particular expertise in ethics and contractual matters related to handling 
+                sensitive data.
+                `,
+                img: MarTeamPic,
+                imgAlt: "Maria Ahlsén - Coordinator",
+            },
+    }
 }
