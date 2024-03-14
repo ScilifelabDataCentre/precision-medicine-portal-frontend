@@ -61,7 +61,7 @@ export default function FooterComponent(): ReactElement {
           </div>
         </nav>
       </footer>
-      <div className="flex flex-col bg-white items-center py-4">
+      <div className="flex flex-col items-center py-4 text-xs">
         <p>
           Website code is available on Github:
         </p>
