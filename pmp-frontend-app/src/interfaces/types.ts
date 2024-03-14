@@ -17,13 +17,16 @@ export interface ISVG {
 export interface ICardConfig {
     cardClasses: string;
     titleClasses: string;
+    subTitleClasses: string;
     textClasses: string;
+    imgClasses: string;
     buttonClasses: string;
     buttonPlacement: string;
 };
 
 export interface ICardContent {
     title: string; 
+    subTitle: string;
     text: string; 
     buttonText: string;
     imageSrc: string;
