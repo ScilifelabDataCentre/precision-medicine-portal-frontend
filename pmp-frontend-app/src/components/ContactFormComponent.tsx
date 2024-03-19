@@ -126,10 +126,8 @@ export default function ContactFormComponent(): ReactElement {
                                 {errors.message}
                             </p> }
                     </div>
-                    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-                    <div className="g-recaptcha" data-sitekey="6Lcf2Z0pAAAAADHiZZR3snpGetHNmO0TLvdBgfEU"></div>
                     <ReCAPTCHA
-                        sitekey="Your client site key"
+                        sitekey="6Lcf2Z0pAAAAADHiZZR3snpGetHNmO0TLvdBgfEU"
                         onChange={onChangeRecaptcha}
                     />
                     <div className="flex flex-col items-center">
