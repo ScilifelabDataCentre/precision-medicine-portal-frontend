@@ -4,6 +4,7 @@ import { BODY_CLASSES, H_1 } from '../constants';
 import { ILink } from '../interfaces/types';
 import { Link } from 'react-router-dom';
 import { ContactPageContent } from '../content/content';
+import ContactFormComponent from '../components/ContactFormComponent';
 
 export default function ContactPage(): ReactElement {
     TrackPageViewIfEnabled();
@@ -25,7 +26,7 @@ export default function ContactPage(): ReactElement {
             <div className={H_1}>Contact</div>
             <div className="divider">{ContactPageContent.content[0].header}</div>
             <p>{ContactPageContent.content[0].body}</p>
-            {/*<ContactFormComponent />*/}
+            <ContactFormComponent />
             <div className="divider">{ContactPageContent.content[1].header}</div>
             <p>{ContactPageContent.content[1].body}</p>
         </div>
