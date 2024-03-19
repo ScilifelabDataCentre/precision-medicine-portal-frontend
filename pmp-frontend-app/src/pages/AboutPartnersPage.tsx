@@ -10,7 +10,9 @@ export default function AboutPartnersPage(): ReactElement {
         'fundersAndPartnersCard': {
             cardClasses: "card lg:card-side bg-base-100 shadow-xl", 
             titleClasses: "card-title", 
-            textClasses: "", 
+            subTitleClasses: "",
+            textClasses: "",
+            imgClasses: "",
             buttonClasses: "", 
             buttonPlacement: "",  
         },
@@ -18,7 +20,8 @@ export default function AboutPartnersPage(): ReactElement {
 
     var cardContent: { [id: string] : ICardContent } = {
         'fundersAndPartnersCard1': {
-            title: "New album is released!", 
+            title: "New album is released!",
+            subTitle: "",
             text: "Click the button to listen on Spotiwhy app.", 
             buttonText: "",
             imageSrc: "https://daisyui.com/images/stock/photo-1494232410401-ad00d5433cfa.jpg",
