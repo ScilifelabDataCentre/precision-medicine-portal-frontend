@@ -1,12 +1,12 @@
 import { ReactElement } from 'react';
 import { TrackPageViewIfEnabled } from '../util/cookiesHandling';
 
-export default function EventsAndNewsPage(): ReactElement {
+export default function EventsAndTrainingsPage(): ReactElement {
     TrackPageViewIfEnabled();
 
     return (
         <div>
-            <p className="bg-green text-bold">Events & News page under construction</p>
+            <p className="bg-green text-bold">Events & Trainings page under construction</p>
         </div>
     );
 }
