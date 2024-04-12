@@ -6,10 +6,10 @@ import sciLifeLogo from '../assets/SciLifeLab logo/NEG/Digital/SciLifeLab_Logoty
 export default function HeaderComponent() {
     
     let links: { [id: string] : ILink; } = {
-        'l1': { text: 'Data', classes: LINK_CLASSES, link: 'data' },
-        'l2': { text: 'Events & News', classes: LINK_CLASSES, link: 'eventsandnews' },
+        'l1': { text: 'Data Sources', classes: LINK_CLASSES, link: 'data' },
+        'l2': { text: 'Events & Training', classes: LINK_CLASSES, link: 'eventsandnews' },
         'l3': { text: 'Contact', classes: LINK_CLASSES, link: 'contact' },
-        'l4': { text: 'About', classes: LINK_CLASSES, link: 'about' },
+        'l4': { text: 'About Us', classes: LINK_CLASSES, link: 'about' },
     };
 
     let buttons: { [id: string] : ILink; } = {
@@ -26,7 +26,6 @@ export default function HeaderComponent() {
             </div>
             <div className="navbar-center lg:flex">
                 <ul className="menu menu-horizontal">
-                    <li><p className="pointer-events-none">Random text for now</p></li>
                 {Object.keys(links).map( key => (
                     <li>{<NavLink className={links[key].classes} to={links[key].link}>{links[key].text}</NavLink>}</li>
                 ))}
