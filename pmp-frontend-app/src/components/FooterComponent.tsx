@@ -6,15 +6,14 @@ import { LINK_CLASSES } from '../constants';
 export default function FooterComponent(): ReactElement {
   
   let linksCol1: { [id: string] : ILink; } = {
-      'l2': { text: 'Data Sources', classes: LINK_CLASSES, link: '/datasources' },
-      'l3': { text: 'Data Types', classes: LINK_CLASSES, link: '/' },
-      'l4': { text: 'Events & Trainings', classes: LINK_CLASSES, link: '/eventsandtrainings' },
+      'l1': { text: 'Data Sources', classes: LINK_CLASSES, link: '/datasources' },
+      'l2': { text: 'Events & Trainings', classes: LINK_CLASSES, link: '/eventsandtrainings' },
   };
 
   let linksCol2: { [id: string] : ILink; } = {
-      'l1': { text: 'About us', classes: LINK_CLASSES, link: '/about' },
-      'l2': { text: 'Contact', classes: LINK_CLASSES, link: '/contact' },
-      'l4': { text: 'Privacy Policy', classes: LINK_CLASSES, link: '/privacy' },
+      'l3': { text: 'About us', classes: LINK_CLASSES, link: '/about' },
+      'l4': { text: 'Contact', classes: LINK_CLASSES, link: '/contact' },
+      'l5': { text: 'Privacy Policy', classes: LINK_CLASSES, link: '/privacy' },
   };
 
   let svgs: { [id: string] : ISVG; } = {
