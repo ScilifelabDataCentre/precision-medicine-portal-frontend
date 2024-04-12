@@ -34,6 +34,8 @@ export default function HeaderComponent() {
                 ))}
                 </ul>
             </div>
+            <div className="navbar-end">
+            </div>
             {/*
             // This is the signin button. We  can add this again once we have a user page, login, registration and features for users.
             {Object.keys(buttons).map( key => (
