@@ -21,7 +21,7 @@ export default function HeaderComponent() {
 
     return (
         // use bg-zinc-200 instead? similar to daisyUI light-theme footer
-        <div className="navbar bg-base-100 px-8">
+        <div className="navbar bg-gradient-to-b from-neutral-500 to-teal-800 px-8">
             <div className="navbar-start">
                 <Link to="/">
                     <img className="h-auto w-80" src={sciLifeLogo} alt="SciLifeLab Logo" />
