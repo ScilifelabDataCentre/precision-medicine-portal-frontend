@@ -4,8 +4,8 @@ import App from '../App';
 import HomePage from '../pages/HomePage';
 import AboutPage from '../pages/AboutPage';
 import ContactPage from '../pages/ContactPage';
-import DataPage from '../pages/DataPage';
-import EventsAndNewsPage from '../pages/EventsAndNewsPage';
+import DataSourcesPage from '../pages/DataSourcesPage';
+import EventsAndTrainingsPage from '../pages/EventsAndTrainingsPage';
 import SignInPage from '../pages/SignInPage';
 import PrivacyPage from '../pages/PrivacyPage';
 import AboutProductPage from '../pages/AboutProductPage';
@@ -48,12 +48,12 @@ const router = createBrowserRouter([
                 element: <ContactPage />,
             },
             {
-                path: 'data',
-                element: <DataPage />,
+                path: 'datasources',
+                element: <DataSourcesPage />,
             },
             {
-                path: 'eventsandnews',
-                element: <EventsAndNewsPage />,
+                path: 'eventsandtrainings',
+                element: <EventsAndTrainingsPage />,
             },
             {
                 path: 'signin',
