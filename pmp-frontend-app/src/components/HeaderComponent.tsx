@@ -6,7 +6,7 @@ import sciLifeLogo from '../assets/SciLifeLab logo/NEG/Digital/SciLifeLab_Logoty
 export default function HeaderComponent() {
     
     let links: { [id: string] : ILink; } = {
-        'l1': { text: 'Data Sources', classes: LINK_CLASSES, link: 'data' },
+        'l1': { text: 'Data Sources', classes: LINK_CLASSES, link: 'datasources' },
         'l2': { text: 'Events & Trainings', classes: LINK_CLASSES, link: 'eventsandtrainings' },
         'l3': { text: 'Contact', classes: LINK_CLASSES, link: 'contact' },
         'l4': { text: 'About Us', classes: LINK_CLASSES, link: 'about' },

@@ -6,9 +6,9 @@ import { LINK_CLASSES } from '../constants';
 export default function FooterComponent(): ReactElement {
   
   let linksCol1: { [id: string] : ILink; } = {
-      'l2': { text: 'Data Search', classes: LINK_CLASSES, link: '/' },
+      'l2': { text: 'Data Sources', classes: LINK_CLASSES, link: '/datasources' },
       'l3': { text: 'Data Types', classes: LINK_CLASSES, link: '/' },
-      'l4': { text: 'Events & News', classes: LINK_CLASSES, link: '/' },
+      'l4': { text: 'Events & Trainings', classes: LINK_CLASSES, link: '/eventsandtrainings' },
   };
 
   let linksCol2: { [id: string] : ILink; } = {
