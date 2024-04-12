@@ -40,7 +40,7 @@ export default function FooterComponent(): ReactElement {
 
   return (
     <>
-      <footer className='footer p-10 bg-base-100 text-base-content'>
+      <footer className='footer pt-10 px-10 bg-teal-800 text-base-content'>
         <nav>
         {Object.keys(linksCol1).map( key => (
             <Link className={linksCol1[key].classes} to={linksCol1[key].link}>{linksCol1[key].text}</Link>
@@ -60,7 +60,7 @@ export default function FooterComponent(): ReactElement {
           </div>
         </nav>
       </footer>
-      <div className="flex flex-col items-center py-4 text-xs">
+      <div className="bg-teal-800 flex flex-col items-center pt-12 pb-6 text-xs">
         <p>
           Website code is available on Github:
         </p>
