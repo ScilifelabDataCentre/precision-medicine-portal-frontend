@@ -22,7 +22,7 @@ export default function AboutProductPage(): ReactElement {
 
     var cardConfig: { [id: string] : ICardConfig; } = {
         'teamCard': { 
-            cardClasses: "card w-96 bg-base-100 shadow-xl", 
+            cardClasses: "card w-96 bg-white shadow-xl", 
             titleClasses: "card-title",
             subTitleClasses: "italic",
             textClasses: "",
