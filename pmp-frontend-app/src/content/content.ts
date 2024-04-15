@@ -195,3 +195,7 @@ export const EventsAndTrainingsPageContent = {
 export const AboutPageContent = {
     textBar: 'Get to know about the team behind the portal and our mission to connect you with the data you need.',
 }
+
+export const HomePageContent = {
+    textBar: 'An open research portal that gathers data, tools and computing facilities for precision medicine-related research.',
+}

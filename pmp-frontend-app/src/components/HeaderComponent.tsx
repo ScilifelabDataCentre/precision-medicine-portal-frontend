@@ -1,9 +1,9 @@
 import { Link, NavLink } from 'react-router-dom';
 import { ILink } from '../interfaces/types';
-import { BUTTON_TYPE_ONE, LINK_CLASSES, PAGE_DESCRIPTION_TEXT_BAR_CLASSES } from '../constants';
+import { BUTTON_TYPE_ONE, LINK_CLASSES } from '../constants';
 import sciLifeLogo from '../assets/SciLifeLab logo/NEG/Digital/SciLifeLab_Logotype_NEG.png';
 import { useLocation } from 'react-router-dom';
-import { AboutPageContent, ContactPageContent, DataSourcesPageContent, EventsAndTrainingsPageContent, PrivacyPageContent } from '../content/content';
+import { AboutPageContent, ContactPageContent, DataSourcesPageContent, EventsAndTrainingsPageContent, HomePageContent, PrivacyPageContent } from '../content/content';
 
 export default function HeaderComponent() {
     
@@ -26,7 +26,7 @@ export default function HeaderComponent() {
 
     switch (currentRoute.pathname) {
         case "/":
-          textBar = "UNDER CONSTRUCTION - Web portal by DDLS Data Science Node";
+          textBar = HomePageContent.textBar;
           break;
         case "/datasources":
           textBar = DataSourcesPageContent.textBar;
@@ -79,7 +79,7 @@ export default function HeaderComponent() {
                 </div>
             ))} */}
         </div>
-            <div className={PAGE_DESCRIPTION_TEXT_BAR_CLASSES}>
+            <div className="text-left text-4xl leading-tight tracking-tight font-bold p-6">
                 <p>{textBar}</p>
             </div>
     </div>
