@@ -1,5 +1,4 @@
 import { ReactElement } from 'react';
-import TextBarComponent from '../components/TextBarComponent';
 import {
     BODY_CLASSES,
     H_1,
@@ -22,7 +21,6 @@ export default function AboutPage(): ReactElement {
     
     return (
         <>
-            <TextBarComponent classes={PAGE_DESCRIPTION_TEXT_BAR_CLASSES} text={textBarContent} />
             <div className={BODY_CLASSES}>
                 <div className="text-sm breadcrumbs">
                 <ul>

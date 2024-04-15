@@ -1,5 +1,4 @@
 import { ReactElement, useState } from 'react';
-import TextBarComponent from '../components/TextBarComponent';
 import {
     BODY_CLASSES,
     BUTTON_TYPE_ONE,
@@ -40,7 +39,6 @@ export default function PrivacyPage(): ReactElement {
     
     return (
         <>
-            <TextBarComponent classes={PAGE_DESCRIPTION_TEXT_BAR_CLASSES} text={PrivacyPageContent.textBar} />
             <div className={BODY_CLASSES}>
                 <div className="text-sm breadcrumbs">
                 <ul>

@@ -1,8 +1,7 @@
 import { ReactElement } from 'react';
 import CardComponent from "../components/CardComponent";
 import ImageCarouselComponent from "../components/ImageCarouselComponent";
-import TextBarComponent from "../components/TextBarComponent";
-import { BODY_CLASSES, BUTTON_TYPE_ONE, H_1, PAGE_DESCRIPTION_TEXT_BAR_CLASSES } from '../constants';
+import { BODY_CLASSES, BUTTON_TYPE_ONE, H_1} from '../constants';
 import { ICardConfig, ICardContent } from '../interfaces/types';
 import { TrackPageViewIfEnabled } from '../util/cookiesHandling';
 
@@ -53,11 +52,8 @@ export default function HomePage(): ReactElement {
 
     };
 
-    var textBarContent: string = "UNDER CONSTRUCTION - Web portal by DDLS Data Science Node";
-
     return (
         <div>
-            <TextBarComponent classes={PAGE_DESCRIPTION_TEXT_BAR_CLASSES} text={textBarContent} />
             <div className={BODY_CLASSES}>
                 <ImageCarouselComponent />
                 <div className="flex flex-row justify-between">

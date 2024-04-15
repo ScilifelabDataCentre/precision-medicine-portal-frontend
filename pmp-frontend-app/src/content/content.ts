@@ -81,6 +81,7 @@ export const PrivacyPageContent = {
 }
 
 export const ContactPageContent = {
+    textBar: 'We\'re here to help. Reach out to us with any questions or suggestions you may have.',
     content: [
         {
             header: 'Contact Form', 
@@ -181,4 +182,16 @@ export const TeamDescriptions = {
                 imgAlt: "Maria Ahlsén - Coordinator",
             },
     }
+}
+
+export const DataSourcesPageContent = {
+    textBar: 'This page is currently under construction. Please check back later for updates.',
+}
+
+export const EventsAndTrainingsPageContent = {
+    textBar: 'This page is currently under construction. Please check back later for updates.',
+}
+
+export const AboutPageContent = {
+    textBar: 'Get to know about the team behind the portal and our mission to connect you with the data you need.',
 }
