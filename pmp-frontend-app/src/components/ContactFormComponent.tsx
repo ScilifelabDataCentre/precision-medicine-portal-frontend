@@ -122,7 +122,7 @@ export default function ContactFormComponent(): ReactElement {
                             (<p>
                                 {(messageCharLimit - inputFields.message.length) + " characters left"}
                             </p>) : 
-                            <p className="error text-error-content">
+                            <p className="error text-error">
                                 {errors.message}
                             </p> }
                     </div>

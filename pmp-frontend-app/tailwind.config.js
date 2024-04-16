@@ -17,7 +17,7 @@ export default {
           "neutral-content": "#000000", // Black, text color on neutral
           "base-100": "#f8fafc", // Light slate gray, base color
           "base-100-content": "#000000", // Black, text color on base-100
-          "info": "#491f53 ", // SciLifeLab Grape, Info color
+          "info": "#491f53", // SciLifeLab Grape, Info color
           "info-content": "#ffffff", // White, text color on info
           "success": "#a7c947", // SciLifeLab Green, Success color
           "success-content": "#ffffff", // White, text color on success
