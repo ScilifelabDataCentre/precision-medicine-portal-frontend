@@ -84,7 +84,7 @@ export default function ContactFormComponent(): ReactElement {
                                 required 
                             />
                             {errors.name ? (
-                                <p className="error text-error-content">
+                                <p className="error text-error">
                                     {errors.name}
                                 </p>
                                 ) : null}
@@ -101,7 +101,7 @@ export default function ContactFormComponent(): ReactElement {
                                 required 
                             />
                             {errors.email ? (
-                                <p className="error text-error-content">
+                                <p className="error text-error">
                                     {errors.email}
                                 </p>
                                 ) : null}
@@ -136,7 +136,7 @@ export default function ContactFormComponent(): ReactElement {
                                 <input type="submit" value="Submit" className="btn btn-wide bg-fuchsia-950 text-white hover:bg-fuchsia-800 active:bg-fuchsia-900 focus:outline-none focus:ring focus:ring-fuchsia-300" />
                                 :
                                 <>
-                                    <p className="error text-error-content">Please tick 'I'm not a robot' above the 'Submit' button.</p>
+                                    <p className="error text-error">Please tick 'I'm not a robot' above the 'Submit' button.</p>
                                     <div className='btn btn-wide bg-neutral text-neutral-content cursor-not-allowed'>Submit</div>
                                 </>
                             )
