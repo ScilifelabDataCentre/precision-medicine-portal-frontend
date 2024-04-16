@@ -1,9 +1,7 @@
 import { ReactElement } from 'react';
-import TextBarComponent from '../components/TextBarComponent';
 import {
     BODY_CLASSES,
     H_1,
-    PAGE_DESCRIPTION_TEXT_BAR_CLASSES,
 } from '../constants';
 import { Link, NavLink, Outlet } from 'react-router-dom';
 import { ILink, } from '../interfaces/types';
@@ -13,8 +11,7 @@ export default function AboutPage(): ReactElement {
     TrackPageViewIfEnabled();
 
     var pageTitle: string = "About Us";
-    var textBarContent: string = "Get to know about the team behind the [product name] and our mission to connect you with the data you need.";
-
+    
     var breadcrumbs: { [id: string] : ILink; } = {
         'l1': { text: 'Home', classes: '', link: '/' },
         'l2': { text: 'About', classes: '', link: '' },
@@ -22,7 +19,6 @@ export default function AboutPage(): ReactElement {
     
     return (
         <>
-            <TextBarComponent classes={PAGE_DESCRIPTION_TEXT_BAR_CLASSES} text={textBarContent} />
             <div className={BODY_CLASSES}>
                 <div className="text-sm breadcrumbs">
                 <ul>

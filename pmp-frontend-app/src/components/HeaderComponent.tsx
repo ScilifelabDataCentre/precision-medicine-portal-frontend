@@ -2,6 +2,8 @@ import { Link, NavLink } from 'react-router-dom';
 import { ILink } from '../interfaces/types';
 import { BUTTON_TYPE_ONE, LINK_CLASSES } from '../constants';
 import sciLifeLogo from '../assets/SciLifeLab logo/NEG/Digital/SciLifeLab_Logotype_NEG.png';
+import { useLocation } from 'react-router-dom';
+import { AboutPageContent, ContactPageContent, DataSourcesPageContent, EventsAndTrainingsPageContent, HomePageContent, PrivacyPageContent } from '../content/content';
 
 export default function HeaderComponent() {
     
@@ -19,16 +21,49 @@ export default function HeaderComponent() {
     };
     */}
 
+    let currentRoute = useLocation();
+    let textBar: string = "";
+
+    switch (currentRoute.pathname) {
+        case "/":
+          textBar = HomePageContent.textBar;
+          break;
+        case "/datasources":
+          textBar = DataSourcesPageContent.textBar;
+          break;
+        case "/eventsandtrainings":
+          textBar = EventsAndTrainingsPageContent.textBar;
+          break;
+        case "/contact":
+          textBar = ContactPageContent.textBar;
+          break;
+        case "/about/product":
+          textBar = AboutPageContent.textBar;
+          break;
+        case "/about/faq":
+          textBar = AboutPageContent.textBar;
+          break;
+        case "/about/partners":
+          textBar = AboutPageContent.textBar;
+          break;
+        case "/privacy":
+          textBar = PrivacyPageContent.textBar;
+          break;
+        default:
+          textBar = "";
+          break;
+      }
+
     return (
-        // use bg-zinc-200 instead? similar to daisyUI light-theme footer
-        <div className="navbar bg-gradient-to-b from-neutral-500 to-teal-800 px-8">
+    <div className="bg-gradient-to-b from-secondary to-primary text-primary-content px-8">
+        <div className="navbar px-8">
             <div className="navbar-start">
                 <Link to="/">
                     <img className="h-auto w-80" src={sciLifeLogo} alt="SciLifeLab Logo" />
                 </Link>
             </div>
             <div className="navbar-center lg:flex">
-                <ul className="menu menu-horizontal">
+                <ul className="menu menu-horizontal text-xl">
                 {Object.keys(links).map( key => (
                     <li>{<NavLink className={links[key].classes} to={links[key].link}>{links[key].text}</NavLink>}</li>
                 ))}
@@ -44,6 +79,10 @@ export default function HeaderComponent() {
                 </div>
             ))} */}
         </div>
+            <div className="text-left text-4xl leading-tight tracking-tight font-bold p-6">
+                <p>{textBar}</p>
+            </div>
+    </div>
     )
   }
   

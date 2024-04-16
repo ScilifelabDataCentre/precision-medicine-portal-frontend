@@ -8,7 +8,7 @@ export default function AboutPartnersPage(): ReactElement {
 
     var cardConfig: { [id: string] : ICardConfig; } = {
         'fundersAndPartnersCard': {
-            cardClasses: "card lg:card-side bg-base-100 shadow-xl", 
+            cardClasses: "card lg:card-side bg-white shadow-xl", 
             titleClasses: "card-title", 
             subTitleClasses: "",
             textClasses: "",

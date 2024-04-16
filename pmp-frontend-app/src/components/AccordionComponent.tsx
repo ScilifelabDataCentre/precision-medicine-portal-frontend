@@ -4,8 +4,8 @@ export default function AccordionComponent(): ReactElement {
 
     return (
         <>
-            <div className="collapse collapse-arrow bg-base-200">
-                <input type="radio" name="my-accordion-2" checked={true} /> 
+            <div className="collapse collapse-arrow bg-neutral">
+                <input type="radio" name="my-accordion-2" /> 
                 <div className="collapse-title text-xl font-medium">
                     Click to open this one and close others
                 </div>
@@ -13,8 +13,8 @@ export default function AccordionComponent(): ReactElement {
                     <p>hello</p>
                 </div>
             </div>
-            <div className="collapse collapse-arrow bg-base-200">
-                <input type="radio" name="my-accordion-2" checked={true} /> 
+            <div className="collapse collapse-arrow bg-neutral">
+                <input type="radio" name="my-accordion-2" /> 
                 <div className="collapse-title text-xl font-medium">
                     Click to open this one and close others
                 </div>
@@ -22,8 +22,8 @@ export default function AccordionComponent(): ReactElement {
                     <p>hello</p>
                 </div>
             </div>
-            <div className="collapse collapse-arrow bg-base-200">
-                <input type="radio" name="my-accordion-2" checked={true} /> 
+            <div className="collapse collapse-arrow bg-neutral">
+                <input type="radio" name="my-accordion-2" /> 
                 <div className="collapse-title text-xl font-medium">
                     Click to open this one and close others
                 </div>

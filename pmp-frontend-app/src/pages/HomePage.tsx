@@ -1,20 +1,19 @@
 import { ReactElement } from 'react';
 import CardComponent from "../components/CardComponent";
 import ImageCarouselComponent from "../components/ImageCarouselComponent";
-import TextBarComponent from "../components/TextBarComponent";
-import { BODY_CLASSES, BUTTON_TYPE_ONE, H_1, PAGE_DESCRIPTION_TEXT_BAR_CLASSES } from '../constants';
+import { BODY_CLASSES, BUTTON_TYPE_ONE, H_1} from '../constants';
 import { ICardConfig, ICardContent } from '../interfaces/types';
 import { TrackPageViewIfEnabled } from '../util/cookiesHandling';
 
 export default function HomePage(): ReactElement {
     TrackPageViewIfEnabled();
 
-    var cardTitleClasses: string = "text-center text-white text-xl font-semibold";
+    var cardTitleClasses: string = "text-center text-base-100-content text-xl font-semibold";
     var cardTextClasses: string = "text-center";
 
     var cardConfig: { [id: string] : ICardConfig; } = {
         'whiteCard': { 
-            cardClasses: "w-[40rem] bg-white text-black bg-opacity-95 shadow-xl border-2 border-zinc-300", 
+            cardClasses: "w-[40rem] bg-base-100 text-base-100-content bg-opacity-95 shadow-xl border-2 border-base-100", 
             titleClasses: cardTitleClasses, 
             subTitleClasses: "",
             textClasses: cardTextClasses,
@@ -23,7 +22,7 @@ export default function HomePage(): ReactElement {
             buttonPlacement: "",  
         },
         'blackCard': { 
-            cardClasses: "bg-base-100 bg-opacity-95 rounded-[10px] shadow border-2", 
+            cardClasses: "bg-neutral bg-opacity-95 rounded-[10px] shadow border-2", 
             titleClasses: cardTitleClasses, 
             subTitleClasses: "",
             textClasses: cardTextClasses,
@@ -37,15 +36,15 @@ export default function HomePage(): ReactElement {
         'whiteCard1': {
             title: "",
             subTitle: "",
-            text: "If a dog chews shoes whose shoes does he choose?", 
+            text: "In development", 
             buttonText: "",
             imageSrc: "",
             imageAlt: "",
         },
         'blackCard1': {
-            title: "Data Search", 
+            title: "Data sources", 
             subTitle: "",
-            text: "Some text; under development", 
+            text: "In development", 
             buttonText: "Sign In",
             imageSrc: "",
             imageAlt: "",
@@ -53,11 +52,8 @@ export default function HomePage(): ReactElement {
 
     };
 
-    var textBarContent: string = "UNDER CONSTRUCTION - Web portal by DDLS Data Science Node";
-
     return (
         <div>
-            <TextBarComponent classes={PAGE_DESCRIPTION_TEXT_BAR_CLASSES} text={textBarContent} />
             <div className={BODY_CLASSES}>
                 <ImageCarouselComponent />
                 <div className="flex flex-row justify-between">

@@ -18,7 +18,7 @@ export default function App(): ReactElement {
   };
 
   return (
-    <div data-theme="dark">
+    <div>
       <HeaderComponent />
       <Outlet />
       <FooterComponent />

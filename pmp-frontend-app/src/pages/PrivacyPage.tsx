@@ -1,10 +1,8 @@
 import { ReactElement, useState } from 'react';
-import TextBarComponent from '../components/TextBarComponent';
 import {
     BODY_CLASSES,
     BUTTON_TYPE_ONE,
     H_1,
-    PAGE_DESCRIPTION_TEXT_BAR_CLASSES,
 } from '../constants';
 import { Link } from 'react-router-dom';
 import { ILink } from '../interfaces/types';
@@ -40,7 +38,6 @@ export default function PrivacyPage(): ReactElement {
     
     return (
         <>
-            <TextBarComponent classes={PAGE_DESCRIPTION_TEXT_BAR_CLASSES} text={PrivacyPageContent.textBar} />
             <div className={BODY_CLASSES}>
                 <div className="text-sm breadcrumbs">
                 <ul>
@@ -54,7 +51,7 @@ export default function PrivacyPage(): ReactElement {
                 <p>{PrivacyPageContent.content[0].body}</p>
                 <div className="divider">{PrivacyPageContent.content[1].header}</div>
                 <p>{PrivacyPageContent.content[1].body}</p>
-                <div role="alert" className="alert bg-zinc-300 text-black">
+                <div role="alert" className="alert bg-neutral text-neutral-content">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="stroke-info shrink-0 w-6 h-6"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                     <span>{optInText[0]}</span>
                     <div className="space-x-2">

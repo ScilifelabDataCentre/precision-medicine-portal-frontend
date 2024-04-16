@@ -68,7 +68,7 @@ export default function ContactFormComponent(): ReactElement {
     }, [inputFields]);
 
     return(
-        <div className="bg-white bg-opacity-95 rounded-[10px] shadow border-2 border-zinc-300">
+        <div className="bg-white bg-opacity-95 rounded-[10px] shadow border-2 border-neutral">
             <form action="https://forms.dc.scilifelab.se/api/v1/form/VLtfHqlxZxY84EM7/incoming" method="POST" accept-charset="utf-8">
                 <div className="flex flex-col space-y-8 py-10 px-12 pb-10">
                     <div className="flex flex-row space-x-36">
@@ -78,13 +78,13 @@ export default function ContactFormComponent(): ReactElement {
                                 type="text"
                                 name="name"
                                 placeholder="Type here" 
-                                className="input bg-white input-bordered border-zinc-300 w-full max-w-xs"
+                                className="input bg-white input-bordered border-neutral w-full max-w-xs"
                                 defaultValue={inputFields.name} 
                                 onChange={handleChange} 
                                 required 
                             />
                             {errors.name ? (
-                                <p className="error text-red-400">
+                                <p className="error text-error">
                                     {errors.name}
                                 </p>
                                 ) : null}
@@ -95,13 +95,13 @@ export default function ContactFormComponent(): ReactElement {
                                 type="text"
                                 name="email"
                                 placeholder="Type here" 
-                                className="input bg-white input-bordered border-zinc-300 w-full max-w-xs"
+                                className="input bg-white input-bordered border-neutral w-full max-w-xs"
                                 defaultValue={inputFields.email} 
                                 onChange={handleChange} 
                                 required 
                             />
                             {errors.email ? (
-                                <p className="error text-red-400">
+                                <p className="error text-error">
                                     {errors.email}
                                 </p>
                                 ) : null}
@@ -112,7 +112,7 @@ export default function ContactFormComponent(): ReactElement {
                         <label>Message</label>
                         <textarea
                             name="message"
-                            className="textarea bg-white textarea-bordered border-zinc-300 w-full h-48" 
+                            className="textarea bg-white textarea-bordered border-neutral w-full h-48" 
                             placeholder={"Max length " + messageCharLimit + " characters"}
                             defaultValue={inputFields.message} 
                             onChange={handleChange} 
@@ -122,7 +122,7 @@ export default function ContactFormComponent(): ReactElement {
                             (<p>
                                 {(messageCharLimit - inputFields.message.length) + " characters left"}
                             </p>) : 
-                            <p className="error text-red-400">
+                            <p className="error text-error">
                                 {errors.message}
                             </p> }
                     </div>
@@ -136,12 +136,12 @@ export default function ContactFormComponent(): ReactElement {
                                 <input type="submit" value="Submit" className="btn btn-wide bg-fuchsia-950 text-white hover:bg-fuchsia-800 active:bg-fuchsia-900 focus:outline-none focus:ring focus:ring-fuchsia-300" />
                                 :
                                 <>
-                                    <p className="error text-red-400">Please tick 'I'm not a robot' above the 'Submit' button.</p>
-                                    <div className='btn btn-wide bg-zinc-300 text-gray-500 cursor-not-allowed'>Submit</div>
+                                    <p className="error text-error">Please tick 'I'm not a robot' above the 'Submit' button.</p>
+                                    <div className='btn btn-wide bg-neutral text-neutral-content cursor-not-allowed'>Submit</div>
                                 </>
                             )
                             :
-                            <div className='btn btn-wide bg-zinc-300 text-gray-500 cursor-not-allowed'>Submit</div>
+                            <div className='btn btn-wide bg-neutral text-gray-500 cursor-not-allowed'>Submit</div>
                         }
                     </div>
                 </div>
