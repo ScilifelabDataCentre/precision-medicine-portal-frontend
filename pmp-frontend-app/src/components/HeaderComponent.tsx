@@ -1,7 +1,7 @@
 import { Link, NavLink } from 'react-router-dom';
 import { ILink } from '../interfaces/types';
 import { BUTTON_TYPE_ONE, LINK_CLASSES } from '../constants';
-import sciLifeLogo from '../assets/SciLifeLab logo/NEG/Digital/SciLifeLab_Logotype_NEG.png';
+import sciLifeLogo from '../assets/SciLifeLab logo/Precisionmedicineportal_logo_white.png';
 import { useLocation } from 'react-router-dom';
 import { AboutPageContent, ContactPageContent, DataSourcesPageContent, EventsAndTrainingsPageContent, HomePageContent, PrivacyPageContent } from '../content/content';
 
@@ -59,7 +59,7 @@ export default function HeaderComponent() {
         <div className="navbar px-8">
             <div className="navbar-start">
                 <Link to="/">
-                    <img className="h-auto w-80" src={sciLifeLogo} alt="SciLifeLab Logo" />
+                    <img className="h-auto w-auto 2xl:max-w-2xl" src={sciLifeLogo} alt="SciLifeLab Logo" />
                 </Link>
             </div>
             <div className="navbar-center lg:flex">
@@ -69,7 +69,7 @@ export default function HeaderComponent() {
                 ))}
                 </ul>
             </div>
-            <div className="navbar-end">
+            <div className="navbar-end hidden 2xl:block">
             </div>
             {/*
             // This is the signin button. We  can add this again once we have a user page, login, registration and features for users.
