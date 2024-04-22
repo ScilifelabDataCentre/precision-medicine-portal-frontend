@@ -80,7 +80,7 @@ export default function AboutProductPage(): ReactElement {
             <div className="divider">Product</div>
             <p>{PMDDescription}</p>
             <div className="divider pt-16">Team & Contributions</div>
-            <div className="grid grid-cols-3 gap-2">
+            <div className="grid grid-cols-3 place-items-center gap-2">
                 {Object.keys(cardContent).map( key => (
                     <CardComponent cardConfig={cardConfig['teamCard']} cardContent={cardContent[key]} />
                 ))}

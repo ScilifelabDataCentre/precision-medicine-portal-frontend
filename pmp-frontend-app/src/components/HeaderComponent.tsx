@@ -1,6 +1,9 @@
 import { Link, NavLink } from 'react-router-dom';
 import { ILink } from '../interfaces/types';
-import { BUTTON_TYPE_ONE, LINK_CLASSES } from '../constants';
+import {
+  //BODY_CLASSES,
+  LINK_CLASSES,
+} from '../constants';
 import sciLifeLogo from '../assets/SciLifeLab logo/Precisionmedicineportal_logo_white.png';
 import { useLocation } from 'react-router-dom';
 import { AboutPageContent, ContactPageContent, DataSourcesPageContent, EventsAndTrainingsPageContent, HomePageContent, PrivacyPageContent } from '../content/content';
