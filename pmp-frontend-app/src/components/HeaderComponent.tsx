@@ -68,7 +68,7 @@ export default function HeaderComponent() {
             <div className="navbar-center lg:flex">
                 <ul className="menu menu-horizontal text-lg mt-0.5">
                 {Object.keys(links).map( key => (
-                    <li>{<NavLink className={links[key].classes} to={links[key].link}>{links[key].text}</NavLink>}</li>
+                    <li key={key}>{<NavLink className={links[key].classes} to={links[key].link}>{links[key].text}</NavLink>}</li>
                 ))}
                 </ul>
             </div>
