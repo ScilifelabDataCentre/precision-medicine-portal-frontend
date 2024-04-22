@@ -1,6 +1,9 @@
 import { Link, NavLink } from 'react-router-dom';
 import { ILink } from '../interfaces/types';
-import { BUTTON_TYPE_ONE, LINK_CLASSES } from '../constants';
+import {
+  //BODY_CLASSES,
+  LINK_CLASSES,
+} from '../constants';
 import sciLifeLogo from '../assets/SciLifeLab logo/Precisionmedicineportal_logo_white.png';
 import { useLocation } from 'react-router-dom';
 import { AboutPageContent, ContactPageContent, DataSourcesPageContent, EventsAndTrainingsPageContent, HomePageContent, PrivacyPageContent } from '../content/content';
@@ -65,7 +68,7 @@ export default function HeaderComponent() {
             <div className="navbar-center lg:flex">
                 <ul className="menu menu-horizontal text-lg mt-0.5">
                 {Object.keys(links).map( key => (
-                    <li>{<NavLink className={links[key].classes} to={links[key].link}>{links[key].text}</NavLink>}</li>
+                    <li key={key}>{<NavLink className={links[key].classes} to={links[key].link}>{links[key].text}</NavLink>}</li>
                 ))}
                 </ul>
             </div>
