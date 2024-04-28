@@ -55,8 +55,9 @@ export default function HeaderComponent() {
       }
 
     return (
-    <div className="bg-gradient-to-b from-secondary to-primary text-primary-content px-8">
-        <div className="navbar px-8">
+    <div className="bg-gradient-to-b from-secondary to-primary">
+    <div className="text-primary-content px-32 2xl:max-w-screen-2xl 2xl:mx-auto">
+        <div className="navbar">
             <div className="navbar-start">
                 <Link to="/">
                     <img className="h-auto w-auto 2xl:max-w-2xl" src={sciLifeLogo} alt="SciLifeLab Logo" />
@@ -79,9 +80,10 @@ export default function HeaderComponent() {
                 </div>
             ))} */}
         </div>
-            <div className="text-left text-4xl leading-tight tracking-tight font-bold p-6 px-28">
+            <div className="text-left text-4xl leading-tight tracking-tight font-bold py-6 px-4">
                 <p>{textBar}</p>
             </div>
+    </div>
     </div>
     )
   }

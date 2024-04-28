@@ -40,7 +40,8 @@ export default function FooterComponent(): ReactElement {
 
   return (
     <>
-      <footer className='footer pt-10 px-36 bg-primary text-primary-content'>
+    <div className="bg-primary">
+      <footer className='footer pt-10 px-36 text-primary-content 2xl:max-w-screen-2xl 2xl:mx-auto'>
         <nav>
         {Object.keys(linksCol1).map( key => (
             <Link className={linksCol1[key].classes} to={linksCol1[key].link}>{linksCol1[key].text}</Link>
@@ -72,6 +73,7 @@ export default function FooterComponent(): ReactElement {
             Backend
           </a>
         </div>
+      </div>
       </div>
     </>
   )
