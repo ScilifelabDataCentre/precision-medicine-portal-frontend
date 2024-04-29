@@ -43,19 +43,19 @@ export default function FooterComponent(): ReactElement {
       <footer className='footer pt-10 px-36 text-primary-content 2xl:max-w-screen-2xl 2xl:mx-auto'>
         <nav>
         {Object.keys(linksCol1).map( key => (
-            <Link className={linksCol1[key].classes} to={linksCol1[key].link}>{linksCol1[key].text}</Link>
+            <Link className={linksCol1[key].classes} to={linksCol1[key].link} key={key}>{linksCol1[key].text}</Link>
         ))}
         </nav> 
         <nav>
         {Object.keys(linksCol2).map( key => (
-            <Link className={linksCol2[key].classes} to={linksCol2[key].link}>{linksCol2[key].text}</Link>
+            <Link className={linksCol2[key].classes} to={linksCol2[key].link} key={key}>{linksCol2[key].text}</Link>
         ))}
         </nav> 
         <nav>
           <header className="footer-title">Social</header> 
           <div className="grid grid-flow-col gap-4">
             {Object.keys(svgs).map( key => (
-              <a href={svgs[key].href}><svg xmlns={svgs[key].xmlns} width={svgs[key].width} height={svgs[key].height} viewBox={svgs[key].viewBox} className={svgs[key].classes}><path d={svgs[key].svg}></path></svg></a>
+              <a href={svgs[key].href} key={key}><svg xmlns={svgs[key].xmlns} width={svgs[key].width} height={svgs[key].height} viewBox={svgs[key].viewBox} className={svgs[key].classes}><path d={svgs[key].svg}></path></svg></a>
             ))}
           </div>
         </nav>
