@@ -28,5 +28,14 @@ export default {
         },
       },
     },
-  plugins: [require("daisyui")],
-}
+    plugins: [
+      require("daisyui"),
+      function ({ addBase, theme }) {
+        addBase({
+          body: {
+            backgroundColor: theme('colors.base-100'),
+          },
+        });
+      },
+    ],
+  }
