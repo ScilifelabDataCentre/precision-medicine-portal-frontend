@@ -39,7 +39,6 @@ export default function FooterComponent(): ReactElement {
 
 
   return (
-    <>
     <div className="bg-primary">
       <footer className='footer pt-10 px-36 text-primary-content 2xl:max-w-screen-2xl 2xl:mx-auto'>
         <nav>
@@ -74,7 +73,6 @@ export default function FooterComponent(): ReactElement {
           </a>
         </div>
       </div>
-      </div>
-    </>
+    </div>
   )
 }
