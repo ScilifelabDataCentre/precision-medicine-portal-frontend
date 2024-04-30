@@ -7,7 +7,6 @@ export default function AboutFAQPage(): ReactElement {
     
     return (
         <>
-            <div className="divider">FAQ</div>
             <AccordionComponent />
         </>
     );

@@ -32,12 +32,6 @@ export default function AboutPartnersPage(): ReactElement {
     
     return (
         <>
-            <div className="divider">Funders</div>
-            <div className="flex flex-row space-x-4 justify-between">
-                <CardComponent cardConfig={cardConfig['fundersAndPartnersCard']} cardContent={cardContent['fundersAndPartnersCard1']} />
-                <CardComponent cardConfig={cardConfig['fundersAndPartnersCard']} cardContent={cardContent['fundersAndPartnersCard1']} />
-            </div>
-            <div className="divider pt-16">Partners</div>
             <div className="flex flex-row space-x-4 justify-between">
                 <CardComponent cardConfig={cardConfig['fundersAndPartnersCard']} cardContent={cardContent['fundersAndPartnersCard1']} />
                 <CardComponent cardConfig={cardConfig['fundersAndPartnersCard']} cardContent={cardContent['fundersAndPartnersCard1']} />
