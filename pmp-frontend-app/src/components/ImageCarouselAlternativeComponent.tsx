@@ -10,17 +10,17 @@ export default function ImageCarouselAlternativeComponent(): ReactElement {
         <div className="carousel w-full pt-12">
             <Link to="datasources" className="px-0.5">
             <div id="data-sources" className="carousel-item w-full">
-                <img src={dataSourcesImg} className="w-full" />
+                <img src={dataSourcesImg} className="w-full" alt="Data Sources represented by different lines in a vortex" />
             </div>
             </Link>
             <Link to="datasources" className="px-0.5">
             <div id="to-do" className="carousel-item w-full">
-                <img src={hedestamImg} className="w-full" />
+                <img src={hedestamImg} className="w-full" alt="Human T and B-cell receptor sequences represented by a cell membrane on a red and blue color spectrum"/>
             </div>
             </Link>
             <Link to="eventsandtrainings" className="px-0.5">
             <div id="events-and-trainings" className="carousel-item w-full">
-                <img src={eventsAndTrainingsImg} className="w-full" />
+                <img src={eventsAndTrainingsImg} className="w-full" alt="A woman standing on a stage and speaking with a microphone"/>
             </div>
             </Link>
         </div>
