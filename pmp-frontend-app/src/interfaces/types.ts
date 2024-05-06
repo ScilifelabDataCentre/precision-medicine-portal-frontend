@@ -32,3 +32,8 @@ export interface ICardContent {
     imageSrc: string;
     imageAlt: string;
 };
+
+export interface IDataSourceFilters {
+    dataTypes: string[];
+    diseaseTypes: string[];
+}
