@@ -1,103 +1,165 @@
 import { ChangeEvent, ReactElement, useState } from "react";
 import React from "react";
 import axios from 'axios';
-import { IDataSourceFilters } from "../interfaces/types";
+import { IDataSourceFilters, IDataSourcesDC } from "../interfaces/types";
 
 export default function DataSourcesComponent(): ReactElement {
+    const [dataSourcesJSON, setDataSourcesJSON] = useState<IDataSourcesDC[]>([]);
     const [filters, setFilters] = useState<IDataSourceFilters>({
         dataTypes: [],
         diseaseTypes: [],
     });
 
-    const dataSourcesJSON: string = 'https://raw.githubusercontent.com/ScilifelabDataCentre/data.scilifelab.se/develop/data/data_sources.json';
-    const dataSourcesUnfiltered: object[] = [];
+    const dataTypes = [
+        "Genomics",
+        "Proteomics",
+    ]
+    const diseaseTypes = [
+        "Cancer",
+        "Cardiovascular Disease",
+    ]
 
-    function getData(){
-        dataSourcesUnfiltered.splice(0,dataSourcesUnfiltered.length)
-        axios.get(dataSourcesJSON)
+    const nrOfCheckboxes = (dataTypes.concat(diseaseTypes).length)
+    const checkedListBoolArr = Array.apply(null, Array(nrOfCheckboxes)).map(function () { return false })
+
+    const [checkedList, setCheckedList] = useState<boolean[]>(checkedListBoolArr);
+
+    const dataSourcesURI: string = 'https://raw.githubusercontent.com/ScilifelabDataCentre/data.scilifelab.se/develop/data/data_sources.json';
+
+    async function getData(){
+        setDataSourcesJSON([]);
+        const tmpDataSourcesJSON: IDataSourcesDC[] = []
+        let responseData: IDataSourcesDC[] = [];
+        await axios.get(dataSourcesURI)
             .then(response => {
-                const data = response.data;
-                data.forEach( (element: any) => {
-                    if (element.ddls.includes('Precision Medicine and Diagnostics')) {
-                        dataSourcesUnfiltered.push(element);
-                    }
-                });
+                responseData = response.data;
             })
             .catch(response => console.log(response.error))
-        console.log(typeof(dataSourcesUnfiltered));
-        console.log(Array.isArray(dataSourcesUnfiltered));
-        console.log(dataSourcesUnfiltered.length);
-        console.log(dataSourcesUnfiltered);
-        console.log(Object.keys(dataSourcesUnfiltered));
+        
+        responseData.forEach( (element: IDataSourcesDC) => {
+            if (element.ddls.includes('Precision Medicine and Diagnostics')) {
+                tmpDataSourcesJSON.push(element);
+            }
+        });
+        setDataSourcesJSON(tmpDataSourcesJSON);
     }
 
-    function checkedDataFilter(tagType: string, tagName: string) {
-        let tmp_filters: IDataSourceFilters = {
-            dataTypes: [],
-            diseaseTypes: [],
-        };
+    function checkData() {
+        // console.log(typeof(dataSourcesJSON));
+        // console.log(Array.isArray(dataSourcesJSON));
+        // console.log(dataSourcesJSON.length);
+        // console.log(dataSourcesJSON[0]);
+        // console.log(Object.keys(dataSourcesJSON));
+        console.log(dataSourcesJSON.filter(data => filterDataSources(data)));
+    }
 
-        tmp_filters = filters;
+    function checkedDataFilter(tagType: string, tagName: string, boxIndex: number) {
+        let tmpFilters = filters;
+        let tmpCheckedList = [...checkedList];
 
         switch (tagType) {
             case "dataType":
-                if (tmp_filters.dataTypes.includes(tagName)) {
-                    tmp_filters.dataTypes = tmp_filters.dataTypes.filter(item => item != tagName);
+                if (tmpFilters.dataTypes.includes(tagName)) {
+                    tmpFilters.dataTypes = tmpFilters.dataTypes.filter(item => item != tagName);
+                    tmpCheckedList[boxIndex] = false;
                 } else {
-                    tmp_filters.dataTypes.push(tagName);
+                    tmpFilters.dataTypes.push(tagName);
+                    tmpCheckedList[boxIndex] = true;
                 }
                 break;
             case "diseaseType":
-                if (tmp_filters.diseaseTypes.includes(tagName)) {
-                    tmp_filters.diseaseTypes = tmp_filters.diseaseTypes.filter(item => item != tagName);
+                if (tmpFilters.diseaseTypes.includes(tagName)) {
+                    tmpFilters.diseaseTypes = tmpFilters.diseaseTypes.filter(item => item != tagName);
+                    tmpCheckedList[boxIndex] = false;
                 } else {
-                    tmp_filters.diseaseTypes.push(tagName);
+                    tmpFilters.diseaseTypes.push(tagName);
+                    tmpCheckedList[boxIndex] = true;
                 }
                 break;
         }
 
-        setFilters(tmp_filters);
-
-        console.log(filters);
+        
+        setFilters(tmpFilters);
+        setCheckedList(tmpCheckedList);
+        // console.log(filters);
     }
+
+    function filterDataSources(dataSource: IDataSourcesDC) {
+        const selectedFilters = filters.dataTypes.concat(filters.diseaseTypes);
+        if (selectedFilters.length === 0) {
+            return true;
+        } else {
+            selectedFilters.forEach( filter => {
+                if (dataSource.search_tags.map(tag => tag.toLowerCase()).includes(filter)) {
+                    // console.log(filter);
+                    // console.log(dataSource.name);
+                    // console.log(dataSource.search_tags);
+                    return true;
+                }
+            })
+            return false;
+        }
+    }
+
+    function RenderDataSources(): ReactElement {
+        return (
+            <div className="flex flex-col">
+                {dataSourcesJSON
+                    .filter(data => filterDataSources(data))
+                    .map((item, index) => (
+                        <div key={index} className="form-control bg-opacity-95 rounded-[10px] shadow border-2 border-neutral">
+                            <h2>{item.name}</h2>
+                            <p>{item.description}</p>
+                        </div>
+                ))}
+            </div>
+        );
+    }
+
+    React.useEffect(() =>{
+        getData();
+    }, []);
+
+    // React.useEffect(() =>{
+    // }, [checkedList]);
+
 
     return (
         <>
-            {dataSourcesUnfiltered ? null : getData()}
             <div className="grid grid-cols-2">
                 <div className="flex flex-col">
                     <div className="form-control w-32 bg-opacity-95 rounded-[10px] shadow border-2 border-neutral">
                         <h2>Data Type</h2>
-                        <label className="label cursor-pointer">
-                            <span className="label-text">Genomics</span> 
-                            <input type="checkbox" className="checkbox" onChange={() => checkedDataFilter("dataType", "genomics")}/>
-                        </label>
-                        <label className="label cursor-pointer">
-                            <span className="label-text">Proteomics</span> 
-                            <input type="checkbox" className="checkbox" onChange={() => checkedDataFilter("dataType", "proteomics")}/>
-                        </label>
+                        {dataTypes.map((element, index) => 
+                            <label key={element} className="label cursor-pointer">
+                                <span className="label-text">{element}</span> 
+                                <input 
+                                    type="checkbox" 
+                                    className="checkbox" 
+                                    onChange={() => checkedDataFilter("dataType", element.toLowerCase(), index)}
+                                    checked={checkedList[index]}
+                                />
+                            </label>
+                        )}
                     </div>
                     <div className="form-control w-32 bg-opacity-95 rounded-[10px] shadow border-2 border-neutral">
                         <h2>Disease Type</h2>
-                        <label className="label cursor-pointer">
-                            <span className="label-text">Cancer</span> 
-                            <input type="checkbox" className="checkbox" onChange={() => checkedDataFilter("diseaseType", "cancer")}/>
-                        </label>
-                        <label className="label cursor-pointer">
-                            <span className="label-text">Cardiovascular Disease</span> 
-                            <input type="checkbox" className="checkbox" onChange={() => checkedDataFilter("diseaseType", "cardiovascular disease")}/>
-                        </label>
+                        {diseaseTypes.map((element, index) => 
+                            <label key={element} className="label cursor-pointer">
+                                <span className="label-text">{element}</span> 
+                                <input 
+                                    type="checkbox" 
+                                    className="checkbox" 
+                                    onChange={() => checkedDataFilter("diseaseType", element.toLowerCase(), dataTypes.length+index)}
+                                    checked={checkedList[dataTypes.length+index]}
+                                />
+                            </label>
+                        )}
                     </div>
                 </div>
-                <div className="flex flex-row">
-                    <p>test</p>
-                    {dataSourcesUnfiltered.map(item => (
-                        <div className="form-control bg-opacity-95 rounded-[10px] shadow border-2 border-neutral">
-                            {JSON.stringify(item)[0]}
-                        </div>
-                    ))}
-                    <button onClick={getData}>click</button>
-                </div>
+                <RenderDataSources/>
+                <button onClick={getData}>click</button>
+                <button onClick={checkData}>click</button>
             </div>
         </>
     );

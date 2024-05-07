@@ -37,3 +37,16 @@ export interface IDataSourceFilters {
     dataTypes: string[];
     diseaseTypes: string[];
 }
+
+export interface IDataSourcesDC {
+    data: string[];
+    ddls: string[];
+    description: string;
+    name: string;
+    search_tags: string[];
+    target: string[];
+    thumbnail: string;
+    thumbnail_border: boolean;
+    type: string[];
+    url: string;
+}
