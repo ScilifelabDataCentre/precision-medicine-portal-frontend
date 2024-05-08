@@ -89,14 +89,15 @@ export default function DataSourcesComponent(): ReactElement {
         if (selectedFilters.length === 0) {
             return true;
         } else {
-            selectedFilters.forEach( filter => {
+            let filter: string;
+            for (filter of selectedFilters) {
                 if (dataSource.search_tags.map(tag => tag.toLowerCase()).includes(filter)) {
                     // console.log(filter);
                     // console.log(dataSource.name);
                     // console.log(dataSource.search_tags);
                     return true;
                 }
-            })
+            }
             return false;
         }
     }
