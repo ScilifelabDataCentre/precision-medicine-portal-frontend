@@ -5,22 +5,31 @@ import { IDataSourceFilters, IDataSourcesDC } from "../interfaces/types";
 
 export default function DataSourcesComponent(): ReactElement {
     const [dataSourcesJSON, setDataSourcesJSON] = useState<IDataSourcesDC[]>([]);
-    const [filters, setFilters] = useState<IDataSourceFilters>({
+    const [selectedFilters, setSelectedFilters] = useState<IDataSourceFilters>({
         dataTypes: [],
         diseaseTypes: [],
     });
+    const [searchBar, setSearchBar] = useState<string>("");
 
-    const dataTypes = [
-        "Genomics",
-        "Proteomics",
-    ]
-    const diseaseTypes = [
-        "Cancer",
-        "Cardiovascular Disease",
-    ]
+    const filters: IDataSourceFilters = {
+        dataTypes: 
+        [
+            "Genomics",
+            "Proteomics",
+            "Clinical Data",
+            "Metabolomics",
+        ],
+        diseaseTypes: 
+        [
+            "Cancer",
+            "Cardiovascular Disease",
+            "Diabetes",
+            "Autoimmune Disease",
+        ],
+    };
 
-    const nrOfCheckboxes = (dataTypes.concat(diseaseTypes).length)
-    const checkedListBoolArr = Array.apply(null, Array(nrOfCheckboxes)).map(function () { return false })
+    const nrOfCheckboxes = (filters.dataTypes.concat(filters.diseaseTypes).length);
+    const checkedListBoolArr = Array.apply(null, Array(nrOfCheckboxes)).map(function () { return false });
 
     const [checkedList, setCheckedList] = useState<boolean[]>(checkedListBoolArr);
 
@@ -50,11 +59,20 @@ export default function DataSourcesComponent(): ReactElement {
         // console.log(dataSourcesJSON.length);
         // console.log(dataSourcesJSON[0]);
         // console.log(Object.keys(dataSourcesJSON));
-        console.log(dataSourcesJSON.filter(data => filterDataSources(data)));
+        let tag_list: string[] = [];
+        let item: IDataSourcesDC;
+        for (item of dataSourcesJSON) {
+            let tag: string;
+            for (tag of item.search_tags) {
+                tag_list.includes(tag) ? null : tag_list.push(tag);
+            }
+        }
+        let tag_list_sorted = tag_list.sort((a, b) => a.localeCompare(b))
+        console.log(tag_list_sorted)
     }
 
     function checkedDataFilter(tagType: string, tagName: string, boxIndex: number) {
-        let tmpFilters = filters;
+        let tmpFilters = selectedFilters;
         let tmpCheckedList = [...checkedList];
 
         switch (tagType) {
@@ -79,26 +97,43 @@ export default function DataSourcesComponent(): ReactElement {
         }
 
         
-        setFilters(tmpFilters);
+        setSelectedFilters(tmpFilters);
         setCheckedList(tmpCheckedList);
-        // console.log(filters);
     }
 
-    function filterDataSources(dataSource: IDataSourcesDC) {
-        const selectedFilters = filters.dataTypes.concat(filters.diseaseTypes);
-        if (selectedFilters.length === 0) {
+    function applySelectedFilters(dataSource: IDataSourcesDC) {
+        const checkedFilters = selectedFilters.dataTypes.concat(selectedFilters.diseaseTypes);
+        if (checkedFilters.length === 0) {
             return true;
         } else {
             let filter: string;
-            for (filter of selectedFilters) {
-                if (dataSource.search_tags.map(tag => tag.toLowerCase()).includes(filter)) {
-                    // console.log(filter);
-                    // console.log(dataSource.name);
-                    // console.log(dataSource.search_tags);
-                    return true;
+            for (filter of checkedFilters) {
+                if (!dataSource.search_tags.map(tag => tag.toLowerCase()).includes(filter)) {
+                    return false;
                 }
             }
-            return false;
+            return true;
+        }
+    }
+
+    function applySearchBar(dataSource: IDataSourcesDC) {
+        const searchBarLower = searchBar.toLowerCase();
+        const searchTags: string[] = searchBarLower.split(" ");
+        if (searchBarLower.length === 0) {
+            return true;
+        } else {
+            if (dataSource.name.toLowerCase().includes(searchBarLower)) {
+                return true;
+            } else {
+                let searchTag: string;
+                for (searchTag of searchTags) {
+                    if (dataSource.search_tags.map(tag => tag.toLowerCase()).includes(searchTag) ||
+                        dataSource.search_tags.map(tag => tag.toLowerCase()).includes(searchBarLower)) {
+                        return true;
+                    }
+                }
+                return false;
+            }
         }
     }
 
@@ -106,7 +141,8 @@ export default function DataSourcesComponent(): ReactElement {
         return (
             <div className="flex flex-col">
                 {dataSourcesJSON
-                    .filter(data => filterDataSources(data))
+                    .filter(data => applySelectedFilters(data))
+                    .filter(data => applySearchBar(data))
                     .map((item, index) => (
                         <div key={index} className="form-control bg-opacity-95 rounded-[10px] shadow border-2 border-neutral">
                             <h2>{item.name}</h2>
@@ -121,41 +157,51 @@ export default function DataSourcesComponent(): ReactElement {
         getData();
     }, []);
 
-    // React.useEffect(() =>{
-    // }, [checkedList]);
-
-
     return (
         <>
             <div className="grid grid-cols-2">
-                <div className="flex flex-col">
-                    <div className="form-control w-32 bg-opacity-95 rounded-[10px] shadow border-2 border-neutral">
-                        <h2>Data Type</h2>
-                        {dataTypes.map((element, index) => 
-                            <label key={element} className="label cursor-pointer">
-                                <span className="label-text">{element}</span> 
-                                <input 
-                                    type="checkbox" 
-                                    className="checkbox" 
-                                    onChange={() => checkedDataFilter("dataType", element.toLowerCase(), index)}
-                                    checked={checkedList[index]}
-                                />
-                            </label>
-                        )}
+                <div>
+                    <div className="flex flex-col space-y-2">
+                        <label>Name</label>
+                        <input 
+                            type="text"
+                            name="search"
+                            placeholder="Name/Keywords" 
+                            className="input bg-white input-bordered border-neutral w-full max-w-xs"
+                            defaultValue={searchBar} 
+                            onChange={e => setSearchBar(e.target.value)} 
+                            required 
+                        />
                     </div>
-                    <div className="form-control w-32 bg-opacity-95 rounded-[10px] shadow border-2 border-neutral">
-                        <h2>Disease Type</h2>
-                        {diseaseTypes.map((element, index) => 
-                            <label key={element} className="label cursor-pointer">
-                                <span className="label-text">{element}</span> 
-                                <input 
-                                    type="checkbox" 
-                                    className="checkbox" 
-                                    onChange={() => checkedDataFilter("diseaseType", element.toLowerCase(), dataTypes.length+index)}
-                                    checked={checkedList[dataTypes.length+index]}
-                                />
-                            </label>
-                        )}
+                    <div className="flex flex-col">
+                        <div className="form-control w-32 bg-opacity-95 rounded-[10px] shadow border-2 border-neutral">
+                            <h2>Data Type</h2>
+                            {filters.dataTypes.map((element, index) => 
+                                <label key={element} className="label cursor-pointer">
+                                    <span className="label-text">{element}</span> 
+                                    <input 
+                                        type="checkbox" 
+                                        className="checkbox" 
+                                        onChange={() => checkedDataFilter("dataType", element.toLowerCase(), index)}
+                                        checked={checkedList[index]}
+                                    />
+                                </label>
+                            )}
+                        </div>
+                        <div className="form-control w-32 bg-opacity-95 rounded-[10px] shadow border-2 border-neutral">
+                            <h2>Disease Type</h2>
+                            {filters.diseaseTypes.map((element, index) => 
+                                <label key={element} className="label cursor-pointer">
+                                    <span className="label-text">{element}</span> 
+                                    <input 
+                                        type="checkbox" 
+                                        className="checkbox" 
+                                        onChange={() => checkedDataFilter("diseaseType", element.toLowerCase(), filters.dataTypes.length+index)}
+                                        checked={checkedList[filters.dataTypes.length+index]}
+                                    />
+                                </label>
+                            )}
+                        </div>
                     </div>
                 </div>
                 <RenderDataSources/>
