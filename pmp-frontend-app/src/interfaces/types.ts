@@ -38,6 +38,11 @@ export interface IDataSourceFilters {
     diseaseTypes: string[];
 }
 
+export interface IDiseaseTypesMapping {
+    name: string;
+    diseaseTypes: string;
+}
+
 export interface IDataSourcesDC {
     data: string[];
     ddls: string[];

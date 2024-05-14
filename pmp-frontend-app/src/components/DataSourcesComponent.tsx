@@ -2,6 +2,7 @@ import { ChangeEvent, ReactElement, useState } from "react";
 import React from "react";
 import axios from 'axios';
 import { IDataSourceFilters, IDataSourcesDC } from "../interfaces/types";
+import { diseaseTypesJSON } from "../assets/data/repositories_and_Disease_Types";
 
 export default function DataSourcesComponent(): ReactElement {
     const [dataSourcesJSON, setDataSourcesJSON] = useState<IDataSourcesDC[]>([]);
@@ -14,17 +15,35 @@ export default function DataSourcesComponent(): ReactElement {
     const filters: IDataSourceFilters = {
         dataTypes: 
         [
-            "Genomics",
-            "Proteomics",
-            "Clinical Data",
-            "Metabolomics",
+            "Biobank",
+            "Chemical Biology",
+            "Clinical",
+            "Enzymes, Pathways, Interactions",
+            "Epidemiology",
+            "Evolution and Phylogeny",
+            "General",
+            "Genes and Genomes",
+            "Imaging",
+            "Molecular and Cellular Structures",
+            "Phenotypic",
+            "Proteins and Proteomes",
         ],
         diseaseTypes: 
         [
             "Cancer",
-            "Cardiovascular Disease",
-            "Diabetes",
-            "Autoimmune Disease",
+            "Cardiovascular Diseases",
+            "Neurological Disorders",
+            "Genetic Disorders",
+            "Metabolic Disorders",
+            "Infectious Diseases",
+            "Developmental Disorders",
+            "Rare Diseases",
+            "Drug Development",
+            "Public Health",
+            "Immunological Diseases",
+            "Psychiatric Disorders",
+            "General",
+            "Various Diseases",
         ],
     };
 
@@ -54,21 +73,23 @@ export default function DataSourcesComponent(): ReactElement {
     }
 
     function checkData() {
-        // console.log(typeof(dataSourcesJSON));
-        // console.log(Array.isArray(dataSourcesJSON));
         // console.log(dataSourcesJSON.length);
-        // console.log(dataSourcesJSON[0]);
-        // console.log(Object.keys(dataSourcesJSON));
-        let tag_list: string[] = [];
-        let item: IDataSourcesDC;
-        for (item of dataSourcesJSON) {
-            let tag: string;
-            for (tag of item.search_tags) {
-                tag_list.includes(tag) ? null : tag_list.push(tag);
+        let name_list_source: string[] = [];
+        let name_list_mapping: string[] = [];
+        for (let i = 0; i < dataSourcesJSON.length; i++) {
+            name_list_source.push(dataSourcesJSON[i].name);
+            name_list_mapping.push(diseaseTypesJSON[i].name);
+        }
+        let name_list_source_sorted = name_list_source.sort((a, b) => a.localeCompare(b))
+        let name_list_mapping_sorted = name_list_mapping.sort((a, b) => a.localeCompare(b))
+        for (let i = 0; i < dataSourcesJSON.length; i++) {
+            if (name_list_source_sorted[i] != name_list_mapping_sorted[i]) {
+                console.log("MISMATCH")
+                console.log("källfil: ".concat(name_list_source_sorted[i]));
+                console.log("mappningsfil: ".concat(name_list_mapping_sorted[i]));
             }
         }
-        let tag_list_sorted = tag_list.sort((a, b) => a.localeCompare(b))
-        console.log(tag_list_sorted)
+        
     }
 
     function checkedDataFilter(tagType: string, tagName: string, boxIndex: number) {
@@ -101,15 +122,33 @@ export default function DataSourcesComponent(): ReactElement {
         setCheckedList(tmpCheckedList);
     }
 
-    function applySelectedFilters(dataSource: IDataSourcesDC) {
-        const checkedFilters = selectedFilters.dataTypes.concat(selectedFilters.diseaseTypes);
-        if (checkedFilters.length === 0) {
+    function applyDataTypeFilter(dataSource: IDataSourcesDC) {
+        if (selectedFilters.dataTypes.length === 0) {
             return true;
         } else {
             let filter: string;
-            for (filter of checkedFilters) {
-                if (!dataSource.search_tags.map(tag => tag.toLowerCase()).includes(filter)) {
+            for (filter of selectedFilters.dataTypes) {
+                if (!dataSource.data.map(tag => tag.toLowerCase()).includes(filter.toLowerCase())) {
                     return false;
+                }
+            }
+            return true;
+        }
+    }
+
+    function applyDiseaseTypeFilter(dataSource: IDataSourcesDC) {
+        if (selectedFilters.diseaseTypes.length === 0) {
+            return true;
+        } else {
+            let filter: string;
+            for (filter of selectedFilters.diseaseTypes) {
+                for (let i = 0; i < diseaseTypesJSON.length; i++) {
+                    if (diseaseTypesJSON[i].name.toLowerCase() === dataSource.name.toLocaleLowerCase()) {
+                        let linkedDiseaseTypes: string[] = diseaseTypesJSON[i].diseaseTypes.split(", ");
+                        if (!linkedDiseaseTypes.map(tag => tag.toLowerCase()).includes(filter.toLowerCase())) {
+                            return false;
+                        }
+                    }
                 }
             }
             return true;
@@ -141,7 +180,8 @@ export default function DataSourcesComponent(): ReactElement {
         return (
             <div className="flex flex-col">
                 {dataSourcesJSON
-                    .filter(data => applySelectedFilters(data))
+                    .filter(data => applyDataTypeFilter(data))
+                    .filter(data => applyDiseaseTypeFilter(data))
                     .filter(data => applySearchBar(data))
                     .map((item, index) => (
                         <div key={index} className="form-control bg-opacity-95 rounded-[10px] shadow border-2 border-neutral">
@@ -162,7 +202,7 @@ export default function DataSourcesComponent(): ReactElement {
             <div className="grid grid-cols-2">
                 <div>
                     <div className="flex flex-col space-y-2">
-                        <label>Name</label>
+                        <label>Search</label>
                         <input 
                             type="text"
                             name="search"
@@ -170,7 +210,6 @@ export default function DataSourcesComponent(): ReactElement {
                             className="input bg-white input-bordered border-neutral w-full max-w-xs"
                             defaultValue={searchBar} 
                             onChange={e => setSearchBar(e.target.value)} 
-                            required 
                         />
                     </div>
                     <div className="flex flex-col">
