@@ -185,7 +185,7 @@ export const TeamDescriptions = {
 }
 
 export const DataSourcesPageContent = {
-    textBar: 'This page is currently under construction. Please check back later for updates.',
+    textBar: 'Repositories and Data Sources in Precision Medicine',
 }
 
 export const EventsAndTrainingsPageContent = {

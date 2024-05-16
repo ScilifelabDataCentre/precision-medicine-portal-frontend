@@ -153,15 +153,18 @@ export default function DataSourcesComponent(): ReactElement {
 
     function RenderDataSources(): ReactElement {
         return (
-            <div className="flex flex-col">
+            <div className="flex flex-col space-y-6 col-span-2">
                 {dataSourcesJSON
                     .filter(data => applyDataTypeFilter(data))
                     .filter(data => applyDiseaseTypeFilter(data))
                     .filter(data => applySearchBar(data))
                     .map((item, index) => (
                         <div key={index} className="form-control bg-opacity-95 rounded-[10px] shadow border-2 border-neutral">
-                            <h2>{item.name}</h2>
-                            <p>{item.description}</p>
+                            <div className="bg-neutral p-3 flow-root">
+                                <a href={item.url} className="font-bold text-secondary float-left">{item.name}</a>
+                                <p className="flex float-right">IMG_PLACEHOLDER</p>
+                            </div>
+                            <p className="p-3">{item.description}</p>
                         </div>
                 ))}
             </div>
@@ -174,46 +177,50 @@ export default function DataSourcesComponent(): ReactElement {
 
     return (
         <>
-            <div className="grid grid-cols-2">
-                <div>
-                    <div className="flex flex-col space-y-2">
-                        <label>Search</label>
+            <div className="grid grid-cols-3 text-neutral-content">
+                <div className="space-y-6 col-span-1">
+                    <div className="flex flex-col space-y-2 w-80">
+                        <label className="font-bold">Search</label>
                         <input 
                             type="text"
                             name="search"
                             placeholder="Name/Keywords" 
-                            className="input bg-white input-bordered border-neutral w-full max-w-xs"
+                            className="input bg-neutral input-bordered border-neutral rounded-[10px]"
                             defaultValue={searchBar} 
                             onChange={e => setSearchBar(e.target.value)} 
                         />
                     </div>
-                    <div className="flex flex-col">
-                        <div className="form-control w-32 bg-opacity-95 rounded-[10px] shadow border-2 border-neutral">
-                            <h2>Data Type</h2>
-                            {filters.dataTypes.map((element, index) => 
-                                <label key={element} className="label cursor-pointer">
-                                    <span className="label-text">{element}</span> 
-                                    <input 
-                                        type="checkbox" 
-                                        className="checkbox" 
-                                        onChange={() => checkedDataFilter("dataType", element.toLowerCase(), index)}
-                                        checked={checkedList[index]}
-                                    />
-                                </label>
+                    <div className="flex flex-col space-y-2">
+                        <h2 className="font-bold">Data Type</h2>
+                        <div className="form-control w-80 rounded-[10px] shadow border-2 border-neutral p-3">
+                            {filters.dataTypes.map((element, index) =>
+                                <div className="flex flex-row">
+                                    <label key={element} className="label cursor-pointer">
+                                        <input 
+                                            type="checkbox" 
+                                            className="checkbox border-gray-300 [--chkbg:theme(colors.primary)] [--chkfg:oklch(var(--a))]" 
+                                            onChange={() => checkedDataFilter("dataType", element.toLowerCase(), index)}
+                                            checked={checkedList[index]}
+                                        />
+                                    </label>
+                                    <span className="label-text text-neutral-content pt-2.5 pl-2">{element}</span>
+                                </div>
                             )}
                         </div>
-                        <div className="form-control w-32 bg-opacity-95 rounded-[10px] shadow border-2 border-neutral">
-                            <h2>Disease Type</h2>
-                            {filters.diseaseTypes.map((element, index) => 
-                                <label key={element} className="label cursor-pointer">
-                                    <span className="label-text">{element}</span> 
-                                    <input 
-                                        type="checkbox" 
-                                        className="checkbox" 
-                                        onChange={() => checkedDataFilter("diseaseType", element.toLowerCase(), filters.dataTypes.length+index)}
-                                        checked={checkedList[filters.dataTypes.length+index]}
-                                    />
-                                </label>
+                        <h2 className="font-bold pt-4">Disease Type</h2>
+                        <div className="form-control w-80 rounded-[10px] shadow border-2 border-neutral p-3">
+                            {filters.diseaseTypes.map((element, index) =>
+                                <div className="flex flex-row">
+                                    <label key={element} className="label cursor-pointer">
+                                        <input 
+                                            type="checkbox" 
+                                            className="checkbox border-gray-300" 
+                                            onChange={() => checkedDataFilter("diseaseType", element.toLowerCase(), filters.dataTypes.length+index)}
+                                            checked={checkedList[filters.dataTypes.length+index]}
+                                        />
+                                    </label>
+                                    <span className="label-text text-neutral-content pt-2.5 pl-2">{element}</span>
+                                </div>
                             )}
                         </div>
                     </div>
