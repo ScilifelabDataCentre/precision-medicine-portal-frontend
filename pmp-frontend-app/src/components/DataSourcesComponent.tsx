@@ -1,8 +1,7 @@
-import { ChangeEvent, ReactElement, useState } from "react";
+import { ReactElement, useState } from "react";
 import React from "react";
 import axios from 'axios';
 import { IDataSourceFilters, IDataSourcesDC } from "../interfaces/types";
-import { diseaseTypesJSON } from "../assets/data/repositories_and_Disease_Types";
 
 export default function DataSourcesComponent(): ReactElement {
     const [dataSourcesJSON, setDataSourcesJSON] = useState<IDataSourcesDC[]>([]);
@@ -52,7 +51,8 @@ export default function DataSourcesComponent(): ReactElement {
 
     const [checkedList, setCheckedList] = useState<boolean[]>(checkedListBoolArr);
 
-    const dataSourcesURI: string = 'https://raw.githubusercontent.com/ScilifelabDataCentre/data.scilifelab.se/develop/data/data_sources.json';
+    // const dataSourcesURI: string = 'https://raw.githubusercontent.com/ScilifelabDataCentre/data.scilifelab.se/main/data/data_sources.json';
+    const dataSourcesURI: string = 'https://raw.githubusercontent.com/SevLG/data.scilifelab.se/patch-1/data/data_sources.json';
 
     async function getData(){
         setDataSourcesJSON([]);
@@ -70,26 +70,6 @@ export default function DataSourcesComponent(): ReactElement {
             }
         });
         setDataSourcesJSON(tmpDataSourcesJSON);
-    }
-
-    function checkData() {
-        // console.log(dataSourcesJSON.length);
-        let name_list_source: string[] = [];
-        let name_list_mapping: string[] = [];
-        for (let i = 0; i < dataSourcesJSON.length; i++) {
-            name_list_source.push(dataSourcesJSON[i].name);
-            name_list_mapping.push(diseaseTypesJSON[i].name);
-        }
-        let name_list_source_sorted = name_list_source.sort((a, b) => a.localeCompare(b))
-        let name_list_mapping_sorted = name_list_mapping.sort((a, b) => a.localeCompare(b))
-        for (let i = 0; i < dataSourcesJSON.length; i++) {
-            if (name_list_source_sorted[i] != name_list_mapping_sorted[i]) {
-                console.log("MISMATCH")
-                console.log("källfil: ".concat(name_list_source_sorted[i]));
-                console.log("mappningsfil: ".concat(name_list_mapping_sorted[i]));
-            }
-        }
-        
     }
 
     function checkedDataFilter(tagType: string, tagName: string, boxIndex: number) {
@@ -142,13 +122,8 @@ export default function DataSourcesComponent(): ReactElement {
         } else {
             let filter: string;
             for (filter of selectedFilters.diseaseTypes) {
-                for (let i = 0; i < diseaseTypesJSON.length; i++) {
-                    if (diseaseTypesJSON[i].name.toLowerCase() === dataSource.name.toLocaleLowerCase()) {
-                        let linkedDiseaseTypes: string[] = diseaseTypesJSON[i].diseaseTypes.split(", ");
-                        if (!linkedDiseaseTypes.map(tag => tag.toLowerCase()).includes(filter.toLowerCase())) {
-                            return false;
-                        }
-                    }
+                if (!dataSource.disease_type.map(tag => tag.toLowerCase()).includes(filter.toLowerCase())) {
+                    return false;
                 }
             }
             return true;
@@ -244,8 +219,6 @@ export default function DataSourcesComponent(): ReactElement {
                     </div>
                 </div>
                 <RenderDataSources/>
-                <button onClick={getData}>click</button>
-                <button onClick={checkData}>click</button>
             </div>
         </>
     );

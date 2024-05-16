@@ -38,11 +38,6 @@ export interface IDataSourceFilters {
     diseaseTypes: string[];
 }
 
-export interface IDiseaseTypesMapping {
-    name: string;
-    diseaseTypes: string;
-}
-
 export interface IDataSourcesDC {
     data: string[];
     ddls: string[];
@@ -51,7 +46,8 @@ export interface IDataSourcesDC {
     search_tags: string[];
     target: string[];
     thumbnail: string;
-    thumbnail_border: boolean;
+    thumbnail_border?: boolean;
     type: string[];
     url: string;
+    disease_type: string[]
 }
