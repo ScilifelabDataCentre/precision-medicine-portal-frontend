@@ -36,7 +36,7 @@ export interface ICardContent {
 export interface IDataSourceFilters {
     dataTypes: string[];
     diseaseTypes: string[];
-}
+};
 
 export interface IDataSourcesDC {
     data: string[];
@@ -50,4 +50,4 @@ export interface IDataSourcesDC {
     type: string[];
     url: string;
     disease_type: string[]
-}
+};
