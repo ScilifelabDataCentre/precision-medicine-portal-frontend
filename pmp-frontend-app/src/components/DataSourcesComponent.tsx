@@ -161,7 +161,7 @@ export default function DataSourcesComponent(): ReactElement {
                     .map((item, index) => (
                         <div key={index} className="form-control rounded-[10px] shadow border-2 border-neutral">
                             <div className="bg-neutral p-3 flow-root rounded-t-[8px]">
-                                <a href={item.url} className="text-neutral-content float-left text-xl">{item.name}</a>
+                                <a href={item.url} target="_blank" className="text-neutral-content float-left text-xl">{item.name}</a>
                                 <p className="flex float-right">IMG_PLACEHOLDER</p>
                             </div>
                             <p className="p-3">{item.description}</p>
