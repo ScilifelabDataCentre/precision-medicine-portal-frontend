@@ -1,6 +1,6 @@
 import { ReactElement } from 'react';
 import CardComponent from "../components/CardComponent";
-import ImageCarouselComponent from "../components/ImageCarouselComponent";
+import ImageCarouselAlternativeComponent from "../components/ImageCarouselAlternativeComponent";
 import { BODY_CLASSES, BUTTON_TYPE_ONE, H_1} from '../constants';
 import { ICardConfig, ICardContent } from '../interfaces/types';
 import { TrackPageViewIfEnabled } from '../util/cookiesHandling';
@@ -55,7 +55,9 @@ export default function HomePage(): ReactElement {
     return (
         <div>
             <div className={BODY_CLASSES}>
-                <ImageCarouselComponent />
+                <ImageCarouselAlternativeComponent />
+                {
+  /* Commented out until the team has sufficient time to fill the cards with useful content
                 <div className="flex flex-row justify-between">
                     <div className="flex flex-col space-y-1.5">
                         <h1 className={H_1}>Latest News</h1>
@@ -74,6 +76,8 @@ export default function HomePage(): ReactElement {
                         <CardComponent cardConfig={cardConfig['blackCard']} cardContent={cardContent['blackCard1']} />
                     </div>
                 </div>
+  */
+}
             </div>
         </div>
     );
