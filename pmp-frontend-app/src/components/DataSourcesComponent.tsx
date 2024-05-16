@@ -159,9 +159,9 @@ export default function DataSourcesComponent(): ReactElement {
                     .filter(data => applyDiseaseTypeFilter(data))
                     .filter(data => applySearchBar(data))
                     .map((item, index) => (
-                        <div key={index} className="form-control bg-opacity-95 rounded-[10px] shadow border-2 border-neutral">
-                            <div className="bg-neutral p-3 flow-root">
-                                <a href={item.url} className="font-bold text-secondary float-left">{item.name}</a>
+                        <div key={index} className="form-control rounded-[10px] shadow border-2 border-neutral">
+                            <div className="bg-neutral p-3 flow-root rounded-t-[8px]">
+                                <a href={item.url} className="text-neutral-content float-left text-xl">{item.name}</a>
                                 <p className="flex float-right">IMG_PLACEHOLDER</p>
                             </div>
                             <p className="p-3">{item.description}</p>
@@ -177,10 +177,10 @@ export default function DataSourcesComponent(): ReactElement {
 
     return (
         <>
-            <div className="grid grid-cols-3 text-neutral-content">
+            <div className="grid grid-cols-3 text-neutral-content pt-16">
                 <div className="space-y-6 col-span-1">
                     <div className="flex flex-col space-y-2 w-80">
-                        <label className="font-bold">Search</label>
+                        <label className="font-bold text-xl">Search</label>
                         <input 
                             type="text"
                             name="search"
@@ -191,7 +191,7 @@ export default function DataSourcesComponent(): ReactElement {
                         />
                     </div>
                     <div className="flex flex-col space-y-2">
-                        <h2 className="font-bold">Data Type</h2>
+                        <h2 className="font-bold text-xl">Data Type</h2>
                         <div className="form-control w-80 rounded-[10px] shadow border-2 border-neutral p-3">
                             {filters.dataTypes.map((element, index) =>
                                 <div className="flex flex-row">
@@ -207,7 +207,7 @@ export default function DataSourcesComponent(): ReactElement {
                                 </div>
                             )}
                         </div>
-                        <h2 className="font-bold pt-4">Disease Type</h2>
+                        <h2 className="font-bold pt-4 text-xl">Disease Type</h2>
                         <div className="form-control w-80 rounded-[10px] shadow border-2 border-neutral p-3">
                             {filters.diseaseTypes.map((element, index) =>
                                 <div className="flex flex-row">
