@@ -198,7 +198,7 @@ export default function DataSourcesComponent(): ReactElement {
                                     <label key={element} className="label cursor-pointer">
                                         <input 
                                             type="checkbox" 
-                                            className="checkbox border-gray-300 [--chkbg:theme(colors.primary)] [--chkfg:oklch(var(--a))]" 
+                                            className="checkbox border-gray-300 [--chkbg:theme(colors.primary)] [--chkfg:white]"
                                             onChange={() => checkedDataFilter("dataType", element.toLowerCase(), index)}
                                             checked={checkedList[index]}
                                         />
@@ -214,7 +214,7 @@ export default function DataSourcesComponent(): ReactElement {
                                     <label key={element} className="label cursor-pointer">
                                         <input 
                                             type="checkbox" 
-                                            className="checkbox border-gray-300" 
+                                            className="checkbox border-gray-300 [--chkbg:theme(colors.primary)] [--chkfg:white]"
                                             onChange={() => checkedDataFilter("diseaseType", element.toLowerCase(), filters.dataTypes.length+index)}
                                             checked={checkedList[filters.dataTypes.length+index]}
                                         />
