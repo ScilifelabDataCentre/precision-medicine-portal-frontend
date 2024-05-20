@@ -43,6 +43,9 @@ export default function HeaderComponent() {
         case "/about/faq":
           textBar = AboutPageContent.textBar;
           break;
+        case "/about/team":
+          textBar = AboutPageContent.textBar;
+          break;
         case "/about/partners":
           textBar = AboutPageContent.textBar;
           break;

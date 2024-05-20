@@ -29,9 +29,10 @@ export default function AboutPage(): ReactElement {
                 </div>
                 <div className={H_1}>{pageTitle}</div>
                 <div role="tablist" className="tabs tabs-lifted pb-4">
-                    <NavLink to='/about/product' role='tab' className={({ isActive }) => `tab ${ isActive ? 'tab-active' : ''}`}>Product</NavLink>
-                    <NavLink to='/about/faq' role='tab' className={({ isActive }) => `tab ${ isActive ? 'tab-active' : ''}`}>FAQ</NavLink>
-                    <NavLink to='/about/partners' role='tab' className={({ isActive }) => `tab ${ isActive ? 'tab-active' : ''}`}>Partners</NavLink>
+                    <NavLink to='/about/product' role='tab' className={({ isActive }) => `tab ${ isActive ? 'tab-active text-info-content !bg-info' : 'bg-white shadow'}`}>Product</NavLink>
+                    <NavLink to='/about/faq' role='tab' className={({ isActive }) => `tab ${ isActive ? 'tab-active text-info-content !bg-info' : 'bg-white shadow'}`}>FAQ</NavLink>
+                    <NavLink to='/about/team' role='tab' className={({ isActive }) => `tab ${ isActive ? 'tab-active text-info-content !bg-info' : 'bg-white shadow'}`}>Team</NavLink>
+                    <NavLink to='/about/partners' role='tab' className={({ isActive }) => `tab ${ isActive ? 'tab-active text-info-content !bg-info' : 'bg-white shadow'}`}>Partners</NavLink>
                 </div>
                 <Outlet />
             </div>
