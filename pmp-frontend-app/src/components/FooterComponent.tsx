@@ -29,7 +29,7 @@ export default function FooterComponent(): ReactElement {
       'svgLI': {
         href: "https://se.linkedin.com/company/scilifelab-data-centre", 
         xmlns: 'http://www.w3.org/2000/svg', 
-        width: "23", 
+        width: "25", 
         height: "23",
         viewBox: "5 5 40 40",
         classes: 'fill-current', 
