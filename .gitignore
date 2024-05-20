@@ -9,3 +9,5 @@
 
 /pmp-frontend-app/npm-debug.log*
 pmp-frontend-app/public/.DS_Store
+
+/react-app
