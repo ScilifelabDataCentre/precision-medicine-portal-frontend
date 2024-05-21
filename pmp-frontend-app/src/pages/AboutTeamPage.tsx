@@ -9,11 +9,11 @@ export default function AboutTeamPage(): ReactElement {
 
     var cardConfig: { [id: string] : ICardConfig; } = {
         'teamCard': { 
-            cardClasses: "card w-96 bg-white shadow-xl", 
+            cardClasses: "card h-[46rem] w-96 bg-white shadow-xl", 
             titleClasses: "card-title",
             subTitleClasses: "italic",
             textClasses: "",
-            imgClasses: "object-cover h-96 w-96",
+            imgClasses: "object-cover h-96 w-96 rounded-t-[8px]",
             buttonClasses: "", 
             buttonPlacement: "",  
         },
