@@ -158,15 +158,17 @@ export default function DataSourcesComponent(): ReactElement {
                     .filter(data => applyDataTypeFilter(data))
                     .filter(data => applyDiseaseTypeFilter(data))
                     .filter(data => applySearchBar(data))
-                    .map((item, index) => (
-                        <div key={index} className="form-control rounded-[10px] shadow border-2 border-neutral">
-                            <div className="bg-neutral p-3 flow-root rounded-t-[8px]">
-                                <a href={item.url} target="_blank" className="text-neutral-content float-left text-xl">{item.name}</a>
-                                <p className="flex float-right">IMG_PLACEHOLDER</p>
+                    .map((item, index) => {
+                        return (
+                            <div key={index} className="form-control rounded-[10px] shadow border-2 border-neutral">
+                                <div className="bg-neutral p-3 flow-root rounded-t-[8px]">
+                                    <a href={item.url} target="_blank" className="text-neutral-content float-left text-xl">{item.name}</a>
+                                    <img className="flex float-right h-auto w-auto" src={"/img/datasources/" + item.thumbnail.split("/").pop()?.split(".")[0] + ".png"} alt={item.name} />                            
+                                </div>
+                                <p className="p-3">{item.description}</p>
                             </div>
-                            <p className="p-3">{item.description}</p>
-                        </div>
-                ))}
+                        );
+                    })}
             </div>
         );
     }
