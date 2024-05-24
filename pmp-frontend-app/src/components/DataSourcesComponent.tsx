@@ -51,8 +51,8 @@ export default function DataSourcesComponent(): ReactElement {
 
     const [checkedList, setCheckedList] = useState<boolean[]>(checkedListBoolArr);
 
-    const dataSourcesURI: string = 'https://raw.githubusercontent.com/ScilifelabDataCentre/data.scilifelab.se/main/data/data_sources.json';
-    // const dataSourcesURI: string = 'https://raw.githubusercontent.com/SevLG/data.scilifelab.se/patch-1/data/data_sources.json';
+    // const dataSourcesURI: string = 'https://raw.githubusercontent.com/ScilifelabDataCentre/data.scilifelab.se/main/data/data_sources.json';
+    const dataSourcesURI: string = 'https://raw.githubusercontent.com/SevLG/data.scilifelab.se/patch-1/data/data_sources.json';
 
     async function getData(){
         setDataSourcesJSON([]);
@@ -158,8 +158,7 @@ export default function DataSourcesComponent(): ReactElement {
                     .filter(data => applyDataTypeFilter(data))
                     .filter(data => applyDiseaseTypeFilter(data))
                     .filter(data => applySearchBar(data))
-                    .map((item, index) => {
-                        return (
+                    .map((item, index) => (
                             <div key={index} className="form-control rounded-[10px] shadow border-2 border-neutral">
                                 <div className="bg-neutral p-3 flow-root rounded-t-[8px] pr-4">
                                     <a href={item.url} target="_blank" className="text-neutral-content float-left text-xl">{item.name}</a>
@@ -167,8 +166,7 @@ export default function DataSourcesComponent(): ReactElement {
                                 </div>
                                 <p className="p-3">{item.description}</p>
                             </div>
-                        );
-                    })}
+                        ))}
             </div>
         );
     }
