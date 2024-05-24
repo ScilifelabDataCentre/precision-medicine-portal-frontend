@@ -163,7 +163,7 @@ export default function DataSourcesComponent(): ReactElement {
                             <div key={index} className="form-control rounded-[10px] shadow border-2 border-neutral">
                                 <div className="bg-neutral p-3 flow-root rounded-t-[8px] pr-4">
                                     <a href={item.url} target="_blank" className="text-neutral-content float-left text-xl">{item.name}</a>
-                                    <img className="float-right w-62 h-16 object-scale-down" src={"/img/datasources/" + item.thumbnail.split("/").pop()?.split(".")[0] + ".png"} alt={item.name} />                            
+                                    <img className="float-right w-62 h-12 object-scale-down" src={"/img/datasources/" + item.thumbnail.split("/").pop()?.split(".")[0] + ".png"} alt={item.name} />                            
                                 </div>
                                 <p className="p-3">{item.description}</p>
                             </div>
