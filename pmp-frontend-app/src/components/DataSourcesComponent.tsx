@@ -51,8 +51,8 @@ export default function DataSourcesComponent(): ReactElement {
 
     const [checkedList, setCheckedList] = useState<boolean[]>(checkedListBoolArr);
 
-    // const dataSourcesURI: string = 'https://raw.githubusercontent.com/ScilifelabDataCentre/data.scilifelab.se/main/data/data_sources.json';
-    const dataSourcesURI: string = 'https://raw.githubusercontent.com/SevLG/data.scilifelab.se/patch-1/data/data_sources.json';
+    const dataSourcesURI: string = 'https://raw.githubusercontent.com/ScilifelabDataCentre/data.scilifelab.se/develop/data/data_sources.json';
+    // const dataSourcesURI: string = 'https://raw.githubusercontent.com/SevLG/data.scilifelab.se/patch-1/data/data_sources.json';
 
     async function getData(){
         setDataSourcesJSON([]);
