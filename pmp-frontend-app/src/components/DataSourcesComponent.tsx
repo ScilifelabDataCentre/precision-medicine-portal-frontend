@@ -31,17 +31,17 @@ export default function DataSourcesComponent(): ReactElement {
         [
             "Cancer",
             "Cardiovascular Diseases",
-            "Neurological Disorders",
-            "Genetic Disorders",
-            "Metabolic Disorders",
-            "Infectious Diseases",
             "Developmental Disorders",
-            "Rare Diseases",
             "Drug Development",
-            "Public Health",
-            "Immunological Diseases",
-            "Psychiatric Disorders",
             "General",
+            "Genetic Disorders",
+            "Immunological Diseases",
+            "Infectious Diseases",
+            "Metabolic Disorders",
+            "Neurological Disorders",
+            "Psychiatric Disorders",
+            "Public Health",
+            "Rare Diseases",
             "Various Diseases",
         ],
     };
@@ -51,8 +51,8 @@ export default function DataSourcesComponent(): ReactElement {
 
     const [checkedList, setCheckedList] = useState<boolean[]>(checkedListBoolArr);
 
-    // const dataSourcesURI: string = 'https://raw.githubusercontent.com/ScilifelabDataCentre/data.scilifelab.se/main/data/data_sources.json';
-    const dataSourcesURI: string = 'https://raw.githubusercontent.com/SevLG/data.scilifelab.se/patch-1/data/data_sources.json';
+    const dataSourcesURI: string = 'https://raw.githubusercontent.com/ScilifelabDataCentre/data.scilifelab.se/develop/data/data_sources.json';
+    // const dataSourcesURI: string = 'https://raw.githubusercontent.com/SevLG/data.scilifelab.se/patch-1/data/data_sources.json';
 
     async function getData(){
         setDataSourcesJSON([]);
@@ -159,14 +159,14 @@ export default function DataSourcesComponent(): ReactElement {
                     .filter(data => applyDiseaseTypeFilter(data))
                     .filter(data => applySearchBar(data))
                     .map((item, index) => (
-                        <div key={index} className="form-control rounded-[10px] shadow border-2 border-neutral">
-                            <div className="bg-neutral p-3 flow-root rounded-t-[8px]">
-                                <a href={item.url} target="_blank" className="text-neutral-content float-left text-xl">{item.name}</a>
-                                <p className="flex float-right">IMG_PLACEHOLDER</p>
+                            <div key={index} className="form-control rounded-[10px] shadow border-2 border-neutral">
+                                <div className="bg-neutral p-3 flow-root rounded-t-[8px] pr-4">
+                                    <a href={item.url} target="_blank" className="text-neutral-content float-left text-xl">{item.name}</a>
+                                    <img className="float-right w-62 h-12 object-scale-down object-right pl-2" src={"/img/datasources/" + item.thumbnail.split("/").pop()?.split(".")[0] + ".png"} alt={item.name} />                            
+                                </div>
+                                <p className="p-3">{item.description}</p>
                             </div>
-                            <p className="p-3">{item.description}</p>
-                        </div>
-                ))}
+                        ))}
             </div>
         );
     }
