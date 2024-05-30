@@ -5,10 +5,10 @@ import MarTeamPic from '../assets/TeamPics/MarTeamPic.png';
 import SamTeamPic from '../assets/TeamPics/SamTeamPic.jpg';
 
 export const PrivacyPageContent = {
-    textBar: 'Transparency is one of our guiding principles. Get acquainted with how we\'re creating a secure space for you.',
+    textBar: 'Transparency is key to us. Find out how we keep your space secure.',
     content: [
         {
-            header: 'Privacy Policy', 
+            header: 'Privacy Policy',
             body:
                 `
                 SciLifeLab operates the Swedish Precision Medicine Portal, which provides the Service. This page is 
@@ -22,7 +22,7 @@ export const PrivacyPageContent = {
                 `,
         },
         {
-            header: 'Visitor statistics', 
+            header: 'Visitor Statistics', 
             body:
                 `
                 We want to inform you that whenever you visit our Service, we collect the information that your 
@@ -81,7 +81,7 @@ export const PrivacyPageContent = {
 }
 
 export const ContactPageContent = {
-    textBar: 'We\'re here to help. Reach out to us with any questions or suggestions you may have.',
+    textBar: 'Reach out to us for questions, collaboration opportunities, or just to say hello.',
     content: [
         {
             header: 'Contact Form', 
@@ -185,17 +185,17 @@ export const TeamDescriptions = {
 }
 
 export const DataSourcesPageContent = {
-    textBar: 'Repositories and Data Sources in Precision Medicine',
+    textBar: 'Repositories and data sources in precision medicine.',
 }
 
 export const EventsAndTrainingsPageContent = {
-    textBar: 'This page is currently under construction. Please check back later for updates.',
+    textBar: 'Events and trainings in precision medicine.',
 }
 
 export const AboutPageContent = {
-    textBar: 'Get to know about the team behind the portal and our mission to connect you with the data you need.',
+    textBar: 'Learn about the team and partners behind the portal and our mission to connect you with the data you need.',
 }
 
 export const HomePageContent = {
-    textBar: 'An open research portal that gathers data, tools and computing facilities for precision medicine-related research.',
+    textBar: 'An open-access portal that aggregates data, tools, and resources for Swedish precision medicine research.',
 }
