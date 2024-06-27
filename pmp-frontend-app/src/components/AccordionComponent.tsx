@@ -10,7 +10,7 @@ export default function AccordionComponent(): ReactElement {
                     What is the Data Science Node in Precision Medicine & Diagnostics?
                 </div>
                 <div className="collapse-content"> 
-                    <p>TBD.</p>
+                    <p>We are one out of the four Data Driven Life Sciences nodes at SciLifeLab; our node is hosted by Karolinska Institutet. Established in late 2023, we are currently organising our efforts to develop technologies and data support that aid Swedish precision medicine researchers and bridge the gap between hospital and research. By providing robust data science tools and support, we aim to empower researchers who focus on enhancing diagnostics and personalised treatment strategies, facilitating the translation of precision medicine innovations into clinical practice. Our work is specifically driven by the Data Centre, a central hub within SciLifeLab. </p>
                 </div>
             </div>
             <div className="collapse collapse-arrow bg-neutral">
