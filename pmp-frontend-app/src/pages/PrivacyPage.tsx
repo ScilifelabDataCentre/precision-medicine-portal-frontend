@@ -59,7 +59,21 @@ export default function PrivacyPage(): ReactElement {
                     </div>
                 </div>
                 <div className="divider">{PrivacyPageContent.content[2].header}</div>
-                <p>{PrivacyPageContent.content[2].body}</p>
+                <p>
+                    We collect information that your browser sends to us whenever you visit our Service, referred to as 'log data.' This data may include:
+                </p>
+                <ul className="list-disc pl-4">
+                    <li>The website you visited us from</li>
+                    <li>The parts of our Service you visit</li>
+                    <li>The date and duration of your visit</li>
+                    <li>Your anonymised IP address</li>
+                    <li>Information about the device you used during your visit (device type, operating system, screen resolution, language, country you are located in, and web browser type)</li>
+                </ul>
+                <p>
+                    We process this usage data using Matomo Analytics (hosted on SciLifeLab servers and operated solely by SciLifeLab)
+                    for statistical purposes, to improve our Service, and to recognise and prevent any misuse. You can opt out of your statistics 
+                    being collected below. Note that the tracking opt-out feature requires cookies to be enabled. 
+                </p>
                 <div className="divider">{PrivacyPageContent.content[3].header}</div>
                 <p>{PrivacyPageContent.content[3].body}</p>
                 <div className="divider">{PrivacyPageContent.content[4].header}</div>
