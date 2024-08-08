@@ -11,62 +11,68 @@ export const PrivacyPageContent = {
             header: 'Privacy Policy',
             body:
                 `
-                SciLifeLab operates the Swedish Precision Medicine Portal, which provides the Service. This page is 
-                used to inform website visitors regarding our personal data processing policy. If you choose to use 
-                our Service, then your personal data will be processed in accordance with this policy. The personal 
-                information that we collect is used for providing and improving the Service. We will not use 
-                or share your information with anyone except as described in this policy. All collected personal 
-                information will be processed for research purposes, i.e. using the lawful basis of public interest 
-                and in accordance with Regulation (EU) 2016/679 of the European Parliament and of the Council of 
-                27 April 2016, the General Data Protection Regulation.
+                SciLifeLab operates the Swedish Precision Medicine Portal, which provides the Service. This page is intended to 
+                inform website visitors about our personal data processing policy. By using our Service, you agree that your 
+                personal data will be processed in accordance with this policy. 
+                `,
+        },
+        {
+            header: 'Data Collection and Usage', 
+            body:
+                `
+                The personal information we collect is used solely for
+                providing and improving the Service. We will not use or share your information with anyone except 
+                as described in this policy. All collected personal information will be processed for research purposes under 
+                the lawful basis of public interest and in compliance with Regulation (EU) 2016/679 of the European Parliament 
+                and of the Council of 27 April 2016, the General Data Protection Regulation (GDPR).
                 `,
         },
         {
             header: 'Visitor Statistics', 
             body:
                 `
-                We want to inform you that whenever you visit our Service, we collect the information that your 
-                browser sends to us, which is called "log data". Log data may include: the website that you 
-                visited us from, the parts of our Service you visit, the date and duration of your visit, 
-                your anonymised IP address, information from the device that you used during your visit (device 
-                type, operating system, screen resolution, language, country you are located in, and 
-                web browser type), and more. We process this usage data in Matomo Analytics (hosted on 
-                SciLifeLab servers and operated solely by SciLifeLab) for statistical purposes, to 
-                improve our Service, and to recognise and stop any misuse. You can opt out of your 
-                statistics being collected below:\n\nThe tracking opt-out feature requires cookies to be enabled.
+                We collect information that your browser sends to us whenever you visit our Service, referred to as 'log data.' 
+                This data may include: 
+                •	The website you visited us from
+                •	The parts of our Service you visit
+                •	The date and duration of your visit
+                •	Your anonymised IP address
+                •	Information about the device you used during your visit (device type, operating system, screen resolution, language, country you are located in, and web browser type)
+                We process this usage data using Matomo Analytics (hosted on SciLifeLab servers and operated solely by SciLifeLab)
+                for statistical purposes, to improve our Service, and to recognise and prevent any misuse. You can opt out of your statistics 
+                being collected below. Note that the tracking opt-out feature requires cookies to be enabled. 
                 `,
         },
         {
             header: 'Forms', 
             body:
                 `
-                Our Service contains a number of forms that visitors can use to contact us or send us suggestions. 
+                Our Service contains several forms that visitors can use to contact us or provide suggestions. 
                 The website visitors may choose to provide their personal information such as their name and e-mail 
                 address through these forms. The following parties will have access to processing the personal data 
                 provided through the forms; SciLifeLab Data Centre, Uppsala University, Kungliga Tekniska högskolan 
                 (KTH). Your personal data will be deleted when no longer needed, or when stipulated by the archival 
                 rules for the university as a government authority. If you want to update or remove your personal data, 
-                please contact the controller SciLifeLab Data Centre at Uppsala University using x@scilifelab.se                            
+                please contact the controller SciLifeLab Data Centre at Uppsala University using datacentre@scilifelab.se                            
                 `,
         },
         {
             header: 'Links to Other Sites',
             body:
                 `
-                Our Service may contain links to other sites. If you click on a third-party link, you will be 
-                directed to that site. Note that these external sites are not operated by us. Therefore, we 
-                strongly advise you to review the privacy policy of these websites. We have no control over, 
-                and assume no responsibility for, the content, privacy policies, or practices of any third-party 
-                sites or services.
+                Our Service may contain links to other sites. If you click on a third-party link, you will be directed to that site. 
+                These external sites are not operated by us, and we strongly advise you to review the privacy policy of these websites. 
+                We have no control over and assume no responsibility for the content, privacy policies, 
+                or practices of any third-party sites or services.
                 `,
         },
         {
             header: 'Changes to This Privacy Policy',
             body:
                 `
-                We may update our privacy policy from time to time. Thus, we advise you to review this page 
-                periodically for any changes. We will notify you of any changes by posting the new privacy policy 
-                on this page. These changes posted on this page are effective immediately.
+                We may update our privacy policy from time to time. We advise you to review this page periodically for any changes. 
+                We will notify you of any changes by posting the new privacy policy on this page. Changes are effective immediately 
+                upon being posted on this page. 
                 `,
         },
         {
