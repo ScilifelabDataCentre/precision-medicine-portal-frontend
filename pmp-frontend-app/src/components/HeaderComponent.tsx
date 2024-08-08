@@ -3,15 +3,16 @@ import { ILink } from '../interfaces/types';
 import { LINK_CLASSES } from '../constants';
 import sciLifeLogo from '../assets/SciLifeLab logo/Precisionmedicineportal_logo_white.png';
 import { useLocation } from 'react-router-dom';
-import { AboutPageContent, ContactPageContent, DataSourcesPageContent, EventsAndTrainingsPageContent, HomePageContent, PrivacyPageContent } from '../content/content';
+import { AboutPageContent, ContactPageContent, DataSourcesPageContent, EventsAndTrainingsPageContent, HomePageContent, PrivacyPageContent, ClinicalDataPageContent } from '../content/content';
 
 export default function HeaderComponent() {
     
     let links: { [id: string] : ILink; } = {
         'l1': { text: 'Data Sources', classes: LINK_CLASSES, link: 'datasources' },
         'l2': { text: 'Events & Trainings', classes: LINK_CLASSES, link: 'eventsandtrainings' },
-        'l3': { text: 'Contact', classes: LINK_CLASSES, link: 'contact' },
-        'l4': { text: 'About Us', classes: LINK_CLASSES, link: 'about' },
+        'l3': { text: 'Access Clinical Data', classes: LINK_CLASSES, link: '/accessclinicaldata' },
+        'l4': { text: 'Contact', classes: LINK_CLASSES, link: 'contact' },
+        'l5': { text: 'About Us', classes: LINK_CLASSES, link: 'about' },
     };
     
     {/*
@@ -51,6 +52,9 @@ export default function HeaderComponent() {
           break;
         case "/privacy":
           textBar = PrivacyPageContent.textBar;
+          break;
+        case "/accessclinicaldata":
+          textBar = ClinicalDataPageContent.textBar;
           break;
         default:
           textBar = "";
