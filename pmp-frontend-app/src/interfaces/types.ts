@@ -49,5 +49,18 @@ export interface IDataSourcesDC {
     thumbnail_border?: boolean;
     type: string[];
     url: string;
-    disease_type: string[]
+    disease_type: string[];
+};
+
+export interface RegistrySources {
+
+    name: string;
+    url: string;
+    registry_centre: string[];
+    geographic_location: string[];
+};
+
+export interface RegistrySourcesFilters {
+    registryCentre: string[];
+    geographicLocation: string[];
 };

@@ -209,3 +209,7 @@ export const HomePageContent = {
 export const ClinicalDataPageContent = {
     textBar: 'How to access clinical data',
 }
+
+export const RegistryPageContent = {
+    textBar: 'Quality registries in Sweden',
+}

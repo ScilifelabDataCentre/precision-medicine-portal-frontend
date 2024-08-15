@@ -1,0 +1,1729 @@
+[
+    {
+        "name": "Barnobesitasregister i Sverige – BORIS",
+        "registry_centre": [
+            "Kvalitetsregistercentrum Stockholm"
+        ],
+        "geographic_location": [
+            "National"
+        ],
+        "url": "http://www.e-boris.se/",
+        "description": "Collects data on childhood obesity treatments, patient health, and long-term outcomes to improve care quality and monitor intervention effectiveness.",
+        "search_tags": [
+            "BORIS",
+            "childhood obesity",
+            "Sverige",
+            "obesity"
+        ]
+    },
+    {
+        "name": "Endovaskulär behandling av Stroke – EVAS-registret",
+        "registry_centre": [
+            "Kvalitetsregistercentrum Stockholm"
+        ],
+        "geographic_location": [
+            "National"
+        ],
+        "url": "http://www.evas-registret.se/",
+        "description": "Gathers data on endovascular stroke treatments, procedural details, and patient outcomes to enhance care quality.",
+        "search_tags": [
+            "stroke",
+            "endovascular",
+            "stroke",
+            "Endovaskulär"
+        ]
+    },
+    {
+        "name": "Graviditetsregistret",
+        "registry_centre": [
+            "Kvalitetsregistercentrum Stockholm"
+        ],
+        "geographic_location": [
+            "National"
+        ],
+        "url": "https://www.medscinet.com/gr/default.aspx",
+        "description": "Monitors prenatal, perinatal, and postnatal care, collecting data on maternal health and neonatal outcomes to improve pregnancy care.",
+        "search_tags": [
+            "Graviditetsregistret",
+            "baby",
+            "prenatal",
+            "postnatal",
+            "fetal",
+            "neonatal"
+        ]
+    },
+    {
+        "name": "InfCareHIV",
+        "registry_centre": [
+            "Kvalitetsregistercentrum Stockholm"
+        ],
+        "geographic_location": [
+            "National"
+        ],
+        "url": "https://infcarehiv.se/",
+        "description": "Collects data on HIV treatment outcomes, patient health, and disease progression to optimise care.",
+        "search_tags": [
+            "HIV",
+            "InfCareHIV",
+            "immune",
+            "virus"
+        ]
+    },
+    {
+        "name": "InfCareHepatit",
+        "registry_centre": [
+            "Kvalitetsregistercentrum Stockholm"
+        ],
+        "geographic_location": [
+            "National"
+        ],
+        "url": "http://www.infcarehepatit.se/",
+        "description": "Tracks hepatitis treatment data, patient health, and outcomes to enhance care effectiveness.",
+        "search_tags": [
+            "liver",
+            "hepatitis",
+            "virus",
+            "InfCareHepatit"
+        ]
+    },
+    {
+        "name": "Kvalitetsregister för cystisk fibros – CF-registret",
+        "registry_centre": [
+            "Kvalitetsregistercentrum Stockholm"
+        ],
+        "geographic_location": [
+            "National"
+        ],
+        "url": "https://cf-registret.se/",
+        "description": "Monitors cystic fibrosis treatment, patient health, and long-term outcomes to improve care quality.",
+        "search_tags": [
+            "lungs",
+            "cystic fibrosis",
+            "CF-registret"
+        ]
+    },
+    {
+        "name": "Nationellt kvalitetsregister för assisterad befruktning – Q-IVF",
+        "registry_centre": [
+            "Kvalitetsregistercentrum Stockholm"
+        ],
+        "geographic_location": [
+            "National"
+        ],
+        "url": "https://www.medscinet.com/qivf/",
+        "description": "Gathers data on assisted reproduction treatments and success rates to enhance reproductive care.",
+        "search_tags": [
+            "reproduction",
+            "assisted reproduction",
+            "medscinet"
+        ]
+    },
+    {
+        "name": "Svenska hemofiliregistret",
+        "registry_centre": [
+            "Kvalitetsregistercentrum Stockholm"
+        ],
+        "geographic_location": [
+            "National"
+        ],
+        "url": "https://svenskahemofiliregistret.se/",
+        "description": "Tracks hemophilia treatment, patient outcomes, and health data to improve care.",
+        "search_tags": [
+            "hemophilia",
+            "bleeding",
+            "blood",
+            "hemofiliregistret"
+        ]
+    },
+    {
+        "name": "Svenska Intensivvårdsregistret – SIR",
+        "registry_centre": [
+            "Kvalitetsregistercentrum Stockholm"
+        ],
+        "geographic_location": [
+            "National"
+        ],
+        "url": "https://www.icuregswe.org/",
+        "description": "Collects data on intensive care treatments, patient health, and outcomes to improve critical care.",
+        "search_tags": [
+            "SIR",
+            "Intensivvårdsregistret",
+            "intensive care",
+            "Svenska"
+        ]
+    },
+    {
+        "name": "Svenska korsbandsregistret",
+        "registry_centre": [
+            "Kvalitetsregistercentrum Stockholm"
+        ],
+        "geographic_location": [
+            "National"
+        ],
+        "url": "https://www.aclregister.nu/",
+        "description": "Monitors ACL injury treatments, patient recovery, and outcomes to improve care.",
+        "search_tags": [
+            "ACL",
+            "korsbandsregistret"
+        ]
+    },
+    {
+        "name": "Svenska neuroregister",
+        "registry_centre": [
+            "Kvalitetsregistercentrum Stockholm"
+        ],
+        "geographic_location": [
+            "National"
+        ],
+        "url": "https://www.neuroreg.se/",
+        "description": "Tracks neurological treatments, patient outcomes, and disease progression to optimize care.",
+        "search_tags": [
+            "neuroregister",
+            "nervous system",
+            "neurological treatments",
+            "Svenska"
+        ]
+    },
+    {
+        "name": "Svensk Reumatologis Kvalitetsregister – SRQ",
+        "registry_centre": [
+            "Kvalitetsregistercentrum Stockholm"
+        ],
+        "geographic_location": [
+            "National"
+        ],
+        "url": "http://srq.nu/",
+        "description": "Collects data on rheumatic disease treatments, patient health, and outcomes to enhance care.",
+        "search_tags": [
+            "arthritis",
+            "rheumatic disease",
+            "SRQ"
+        ]
+    },
+    {
+        "name": "Svenskt neonatalt kvalitetsregister – SNQ",
+        "registry_centre": [
+            "Kvalitetsregistercentrum Stockholm"
+        ],
+        "geographic_location": [
+            "National"
+        ],
+        "url": "https://www.medscinet.com/pnq/",
+        "description": "Monitors neonatal care, including treatment details and outcomes, to improve newborn health.",
+        "search_tags": [
+            "newborn",
+            "neonatal care",
+            "neonatalt",
+            "SNQ"
+        ]
+    },
+    {
+        "name": "InfCare Sprututbyte",
+        "registry_centre": [
+            "Kvalitetsregistercentrum Stockholm"
+        ],
+        "geographic_location": [
+            "Regional"
+        ],
+        "url": "url missing",
+        "description": "Tracks data from needle exchange programmes, focusing on harm reduction and disease prevention.",
+        "search_tags": [
+            "Sprututbyte",
+            "needle exchange",
+            "harm reduction",
+            "InfCare"
+        ]
+    },
+    {
+        "name": "Nationellt register för levertransplantation",
+        "registry_centre": [
+            "Kvalitetsregistercentrum Stockholm"
+        ],
+        "geographic_location": [
+            "Regional"
+        ],
+        "url": "url missing",
+        "description": "Collects data on liver transplantation procedures, patient health, and outcomes to improve care.",
+        "search_tags": [
+            "liver transplant",
+            "levertransplantatation"
+        ]
+    },
+    {
+        "name": "Lungfibrosregistret",
+        "registry_centre": [
+            "Kvalitetsregistercentrum Stockholm"
+        ],
+        "geographic_location": [
+            "Regional"
+        ],
+        "url": "http://slmf.se/kvalitetsregister/lungfibrosregistret/",
+        "description": "Monitors lung fibrosis treatments, patient outcomes, and disease progression to enhance care.",
+        "search_tags": [
+            "fibrosis",
+            "Lungfibrosregistret",
+            "lung",
+            "pulmonary"
+        ]
+    },
+    {
+        "name": "Svenskt kvalitetsregister för atopiskt dermatit – SwedAD",
+        "registry_centre": [
+            "Kvalitetsregistercentrum Stockholm"
+        ],
+        "geographic_location": [
+            "Regional"
+        ],
+        "url": "https://swedad.nu/",
+        "description": "Tracks atopic dermatitis treatments, patient health, and outcomes to improve care quality.",
+        "search_tags": [
+            "skin",
+            "SwedAD",
+            "eczema",
+            "atopic dermatitis"
+        ]
+    },
+    {
+        "name": "Amputations- och Protesregistret Swedeamp",
+        "registry_centre": [
+            "Registercentrum Syd"
+        ],
+        "geographic_location": [
+            "National"
+        ],
+        "url": "http://www.swedeamp.com/",
+        "description": "Collects data on amputations, prosthetic use, and patient outcomes to enhance rehabilitation.",
+        "search_tags": [
+            "amputation",
+            "swedeamp",
+            "prosthetic",
+            "limb"
+        ]
+    },
+    {
+        "name": "Barnkataraktregistret PECARE",
+        "registry_centre": [
+            "Registercentrum Syd"
+        ],
+        "geographic_location": [
+            "National"
+        ],
+        "url": "https://rcsyd.se/pecare",
+        "description": "Monitors paediatric cataract treatments and outcomes to improve care.",
+        "search_tags": [
+            "paediatric",
+            "PECARE",
+            "eye",
+            "cataract"
+        ]
+    },
+    {
+        "name": "BPSD – Svenskt register för Beteendemässiga och Psykiska Symptom vid Demens",
+        "registry_centre": [
+            "Registercentrum Syd"
+        ],
+        "geographic_location": [
+            "National"
+        ],
+        "url": "http://www.bpsd.se/",
+        "description": "Tracks behavioural and psychological symptoms in dementia patients to enhance care.",
+        "search_tags": [
+            "BPSD",
+            "dementia",
+            "psychological",
+            "demens"
+        ]
+    },
+    {
+        "name": "CPUP – Uppföljningsprogram för Cerebral Pares",
+        "registry_centre": [
+            "Registercentrum Syd"
+        ],
+        "geographic_location": [
+            "National"
+        ],
+        "url": "http://cpup.se/",
+        "description": "Collects data on cerebral palsy treatments and patient outcomes to improve care.",
+        "search_tags": [
+            "treatment",
+            "palsy",
+            "cerebral palsy",
+            "cpup"
+        ]
+    },
+    {
+        "name": "HAKIR – Handkirurgiskt kvalitetsregister",
+        "registry_centre": [
+            "Registercentrum Syd"
+        ],
+        "geographic_location": [
+            "National"
+        ],
+        "url": "http://hakir.se/",
+        "description": "Monitors hand surgery outcomes, patient recovery, and care quality.",
+        "search_tags": [
+            "hand",
+            "HAKIR",
+            "surgery",
+            "reconstruction"
+        ]
+    },
+    {
+        "name": "Könsdysforiregistret",
+        "registry_centre": [
+            "Registercentrum Syd"
+        ],
+        "geographic_location": [
+            "National"
+        ],
+        "url": "https://rcsyd.se/konsdysforiregistret",
+        "description": "Tracks gender dysphoria treatments, patient outcomes, and care effectiveness.",
+        "search_tags": [
+            "dysphoria",
+            "gender",
+            "identity",
+            "Könsdysforiregistret"
+        ]
+    },
+    {
+        "name": "LKG-registret – Nationellt kvalitetsregister för läpp- käk- och/eller gomspalt",
+        "registry_centre": [
+            "Registercentrum Syd"
+        ],
+        "geographic_location": [
+            "National"
+        ],
+        "url": "http://www.lkg-registret.se/",
+        "description": "Monitors cleft lip and palate treatments, patient outcomes, and care quality.",
+        "search_tags": [
+            "cleft lip",
+            "lip",
+            "palate"
+        ]
+    },
+    {
+        "name": "MMCUP – Kvalitetsregister för MMC (myelomeningocele) och annan neuralrörsdefekt",
+        "registry_centre": [
+            "Registercentrum Syd"
+        ],
+        "geographic_location": [
+            "National"
+        ],
+        "url": "http://mmcup.se/",
+        "description": "Tracks outcomes of treatments for neural tube defects, including patient health data.",
+        "search_tags": [
+            "MMCUP",
+            "myelomeningocele",
+            "neural tube defect"
+        ]
+    },
+    {
+        "name": "Nationella Kataraktregistret",
+        "registry_centre": [
+            "Registercentrum Syd"
+        ],
+        "geographic_location": [
+            "National"
+        ],
+        "url": "http://www.kataraktreg.se/",
+        "description": "Collects data on cataract surgeries, including procedural details and outcomes.",
+        "search_tags": [
+            "eye",
+            "vision",
+            "cataract"
+        ]
+    },
+    {
+        "name": "Nationella Kvalitetsregistret för Infektionssjukdomar",
+        "registry_centre": [
+            "Registercentrum Syd"
+        ],
+        "geographic_location": [
+            "National"
+        ],
+        "url": "http://www.infektionsregistret.se/",
+        "description": "Monitors infectious disease treatments and outcomes to improve care.",
+        "search_tags": [
+            "pathogen",
+            "infectious disease",
+            "infectious",
+            "infektionsregistret"
+        ]
+    },
+    {
+        "name": "RIKSHÖFT",
+        "registry_centre": [
+            "Registercentrum Syd"
+        ],
+        "geographic_location": [
+            "National"
+        ],
+        "url": "http://rikshoft.se/",
+        "description": "Tracks hip fracture treatments, patient recovery, and outcomes.",
+        "search_tags": [
+            "RIKSHÖFT",
+            "fracture",
+            "hip",
+            "bone"
+        ]
+    },
+    {
+        "name": "SKaPa – Svenskt kvalitetsregister för Karies och Parodontit",
+        "registry_centre": [
+            "Registercentrum Syd"
+        ],
+        "geographic_location": [
+            "National"
+        ],
+        "url": "http://www.skapareg.se/",
+        "description": "Collects data on dental caries, periodontitis, and treatment outcomes.",
+        "search_tags": [
+            "Parodontit",
+            "dental caries",
+            "SKaPa",
+            "periodontitis"
+        ]
+    },
+    {
+        "name": "SKRS – Svenskt Kvalitetsregister för Rehabilitering vid Synnedsättning",
+        "registry_centre": [
+            "Registercentrum Syd"
+        ],
+        "geographic_location": [
+            "National"
+        ],
+        "url": "https://rcsyd.se/skrs",
+        "description": "Monitors vision rehabilitation outcomes and patient care.",
+        "search_tags": [
+            "Synnedsättning",
+            "vision rehabilitation",
+            "eyesight"
+        ]
+    },
+    {
+        "name": "SQRTPA – Scandinavian Quality Register for Thyroid, Parathyroid and Adrenal surgery",
+        "registry_centre": [
+            "Registercentrum Syd"
+        ],
+        "geographic_location": [
+            "National"
+        ],
+        "url": "http://sqrtpa.se/",
+        "description": "Tracks outcomes of thyroid, parathyroid, and adrenal surgeries.",
+        "search_tags": [
+            "parathyroid",
+            "thyroid",
+            "Adrenal",
+            "endocrine"
+        ]
+    },
+    {
+        "name": "Svenska Cornearegistret",
+        "registry_centre": [
+            "Registercentrum Syd"
+        ],
+        "geographic_location": [
+            "National"
+        ],
+        "url": "https://rcsyd.se/cornea",
+        "description": "Collects data on corneal transplant surgeries and outcomes.",
+        "search_tags": [
+            "transplant",
+            "corneal",
+            "Cornearegistret",
+            "vision"
+        ]
+    },
+    {
+        "name": "Svenska Nationella Fotledsregistret",
+        "registry_centre": [
+            "Registercentrum Syd"
+        ],
+        "geographic_location": [
+            "National"
+        ],
+        "url": "http://www.swedankle.se/",
+        "description": "Monitors ankle surgery outcomes and patient recovery.",
+        "search_tags": [
+            "orthopedics",
+            "surgery",
+            "ankle",
+            "ankle surgery"
+        ]
+    },
+    {
+        "name": "Svenska Makularegistret",
+        "registry_centre": [
+            "Registercentrum Syd"
+        ],
+        "geographic_location": [
+            "National"
+        ],
+        "url": "http://makulareg.se/",
+        "description": "Tracks treatment outcomes for macular diseases.",
+        "search_tags": [
+            "macular",
+            "eye",
+            "retina",
+            "macular diseases"
+        ]
+    },
+    {
+        "name": "Svenska Skulder- och Armbågsregistret",
+        "registry_centre": [
+            "Registercentrum Syd"
+        ],
+        "geographic_location": [
+            "National"
+        ],
+        "url": "https://rcsyd.se/ssar",
+        "description": "Monitors shoulder and elbow surgery outcomes.",
+        "search_tags": [
+            "shoulder and elbow",
+            "Armbågsregistret",
+            "shoulder"
+        ]
+    },
+    {
+        "name": "SweTrau – Svenska Traumaregistret",
+        "registry_centre": [
+            "Registercentrum Syd"
+        ],
+        "geographic_location": [
+            "National"
+        ],
+        "url": "http://www.swetrau.se/",
+        "description": "Tracks trauma treatment outcomes and patient care quality.",
+        "search_tags": [
+            "SweTrau",
+            "Traumaregistret",
+            "trauma",
+            "injury"
+        ]
+    },
+    {
+        "name": "AmbuReg – Ambulansregistret",
+        "registry_centre": [
+            "Registercentrum Syd"
+        ],
+        "geographic_location": [
+            "Regional"
+        ],
+        "url": "https://rcsyd.se/ambureg/",
+        "description": "Collects data on ambulance services, focusing on emergency care quality.",
+        "search_tags": [
+            "paramedic",
+            "AmbuReg",
+            "ambulance",
+            "emergency"
+        ]
+    },
+    {
+        "name": "Analfistelregistret",
+        "registry_centre": [
+            "Registercentrum Syd"
+        ],
+        "geographic_location": [
+            "Regional"
+        ],
+        "url": "url missing",
+        "description": "Monitors anal fistula treatment outcomes and patient recovery.",
+        "search_tags": [
+            "Analfistelregistret",
+            "colorectal",
+            "anal",
+            "fistula"
+        ]
+    },
+    {
+        "name": "GamReg Sweden – Kvalitetsregister för spel- och dataspelsberoende",
+        "registry_centre": [
+            "Registercentrum Syd"
+        ],
+        "geographic_location": [
+            "Regional"
+        ],
+        "url": "https://rcsyd.se/anslutna-register/gamreg-sweden",
+        "description": "Tracks data on treatments for gambling and gaming addiction.",
+        "search_tags": [
+            "gamreg",
+            "addiction",
+            "gambling addiction",
+            "gaming addiction"
+        ]
+    },
+    {
+        "name": "Glaukomregistret",
+        "registry_centre": [
+            "Registercentrum Syd"
+        ],
+        "geographic_location": [
+            "Regional"
+        ],
+        "url": "url missing",
+        "description": "Collects data on glaucoma treatments and patient outcomes.",
+        "search_tags": [
+            "optic nerve",
+            "glaucoma",
+            "vision",
+            "Glaukomregistret"
+        ]
+    },
+    {
+        "name": "LHON-registret – Registret för Lebers Hereditära Opticusneuropati",
+        "registry_centre": [
+            "Registercentrum Syd"
+        ],
+        "geographic_location": [
+            "Regional"
+        ],
+        "url": "url missing",
+        "description": "Monitors outcomes for Leber's hereditary optic neuropathy.",
+        "search_tags": [
+            "optic",
+            "Lebers",
+            "Leber's hereditary optic neuropathy",
+            "LHON-registret"
+        ]
+    },
+    {
+        "name": "LSR – Lund Stroke Register",
+        "registry_centre": [
+            "Registercentrum Syd"
+        ],
+        "geographic_location": [
+            "Regional"
+        ],
+        "url": "url missing",
+        "description": "Tracks stroke treatment outcomes in Lund.",
+        "search_tags": [
+            "endovascular",
+            "Register",
+            "stroke",
+            "LSR"
+        ]
+    },
+    {
+        "name": "Njurtransplantationsregistret",
+        "registry_centre": [
+            "Registercentrum Syd"
+        ],
+        "geographic_location": [
+            "Regional"
+        ],
+        "url": "url missing",
+        "description": "Collects data on kidney transplant procedures and outcomes.",
+        "search_tags": [
+            "Njurtransplantationsregistret",
+            "renal",
+            "transplant",
+            "kidney"
+        ]
+    },
+    {
+        "name": "Barnkirurgi operationsregister",
+        "registry_centre": [
+            "Registercentrum Syd"
+        ],
+        "geographic_location": [
+            "Regional"
+        ],
+        "url": "url missing",
+        "description": "Monitors outcomes of paediatric surgeries.",
+        "search_tags": [
+            "paediatric surgeries",
+            "Barnkirurgi"
+        ]
+    },
+    {
+        "name": "Register för brachyterapi vid uvealt melanom",
+        "registry_centre": [
+            "Registercentrum Syd"
+        ],
+        "geographic_location": [
+            "Regional"
+        ],
+        "url": "url missing",
+        "description": "Tracks outcomes of brachytherapy for uveal melanoma.",
+        "search_tags": [
+            "melanoma",
+            "brachytherapy",
+            "Register",
+            "uveal melanoma"
+        ]
+    },
+    {
+        "name": "Sklerodermiregistret",
+        "registry_centre": [
+            "Registercentrum Syd"
+        ],
+        "geographic_location": [
+            "Regional"
+        ],
+        "url": "url missing",
+        "description": "Monitors treatment outcomes for scleroderma patients.",
+        "search_tags": [
+            "skin",
+            "autoimmune",
+            "Sklerodermiregistret",
+            "scleroderma"
+        ]
+    },
+    {
+        "name": "Svenska Lambåregistret",
+        "registry_centre": [
+            "Registercentrum Syd"
+        ],
+        "geographic_location": [
+            "Regional"
+        ],
+        "url": "url missing",
+        "description": "Tracks outcomes of flap surgeries and patient recovery.",
+        "search_tags": [
+            "Svenska",
+            "Lambåregistret"
+        ]
+    },
+    {
+        "name": "SweAAA – Svenskt Register för Abdominellt Aortaaneurysm",
+        "registry_centre": [
+            "Registercentrum Syd"
+        ],
+        "geographic_location": [
+            "Regional"
+        ],
+        "url": "url missing",
+        "description": "Monitors outcomes of abdominal aortic aneurysm treatments.",
+        "search_tags": [
+            "aortic",
+            "abdominal aortic aneurysm",
+            "vascular"
+        ]
+    },
+    {
+        "name": "Sällsynta diagnoser",
+        "registry_centre": [
+            "Registercentrum Syd"
+        ],
+        "geographic_location": [
+            "Regional"
+        ],
+        "url": "url missing",
+        "description": "Collects data on rare diseases, focusing on diagnosis and treatment outcomes.",
+        "search_tags": [
+            "rare disease",
+            "genetic"
+        ]
+    },
+    {
+        "name": "PsoReg – Nationellt register för systembehandling av psoriasis",
+        "registry_centre": [
+            "Registercentrum Norr"
+        ],
+        "geographic_location": [
+            "National"
+        ],
+        "url": "https://psoreg.se/",
+        "description": "Tracks psoriasis treatment outcomes and patient care.",
+        "search_tags": [
+            "skin",
+            "psoriasis",
+            "PsoReg",
+            "psoriasis treatment"
+        ]
+    },
+    {
+        "name": "Riksstroke – Nationellt kvalitetsregister för strokesjukvård",
+        "registry_centre": [
+            "Registercentrum Norr"
+        ],
+        "geographic_location": [
+            "National"
+        ],
+        "url": "https://www.riksstroke.org/sve/",
+        "description": "Monitors stroke care and treatment outcomes.",
+        "search_tags": [
+            "Riksstroke",
+            "endovascular",
+            "stroke",
+            "kvalitetsregister"
+        ]
+    },
+    {
+        "name": "Svenskt Bråckregister  – Nationellt kvalitetsregister inom bråckkirurgi",
+        "registry_centre": [
+            "Registercentrum Norr"
+        ],
+        "geographic_location": [
+            "National"
+        ],
+        "url": "http://svensktbrackregister.se/",
+        "search_tags": [
+            "bråck"
+        ]
+    },
+    {
+        "name": "GynOp – Nationella kvalitetsregister inom gynekologisk kirurgi",
+        "registry_centre": [
+            "Registercentrum Norr"
+        ],
+        "geographic_location": [
+            "National"
+        ],
+        "url": "https://www.gynop.se/",
+        "description": "Monitors gynecological surgeries and patient outcomes.",
+        "search_tags": [
+            "gynecological surgeries",
+            "GynOp",
+            "gynecological"
+        ]
+    },
+    {
+        "name": "SveATTR – Svenska transtyretinamyloidosregistret",
+        "registry_centre": [
+            "Registercentrum Norr"
+        ],
+        "geographic_location": [
+            "Regional"
+        ],
+        "url": "https://regionvasterbotten.se/for-vardgivare/kunskapsstod/kvalitetsregistret-sveattr",
+        "search_tags": [
+            "transtyretinamyloidosregistret",
+            "SveATTR"
+        ]
+    },
+    {
+        "name": "DBS – Kvalitetsregister inom deep brain stimulation",
+        "registry_centre": [
+            "Registercentrum Norr"
+        ],
+        "geographic_location": [
+            "Regional"
+        ],
+        "url": "https://deepbrainstimulation.se/",
+        "search_tags": [
+            "DBS",
+            "stimulation",
+            "deep brain"
+        ]
+    },
+    {
+        "name": "CKG – Kardiovaskulär genetik",
+        "registry_centre": [
+            "Registercentrum Norr"
+        ],
+        "geographic_location": [
+            "Regional"
+        ],
+        "url": "url missing",
+        "search_tags": [
+            "Kardiovaskulär",
+            "genetik",
+            "CKG",
+            "Cardiovascular"
+        ]
+    },
+    {
+        "name": "Terapeutisk aferes – Internationellt register för terapeutisk aferes behandling",
+        "registry_centre": [
+            "Registercentrum Norr"
+        ],
+        "geographic_location": [
+            "Regional"
+        ],
+        "url": "https://www.waa-registry.org/",
+        "search_tags": [
+            "aferes"
+        ]
+    },
+    {
+        "name": "AURICULA – Nationellt register för förmaksflimmer och antikoagulation",
+        "registry_centre": [
+            "UCR - Uppsala Clinical Research Center"
+        ],
+        "geographic_location": [
+            "National"
+        ],
+        "url": "https://www.ucr.uu.se/auricula/",
+        "search_tags": [
+            "atrial fibrillation",
+            "aFib"
+        ]
+    },
+    {
+        "name": "GallRiks – Svenskt kvalitetsregister för gallstenskirurgi",
+        "registry_centre": [
+            "UCR - Uppsala Clinical Research Center"
+        ],
+        "geographic_location": [
+            "National"
+        ],
+        "url": "https://www.ucr.uu.se/gallriks/",
+        "search_tags": [
+            "GallRiks",
+            "cholecystectomy",
+            "gallstone surgery"
+        ]
+    },
+    {
+        "name": "Kateterablationsregistret – Nationellt kvalitetsregister för kateterablation vid hjärtrusningar",
+        "registry_centre": [
+            "UCR - Uppsala Clinical Research Center"
+        ],
+        "geographic_location": [
+            "National"
+        ],
+        "url": "http://www.ablationsregistret.se/",
+        "search_tags": [
+            "kateterablation",
+            "cardiovascular"
+        ]
+    },
+    {
+        "name": "NRS – Nationellt register över smärtrehabilitering",
+        "registry_centre": [
+            "UCR - Uppsala Clinical Research Center"
+        ],
+        "geographic_location": [
+            "National"
+        ],
+        "url": "https://www.ucr.uu.se/nrs/",
+        "search_tags": [
+            "pain",
+            "pain rehab"
+        ]
+    },
+    {
+        "name": "RiksSvikt – Nationellt kvalitetsregister för hjärtsvikt",
+        "registry_centre": [
+            "UCR - Uppsala Clinical Research Center"
+        ],
+        "geographic_location": [
+            "National"
+        ],
+        "url": "https://www.ucr.uu.se/rikssvikt/",
+        "search_tags": [
+            "RiksSvikt",
+            "hear disease"
+        ]
+    },
+    {
+        "name": "RiksSår – Nationellt kvalitetsregister för svårläkta sår",
+        "registry_centre": [
+            "UCR - Uppsala Clinical Research Center"
+        ],
+        "geographic_location": [
+            "National"
+        ],
+        "url": "https://www.rikssar.se/",
+        "search_tags": [
+            "svårläkta",
+            "RiksSår",
+            "wound"
+        ]
+    },
+    {
+        "name": "Senior alert – Nationellt kvalitetsregister för vård och omsorg",
+        "registry_centre": [
+            "UCR - Uppsala Clinical Research Center"
+        ],
+        "geographic_location": [
+            "National"
+        ],
+        "url": "https://www.senioralert.se/",
+        "search_tags": [
+            "Senior",
+            "senior alert",
+            "treatment"
+        ]
+    },
+    {
+        "name": "SOReg – Scandinavian Obesity Surgery Registry",
+        "registry_centre": [
+            "UCR - Uppsala Clinical Research Center"
+        ],
+        "geographic_location": [
+            "National"
+        ],
+        "url": "https://www.ucr.uu.se/soreg/",
+        "search_tags": [
+            "Obesity",
+            "Scandinavian",
+            "Surgery",
+            "SOReg"
+        ]
+    },
+    {
+        "name": "SPAHR – Svenska PAH & CTEPH registret",
+        "registry_centre": [
+            "UCR - Uppsala Clinical Research Center"
+        ],
+        "geographic_location": [
+            "National"
+        ],
+        "url": "https://www.ucr.uu.se/spahr/",
+        "search_tags": [
+            "registret",
+            "CTEPH",
+            "SPAHR"
+        ]
+    },
+    {
+        "name": "SPOR – Svenskt perioperativt register",
+        "registry_centre": [
+            "UCR - Uppsala Clinical Research Center"
+        ],
+        "geographic_location": [
+            "National"
+        ],
+        "url": "https://www.ucr.uu.se/spor/",
+        "search_tags": [
+            "register",
+            "SPOR",
+            "UCR",
+            "perioperativt"
+        ]
+    },
+    {
+        "name": "SveDem – Svenska registret för kognitiva sjukdomar/demenssjukdomar",
+        "registry_centre": [
+            "UCR - Uppsala Clinical Research Center"
+        ],
+        "geographic_location": [
+            "National"
+        ],
+        "url": "https://www.ucr.uu.se/svedem/",
+        "search_tags": [
+            "Cognitive",
+            "Dementia",
+            "UCR",
+            "SveDem"
+        ]
+    },
+    {
+        "name": "SWEDCON – Barnhjärtregistret (inkluderar GUCH, det vill säga vuxna med medfött hjärtfel)",
+        "registry_centre": [
+            "UCR - Uppsala Clinical Research Center"
+        ],
+        "geographic_location": [
+            "National"
+        ],
+        "url": "https://www.ucr.uu.se/swedcon/",
+        "search_tags": [
+            "GUCH",
+            "children",
+            "heart",
+            "SWEDCON"
+        ]
+    },
+    {
+        "name": "SWEDEHEART – Sammanslagning av RIKS-HIA, SEPHIA, SCAAR, TAVI, Svenska Hjärtkirurgiregistret och Kardiogenetikregistret.",
+        "registry_centre": [
+            "UCR - Uppsala Clinical Research Center"
+        ],
+        "geographic_location": [
+            "National"
+        ],
+        "url": "https://www.ucr.uu.se/swedeheart/",
+        "search_tags": [
+            "SEPHIA",
+            "SCAAR",
+            "TAVI",
+            "SwEDEHEART"
+        ]
+    },
+    {
+        "name": "SWEDEVOX – Andningssviktregistret över oxygenbehandling och respiratorbehandling i hemmet",
+        "registry_centre": [
+            "UCR - Uppsala Clinical Research Center"
+        ],
+        "geographic_location": [
+            "National"
+        ],
+        "url": "https://www.ucr.uu.se/swedevox/",
+        "search_tags": [
+            "oxygen",
+            "UCR",
+            "SWEDEVOX"
+        ]
+    },
+    {
+        "name": "SWEDVASC – Nationellt register för kärlkirurgi",
+        "registry_centre": [
+            "UCR - Uppsala Clinical Research Center"
+        ],
+        "geographic_location": [
+            "National"
+        ],
+        "url": "https://www.ucr.uu.se/swedvasc/",
+        "search_tags": [
+            "vain",
+            "SWEDVASC"
+        ]
+    },
+    {
+        "name": "SVAR – Svenskt akutvårdsregister",
+        "registry_centre": [
+            "UCR - Uppsala Clinical Research Center"
+        ],
+        "geographic_location": [
+            "Regional"
+        ],
+        "url": "https://www.ucr.uu.se/svar/",
+        "search_tags": [
+            "acute",
+            "SVAR",
+            "acute care"
+        ]
+    },
+    {
+        "name": "TBI – Traumatic Brain Injury",
+        "registry_centre": [
+            "UCR - Uppsala Clinical Research Center"
+        ],
+        "geographic_location": [
+            "Regional"
+        ],
+        "url": "https://www.ucr.uu.se/tbi/",
+        "search_tags": [
+            "TBI",
+            "Brain",
+            "Injury",
+            "Traumatic"
+        ]
+    },
+    {
+        "name": "ThoR – Allmän Thoraxkirurgi",
+        "registry_centre": [
+            "UCR - Uppsala Clinical Research Center"
+        ],
+        "geographic_location": [
+            "Regional"
+        ],
+        "url": "https://www.ucr.uu.se/thor/",
+        "search_tags": [
+            "ThoR",
+            "Thorax",
+            "Thoraxkirurgi"
+        ]
+    },
+    {
+        "name": "BRIMP – Bröstimplantatregistret",
+        "registry_centre": [
+            "Registercentrum Västra Götaland"
+        ],
+        "geographic_location": [
+            "National"
+        ],
+        "url": "url missing",
+        "search_tags": [
+            "Breast implant",
+            "Bröstimplantatregistret",
+            "BRIMP"
+        ]
+    },
+    {
+        "name": "Kranio – Kranioregistret",
+        "registry_centre": [
+            "Registercentrum Västra Götaland"
+        ],
+        "geographic_location": [
+            "National"
+        ],
+        "url": "https://kranio.registercentrum.se/",
+        "search_tags": [
+            "Kranioregistret",
+            "Kranio",
+            "cranial"
+        ]
+    },
+    {
+        "name": "LVR – Luftvägsregistret",
+        "registry_centre": [
+            "Registercentrum Västra Götaland"
+        ],
+        "geographic_location": [
+            "National"
+        ],
+        "url": "https://lvr.registercentrum.se/",
+        "search_tags": [
+            "Luftvägsregistret",
+            "LVR",
+            "airways"
+        ]
+    },
+    {
+        "name": "Nationellt kvalitetsregister för öron-, näs- och halssjukvård:",
+        "registry_centre": [
+            "Registercentrum Västra Götaland"
+        ],
+        "geographic_location": [
+            "National"
+        ],
+        "url": "https://orl.registercentrum.se/",
+        "search_tags": [
+            "ear,",
+            "nose",
+            "throat",
+            "treatment"
+        ]
+    },
+    {
+        "name": "NDR – Nationella Diabetesregistret",
+        "registry_centre": [
+            "Registercentrum Västra Götaland"
+        ],
+        "geographic_location": [
+            "National"
+        ],
+        "url": "https://ndr.registercentrum.se/",
+        "search_tags": [
+            "NDR",
+            "Nationella",
+            "Diabetes"
+        ]
+    },
+    {
+        "name": "NROK – Nationella registret för ortognatkirurgi",
+        "registry_centre": [
+            "Registercentrum Västra Götaland"
+        ],
+        "geographic_location": [
+            "National"
+        ],
+        "url": "https://nrok.registercentrum.se/",
+        "search_tags": [
+            "orthognathic surgery",
+            "NROK"
+        ]
+    },
+    {
+        "name": "QregPV – Primärvårdens kvalitetsregister Västra Götaland",
+        "registry_centre": [
+            "Registercentrum Västra Götaland"
+        ],
+        "geographic_location": [
+            "National"
+        ],
+        "url": "https://qregpv.registercentrum.se/",
+        "search_tags": [
+            "QregPV"
+        ]
+    },
+    {
+        "name": "Riksfot – Svenska fotkirurgiska registret",
+        "registry_centre": [
+            "Registercentrum Västra Götaland"
+        ],
+        "geographic_location": [
+            "National"
+        ],
+        "url": "https://fot.registercentrum.se/",
+        "search_tags": [
+            "foot",
+            "feet",
+            "Riksfot",
+            "surgery"
+        ]
+    },
+    {
+        "name": "SESAR – Svenska Sömnapnéregistret",
+        "registry_centre": [
+            "Registercentrum Västra Götaland"
+        ],
+        "geographic_location": [
+            "National"
+        ],
+        "url": "https://sesar.registercentrum.se/",
+        "search_tags": [
+            "apnea",
+            "SESAR",
+            "sleep apnea"
+        ]
+    },
+    {
+        "name": "SFR – Svenska Frakturregistret",
+        "registry_centre": [
+            "Registercentrum Västra Götaland"
+        ],
+        "geographic_location": [
+            "National"
+        ],
+        "url": "https://sfr.registercentrum.se/",
+        "search_tags": [
+            "SFR",
+            "fracture"
+        ]
+    },
+    {
+        "name": "SLR – Svenska Ledprotesregistret",
+        "registry_centre": [
+            "Registercentrum Västra Götaland"
+        ],
+        "geographic_location": [
+            "National"
+        ],
+        "url": "https://slr.registercentrum.se/",
+        "search_tags": [
+            "Ledprotesregistret",
+            "prothese",
+            "SLR"
+        ]
+    },
+    {
+        "name": "SPOQ – Svenskt Pediatriskt Ortopediskt Qvalitetsregister",
+        "registry_centre": [
+            "Registercentrum Västra Götaland"
+        ],
+        "geographic_location": [
+            "National"
+        ],
+        "url": "https://spoq.registercentrum.se/",
+        "search_tags": [
+            "Ortopediskt",
+            "orthopedic",
+            "child",
+            "Pediatric care"
+        ]
+    },
+    {
+        "name": "Svenska Artrosregistret",
+        "registry_centre": [
+            "Registercentrum Västra Götaland"
+        ],
+        "geographic_location": [
+            "National"
+        ],
+        "url": "https://artrosregistret.registercentrum.se/",
+        "search_tags": [
+            "svenska artros",
+            "arthritis"
+        ]
+    },
+    {
+        "name": "Svenska Hjärt- lungräddningsregistret",
+        "registry_centre": [
+            "Registercentrum Västra Götaland"
+        ],
+        "geographic_location": [
+            "National"
+        ],
+        "url": "https://shlr.registercentrum.se/",
+        "search_tags": [
+            "cardiopulmonary resuscitation"
+        ]
+    },
+    {
+        "name": "Svenska Thoraxtransplantationsregistret",
+        "registry_centre": [
+            "Registercentrum Västra Götaland"
+        ],
+        "geographic_location": [
+            "National"
+        ],
+        "url": "https://strax.registercentrum.se/",
+        "search_tags": [
+            "Thoraxtransplantationsregistret",
+            "transplant"
+        ]
+    },
+    {
+        "name": "Svenskt Register för Rehabiliteringsmedicin",
+        "registry_centre": [
+            "Registercentrum Västra Götaland"
+        ],
+        "geographic_location": [
+            "National"
+        ],
+        "url": "https://svereh.registercentrum.se/",
+        "search_tags": [
+            "rehab",
+            "rehabilitation",
+            "Rehabiliteringsmedicin",
+            "svereh"
+        ]
+    },
+    {
+        "name": "SWEAPS – Svenska registret för avancerad barn- och ungdomskirurgi",
+        "registry_centre": [
+            "Registercentrum Västra Götaland"
+        ],
+        "geographic_location": [
+            "National"
+        ],
+        "url": "https://sweaps.registercentrum.se/",
+        "search_tags": [
+            "surgery",
+            "SWEAPS"
+        ]
+    },
+    {
+        "name": "Bipolär- och psykosregistret – Nationellt kvalitetsregister för bipolär sjukdom och schizofrenispektrumtillstånd",
+        "registry_centre": [
+            "Registercentrum Västra Götaland"
+        ],
+        "geographic_location": [
+            "National"
+        ],
+        "url": "https://bipsy.registercentrum.se/",
+        "search_tags": [
+            "Schizophrenia",
+            "bipolar",
+            "psychosis"
+        ]
+    },
+    {
+        "name": "Bättre Beroendevård",
+        "registry_centre": [
+            "Registercentrum Västra Götaland"
+        ],
+        "geographic_location": [
+            "National"
+        ],
+        "url": "https://battreberoendevard.registercentrum.se/",
+        "search_tags": [
+            "Beroendevård",
+            "addiction"
+        ]
+    },
+    {
+        "name": "Kvalitetsregister ECT",
+        "registry_centre": [
+            "Registercentrum Västra Götaland"
+        ],
+        "geographic_location": [
+            "National"
+        ],
+        "url": "https://ect.registercentrum.se/",
+        "search_tags": [
+            "ECT"
+        ]
+    },
+    {
+        "name": "Q-bup – Nationellt kvalitetsregister för barn- och ungdomspsykiatri",
+        "registry_centre": [
+            "Registercentrum Västra Götaland"
+        ],
+        "geographic_location": [
+            "National"
+        ],
+        "url": "https://qbup.registercentrum.se/",
+        "search_tags": [
+            "peadiatric care",
+            "child psychiatry",
+            "psychiatry"
+        ]
+    },
+    {
+        "name": "Riksät – Nationellt kvalitetsregister för ätstörningsbehandling",
+        "registry_centre": [
+            "Registercentrum Västra Götaland"
+        ],
+        "geographic_location": [
+            "National"
+        ],
+        "url": "https://riksat.registercentrum.se/",
+        "search_tags": [
+            "Riksät",
+            "psychiatry",
+            "eating disorder"
+        ]
+    },
+    {
+        "name": "RättspsyK – Nationellt rättspsykiatriskt kvalitetsregister",
+        "registry_centre": [
+            "Registercentrum Västra Götaland"
+        ],
+        "geographic_location": [
+            "National"
+        ],
+        "url": "https://rattspsyk.registercentrum.se/",
+        "search_tags": [
+            "rättspsykiatriskt",
+            "RättspsyK",
+            "psychiatry"
+        ]
+    },
+    {
+        "name": "SibeR – Svenska internetbehandlingsregistret",
+        "registry_centre": [
+            "Registercentrum Västra Götaland"
+        ],
+        "geographic_location": [
+            "National"
+        ],
+        "url": "https://siber.registercentrum.se/",
+        "search_tags": [
+            "–",
+            "internetbehandlingsregistret",
+            "SibeR"
+        ]
+    },
+    {
+        "name": "Barnnjurregistret (BNR)",
+        "registry_centre": [
+            "Registercentrum Sydost - RCSO"
+        ],
+        "geographic_location": [
+            "National"
+        ],
+        "url": "http://barnnjurregistret.se/",
+        "search_tags": [
+            "Barnnjurregistret",
+            "BNR"
+        ]
+    },
+    {
+        "name": "Barnreumaregistret",
+        "registry_centre": [
+            "Registercentrum Sydost - RCSO"
+        ],
+        "geographic_location": [
+            "National"
+        ],
+        "url": "http://barnreumaregistret.se/",
+        "search_tags": [
+            "Barnreumaregistret"
+        ]
+    },
+    {
+        "name": "Registret för medfödda metabola sjukdomar (RMMS)",
+        "registry_centre": [
+            "Registercentrum Sydost - RCSO"
+        ],
+        "geographic_location": [
+            "National"
+        ],
+        "url": "http://rmms.se/",
+        "search_tags": [
+            "born",
+            "RMMS"
+        ]
+    },
+    {
+        "name": "Svenska Barnhälsovårdsregistret (BHVQ)",
+        "registry_centre": [
+            "Registercentrum Sydost - RCSO"
+        ],
+        "geographic_location": [
+            "National"
+        ],
+        "url": "http://bhvq.se/",
+        "search_tags": [
+            "child",
+            "BHVQ",
+            "Barnhälsovårdsregistret"
+        ]
+    },
+    {
+        "name": "GallRiks",
+        "registry_centre": [
+            "Registercentrum Sydost - RCSO"
+        ],
+        "geographic_location": [
+            "National"
+        ],
+        "url": "https://www.ucr.uu.se/gallriks/",
+        "search_tags": [
+            "GallRiks"
+        ]
+    },
+    {
+        "name": "PIDcare",
+        "registry_centre": [
+            "Registercentrum Sydost - RCSO"
+        ],
+        "geographic_location": [
+            "National"
+        ],
+        "url": "http://pidcare.se/",
+        "search_tags": [
+            "PIDcare"
+        ]
+    },
+    {
+        "name": "Svenskt Njurregister (SNR)",
+        "registry_centre": [
+            "Registercentrum Sydost - RCSO"
+        ],
+        "geographic_location": [
+            "National"
+        ],
+        "url": "https://www.medscinet.net/snr/",
+        "search_tags": [
+            "SNR",
+            "Njurregister",
+            "kidney"
+        ]
+    },
+    {
+        "name": "Swespine",
+        "registry_centre": [
+            "Registercentrum Sydost - RCSO"
+        ],
+        "geographic_location": [
+            "National"
+        ],
+        "url": "http://www.swespine.se/",
+        "search_tags": [
+            "Swespine", 
+            "spine",
+            "spine disorders"
+        ]
+    },
+    {
+        "name": "Swibreg",
+        "registry_centre": [
+            "Registercentrum Sydost - RCSO"
+        ],
+        "geographic_location": [
+            "National"
+        ],
+        "url": "https://www.swibreg.se/",
+        "search_tags": [
+            "Swibreg"
+        ]
+    },
+    {
+        "name": "RiksSår",
+        "registry_centre": [
+            "Registercentrum Sydost - RCSO"
+        ],
+        "geographic_location": [
+            "National"
+        ],
+        "url": "https://www.rikssar.se/",
+        "search_tags": [
+            "RiksSår"
+        ]
+    },
+    {
+        "name": "Senior Alert",
+        "registry_centre": [
+            "Registercentrum Sydost - RCSO"
+        ],
+        "geographic_location": [
+            "National"
+        ],
+        "url": "https://www.senioralert.se/",
+        "search_tags": [
+            "Alert",
+            "Senior"
+        ]
+    },
+    {
+        "name": "Svenska Palliativregistret",
+        "registry_centre": [
+            "Registercentrum Sydost - RCSO"
+        ],
+        "geographic_location": [
+            "National"
+        ],
+        "url": "https://palliativregistret.se/",
+        "search_tags": [
+            "Svenska",
+            "Palliativregistret",
+            "pallitative"
+        ]
+    }
+]
