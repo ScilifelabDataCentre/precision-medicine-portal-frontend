@@ -1,0 +1,13 @@
+.DS_Store
+.vscode/*
+
+# dependencies
+/pmp-frontend-app/node_modules
+
+# misc
+/pmp-frontend-app/.DS_Store
+
+/pmp-frontend-app/npm-debug.log*
+pmp-frontend-app/public/.DS_Store
+
+/react-app
