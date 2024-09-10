@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@jonkoops/matomo-tracker-react": "^0.7.0",
-    "axios": "^1.6.8",
+    "axios": "^1.7.4",
     "daisyui": "^4.7.3",
     "js-cookie": "^3.0.5",
     "lato-font": "^3.0.0",
@@ -38,6 +38,6 @@
     "postcss": "^8.4.35",
     "tailwindcss": "^3.4.1",
     "typescript": "^5.2.2",
-    "vite": "^5.1.6"
+    "vite": "^5.4.3"
   }
 }
