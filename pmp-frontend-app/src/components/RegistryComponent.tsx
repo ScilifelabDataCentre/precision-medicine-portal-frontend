@@ -180,7 +180,7 @@ export default function RegistryComponent(): ReactElement {
                         <div className="flex-shrink-0 px-3 py-1 bg-black opacity-80 text-white rounded-lg shadow-sm">
                             <strong className="text-xs block">Organisation:</strong>
                             <a 
-                                href={organisationLinks[item.registry_centre[0]]} 
+                                href={organisationLinks[item.registry_centre[0]].startsWith('http') ? organisationLinks[item.registry_centre[0]] : ''} 
                                 target="_blank" 
                                 rel="noopener noreferrer" 
                                 className="text-xs block hover:underline"
