@@ -1,12 +1,12 @@
 import { ReactElement, useState, useEffect } from "react";
-import registryData from "../assets/Kvalitetsregister_with_Links.json"; // Update the path to your JSON file
+import registryData from "../assets/Kvalitetsregister_geo_dates_02.09.2024.json"; // Update to your JSON file path
 import { RegistrySources, RegistrySourcesFilters } from "../interfaces/types";
 
 export default function RegistryComponent(): ReactElement {
     const [RegistrySourcesJSON, setRegistrySourcesJSON] = useState<RegistrySources[]>([]);
     const [selectedFilters, setSelectedFilters] = useState<RegistrySourcesFilters>({
         registryCentre: [],
-        geographicLocation: [],
+        registryCategory: [],
     });
     const [searchBar, setSearchBar] = useState<string>("");
 
@@ -15,134 +15,82 @@ export default function RegistryComponent(): ReactElement {
             "Kvalitetsregistercentrum Stockholm",
             "Registercentrum Syd",
             "Registercentrum Norr",
-            "UCR - Uppsala Clinical Research Center",
+            "Uppsala Clinical Research Center",
             "Registercentrum Västra Götaland",
-            "Registercentrum Sydost - RCSO",
+            "Registercentrum Sydost",
+            "RCC Stockholm Gotland",
+            "RCC Sydöst",
+            "RCC Norr",
+            "RCC Mellansverige",
+            "RCC Väst",
+            "RCC Syd",
         ],
-        geographicLocation: [
-            "National",
-            "Regional",
+        registryCategory: [
+            "National quality registry",
+            "Other quality registry",
+            "National cancer quality registry",
         ],
     };
 
-    const nrOfCheckboxes = filters.registryCentre.length + filters.geographicLocation.length;
-    const checkedListBoolArr = Array(nrOfCheckboxes).fill(false);
+    const organisationLinks: { [key: string]: string } = {
+        "Kvalitetsregistercentrum Stockholm": "https://qrcstockholm.se",
+        "Registercentrum Syd": "https://registercentrum.se",
+        "Registercentrum Norr": "https://rcnorr.se",
+        "Uppsala Clinical Research Center": "https://www.ucr.uu.se/sv/",
+        "Registercentrum Västra Götaland": "https://registercentrum.se",
+        "Registercentrum Sydost": "https://sydostrasjukvardsregionen.se/samverkansgrupper/data-och-analys/registercentrum-sydost/",
+        "RCC Stockholm Gotland": "https://cancercentrum.se/stockholm-gotland/",
+        "RCC Sydöst": "https://cancercentrum.se/sydost/",
+        "RCC Norr": "https://cancercentrum.se/norr/",
+        "RCC Mellansverige": "https://cancercentrum.se/mellansverige/",
+        "RCC Väst": "https://cancercentrum.se/vast/",
+        "RCC Syd": "https://cancercentrum.se/syd/",
+    };
 
-    const [checkedList, setCheckedList] = useState<boolean[]>(checkedListBoolArr);
+    const [checkedList, setCheckedList] = useState<boolean[]>(Array(filters.registryCentre.length + filters.registryCategory.length).fill(false));
 
     useEffect(() => {
-        setRegistrySourcesJSON(registryData);
+        const updatedRegistryData = registryData.map(entry => ({
+            ...entry,
+            start_date: entry.start_date ? entry.start_date.split("-")[0] : '',
+            category: entry.category || []
+        }));
+        setRegistrySourcesJSON(updatedRegistryData);
     }, []);
 
-    function checkedDataFilter(tagType: string, tagName: string, boxIndex: number) {
-        let tmpFilters = { ...selectedFilters };
-        let tmpCheckedList = [...checkedList];
+    const handleFilterChange = (type: keyof RegistrySourcesFilters, value: string, index: number) => {
+        setSelectedFilters(prev => {
+            const updated = { ...prev };
+            updated[type] = updated[type].includes(value)
+                ? updated[type].filter(item => item !== value)
+                : [...updated[type], value];
+            return updated;
+        });
+        setCheckedList(prev => prev.map((item, idx) => idx === index ? !item : item));
+    };
 
-        switch (tagType) {
-            case "registryCentre":
-                if (tmpFilters.registryCentre.includes(tagName)) {
-                    tmpFilters.registryCentre = tmpFilters.registryCentre.filter(item => item !== tagName);
-                    tmpCheckedList[boxIndex] = false;
-                } else {
-                    tmpFilters.registryCentre.push(tagName);
-                    tmpCheckedList[boxIndex] = true;
-                }
-                break;
-            case "geographicLocation":
-                if (tmpFilters.geographicLocation.includes(tagName)) {
-                    tmpFilters.geographicLocation = tmpFilters.geographicLocation.filter(item => item !== tagName);
-                    tmpCheckedList[boxIndex] = false;
-                } else {
-                    tmpFilters.geographicLocation.push(tagName);
-                    tmpCheckedList[boxIndex] = true;
-                }
-                break;
-        }
-
-        setSelectedFilters(tmpFilters);
-        setCheckedList(tmpCheckedList);
-    }
-
-    function applyRegistryCentreFilter(RegistrySource: RegistrySources) {
-        if (selectedFilters.registryCentre.length === 0) return true;
-
-        return selectedFilters.registryCentre.every(filter =>
-            RegistrySource.registry_centre
-                .map((centre: string) => centre.toLowerCase())
-                .includes(filter.toLowerCase())
+    const applyFilters = (data: RegistrySources) => {
+        const matchesCentre = !selectedFilters.registryCentre.length || selectedFilters.registryCentre.some(filter =>
+            data.registry_centre.some(centre => centre.toLowerCase() === filter.toLowerCase())
         );
-    }
-
-    function applyGeographicLocationFilter(RegistrySource: RegistrySources) {
-        if (selectedFilters.geographicLocation.length === 0) return true;
-
-        return selectedFilters.geographicLocation.every(filter =>
-            RegistrySource.geographic_location
-                .map((location: string) => location.toLowerCase())
-                .includes(filter.toLowerCase())
+        const matchesCategory = !selectedFilters.registryCategory.length || selectedFilters.registryCategory.some(filter =>
+            data.category.some(cat => cat.toLowerCase() === filter.toLowerCase())
         );
-    }
-
-    function applySearchBar(RegistrySource: RegistrySources) {
-        const searchBarLower = searchBar.toLowerCase();
-        const searchTags: string[] = searchBarLower.split(" ");
-        if (searchBarLower.length === 0) return true;
-
-        return (
-            RegistrySource.name.toLowerCase().includes(searchBarLower) ||
-            searchTags.some(tag =>
-                RegistrySource.search_tags.some((searchTag: string) =>
-                    searchTag.toLowerCase().includes(tag)
-                )
-            )
+        const matchesSearch = searchBar.toLowerCase().split(" ").every(tag =>
+            data.name.toLowerCase().includes(tag) || data.search_tags.some(st => st.toLowerCase().includes(tag))
         );
-    }
-
-    function RenderRegistrySources(): ReactElement {
-        if (!Array.isArray(RegistrySourcesJSON) || RegistrySourcesJSON.length === 0) {
-            return <div>Loading...</div>; // or handle the empty state differently
-        }
-
-        return (
-            <div className="flex flex-col space-y-6 col-span-2">
-                {RegistrySourcesJSON
-                    .filter(data => applyRegistryCentreFilter(data))
-                    .filter(data => applyGeographicLocationFilter(data))
-                    .filter(data => applySearchBar(data))
-                    .map((item, index) => (
-                        <div key={index} className="form-control rounded-[10px] shadow border-2 border-neutral">
-                            <div className="bg-neutral p-3 flow-root rounded-t-[8px] pr-4">
-                                <a href={item.url} target="_blank" rel="noopener noreferrer" className="text-neutral-content float-left text-xl">
-                                    {item.name}
-                                </a>
-                            </div>
-                            <p className="p-3">{item.description || "Description not available."}</p>
-                        </div>
-                    ))}
-            </div>
-        );
-    }
+        return matchesCentre && matchesCategory && matchesSearch;
+    };
 
     return (
         <div className="container mx-auto p-4 pt-16">
-            <div className="flex flex-col lg:flex-row gap-12"> {/* Increased gap between columns */}
+            <div className="flex flex-col lg:flex-row gap-16">
                 {/* Left Column */}
-                <div className="space-y-6 w-full lg:w-1/4"> {/* Reduced width for more space */}
-                    {/* Info Box aligned with search bar and filter options */}
-                    <div className="bg-[#E9F2D1] text-black p-4 mb-4 rounded-md text-sm"> {/* Smaller text */}
-                        <p className="text-center">
-                            The Swedish registries hold detailed, personalised information about medical treatments, procedures, and their results. These are seamlessly incorporated into clinical practices and have the ability to generate data in real-time.
-                        </p>
-                        <p className="text-center mt-2">
-                            <span className="font-bold">Please note:</span> most of the registries mainly collect data in Swedish.
-                        </p>
-                    </div>
-
+                <div className="space-y-6 w-full lg:w-1/4">
                     <div>
                         <label className="font-bold text-xl block mb-2">Search</label>
                         <input
                             type="text"
-                            name="search"
                             placeholder="Name/Keywords"
                             className="input bg-neutral input-bordered border-neutral rounded-[10px] w-full"
                             value={searchBar}
@@ -150,46 +98,108 @@ export default function RegistryComponent(): ReactElement {
                         />
                     </div>
                     <div>
-                        <h2 className="font-bold text-xl block mb-2">Registry Centre</h2>
+                        <h2 className="font-bold text-xl block mb-2">Organisation</h2>
                         <div className="form-control w-full rounded-[10px] shadow border-2 border-neutral p-3">
-                            {filters.registryCentre.map((element, index) => (
-                                <div key={element} className="flex flex-row">
+                            {filters.registryCentre.map((centre, idx) => (
+                                <div key={centre} className="flex flex-row">
                                     <label className="label cursor-pointer">
                                         <input
                                             type="checkbox"
                                             className="checkbox border-gray-300 [--chkbg:theme(colors.primary)] [--chkfg:white]"
-                                            onChange={() => checkedDataFilter("registryCentre", element.toLowerCase(), index)}
-                                            checked={checkedList[index]}
+                                            onChange={() => handleFilterChange("registryCentre", centre, idx)}
+                                            checked={checkedList[idx]}
                                         />
                                     </label>
-                                    <span className="label-text text-neutral-content pt-2.5 pl-2">{element}</span>
+                                    <span className="label-text text-neutral-content pt-2.5 pl-2">{centre}</span>
                                 </div>
                             ))}
                         </div>
                     </div>
                     <div>
-                        <h2 className="font-bold text-xl block mb-2">Geographic Location</h2>
+                        <h2 className="font-bold text-xl block mb-2">Category</h2>
                         <div className="form-control w-full rounded-[10px] shadow border-2 border-neutral p-3">
-                            {filters.geographicLocation.map((element, index) => (
-                                <div key={element} className="flex flex-row">
+                            {filters.registryCategory.map((category, idx) => (
+                                <div key={category} className="flex flex-row">
                                     <label className="label cursor-pointer">
                                         <input
                                             type="checkbox"
                                             className="checkbox border-gray-300 [--chkbg:theme(colors.primary)] [--chkfg:white]"
-                                            onChange={() => checkedDataFilter("geographicLocation", element.toLowerCase(), filters.registryCentre.length + index)}
-                                            checked={checkedList[filters.registryCentre.length + index]}
+                                            onChange={() => handleFilterChange("registryCategory", category, filters.registryCentre.length + idx)}
+                                            checked={checkedList[filters.registryCentre.length + idx]}
                                         />
                                     </label>
-                                    <span className="label-text text-neutral-content pt-2.5 pl-2">{element}</span>
+                                    <span className="label-text text-neutral-content pt-2.5 pl-2">{category}</span>
                                 </div>
                             ))}
+                        </div>
+                    </div>
+                    <div className="form-control rounded-[10px] shadow border-2 border-neutral bg-neutral p-2 mt-8">
+                        <div className="flex items-center mb-1">
+                            <div className="mr-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="h-4 w-4 text-neutral-content">
+                                    <g data-name="26.Information">
+                                        <path d="M12 24a12 12 0 1 1 12-12 12.013 12.013 0 0 1-12 12zm0-22a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2z"/>
+                                        <path d="M15 19h-4v-8H9V9h4v8h2v2zM11 5h2v2h-2z"/>
+                                    </g>
+                                </svg>
+                            </div>
+                            <span className="font-bold text-neutral-content">Please note:</span>
+                        </div>
+                        <div className="text-justify text-black text-sm">
+                            <p>
+                                The collected data in most of the registries is only available in Swedish.
+                            </p>
                         </div>
                     </div>
                 </div>
 
                 {/* Right Column */}
-                <div className="w-full lg:w-3/4"> {/* Increased width for the right column */}
-                    <RenderRegistrySources />
+<div className="w-full lg:w-3/4">
+    <div className="flex flex-col space-y-6 col-span-2">
+        {RegistrySourcesJSON.filter(applyFilters).map((item, index) => (
+            <div
+                key={index}
+                className={`form-control rounded-[10px] shadow border-2 border-neutral ${index !== 0 ? 'mb-6' : ''}`}
+            >
+                <div className="bg-neutral p-3 flow-root rounded-t-[8px] pr-4">
+                    <a href={item.url} target="_blank" rel="noopener noreferrer" className="text-neutral-content text-xl">
+                        {item.name}
+                    </a>
+                </div>
+                <div className="p-3">
+                    <p className="text-black text-justify">{item.Information || "Information not available."}</p>
+                    <div className="mt-3 flex flex-row space-x-2">
+                        
+                        {/* Start Year */}
+                        <div className="flex-shrink-0 px-3 py-1 bg-black opacity-80 text-white rounded-lg shadow-sm">
+                            <strong className="text-xs block">Start year:</strong>
+                            <p className="text-xs leading-tight">{item.start_date}</p>
+                        </div>
+
+                        {/* Organisation */}
+                        <div className="flex-shrink-0 px-3 py-1 bg-black opacity-80 text-white rounded-lg shadow-sm">
+                            <strong className="text-xs block">Organisation:</strong>
+                            <a 
+                                href={organisationLinks[item.registry_centre[0]]} 
+                                target="_blank" 
+                                rel="noopener noreferrer" 
+                                className="text-xs block hover:underline"
+                                style={{ textDecoration: 'none', cursor: 'pointer', margin: 0, padding: 0 }}
+                            >
+                                {item.registry_centre.join(", ")}
+                            </a>
+                        </div>
+
+                        {/* Category */}
+                        <div className="flex-shrink-0 px-3 py-1 bg-black opacity-80 text-white rounded-lg shadow-sm">
+                            <strong className="text-xs block">Category:</strong>
+                            <p className="text-xs leading-tight">{item.category.join(", ")}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                        ))}
+                    </div>
                 </div>
             </div>
         </div>
