@@ -14,7 +14,7 @@ import AboutTeamPage from '../pages/AboutTeamPage';
 import AboutPartnersPage from '../pages/AboutPartnersPage';
 import AccessClinicalDataPage from '../pages/AccessClinicalDataPage'
 import RegistryPage from '../pages/RegistryPage'
-
+import KiarvaIFramePage from '../pages/KiarvaIFramePage';
 
 const router = createBrowserRouter([
     {
@@ -78,6 +78,10 @@ const router = createBrowserRouter([
             {
                 path: 'privacy',
                 element: <PrivacyPage />,
+            },
+            {
+                path: 'kiarva',
+                element: <KiarvaIFramePage />,
             },
         ]
     },
