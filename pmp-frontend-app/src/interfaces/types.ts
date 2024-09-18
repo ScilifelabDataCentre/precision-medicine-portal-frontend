@@ -53,11 +53,12 @@ export interface IDataSourcesDC {
 };
 
 export interface RegistrySources {
-
     name: string;
     url: string;
     registry_centre: string[];
     geographic_location: string[];
+    description?: string;
+    search_tags: string[];
 };
 
 export interface RegistrySourcesFilters {
