@@ -162,7 +162,7 @@ export default function RegistryComponent(): ReactElement {
                 className={`form-control rounded-[10px] shadow border-2 border-neutral ${index !== 0 ? 'mb-6' : ''}`}
             >
                 <div className="bg-neutral p-3 flow-root rounded-t-[8px] pr-4">
-                    <a href={item.url} target="_blank" rel="noopener noreferrer" className="text-neutral-content text-xl">
+                    <a href={item.url.startsWith('http') ? item.url : ''} target="_blank" rel="noopener noreferrer" className="text-neutral-content text-xl">
                         {item.name}
                     </a>
                 </div>
