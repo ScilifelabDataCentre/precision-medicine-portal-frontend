@@ -10,7 +10,7 @@ export default function HeaderComponent() {
     let links: { [id: string] : ILink; } = {
         'l1': { text: 'Data Sources', classes: LINK_CLASSES, link: 'datasources' },
         'l2': { text: 'Events & Trainings', classes: LINK_CLASSES, link: 'eventsandtrainings' },
-        'l3': { text: 'Access Clinical Data', classes: LINK_CLASSES, link: '/accessclinicaldata' },
+        /*'l3': { text: 'Access Clinical Data', classes: LINK_CLASSES, link: '/accessclinicaldata' },*/
         'l4': { text: 'Contact', classes: LINK_CLASSES, link: 'contact' },
         'l5': { text: 'About Us', classes: LINK_CLASSES, link: 'about' },
     };

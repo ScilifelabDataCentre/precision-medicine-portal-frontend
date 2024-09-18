@@ -53,15 +53,17 @@ export interface IDataSourcesDC {
 };
 
 export interface RegistrySources {
-    name: string;
-    url: string;
-    registry_centre: string[];
-    geographic_location: string[];
-    description?: string;
-    search_tags: string[];
+    start_date: string; 
+    category: string[]; 
+    name: string; 
+    registry_centre: string[]; 
+    url: string; 
+    search_tags: string[]; 
+    Information: string;
 };
+
 
 export interface RegistrySourcesFilters {
     registryCentre: string[];
-    geographicLocation: string[];
+    registryCategory: string[];
 };
