@@ -25,6 +25,8 @@ export default {
           "warning-content": "#ffffff", // White, text color on warning
           "error": "#ff5724", // Red, Error color
           "error-content": "#ffffff", // White, text color on error
+          "50aqua": "#A6CBCF", // 50% Aqua
+          "75aqua": "#79B1B7", //75% Aqua
         },
       },
     },

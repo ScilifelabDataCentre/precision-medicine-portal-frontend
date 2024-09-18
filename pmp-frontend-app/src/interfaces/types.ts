@@ -57,10 +57,10 @@ export interface RegistrySources {
     name: string;
     url: string;
     registry_centre: string[];
-    geographic_location: string[];
+    category: string[];
 };
 
 export interface RegistrySourcesFilters {
     registryCentre: string[];
-    geographicLocation: string[];
+    registryCategory: string[];
 };
