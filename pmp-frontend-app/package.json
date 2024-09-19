@@ -13,6 +13,7 @@
     "@jonkoops/matomo-tracker-react": "^0.7.0",
     "axios": "^1.7.4",
     "daisyui": "^4.7.3",
+    "dompurify": "^3.1.6",
     "js-cookie": "^3.0.5",
     "lato-font": "^3.0.0",
     "react": "^18.2.0",
@@ -24,6 +25,7 @@
     "remark-gfm": "^4.0.0"
   },
   "devDependencies": {
+    "@types/dompurify": "^3.0.5",
     "@types/js-cookie": "^3.0.6",
     "@types/react": "^18.2.64",
     "@types/react-dom": "^18.2.21",
