@@ -3,14 +3,14 @@ import { ILink } from '../interfaces/types';
 import { LINK_CLASSES } from '../constants';
 import sciLifeLogo from '../assets/SciLifeLab logo/Precisionmedicineportal_logo_white.png';
 import { useLocation } from 'react-router-dom';
-import { AboutPageContent, ContactPageContent, DataSourcesPageContent, EventsAndTrainingsPageContent, HomePageContent, PrivacyPageContent, ClinicalDataPageContent } from '../content/content';
+import { AboutPageContent, ContactPageContent, DataSourcesPageContent, EventsAndTrainingsPageContent, HomePageContent, PrivacyPageContent, ClinicalDataPageContent, RegistryPageContent } from '../content/content';
 
 export default function HeaderComponent() {
     
     let links: { [id: string] : ILink; } = {
         'l1': { text: 'Data Sources', classes: LINK_CLASSES, link: 'datasources' },
         'l2': { text: 'Events & Trainings', classes: LINK_CLASSES, link: 'eventsandtrainings' },
-        'l3': { text: 'Access Clinical Data', classes: LINK_CLASSES, link: '/accessclinicaldata' },
+        /*'l3': { text: 'Access Clinical Data', classes: LINK_CLASSES, link: '/accessclinicaldata' },*/
         'l4': { text: 'Contact', classes: LINK_CLASSES, link: 'contact' },
         'l5': { text: 'About Us', classes: LINK_CLASSES, link: 'about' },
     };
@@ -56,6 +56,9 @@ export default function HeaderComponent() {
         case "/accessclinicaldata":
           textBar = ClinicalDataPageContent.textBar;
           break;
+          case "/registry":
+          textBar = RegistryPageContent.textBar;
+          break;
         default:
           textBar = "";
           break;
@@ -87,7 +90,7 @@ export default function HeaderComponent() {
                     </div>
                 ))} */}
             </div>
-                <div className="text-left text-4xl leading-tight tracking-tight font-bold py-6 px-4">
+                <div className="text-left text-3xl leading-tight tracking-tight font-bold py-6 px-4">
                     <p>{textBar}</p>
                 </div>
         </div>
