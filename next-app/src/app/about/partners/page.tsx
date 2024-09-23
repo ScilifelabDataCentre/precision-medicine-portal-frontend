@@ -5,8 +5,8 @@ import { ICardConfig, ICardContent } from '@/interfaces/types';
 import CardComponent from '@/components/CardComponent';
 import { TrackPageViewIfEnabled } from '@/util/cookiesHandling';
 
-let dcImage = '/Partner logo/dc.png';
 // import elixirImage from '../assets/Partner logo/Elixir-Europe-logo-1.png';
+let dcImage = '/Partner logo/dc.png';
 let nbisImage = '/Partner logo/nbislogo_orange_txt_3cb0778d90.svg';
 let kawImage = '/Partner logo/kaw_sv_300x300.png';
 let kiImage = '/Partner logo/KI_digital_logotyp_positiv_RGB.png';
