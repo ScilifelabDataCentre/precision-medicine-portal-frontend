@@ -4,6 +4,7 @@ import { ReactElement, useState } from "react";
 import React from "react";
 import axios from 'axios';
 import { IDataSourceFilters, IDataSourcesDC } from "@/interfaces/types";
+import Image from 'next/image';
 
 export default function DataSourcesComponent(): ReactElement {
     const [dataSourcesJSON, setDataSourcesJSON] = useState<IDataSourcesDC[]>([]);
@@ -75,8 +76,8 @@ export default function DataSourcesComponent(): ReactElement {
     }
 
     function checkedDataFilter(tagType: string, tagName: string, boxIndex: number) {
-        let tmpFilters = selectedFilters;
-        let tmpCheckedList = [...checkedList];
+        const tmpFilters = selectedFilters;
+        const tmpCheckedList = [...checkedList];
 
         switch (tagType) {
             case "dataType":
@@ -164,7 +165,7 @@ export default function DataSourcesComponent(): ReactElement {
                             <div key={index} className="form-control rounded-[10px] shadow border-2 border-neutral">
                                 <div className="bg-neutral p-3 flow-root rounded-t-[8px] pr-4">
                                     <a href={item.url} target="_blank" className="text-neutral-content float-left text-xl">{item.name}</a>
-                                    <img className="float-right w-62 h-12 object-scale-down object-right pl-2" src={"/img/datasources/" + item.thumbnail.split("/").pop()?.split(".")[0] + ".png"} alt={item.name} />                            
+                                    <Image className="float-right w-62 h-12 object-scale-down object-right pl-2" src={"/img/datasources/" + item.thumbnail.split("/").pop()?.split(".")[0] + ".png"} alt={item.name} />                            
                                 </div>
                                 <p className="p-3">{item.description}</p>
                             </div>
@@ -196,7 +197,7 @@ export default function DataSourcesComponent(): ReactElement {
                         <h2 className="font-bold text-xl">Data Type</h2>
                         <div className="form-control w-80 rounded-[10px] shadow border-2 border-neutral p-3">
                             {filters.dataTypes.map((element, index) =>
-                                <div className="flex flex-row">
+                                <div className="flex flex-row" key={element}>
                                     <label key={element} className="label cursor-pointer">
                                         <input 
                                             type="checkbox" 
@@ -212,7 +213,7 @@ export default function DataSourcesComponent(): ReactElement {
                         <h2 className="font-bold pt-4 text-xl">Disease Type</h2>
                         <div className="form-control w-80 rounded-[10px] shadow border-2 border-neutral p-3">
                             {filters.diseaseTypes.map((element, index) =>
-                                <div className="flex flex-row">
+                                <div className="flex flex-row" key={element}>
                                     <label key={element} className="label cursor-pointer">
                                         <input 
                                             type="checkbox" 

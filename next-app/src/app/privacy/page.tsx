@@ -16,12 +16,12 @@ export default function PrivacyPage(): ReactElement {
 
     TrackPageViewIfEnabled();
 
-    var breadcrumbs: { [id: string] : ILink; } = {
+    const breadcrumbs: { [id: string] : ILink; } = {
         'l1': { text: 'Home', classes: '', link: '/' },
         'l2': { text: 'Privacy', classes: '', link: '' },
     };
 
-    const optInOrOutTextActive = (isTrackingEnabled: Boolean): String[] => {
+    const optInOrOutTextActive = (isTrackingEnabled: boolean): string[] => {
         if (isTrackingEnabled) {
             return ["Click on the button to the right to opt out", "Opt Out"]
         }
@@ -33,7 +33,7 @@ export default function PrivacyPage(): ReactElement {
     const [ optInText, setOptInText ] = useState(optInOrOutTextActive(cookieIsSetToTrue('trackingEnabled')))
 
     const handleOptOut = () => {
-        let trackingEnabledCookie: Boolean = cookieIsSetToTrue('trackingEnabled');
+        const trackingEnabledCookie: boolean = cookieIsSetToTrue('trackingEnabled');
         setOptInText(optInOrOutTextActive(!trackingEnabledCookie))
         Cookies.set('trackingEnabled', String(!trackingEnabledCookie), { expires: 365 });
     };
@@ -42,11 +42,23 @@ export default function PrivacyPage(): ReactElement {
         <>
             <div className={BODY_CLASSES}>
                 <div className="text-sm breadcrumbs">
-                <ul>
-                {Object.keys(breadcrumbs).map( key => (
-                    <li>{breadcrumbs[key].link ? <Link href={breadcrumbs[key].link}>{breadcrumbs[key].text}</Link> : <>{breadcrumbs[key].text}</>}</li>
-                ))}
-                </ul>
+                    <ul>
+                    {Object.keys(breadcrumbs).map( key => (
+                        <li key={key}>
+                            {
+                            breadcrumbs[key].link 
+                                ? 
+                                <Link href={breadcrumbs[key].link}>
+                                    {breadcrumbs[key].text}
+                                </Link> 
+                                : 
+                                <>
+                                    {breadcrumbs[key].text}
+                                </>
+                            }
+                        </li>
+                    ))}
+                    </ul>
                 </div>
                 <div className={H_1}>Privacy Policy</div>
                 <div className="divider">{PrivacyPageContent.content[0].header}</div>
@@ -62,7 +74,7 @@ export default function PrivacyPage(): ReactElement {
                 </div>
                 <div className="divider">{PrivacyPageContent.content[2].header}</div>
                 <p>
-                    We collect information that your browser sends to us whenever you visit our Service, referred to as 'log data.' This data may include:
+                    We collect information that your browser sends to us whenever you visit our Service, referred to as &apos;log data.&apos; This data may include:
                 </p>
                 <ul className="list-disc pl-4">
                     <li>The website you visited us from</li>

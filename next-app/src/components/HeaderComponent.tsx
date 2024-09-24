@@ -5,62 +5,79 @@ import { LINK_CLASSES } from '@/constants';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { AboutPageContent, ContactPageContent, DataSourcesPageContent, EventsAndTrainingsPageContent, HomePageContent, PrivacyPageContent, ClinicalDataPageContent } from '../content/content';
+import Image from 'next/image';
+import { useState } from "react";
+import Cookies from 'js-cookie';
+import React from "react";
 
 export default function HeaderComponent() {
     
-    let links: { [id: string] : ILink; } = {
-        'l1': { text: 'Data Sources', classes: LINK_CLASSES, link: 'datasources' },
-        'l2': { text: 'Events & Trainings', classes: LINK_CLASSES, link: 'eventsandtrainings' },
-        'l3': { text: 'Access Clinical Data', classes: LINK_CLASSES, link: '/accessclinicaldata' },
-        'l4': { text: 'Contact', classes: LINK_CLASSES, link: 'contact' },
-        'l5': { text: 'About Us', classes: LINK_CLASSES, link: 'about/product' },
-    };
-    
-    {/*
-            // This is the signin button. We  can add this again once we have a user page, login, registration and features for users.
-    let buttons: { [id: string] : ILink; } = {
-        'b1': { text: 'Sign In', classes: BUTTON_TYPE_ONE, link: 'signin' },
-    };
-    */}
+  const links: { [id: string] : ILink; } = {
+      'l1': { text: 'Data Sources', classes: LINK_CLASSES, link: 'datasources' },
+      'l2': { text: 'Events & Trainings', classes: LINK_CLASSES, link: 'eventsandtrainings' },
+      'l3': { text: 'Access Clinical Data', classes: LINK_CLASSES, link: '/accessclinicaldata' },
+      'l4': { text: 'Contact', classes: LINK_CLASSES, link: 'contact' },
+      'l5': { text: 'About Us', classes: LINK_CLASSES, link: 'about/product' },
+  };
+  
+  {/*
+          // This is the signin button. We  can add this again once we have a user page, login, registration and features for users.
+  let buttons: { [id: string] : ILink; } = {
+      'b1': { text: 'Sign In', classes: BUTTON_TYPE_ONE, link: 'signin' },
+  };
+  */}
 
-    let currentRoute = usePathname();
-    let textBar: string = "";
+  const currentRoute = usePathname();
+  let textBar: string = "";
 
-    switch (currentRoute) {
-        case "/":
-          textBar = HomePageContent.textBar;
-          break;
-        case "/datasources":
-          textBar = DataSourcesPageContent.textBar;
-          break;
-        case "/eventsandtrainings":
-          textBar = EventsAndTrainingsPageContent.textBar;
-          break;
-        case "/contact":
-          textBar = ContactPageContent.textBar;
-          break;
-        case "/about/product":
-          textBar = AboutPageContent.textBar;
-          break;
-        case "/about/faq":
-          textBar = AboutPageContent.textBar;
-          break;
-        case "/about/team":
-          textBar = AboutPageContent.textBar;
-          break;
-        case "/about/partners":
-          textBar = AboutPageContent.textBar;
-          break;
-        case "/privacy":
-          textBar = PrivacyPageContent.textBar;
-          break;
-        case "/accessclinicaldata":
-          textBar = ClinicalDataPageContent.textBar;
-          break;
-        default:
-          textBar = "";
-          break;
-      }
+  switch (currentRoute) {
+      case "/":
+        textBar = HomePageContent.textBar;
+        break;
+      case "/datasources":
+        textBar = DataSourcesPageContent.textBar;
+        break;
+      case "/eventsandtrainings":
+        textBar = EventsAndTrainingsPageContent.textBar;
+        break;
+      case "/contact":
+        textBar = ContactPageContent.textBar;
+        break;
+      case "/about/product":
+        textBar = AboutPageContent.textBar;
+        break;
+      case "/about/faq":
+        textBar = AboutPageContent.textBar;
+        break;
+      case "/about/team":
+        textBar = AboutPageContent.textBar;
+        break;
+      case "/about/partners":
+        textBar = AboutPageContent.textBar;
+        break;
+      case "/privacy":
+        textBar = PrivacyPageContent.textBar;
+        break;
+      case "/accessclinicaldata":
+        textBar = ClinicalDataPageContent.textBar;
+        break;
+      default:
+        textBar = "";
+        break;
+    }
+
+    // setting cookie temporarily moved to Header component, since the structure is different
+    // from old app and the previous setup doesn't work. Probably not ideal and should be
+    // fixed later
+    const [isTrackingCookieSet, setTrackingCookie] = useState(!(Cookies.get('trackingEnabled') === undefined));
+
+    React.useEffect(() =>{
+      // only set a new cookie to 'true' if no cookies have been set yet
+      if (!isTrackingCookieSet) {
+        Cookies.set('trackingEnabled', 'true', { expires: 365 });
+        setTrackingCookie(true);
+      };
+    }, []);
 
     return (
       <div className="bg-gradient-to-b from-secondary to-primary">
@@ -68,7 +85,7 @@ export default function HeaderComponent() {
             <div className="navbar">
                 <div className="navbar-start">
                     <Link href="/">
-                        <img className="h-auto w-auto 2xl:max-w-2xl" src={'/SciLifeLab logo/Precisionmedicineportal_logo_white.png'} alt="SciLifeLab Logo" />
+                        <Image className="h-auto w-auto 2xl:max-w-2xl" src={'/SciLifeLab logo/Precisionmedicineportal_logo_white.png'} alt="SciLifeLab Logo" />
                     </Link>
                 </div>
                 <div className="navbar-center lg:flex">

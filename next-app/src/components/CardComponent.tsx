@@ -1,5 +1,6 @@
 import { ReactElement } from "react";
 import { ICardConfig, ICardContent } from "@/interfaces/types";
+import Image from 'next/image';
 
 export default function CardComponent(prop: { cardConfig: ICardConfig, cardContent: ICardContent }): ReactElement {
     const title: ReactElement = (
@@ -11,11 +12,11 @@ export default function CardComponent(prop: { cardConfig: ICardConfig, cardConte
 
     const image: ReactElement = (
         <>
-            <img src={prop.cardContent.imageSrc} alt={prop.cardContent.imageAlt} className={prop.cardConfig.imgClasses} />
+            <Image src={prop.cardContent.imageSrc} alt={prop.cardContent.imageAlt} className={prop.cardConfig.imgClasses} />
         </>
     );
 
-    let buttonClasses: string = "card-actions " + prop.cardConfig.buttonPlacement;
+    const buttonClasses: string = "card-actions " + prop.cardConfig.buttonPlacement;
     const button: ReactElement = (
         <div className={buttonClasses}>
             <button className={prop.cardConfig.buttonClasses}>{prop.cardContent.buttonText}</button>
