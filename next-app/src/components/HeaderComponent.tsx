@@ -6,8 +6,6 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { AboutPageContent, ContactPageContent, DataSourcesPageContent, EventsAndTrainingsPageContent, HomePageContent, PrivacyPageContent, ClinicalDataPageContent } from '../content/content';
 import Image from 'next/image';
-import { useState } from "react";
-import Cookies from 'js-cookie';
 import React from "react";
 
 export default function HeaderComponent() {
@@ -65,19 +63,6 @@ export default function HeaderComponent() {
         textBar = "";
         break;
     }
-
-    // setting cookie temporarily moved to Header component, since the structure is different
-    // from old app and the previous setup doesn't work. Probably not ideal and should be
-    // fixed later
-    const [isTrackingCookieSet, setTrackingCookie] = useState(!(Cookies.get('trackingEnabled') === undefined));
-
-    React.useEffect(() =>{
-      // only set a new cookie to 'true' if no cookies have been set yet
-      if (!isTrackingCookieSet) {
-        Cookies.set('trackingEnabled', 'true', { expires: 365 });
-        setTrackingCookie(true);
-      };
-    }, []);
 
     return (
       <div className="bg-gradient-to-b from-secondary to-primary">
