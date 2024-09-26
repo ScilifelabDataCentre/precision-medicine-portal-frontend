@@ -9,12 +9,13 @@ export default function FooterComponent(): ReactElement {
       'l1': { text: 'Data Sources', classes: LINK_CLASSES, link: '/datasources' },
       'l2': { text: 'Events & Trainings', classes: LINK_CLASSES, link: '/eventsandtrainings' },
       'l3': { text: 'Access Clinical Data', classes: LINK_CLASSES, link: '/accessclinicaldata' },
+      'l4': { text: 'Clinical Registries', classes: LINK_CLASSES, link: '/registry' },
   };
 
   let linksCol2: { [id: string] : ILink; } = {
-      'l4': { text: 'About Us', classes: LINK_CLASSES, link: '/about' },
-      'l5': { text: 'Contact', classes: LINK_CLASSES, link: '/contact' },
-      'l6': { text: 'Privacy Policy', classes: LINK_CLASSES, link: '/privacy' },
+      'l5': { text: 'About Us', classes: LINK_CLASSES, link: '/about' },
+      'l6': { text: 'Contact', classes: LINK_CLASSES, link: '/contact' },
+      'l7': { text: 'Privacy Policy', classes: LINK_CLASSES, link: '/privacy' },
   };
 
   let svgs: { [id: string] : ISVG; } = {
