@@ -1,4 +1,4 @@
-const NatTeamPic = '/TeamPics/NatTeamPic';
+const NatTeamPic = '/TeamPics/NatTeamPic.jpg';
 const SebTeamPic = '/TeamPics/SebTeamPic.png';
 const JanTeamPic = '/TeamPics/JanTeamPic.jpg';
 const MarTeamPic = '/TeamPics/MarTeamPic.png';

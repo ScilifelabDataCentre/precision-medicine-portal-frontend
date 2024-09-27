@@ -8,11 +8,12 @@ import {
 } from '@/constants';
 import Link from 'next/link';
 import { ILink } from "@/interfaces/types";
-import Cookies from 'js-cookie';
-import { TrackPageViewIfEnabled, cookieIsSetToTrue } from '@/util/cookiesHandling';
+import { TrackPageViewIfEnabled, trackingDisabled } from '@/util/cookiesHandling';
 import { PrivacyPageContent } from '@/content/content';
+import React from 'react';
+import { deleteCookie, setCookie } from 'cookies-next';
 
-export default async function PrivacyPage(): Promise<ReactElement> {
+export default function PrivacyPage(): ReactElement {
     TrackPageViewIfEnabled();
 
     const breadcrumbs: { [id: string] : ILink; } = {
@@ -20,8 +21,8 @@ export default async function PrivacyPage(): Promise<ReactElement> {
         'l2': { text: 'Privacy', classes: '', link: '' },
     };
 
-    const optInOrOutTextActive = async (isTrackingEnabled: boolean): Promise<string[]> => {
-        if (await isTrackingEnabled) {
+    const optInOrOutTextActive = (isTrackingEnabled: boolean): string[] => {
+        if (isTrackingEnabled) {
             return ["Click on the button to the right to opt out", "Opt Out"]
         }
         else {
@@ -29,12 +30,13 @@ export default async function PrivacyPage(): Promise<ReactElement> {
         }
     }
 
-    const [ optInText, setOptInText ] = useState(optInOrOutTextActive(await cookieIsSetToTrue('trackingEnabled')))
+    const [ optInText, setOptInText ] = useState(optInOrOutTextActive(!trackingDisabled()))
 
-    const handleOptOut = async () => {
-        const trackingEnabledCookie: boolean = await cookieIsSetToTrue('trackingEnabled');
-        setOptInText(optInOrOutTextActive(!trackingEnabledCookie))
-        Cookies.set('trackingEnabled', String(!trackingEnabledCookie), { expires: 365 });
+    const handleOptOut = () => {
+        trackingDisabled() ? 
+            deleteCookie('trackingDisabled') :
+            setCookie('trackingDisabled', 'true', { maxAge: 365 })
+        setOptInText(optInOrOutTextActive(!trackingDisabled()))
     };
     
     return (
@@ -66,9 +68,9 @@ export default async function PrivacyPage(): Promise<ReactElement> {
                 <p>{PrivacyPageContent.content[1].body}</p>
                 <div role="alert" className="alert bg-neutral text-neutral-content">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="stroke-info shrink-0 w-6 h-6"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                    <span>{optInText.then(res => res[0])}</span>
+                    <span>{optInText[0]}</span>
                     <div className="space-x-2">
-                        <button onClick={handleOptOut} className={BUTTON_TYPE_ONE}>{optInText.then(res => res[1])}</button>
+                        <button onClick={handleOptOut} className={BUTTON_TYPE_ONE}>{optInText[1]}</button>
                     </div>
                 </div>
                 <div className="divider">{PrivacyPageContent.content[2].header}</div>

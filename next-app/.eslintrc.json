@@ -1,6 +1,7 @@
 {
   "extends": ["next/core-web-vitals", "next/typescript"],
   "rules": {
-    "prefer-spread": ["off"]
+    "prefer-spread": ["off"],
+    "@next/next/no-img-element": "off"
   }
 }

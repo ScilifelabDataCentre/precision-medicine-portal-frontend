@@ -5,7 +5,6 @@ import { LINK_CLASSES } from '@/constants';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { AboutPageContent, ContactPageContent, DataSourcesPageContent, EventsAndTrainingsPageContent, HomePageContent, PrivacyPageContent, ClinicalDataPageContent } from '../content/content';
-import Image from 'next/image';
 import React from "react";
 
 export default function HeaderComponent() {
@@ -70,7 +69,7 @@ export default function HeaderComponent() {
             <div className="navbar">
                 <div className="navbar-start">
                     <Link href="/">
-                        <Image className="h-auto w-auto 2xl:max-w-2xl" src={'/SciLifeLab logo/Precisionmedicineportal_logo_white.png'} alt="SciLifeLab Logo" />
+                        <img className="h-auto w-auto 2xl:max-w-2xl" src={'/SciLifeLab logo/Precisionmedicineportal_logo_white.png'} alt="SciLifeLab Logo" />
                     </Link>
                 </div>
                 <div className="navbar-center lg:flex">

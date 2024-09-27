@@ -1,6 +1,5 @@
 import { ReactElement } from "react";
 import { ICardConfig, ICardContent } from "@/interfaces/types";
-import Image from 'next/image';
 
 export default function CardComponent(prop: { cardConfig: ICardConfig, cardContent: ICardContent }): ReactElement {
     const title: ReactElement = (
@@ -12,7 +11,7 @@ export default function CardComponent(prop: { cardConfig: ICardConfig, cardConte
 
     const image: ReactElement = (
         <>
-            <Image src={prop.cardContent.imageSrc} alt={prop.cardContent.imageAlt} className={prop.cardConfig.imgClasses} />
+            <img src={prop.cardContent.imageSrc} alt={prop.cardContent.imageAlt} className={prop.cardConfig.imgClasses} />
         </>
     );
 
