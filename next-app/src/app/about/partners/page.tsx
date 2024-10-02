@@ -6,18 +6,18 @@ import CardComponent from '@/components/CardComponent';
 import { TrackPageViewIfEnabled } from '@/util/cookiesHandling';
 
 // import elixirImage from '../assets/Partner logo/Elixir-Europe-logo-1.png';
-let dcImage = '/Partner logo/dc.png';
-let nbisImage = '/Partner logo/nbislogo_orange_txt_3cb0778d90.svg';
-let kawImage = '/Partner logo/kaw_sv_300x300.png';
-let kiImage = '/Partner logo/KI_digital_logotyp_positiv_RGB.png';
-let scilifelabImage = '/Partner logo/SciLifeLab_Logotype_Green_POS.png';
+const dcImage = '/Partner logo/dc.png';
+const nbisImage = '/Partner logo/nbislogo_orange_txt_3cb0778d90.svg';
+const kawImage = '/Partner logo/kaw_sv_300x300.png';
+const kiImage = '/Partner logo/KI_digital_logotyp_positiv_RGB.png';
+const scilifelabImage = '/Partner logo/SciLifeLab_Logotype_Green_POS.png';
 
 
 export default function AboutPartnersPage(): ReactElement {
     TrackPageViewIfEnabled();
 
-    let cardClasses: string = "flex flex-row justify-center items-center w-full h-full bg-white shadow-xl";
-    var cardConfig: { [id: string] : ICardConfig; } = {
+    const cardClasses: string = "flex flex-row justify-center items-center w-full h-full bg-white shadow-xl";
+    const cardConfig: { [id: string] : ICardConfig; } = {
         'dcCard': {
             cardClasses: cardClasses + " pl-6",
             titleClasses: "card-title",
@@ -65,7 +65,7 @@ export default function AboutPartnersPage(): ReactElement {
         },
     };
 
-    var cardContent: { [id: string] : ICardContent } = {
+    const cardContent: { [id: string] : ICardContent } = {
         'dcCard': {
             title: "SciLifeLab Data Centre",
             subTitle: "",

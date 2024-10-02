@@ -11,7 +11,7 @@ export default function AccordionComponent(): ReactElement {
                     What is the Data Science Node in Precision Medicine & Diagnostics?
                 </div>
                 <div className="collapse-content"> 
-                    <p>We are one out of the four Data Driven Life Science's nodes at SciLifeLab; our node is hosted by Karolinska Institutet. Established in late 2023, we are currently organising our efforts to develop technologies and data support that aid Swedish precision medicine researchers and bridge the gap between hospital and research. By providing robust data science tools and support, we aim to empower researchers who focus on enhancing diagnostics and personalised treatment strategies, facilitating the translation of precision medicine innovations into clinical practice. Our work is specifically driven by the Data Centre, a central hub within SciLifeLab. </p>
+                    <p>We are one out of the four Data Driven Life Science&apos;s nodes at SciLifeLab; our node is hosted by Karolinska Institutet. Established in late 2023, we are currently organising our efforts to develop technologies and data support that aid Swedish precision medicine researchers and bridge the gap between hospital and research. By providing robust data science tools and support, we aim to empower researchers who focus on enhancing diagnostics and personalised treatment strategies, facilitating the translation of precision medicine innovations into clinical practice. Our work is specifically driven by the Data Centre, a central hub within SciLifeLab. </p>
                 </div>
             </div>
             <div className="collapse collapse-arrow bg-neutral">
@@ -47,7 +47,7 @@ export default function AccordionComponent(): ReactElement {
                     How was the data sources list curated? Can I add specific data sources myself?
                 </div>
                 <div className="collapse-content"> 
-                    <p>The Data Centre's data stewards have manually searched for, collected, and summarised the displayed data sources. We recognise that new sources are continually emerging and strive to keep our data updated and accurate. If you think we have missed a source or have mislabelled one, please contact us using the contact form..</p>
+                    <p>The Data Centre&apos;s data stewards have manually searched for, collected, and summarised the displayed data sources. We recognise that new sources are continually emerging and strive to keep our data updated and accurate. If you think we have missed a source or have mislabelled one, please contact us using the contact form..</p>
                 </div>
             </div>
             <div className="collapse collapse-arrow bg-neutral">

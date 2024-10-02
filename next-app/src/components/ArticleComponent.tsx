@@ -1,22 +1,28 @@
 'use client';
 
-import { useState, useEffect, ReactElement } from 'react'
-import ReactMarkdown from 'react-markdown'
-import remarkGfm from 'remark-gfm'
+import { 
+    // useState, 
+    // useEffect, 
+    ReactElement } from 'react'
+// import ReactMarkdown from 'react-markdown'
+// import remarkGfm from 'remark-gfm'
 
 export default function ArticleComponent(): ReactElement {
 
-    const [content, setContent] = useState('')
+    // const [content, setContent] = useState('')
 
-    useEffect(() => {
-        fetch("markdown_example.md")
-          .then((res) => res.text())
-          .then((text) => setContent(text));
-      }, []);
+    // useEffect(() => {
+    //     fetch("markdown_example.md")
+    //       .then((res) => res.text())
+    //       .then((text) => setContent(text));
+    //   }, []);
 
+    // NextJS build was giving error, since this component isn't used yet just commented 
+    // it out for now
     return (
         <div className="post">
-            <ReactMarkdown className="prose" remarkPlugins={[remarkGfm]} children={content} />
+            <p>Under construction</p>
+            {/* <ReactMarkdown className="prose" remarkPlugins={[remarkGfm]} children={content} /> */}
         </div>
     );
 }

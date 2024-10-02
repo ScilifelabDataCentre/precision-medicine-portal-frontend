@@ -50,7 +50,7 @@ export default function ContactFormComponent(): ReactElement {
 
     React.useEffect(() =>{
         // form validation
-        let errors_tmp = {
+        const errors_tmp = {
             name: "",
             email: "",
             message: ""
@@ -138,7 +138,7 @@ export default function ContactFormComponent(): ReactElement {
                                 <input type="submit" value="Submit" className="btn btn-wide bg-fuchsia-950 text-white hover:bg-fuchsia-800 active:bg-fuchsia-900 focus:outline-none focus:ring focus:ring-fuchsia-300" />
                                 :
                                 <>
-                                    <p className="error text-error">Please tick 'I'm not a robot' above the 'Submit' button.</p>
+                                    <p className="error text-error">Please tick &apos;I&apos;m not a robot&apos; above the &apos;Submit&apos; button.</p>
                                     <div className='btn btn-wide bg-neutral text-neutral-content cursor-not-allowed'>Submit</div>
                                 </>
                             )

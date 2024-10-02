@@ -11,7 +11,7 @@ import ContactFormComponent from '@/components/ContactFormComponent';
 export default function ContactPage(): ReactElement {
     TrackPageViewIfEnabled();
 
-    var breadcrumbs: { [id: string] : ILink; } = {
+    const breadcrumbs: { [id: string] : ILink; } = {
         'l1': { text: 'Home', classes: '', link: '/' },
         'l2': { text: 'Contact', classes: '', link: '' },
     };
@@ -21,7 +21,19 @@ export default function ContactPage(): ReactElement {
             <div className="text-sm breadcrumbs">
                 <ul>
                 {Object.keys(breadcrumbs).map( key => (
-                    <li>{breadcrumbs[key].link ? <Link href={breadcrumbs[key].link}>{breadcrumbs[key].text}</Link> : <>{breadcrumbs[key].text}</>}</li>
+                    <li key={key}>
+                        {
+                        breadcrumbs[key].link 
+                            ? 
+                            <Link href={breadcrumbs[key].link}>
+                                {breadcrumbs[key].text}
+                            </Link> 
+                            : 
+                            <>
+                                {breadcrumbs[key].text}
+                            </>
+                        }
+                    </li>
                 ))}
                 </ul>
             </div>
