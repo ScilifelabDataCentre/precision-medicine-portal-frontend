@@ -7,26 +7,26 @@ import { TrackPageViewIfEnabled } from "@/util/cookiesHandling";
 import { BODY_CLASSES, H_1 } from "@/constants";
 import Link from "next/link";
 
-let nbisImage = "/Partner logo/nbislogo_orange_txt_3cb0778d90.svg";
-let scilifelabImage = "/Partner logo/SciLifeLab_Logotype_Green_POS.png";
-let scilifelabDataPlatformImage = "/Partner logo/sll_dp_outline.svg";
-let pathogensPortalImage = "/Partner logo/swe_pathogens_logo.png";
-let elixirImage = "/Partner logo/elixir-tess.svg";
-let gmsImage = "/Partner logo/gms-logo.png";
-let pmcImage = "/Partner logo/pmc-logo.png";
+const nbisImage = "/Partner logo/nbislogo_orange_txt_3cb0778d90.svg";
+const scilifelabImage = "/Partner logo/SciLifeLab_Logotype_Green_POS.png";
+const scilifelabDataPlatformImage = "/Partner logo/sll_dp_outline.svg";
+const pathogensPortalImage = "/Partner logo/swe_pathogens_logo.png";
+const elixirImage = "/Partner logo/elixir-tess.svg";
+const gmsImage = "/Partner logo/gms-logo.png";
+const pmcImage = "/Partner logo/pmc-logo.png";
 
 export default function EventsAndTrainingsPage(): ReactElement {
   TrackPageViewIfEnabled();
 
-  var breadcrumbs: { [id: string]: ILink } = {
+  const breadcrumbs: { [id: string]: ILink } = {
     l1: { text: "Home", classes: "", link: "/" },
     l2: { text: "Events & Training", classes: "", link: "" },
   };
 
-  let cardClasses: string =
+  const cardClasses: string =
     "flex flex-row justify-center items-center w-full h-full bg-white shadow-xl";
 
-  let cardConfig: { [id: string]: ICardConfig } = {
+  const cardConfig: { [id: string]: ICardConfig } = {
     sslCalendar: {
       cardClasses: cardClasses + " pl-6",
       titleClasses: "card-title",
@@ -101,7 +101,7 @@ export default function EventsAndTrainingsPage(): ReactElement {
     },
   };
 
-  let cardContent: { [id: string]: ICardContent } = {
+  const cardContent: { [id: string]: ICardContent } = {
     sslCalendar: {
       title: "SciLifeLab Events Calendar",
       subTitle: "",
@@ -168,7 +168,7 @@ export default function EventsAndTrainingsPage(): ReactElement {
     },
   };
 
-  let cardLinks: { [id: string]: string } = {
+  const cardLinks: { [id: string]: string } = {
     sslCalendar: "https://www.scilifelab.se/events/#calendar",
     sslTrainingPortal: "https://training.scilifelab.se/",
     nbis: "https://nbis.se/training/future",
