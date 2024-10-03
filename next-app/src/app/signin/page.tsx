@@ -1,10 +1,10 @@
 'use client';
 
 import { ReactElement } from 'react';
-import { TrackPageViewIfEnabled } from '@/util/cookiesHandling';
+// import { TrackPageViewIfEnabled } from '@/util/cookiesHandling';
 
 export default function SignInPage(): ReactElement {
-    TrackPageViewIfEnabled();
+    // TrackPageViewIfEnabled();
 
     return (
         <div>

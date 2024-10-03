@@ -9,7 +9,7 @@ import { TrackPageViewIfEnabled } from '@/util/cookiesHandling';
 export default function AboutPage(): ReactElement {
   TrackPageViewIfEnabled();
 
-  var breadcrumbs: { [id: string]: ILink } = {
+  const breadcrumbs: { [id: string]: ILink } = {
     l1: { text: "Home", classes: "", link: "/" },
     l2: { text: "Access Clinical Data", classes: "", link: "" },
   };
@@ -17,17 +17,23 @@ export default function AboutPage(): ReactElement {
   return (
     <div className={BODY_CLASSES}>
       <div className="text-sm breadcrumbs">
-        <ul className="list-disc">
-          {Object.keys(breadcrumbs).map((key) => (
-            <li>
-              {breadcrumbs[key].link ? (
-                <Link href={breadcrumbs[key].link}>{breadcrumbs[key].text}</Link>
-              ) : (
-                <>{breadcrumbs[key].text}</>
-              )}
-            </li>
+          <ul>
+          {Object.keys(breadcrumbs).map( key => (
+              <li key={key}>
+                  {
+                  breadcrumbs[key].link 
+                      ? 
+                      <Link href={breadcrumbs[key].link}>
+                          {breadcrumbs[key].text}
+                      </Link> 
+                      : 
+                      <>
+                          {breadcrumbs[key].text}
+                      </>
+                  }
+              </li>
           ))}
-        </ul>
+          </ul>
       </div>
       {/* Paragraph before the first heading */}
       <p>
