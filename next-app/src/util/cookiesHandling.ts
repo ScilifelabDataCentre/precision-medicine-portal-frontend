@@ -14,7 +14,7 @@ export function TrackPageViewIfEnabled() {
     // const { trackPageView, trackEvent } = useMatomo() , trackEvent to track clicks and other events
     const { trackPageView,} = useMatomo()
 
-    // track page visit if trackingEnabled cookie is set to 'true'
+  // track page visit if trackingEnabled cookie is set to 'true'
 
     React.useEffect(() => {
         if (!trackingDisabled()) {
