@@ -7,19 +7,19 @@ import { LINK_CLASSES } from '@/constants';
 
 export default function FooterComponent(): ReactElement {
   
-  let linksCol1: { [id: string] : ILink; } = {
+  const linksCol1: { [id: string] : ILink; } = {
       'l1': { text: 'Data Sources', classes: LINK_CLASSES, link: '/datasources' },
       'l2': { text: 'Events & Trainings', classes: LINK_CLASSES, link: '/eventsandtrainings' },
       'l3': { text: 'Access Clinical Data', classes: LINK_CLASSES, link: '/accessclinicaldata' },
   };
 
-  let linksCol2: { [id: string] : ILink; } = {
+  const linksCol2: { [id: string] : ILink; } = {
       'l4': { text: 'About Us', classes: LINK_CLASSES, link: '/about/product' },
       'l5': { text: 'Contact', classes: LINK_CLASSES, link: '/contact' },
       'l6': { text: 'Privacy Policy', classes: LINK_CLASSES, link: '/privacy' },
   };
 
-  let svgs: { [id: string] : ISVG; } = {
+  const svgs: { [id: string] : ISVG; } = {
       'svgX': {
         href: "https://twitter.com/SciLifeLab_DC", 
         xmlns: 'http://www.w3.org/2000/svg', 
