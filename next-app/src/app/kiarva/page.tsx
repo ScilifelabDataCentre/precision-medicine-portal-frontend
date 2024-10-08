@@ -7,7 +7,7 @@ import Iframe from 'react-iframe';
 export default function KiarvaIFramePage(): ReactElement {
     TrackPageViewIfEnabled();
 
-    let kiarva_hostname = '';
+    const kiarva_hostname = '';
 
     return (
         <>

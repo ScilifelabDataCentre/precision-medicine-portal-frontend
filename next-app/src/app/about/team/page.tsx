@@ -9,7 +9,7 @@ import { TeamDescriptions } from '@/content/content';
 export default function AboutTeamPage(): ReactElement {
     TrackPageViewIfEnabled();
 
-    var cardConfig: { [id: string] : ICardConfig; } = {
+    const cardConfig: { [id: string] : ICardConfig; } = {
         'teamCard': { 
             cardClasses: "card h-[46rem] w-96 bg-white shadow-xl", 
             titleClasses: "card-title",
@@ -21,13 +21,13 @@ export default function AboutTeamPage(): ReactElement {
         },
     };
 
-    var cardContent: { [id: string] : ICardContent } = {
+    const cardContent: { [id: string] : ICardContent } = {
         'JanCard': {
             title: TeamDescriptions.teamMembers.jan.name, 
             subTitle: TeamDescriptions.teamMembers.jan.title,
             text: TeamDescriptions.teamMembers.jan.description, 
             buttonText: "",
-            imageSrc: TeamDescriptions.teamMembers.jan.img.src,
+            imageSrc: TeamDescriptions.teamMembers.jan.img,
             imageAlt: TeamDescriptions.teamMembers.jan.imgAlt,
         },
         'NatCard': {
@@ -35,7 +35,7 @@ export default function AboutTeamPage(): ReactElement {
             subTitle: TeamDescriptions.teamMembers.natashia.title,
             text: TeamDescriptions.teamMembers.natashia.description, 
             buttonText: "",
-            imageSrc: TeamDescriptions.teamMembers.natashia.img.src,
+            imageSrc: TeamDescriptions.teamMembers.natashia.img,
             imageAlt: TeamDescriptions.teamMembers.natashia.imgAlt,
         },
         'SebCard': {
@@ -43,7 +43,7 @@ export default function AboutTeamPage(): ReactElement {
             subTitle: TeamDescriptions.teamMembers.sebastian.title,
             text: TeamDescriptions.teamMembers.sebastian.description, 
             buttonText: "",
-            imageSrc: TeamDescriptions.teamMembers.sebastian.img.src,
+            imageSrc: TeamDescriptions.teamMembers.sebastian.img,
             imageAlt: TeamDescriptions.teamMembers.sebastian.imgAlt,
         },
         'SamCard': {
@@ -51,7 +51,7 @@ export default function AboutTeamPage(): ReactElement {
             subTitle: TeamDescriptions.teamMembers.saman.title,
             text: TeamDescriptions.teamMembers.saman.description, 
             buttonText: "",
-            imageSrc: TeamDescriptions.teamMembers.saman.img.src,
+            imageSrc: TeamDescriptions.teamMembers.saman.img,
             imageAlt: TeamDescriptions.teamMembers.saman.imgAlt,
         },
         'MarCard': {
@@ -59,7 +59,7 @@ export default function AboutTeamPage(): ReactElement {
             subTitle: TeamDescriptions.teamMembers.maria.title,
             text: TeamDescriptions.teamMembers.maria.description, 
             buttonText: "",
-            imageSrc: TeamDescriptions.teamMembers.maria.img.src,
+            imageSrc: TeamDescriptions.teamMembers.maria.img,
             imageAlt: TeamDescriptions.teamMembers.maria.imgAlt,
         },
     };
@@ -68,7 +68,7 @@ export default function AboutTeamPage(): ReactElement {
         <>
             <div className="grid grid-cols-3 place-items-center gap-2">
                 {Object.keys(cardContent).map( key => (
-                    <CardComponent cardConfig={cardConfig['teamCard']} cardContent={cardContent[key]} />
+                    <CardComponent cardConfig={cardConfig['teamCard']} cardContent={cardContent[key]} key={key} />
                 ))}
             </div>
         </>

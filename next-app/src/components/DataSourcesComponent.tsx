@@ -75,8 +75,8 @@ export default function DataSourcesComponent(): ReactElement {
     }
 
     function checkedDataFilter(tagType: string, tagName: string, boxIndex: number) {
-        let tmpFilters = selectedFilters;
-        let tmpCheckedList = [...checkedList];
+        const tmpFilters = selectedFilters;
+        const tmpCheckedList = [...checkedList];
 
         switch (tagType) {
             case "dataType":
@@ -196,7 +196,7 @@ export default function DataSourcesComponent(): ReactElement {
                         <h2 className="font-bold text-xl">Data Type</h2>
                         <div className="form-control w-80 rounded-[10px] shadow border-2 border-neutral p-3">
                             {filters.dataTypes.map((element, index) =>
-                                <div className="flex flex-row">
+                                <div className="flex flex-row" key={element}>
                                     <label key={element} className="label cursor-pointer">
                                         <input 
                                             type="checkbox" 
@@ -212,7 +212,7 @@ export default function DataSourcesComponent(): ReactElement {
                         <h2 className="font-bold pt-4 text-xl">Disease Type</h2>
                         <div className="form-control w-80 rounded-[10px] shadow border-2 border-neutral p-3">
                             {filters.diseaseTypes.map((element, index) =>
-                                <div className="flex flex-row">
+                                <div className="flex flex-row" key={element}>
                                     <label key={element} className="label cursor-pointer">
                                         <input 
                                             type="checkbox" 

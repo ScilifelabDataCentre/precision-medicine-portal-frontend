@@ -1,8 +1,8 @@
-import NatTeamPic from '../assets/TeamPics/NatTeamPic.jpg';
-import SebTeamPic from '../assets/TeamPics/SebTeamPic.png';
-import JanTeamPic from '../assets/TeamPics/JanTeamPic.jpg';
-import MarTeamPic from '../assets/TeamPics/MarTeamPic.png';
-import SamTeamPic from '../assets/TeamPics/SamTeamPic.jpg';
+const NatTeamPic = '/TeamPics/NatTeamPic.jpg';
+const SebTeamPic = '/TeamPics/SebTeamPic.png';
+const JanTeamPic = '/TeamPics/JanTeamPic.jpg';
+const MarTeamPic = '/TeamPics/MarTeamPic.png';
+const SamTeamPic = '/TeamPics/SamTeamPic.jpg';
 
 export const PrivacyPageContent = {
     textBar: 'Transparency is key to us. Find out how we keep your space secure.',

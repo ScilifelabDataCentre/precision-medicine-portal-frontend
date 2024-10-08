@@ -9,16 +9,16 @@ import { ILink, } from '@/interfaces/types';
 import { usePathname } from 'next/navigation';
 
 export default function AboutPage(): ReactElement {
-    var pageTitle: string = "About Us";
+    const pageTitle: string = "About Us";
     
-    var breadcrumbs: { [id: string] : ILink; } = {
+    const breadcrumbs: { [id: string] : ILink; } = {
         'l1': { text: 'Home', classes: '', link: '/' },
         'l2': { text: 'About', classes: '', link: '' },
     };
 
-    let currentRoute = usePathname();
+    const currentRoute = usePathname();
 
-    let paths = {
+    const paths = {
         'Product': '/about/product',
         'FAQ': '/about/faq',
         'Team': '/about/team',
@@ -38,7 +38,18 @@ export default function AboutPage(): ReactElement {
                 <div className={H_1}>{pageTitle}</div>
                 <div role="tablist" className="tabs tabs-lifted pb-4">
                     {Object.keys(paths).map( key => (
-                        <Link href={paths[key as keyof typeof paths]} role='tab' className={`tab ${ currentRoute == paths[key as keyof typeof paths] ? 'tab-active text-info-content !bg-info' : 'bg-white shadow'}`}>{key}</Link>
+                        <Link 
+                            key={key}
+                            href={paths[key as keyof typeof paths]} 
+                            role='tab' 
+                            className={`tab ${ currentRoute == paths[key as keyof typeof paths] 
+                                ? 
+                                'tab-active text-info-content !bg-info' 
+                                : 
+                                'bg-white shadow'}`}
+                        >
+                        {key}
+                        </Link>
                     ))}
                 </div>
             </div>
