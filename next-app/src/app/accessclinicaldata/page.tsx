@@ -1,10 +1,10 @@
-'use client';
+"use client";
 
 import { ReactElement } from "react";
-import { BODY_CLASSES } from '@/constants'
-import Link from 'next/link';
+import { BODY_CLASSES } from "@/constants";
+import Link from "next/link";
 import { ILink } from "@/interfaces/types";
-import { TrackPageViewIfEnabled } from '@/util/cookiesHandling';
+import { TrackPageViewIfEnabled } from "@/util/cookiesHandling";
 
 export default function AboutPage(): ReactElement {
   TrackPageViewIfEnabled();
@@ -17,23 +17,19 @@ export default function AboutPage(): ReactElement {
   return (
     <div className={BODY_CLASSES}>
       <div className="text-sm breadcrumbs">
-          <ul>
-          {Object.keys(breadcrumbs).map( key => (
-              <li key={key}>
-                  {
-                  breadcrumbs[key].link 
-                      ? 
-                      <Link href={breadcrumbs[key].link}>
-                          {breadcrumbs[key].text}
-                      </Link> 
-                      : 
-                      <>
-                          {breadcrumbs[key].text}
-                      </>
-                  }
-              </li>
+        <ul>
+          {Object.keys(breadcrumbs).map((key) => (
+            <li key={key}>
+              {breadcrumbs[key].link ? (
+                <Link href={breadcrumbs[key].link}>
+                  {breadcrumbs[key].text}
+                </Link>
+              ) : (
+                <>{breadcrumbs[key].text}</>
+              )}
+            </li>
           ))}
-          </ul>
+        </ul>
       </div>
       {/* Paragraph before the first heading */}
       <p>
@@ -50,18 +46,6 @@ export default function AboutPage(): ReactElement {
       {/* The first heading */}
       <div className="flex items-center">
         <h1 className="text-2xl my-2">Patient records and medical records</h1>
-        <Link href="/patient-records">
-          <svg
-            className="ml-2 fill-primary w-7 h-7"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 32 32"
-          >
-            <g data-name="19-Arrow Right">
-              <path d="M16 0a16 16 0 1 0 16 16A16 16 0 0 0 16 0zm0 30a14 14 0 1 1 14-14 14 14 0 0 1-14 14z" />
-              <path d="m26.71 15.29-7-7-1.42 1.42 5.3 5.29H5v2h18.59l-5.29 5.29 1.41 1.41 7-7a1 1 0 0 0 0-1.41z" />
-            </g>
-          </svg>
-        </Link>
       </div>
       {/* Paragraph under the first heading */}
       <p>
