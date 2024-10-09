@@ -1,8 +1,7 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useSearchParams } from "next/navigation";
-import DOMPurify from "dompurify";
 import { RegistrySources, RegistrySourcesFilters } from "@/interfaces/types";
 
 const filters: RegistrySourcesFilters = {
@@ -48,8 +47,7 @@ export default function DataPageClient({
 }: {
   initialData: RegistrySources[];
 }) {
-  const [RegistrySourcesJSON, setRegistrySourcesJSON] =
-    useState<RegistrySources[]>(initialData);
+  const [RegistrySourcesJSON] = useState<RegistrySources[]>(initialData);
   const [selectedFilters, setSelectedFilters] =
     useState<RegistrySourcesFilters>({
       registryCentre: [],
@@ -215,7 +213,7 @@ export default function DataPageClient({
               >
                 <div className="bg-neutral p-3 flow-root rounded-t-[8px] pr-4">
                   <a
-                    href={DOMPurify.sanitize(item.url)}
+                    href={item.url}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-neutral-content text-xl"
@@ -238,9 +236,7 @@ export default function DataPageClient({
                     <div className="flex-shrink-0 px-3 py-1 bg-black opacity-80 text-white rounded-lg shadow-sm">
                       <strong className="text-xs block">Organisation:</strong>
                       <a
-                        href={DOMPurify.sanitize(
-                          organisationLinks[item.registry_centre[0]]
-                        )}
+                        href={organisationLinks[item.registry_centre[0]]}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-xs block hover:underline"
