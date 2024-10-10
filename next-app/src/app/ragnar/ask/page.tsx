@@ -1,7 +1,6 @@
 "use client";
 
 import { ReactElement } from "react";
-import { BODY_CLASSES } from "@/constants";
 import { TrackPageViewIfEnabled } from "@/util/cookiesHandling";
 import { ILink } from "@/interfaces/types";
 import Link from "next/link";
@@ -9,8 +8,6 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent } from "@/components/ui/card";
 import { Search } from "lucide-react";
-
-const RAGnarLogo = "/images/RAGnar.svg";
 
 export default function RAGAskPage(): ReactElement {
   TrackPageViewIfEnabled();
@@ -25,7 +22,7 @@ export default function RAGAskPage(): ReactElement {
       <div className="text-sm breadcrumbs">
         <ul>
           {Object.keys(breadcrumbs).map((key) => (
-            <li>
+            <li key={key}>
               {breadcrumbs[key].link ? (
                 <Link href={breadcrumbs[key].link}>
                   {breadcrumbs[key].text}
