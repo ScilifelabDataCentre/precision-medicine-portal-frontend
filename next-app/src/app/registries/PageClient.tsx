@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { RegistrySources, RegistrySourcesFilters } from "@/interfaces/types";
+import { LastUpdated } from "@/components/common/last-updated";
 
 const filters: RegistrySourcesFilters = {
   registryCentre: [
@@ -265,6 +266,7 @@ export default function DataPageClient({
           </div>
         </div>
       </div>
+      <LastUpdated date="11-11-2024" />
     </div>
   );
 }

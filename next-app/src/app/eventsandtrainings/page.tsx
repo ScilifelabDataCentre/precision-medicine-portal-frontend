@@ -6,6 +6,7 @@ import CardComponent from "@/components/CardComponent";
 import { TrackPageViewIfEnabled } from "@/util/cookiesHandling";
 import { BODY_CLASSES, H_1 } from "@/constants";
 import Link from "next/link";
+import { LastUpdated } from "@/components/common/last-updated";
 
 const nbisImage = "/Partner logo/nbislogo_orange_txt_3cb0778d90.svg";
 const scilifelabImage = "/Partner logo/SciLifeLab_Logotype_Green_POS.png";
@@ -225,6 +226,7 @@ export default function EventsAndTrainingsPage(): ReactElement {
           </div>
         ))}
       </div>
+      <LastUpdated date="11-11-2024" />
     </div>
   );
 }
