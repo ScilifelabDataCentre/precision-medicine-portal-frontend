@@ -5,6 +5,7 @@ import { BODY_CLASSES } from "@/constants";
 import Link from "next/link";
 import { ILink } from "@/interfaces/types";
 import { TrackPageViewIfEnabled } from "@/util/cookiesHandling";
+import { LastUpdated } from "@/components/common/last-updated";
 
 export default function AboutPage(): ReactElement {
   TrackPageViewIfEnabled();
@@ -153,6 +154,7 @@ export default function AboutPage(): ReactElement {
           </a>
         </li>
       </ul>
+      <LastUpdated date="11-11-2024" />
     </div>
   );
 }
