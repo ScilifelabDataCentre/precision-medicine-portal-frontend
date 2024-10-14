@@ -143,6 +143,24 @@ export default function DataSourcesComponent() {
     );
   }
 
+  function sanitizeString(str: string) {
+    return str.replace(/[^\w\s-]/gi, "");
+  }
+
+  function sanitizeURL(url: string) {
+    try {
+      const parsedURL = new URL(url);
+      // Only allow http and https protocols
+      if (parsedURL.protocol !== "http:" && parsedURL.protocol !== "https:") {
+        return "#";
+      }
+      return parsedURL.toString();
+    } catch {
+      // If URL is invalid, return a safe default
+      return "#";
+    }
+  }
+
   useEffect(() => {
     getData();
   }, []);
@@ -245,7 +263,7 @@ export default function DataSourcesComponent() {
                 <CardHeader className="bg-muted">
                   <CardTitle className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
                     <a
-                      href={item.url}
+                      href={sanitizeURL(item.url)}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-xl text-primary hover:underline"
@@ -254,9 +272,9 @@ export default function DataSourcesComponent() {
                     </a>
                     <img
                       className="float-right w-62 h-12 object-scale-down object-right pl-2"
-                      src={`/img/datasources/${
-                        item.thumbnail.split("/").pop()?.split(".")[0]
-                      }.png`}
+                      src={`/img/datasources/${sanitizeString(
+                        item.thumbnail.split("/").pop()?.split(".")[0] || ""
+                      )}.png`}
                       alt={item.name}
                     />
                   </CardTitle>
