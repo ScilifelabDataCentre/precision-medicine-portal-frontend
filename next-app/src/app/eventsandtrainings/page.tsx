@@ -14,7 +14,7 @@ const scilifelabDataPlatformImage = "/Partner logo/sll_dp_outline.svg";
 const pathogensPortalImage = "/Partner logo/swe_pathogens_logo.png";
 const elixirImage = "/Partner logo/elixir-tess.svg";
 const gmsImage = "/Partner logo/gms-logo.png";
-const pmcImage = "/Partner logo/pmc-logo.png";
+const kiImage = "/Partner logo/ki-logo.jpg";
 
 export default function EventsAndTrainingsPage(): ReactElement {
   TrackPageViewIfEnabled();
@@ -29,6 +29,15 @@ export default function EventsAndTrainingsPage(): ReactElement {
 
   const cardConfig: { [id: string]: ICardConfig } = {
     sslCalendar: {
+      cardClasses: cardClasses + " pl-6",
+      titleClasses: "card-title",
+      subTitleClasses: "",
+      textClasses: "",
+      imgClasses: "object-contain h-56 w-56",
+      buttonClasses: "",
+      buttonPlacement: "",
+    },
+    kiCalendar: {
       cardClasses: cardClasses + " pl-6",
       titleClasses: "card-title",
       subTitleClasses: "",
@@ -91,15 +100,6 @@ export default function EventsAndTrainingsPage(): ReactElement {
       buttonClasses: "",
       buttonPlacement: "",
     },
-    pmCoalition: {
-      cardClasses: cardClasses + " pl-6",
-      titleClasses: "card-title",
-      subTitleClasses: "",
-      textClasses: "",
-      imgClasses: "object-contain h-56 w-56",
-      buttonClasses: "",
-      buttonPlacement: "",
-    },
   };
 
   const cardContent: { [id: string]: ICardContent } = {
@@ -110,6 +110,14 @@ export default function EventsAndTrainingsPage(): ReactElement {
       buttonText: "",
       imageSrc: scilifelabImage,
       imageAlt: "SciLifeLab logo",
+    },
+    kiCalendar: {
+      title: "KI Calendar",
+      subTitle: "",
+      text: "The Karolinska Institutet Calendar provides a comprehensive overview of upcoming seminars, conferences, and training events across various disciplines in medical and health sciences. It features specific filtering options for precision medicine, along with other filters to help users find relevant events with ease.",
+      buttonText: "",
+      imageSrc: kiImage,
+      imageAlt: "KI logo",
     },
     sslTrainingPortal: {
       title: "SciLifeLab Training Portal",
@@ -159,25 +167,17 @@ export default function EventsAndTrainingsPage(): ReactElement {
       imageSrc: gmsImage,
       imageAlt: "GMS logo",
     },
-    pmCoalition: {
-      title: "Personalized Medicine Coalition Events",
-      subTitle: "",
-      text: "The Personalized Medicine Coalition (PMC) maintains an event page dedicated to promoting events related to the field of personalized medicine. These events, hosted by PMC or its 200+ members, focus on advancing personalized medicine through collaboration between innovators, researchers, patients, and healthcare providers. Primarily U.S.-based, these events drive the adoption of personalized medicine for the benefit of both patients and health systems worldwide.",
-      buttonText: "",
-      imageSrc: pmcImage,
-      imageAlt: "Personalized Medicine Coalition logo",
-    },
   };
 
   const cardLinks: { [id: string]: string } = {
     sslCalendar: "https://www.scilifelab.se/events/#calendar",
     sslTrainingPortal: "https://training.scilifelab.se/",
-    nbis: "https://nbis.se/training/future",
+    nbis: "https://nbis.se/training/future/",
     sllDataPlatform: "https://data.scilifelab.se/events/",
     pathogensPortal: "https://www.pathogens.se/events/",
     elixir: "https://tess.elixir-europe.org/events",
     gms: "https://genomicmedicine.se/kalendarium/",
-    pmCoalition: "https://www.personalizedmedicinecoalition.org/events/",
+    kiCalendar: "https://news.ki.se/ki-calendar/",
   };
 
   return (
