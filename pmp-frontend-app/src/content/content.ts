@@ -203,9 +203,13 @@ export const AboutPageContent = {
 }
 
 export const HomePageContent = {
-    textBar: 'An open-access portal that aggregates data, tools, and resources for Swedish precision medicine research.',
+    textBar: 'Access data and resources for Precision Medicine research in Sweden',
 }
 
 export const ClinicalDataPageContent = {
     textBar: 'How to access clinical data',
+}
+
+export const RegistryPageContent = {
+    textBar: 'Quality registries in Sweden',
 }
