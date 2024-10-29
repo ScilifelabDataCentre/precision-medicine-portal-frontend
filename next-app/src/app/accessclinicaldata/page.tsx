@@ -72,7 +72,7 @@ export default function AboutPage(): ReactElement {
       {/* The second heading */}
       <div className="flex items-center">
         <h1 className="text-2xl my-2">Quality registers</h1>
-        <Link href="https://precision-medicine-portal.scilifelab.se/registries">
+        <Link href="/registries">
           <svg
             className="ml-2 fill-primary w-7 h-7"
             xmlns="http://www.w3.org/2000/svg"
