@@ -34,15 +34,25 @@ export default function AboutPage(): ReactElement {
       </div>
       {/* Paragraph before the first heading */}
       <p>
-        Human data for research can be accessed from various sources such as
-        medical records, quality registries, and research databases. If the
-        research involves sensitive personal data (definition available here),
-        the project must be approved by the Swedish Ethical Review Authority.
-        This requirement applies even if the sensitive personal data is
-        pseudonymised. Additionally, all necessary legal measures must be in
-        place before transferring data from the agency or organisation providing
-        the source data. Procedures for requesting and disclosing data vary
-        between different authorities and organisations.
+      Human data for research can be accessed from several sources such as:
+        medical records, quality registries, research databases, etc. If
+        sensitive personal data (<a
+          href="https://www.imy.se/en/individuals/data-protection/introduktion-till-gdpr/what-is-actually-meant-by-personal-data/what-is-meant-by-sensitive-personal-data/"
+          target="_blank"
+          className="text-primary hover:text-black"
+        >definition</a>) will be used, the research project must be approved by
+        the <a
+          href="https://etikprovningsmyndigheten.se/en/"
+          target="_blank"
+          className="text-primary hover:text-black"
+        >Swedish Ethical Review Authority</a>. This applies even if all the
+        sensitive personal data being processed is pseudonymised. Moreover,
+        necessary legal measures must be in place before the data can be
+        transferred from the agency or organisation that provides the source
+        data. Exactly how the procedures for requesting data for research and
+        how the data is disclosed differ between various authorities or
+        organisations.
+
       </p>
       {/* The first heading */}
       <div className="flex items-center">
@@ -62,7 +72,7 @@ export default function AboutPage(): ReactElement {
       {/* The second heading */}
       <div className="flex items-center">
         <h1 className="text-2xl my-2">Quality registers</h1>
-        <Link href="/quality-registers">
+        <Link href="/registries">
           <svg
             className="ml-2 fill-primary w-7 h-7"
             xmlns="http://www.w3.org/2000/svg"

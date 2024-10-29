@@ -191,21 +191,21 @@ export const TeamDescriptions = {
 }
 
 export const DataSourcesPageContent = {
-    textBar: 'Repositories and data sources in precision medicine.',
+    textBar: 'Repositories and data sources in life science',
 }
 
 export const EventsAndTrainingsPageContent = {
-    textBar: 'Events and trainings in precision medicine.',
+    textBar: 'Events and trainings in precision medicine',
 }
 
 export const AboutPageContent = {
-    textBar: 'Learn about the team and partners behind the portal and our mission to connect you with the data you need.',
+    textBar: 'Learn about the team and partners behind the portal and our mission to connect you with the data you need',
 }
 
 export const HomePageContent = {
-    textBar: 'An open-access portal that aggregates data, tools, and resources for Swedish precision medicine research.',
+    textBar: 'An open-access portal that aggregates data, tools, and resources for Swedish precision medicine research',
 }
 
 export const ClinicalDataPageContent = {
-    textBar: 'How to access clinical data',
+    textBar: 'How to access clinical data in Sweden',
 }
