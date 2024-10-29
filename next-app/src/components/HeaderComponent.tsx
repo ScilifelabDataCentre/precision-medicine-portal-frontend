@@ -9,7 +9,7 @@ import {
   ContactPageContent,
   DataSourcesPageContent,
   EventsAndTrainingsPageContent,
-  HomePageContent,
+  //HomePageContent,
   PrivacyPageContent,
   ClinicalDataPageContent,
 } from "../content/content";
@@ -46,7 +46,7 @@ export default function HeaderComponent() {
 
   switch (currentRoute) {
     case "/":
-      textBar = HomePageContent.textBar;
+      //textBar = HomePageContent.textBar;
       break;
     case "/datasources":
       textBar = DataSourcesPageContent.textBar;
@@ -115,7 +115,7 @@ export default function HeaderComponent() {
                     </div>
                 ))} */}
         </div>
-        <div className="text-left text-4xl leading-tight tracking-tight font-bold py-6 px-4">
+        <div className="text-left text-2xl leading-tight tracking-tight font-bold py-6 px-4">
           <p>{textBar}</p>
         </div>
       </div>
