@@ -1,11 +1,11 @@
 "use client";
 
 import { ReactElement } from "react";
-import { BODY_CLASSES } from "@/constants";
 import Link from "next/link";
 import { ILink } from "@/interfaces/types";
-import { TrackPageViewIfEnabled } from "@/util/cookiesHandling";
+
 import { LastUpdated } from "@/components/common/last-updated";
+import { TrackPageViewIfEnabled } from "@/util/cookiesHandling";
 
 export default function AboutPage(): ReactElement {
   TrackPageViewIfEnabled();
@@ -16,7 +16,7 @@ export default function AboutPage(): ReactElement {
   };
 
   return (
-    <div className={BODY_CLASSES}>
+    <div className="container mx-auto px-4 py-8">
       <div className="text-sm breadcrumbs">
         <ul>
           {Object.keys(breadcrumbs).map((key) => (
@@ -34,25 +34,30 @@ export default function AboutPage(): ReactElement {
       </div>
       {/* Paragraph before the first heading */}
       <p>
-      Human data for research can be accessed from several sources such as:
+        Human data for research can be accessed from several sources such as:
         medical records, quality registries, research databases, etc. If
-        sensitive personal data (<a
+        sensitive personal data (
+        <a
           href="https://www.imy.se/en/individuals/data-protection/introduktion-till-gdpr/what-is-actually-meant-by-personal-data/what-is-meant-by-sensitive-personal-data/"
           target="_blank"
           className="text-primary hover:text-black"
-        >definition</a>) will be used, the research project must be approved by
-        the <a
+        >
+          definition
+        </a>
+        ) will be used, the research project must be approved by the{" "}
+        <a
           href="https://etikprovningsmyndigheten.se/en/"
           target="_blank"
           className="text-primary hover:text-black"
-        >Swedish Ethical Review Authority</a>. This applies even if all the
-        sensitive personal data being processed is pseudonymised. Moreover,
-        necessary legal measures must be in place before the data can be
-        transferred from the agency or organisation that provides the source
-        data. Exactly how the procedures for requesting data for research and
-        how the data is disclosed differ between various authorities or
-        organisations.
-
+        >
+          Swedish Ethical Review Authority
+        </a>
+        . This applies even if all the sensitive personal data being processed
+        is pseudonymised. Moreover, necessary legal measures must be in place
+        before the data can be transferred from the agency or organisation that
+        provides the source data. Exactly how the procedures for requesting data
+        for research and how the data is disclosed differ between various
+        authorities or organisations.
       </p>
       {/* The first heading */}
       <div className="flex items-center">
@@ -72,7 +77,7 @@ export default function AboutPage(): ReactElement {
       {/* The second heading */}
       <div className="flex items-center">
         <h1 className="text-2xl my-2">Quality registers</h1>
-        <Link href="/registries">
+        <Link href="/quality-registers">
           <svg
             className="ml-2 fill-primary w-7 h-7"
             xmlns="http://www.w3.org/2000/svg"

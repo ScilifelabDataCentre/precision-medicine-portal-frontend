@@ -17,7 +17,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <HeaderComponent />
-        {children}
+        <main className="2xl:max-w-screen-2xl 2xl:mx-auto">{children}</main>
         <FooterComponent />
       </body>
     </html>
