@@ -3,6 +3,7 @@
 import { ReactElement } from "react";
 import { ILink, ISVG } from "@/interfaces/types";
 import Link from "next/link";
+import Image from "next/image";
 import { LINK_CLASSES } from "@/constants";
 
 export default function FooterComponent(): ReactElement {
@@ -95,6 +96,32 @@ export default function FooterComponent(): ReactElement {
             ))}
           </div>
         </nav>
+        <div className="flex justify-start items-center gap-4 flex-wrap md:flex-nowrap">
+          <div className="w-20 md:w-auto">
+            <Image
+              src="/Partner logo/KI_digital_logotyp_negativ_vert.png"
+              alt="Karolinska Institutet logo"
+              width={110}
+              height={131}
+            />
+          </div>
+          <div className="w-16 md:w-auto">
+            <Image
+              src="/Partner logo/SciLifeLab_symbol_NEG.png"
+              alt="SciLifeLab Logo"
+              width={70}
+              height={66}
+            />
+          </div>
+          <div className="w-20 md:w-auto">
+            <Image
+              src="/Partner logo/KAW Logotype Medium 1.png"
+              alt="Knut and Alice Wallenberg Foundation logo"
+              width={151}
+              height={87}
+            />
+          </div>
+        </div>
       </footer>
       <div className="bg-primary text-white flex flex-col items-center pt-12 pb-6 text-xs">
         <p>Website code is available on Github:</p>
