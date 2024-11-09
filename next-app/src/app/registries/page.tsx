@@ -4,7 +4,10 @@ import { useState, useEffect } from "react";
 import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
-import { BODY_CLASSES } from "@/constants";
+import Title from "@/components/common/title";
+import { ILink } from "@/interfaces/types";
+import Link from "next/link";
+import { LastUpdated } from "@/components/common/last-updated";
 
 interface IRegistryFilters {
   registryCentre: string[];
@@ -167,139 +170,159 @@ export default function RegistryPage() {
     return <div>Loading...</div>;
   }
 
+  const breadcrumbs: { [id: string]: ILink } = {
+    l1: { text: "Home", classes: "", link: "/" },
+    l2: { text: "Quality registries", classes: "", link: "" },
+  };
+
   return (
-    <div className={BODY_CLASSES}>
-      <div className="container mx-auto px-4 py-8">
-        <div className="lg:grid lg:grid-cols-4 lg:gap-8">
-          <div className="lg:col-span-1 mb-8 lg:mb-0">
-            <div className="space-y-8">
-              <div className="space-y-4">
-                <label
-                  htmlFor="search"
-                  className="font-bold text-2xl text-foreground"
-                >
-                  Search
-                </label>
-                <Input
-                  id="search"
-                  type="text"
-                  name="search"
-                  placeholder="Name/Keywords"
-                  value={searchBar}
-                  onChange={(e) => setSearchBar(e.target.value)}
-                  className="bg-muted"
-                />
-              </div>
-              <div className="space-y-4">
-                <h2 className="font-bold text-2xl text-foreground">
-                  Organisation
-                </h2>
-                <Card>
-                  <CardContent className="pt-6">
-                    {filters.registryCentre.map((element, index) => (
-                      <div
-                        className="flex items-center space-x-3 mb-4"
-                        key={element}
+    <div className="container mx-auto px-4 py-8">
+      <div className="text-sm breadcrumbs">
+        <ul>
+          {Object.keys(breadcrumbs).map((key) => (
+            <li key={key}>
+              {breadcrumbs[key].link ? (
+                <Link href={breadcrumbs[key].link}>
+                  {breadcrumbs[key].text}
+                </Link>
+              ) : (
+                <>{breadcrumbs[key].text}</>
+              )}
+            </li>
+          ))}
+        </ul>
+      </div>
+      <Title level={1}>Quality registries</Title>
+      <div className="lg:grid lg:grid-cols-4 lg:gap-8 pt-8">
+        <div className="lg:col-span-1 mb-8 lg:mb-0">
+          <div className="space-y-8">
+            <div className="space-y-4">
+              <label
+                htmlFor="search"
+                className="font-bold text-2xl text-foreground"
+              >
+                Search
+              </label>
+              <Input
+                id="search"
+                type="text"
+                name="search"
+                placeholder="Name/Keywords"
+                value={searchBar}
+                onChange={(e) => setSearchBar(e.target.value)}
+                className="bg-muted"
+              />
+            </div>
+            <div className="space-y-4">
+              <h2 className="font-bold text-2xl text-foreground">
+                Organisation
+              </h2>
+              <Card>
+                <CardContent className="pt-6">
+                  {filters.registryCentre.map((element, index) => (
+                    <div
+                      className="flex items-center space-x-3 mb-4"
+                      key={element}
+                    >
+                      <Checkbox
+                        id={`registryCentre-${index}`}
+                        checked={checkedList[index]}
+                        onCheckedChange={() =>
+                          checkedFilter("registryCentre", element, index)
+                        }
+                      />
+                      <label
+                        htmlFor={`registryCentre-${index}`}
+                        className="text-base leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                       >
-                        <Checkbox
-                          id={`registryCentre-${index}`}
-                          checked={checkedList[index]}
-                          onCheckedChange={() =>
-                            checkedFilter("registryCentre", element, index)
-                          }
-                        />
-                        <label
-                          htmlFor={`registryCentre-${index}`}
-                          className="text-base leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                        >
-                          {element}
-                        </label>
-                      </div>
-                    ))}
-                  </CardContent>
-                </Card>
-              </div>
-              <div className="space-y-4">
-                <h2 className="font-bold text-2xl text-foreground">Category</h2>
-                <Card>
-                  <CardContent className="pt-6">
-                    {filters.registryCategory.map((element, index) => (
-                      <div
-                        className="flex items-center space-x-3 mb-4"
-                        key={element}
+                        {element}
+                      </label>
+                    </div>
+                  ))}
+                </CardContent>
+              </Card>
+            </div>
+            <div className="space-y-4">
+              <h2 className="font-bold text-2xl text-foreground">Category</h2>
+              <Card>
+                <CardContent className="pt-6">
+                  {filters.registryCategory.map((element, index) => (
+                    <div
+                      className="flex items-center space-x-3 mb-4"
+                      key={element}
+                    >
+                      <Checkbox
+                        id={`registryCategory-${index}`}
+                        checked={
+                          checkedList[filters.registryCentre.length + index]
+                        }
+                        onCheckedChange={() =>
+                          checkedFilter(
+                            "registryCategory",
+                            element,
+                            filters.registryCentre.length + index
+                          )
+                        }
+                      />
+                      <label
+                        htmlFor={`registryCategory-${index}`}
+                        className="text-base leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                       >
-                        <Checkbox
-                          id={`registryCategory-${index}`}
-                          checked={
-                            checkedList[filters.registryCentre.length + index]
-                          }
-                          onCheckedChange={() =>
-                            checkedFilter(
-                              "registryCategory",
-                              element,
-                              filters.registryCentre.length + index
-                            )
-                          }
-                        />
-                        <label
-                          htmlFor={`registryCategory-${index}`}
-                          className="text-base leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                        >
-                          {element}
-                        </label>
-                      </div>
-                    ))}
-                  </CardContent>
-                </Card>
-              </div>
+                        {element}
+                      </label>
+                    </div>
+                  ))}
+                </CardContent>
+              </Card>
             </div>
           </div>
-          <div className="lg:col-span-3 space-y-6">
-            {registrySourcesJSON
-              .filter((registry) => applyRegistryCentreFilter(registry))
-              .filter((registry) => applyRegistryCategoryFilter(registry))
-              .filter((registry) => applySearchBar(registry))
-              .map((item, index) => (
-                <Card key={index}>
-                  <CardHeader className="bg-muted">
-                    <CardTitle className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+        </div>
+        <div className="lg:col-span-3 space-y-6">
+          {registrySourcesJSON
+            .filter((registry) => applyRegistryCentreFilter(registry))
+            .filter((registry) => applyRegistryCategoryFilter(registry))
+            .filter((registry) => applySearchBar(registry))
+            .map((item, index) => (
+              <Card key={index}>
+                <CardHeader className="bg-muted">
+                  <CardTitle className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                    <a
+                      href={item.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-xl text-primary hover:underline"
+                    >
+                      {item.name}
+                    </a>
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="pt-4">
+                  <p>{item.Information || "Information not available."}</p>
+                  <div className="mt-3 flex flex-wrap gap-2">
+                    <div className="px-3 py-1 bg-muted text-muted-foreground rounded-lg text-sm">
+                      <strong>Start year:</strong> {item.start_date}
+                    </div>
+                    <div className="px-3 py-1 bg-muted text-muted-foreground rounded-lg text-sm">
+                      <strong>Organisation:</strong>{" "}
                       <a
-                        href={item.url}
+                        href={organisationLinks[item.registry_centre[0]]}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-xl text-primary hover:underline"
+                        className="hover:underline"
                       >
-                        {item.name}
+                        {item.registry_centre.join(", ")}
                       </a>
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent className="pt-4">
-                    <p>{item.Information || "Information not available."}</p>
-                    <div className="mt-3 flex flex-wrap gap-2">
-                      <div className="px-3 py-1 bg-muted text-muted-foreground rounded-lg text-sm">
-                        <strong>Start year:</strong> {item.start_date}
-                      </div>
-                      <div className="px-3 py-1 bg-muted text-muted-foreground rounded-lg text-sm">
-                        <strong>Organisation:</strong>{" "}
-                        <a
-                          href={organisationLinks[item.registry_centre[0]]}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="hover:underline"
-                        >
-                          {item.registry_centre.join(", ")}
-                        </a>
-                      </div>
-                      <div className="px-3 py-1 bg-muted text-muted-foreground rounded-lg text-sm">
-                        <strong>Category:</strong> {item.category.join(", ")}
-                      </div>
                     </div>
-                  </CardContent>
-                </Card>
-              ))}
-          </div>
+                    <div className="px-3 py-1 bg-muted text-muted-foreground rounded-lg text-sm">
+                      <strong>Category:</strong> {item.category.join(", ")}
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
         </div>
       </div>
+      <LastUpdated date="11-11-2024" />
     </div>
   );
 }

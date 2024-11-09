@@ -12,14 +12,14 @@ export default function AboutProductPage(): ReactElement {
         The Precision Medicine Portal is part of the{" "}
         <a
           href="https://www.scilifelab.se/data-driven/about-ddls/precision-medicine-and-diagnostics/"
-          className="underline text-primary"
+          className="underline text-primary hover:text-black"
         >
           SciLifeLab DDLS node for Precision Medicine and Diagnostics
         </a>{" "}
         at Karolinska institutet and funded by the{" "}
         <a
           href="https://kaw.wallenberg.org/en"
-          className="underline text-primary"
+          className="underline text-primary hover:text-black"
         >
           Knut and Alice Wallenberg Foundation
         </a>

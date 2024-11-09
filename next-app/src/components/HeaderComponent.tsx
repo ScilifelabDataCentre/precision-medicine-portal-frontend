@@ -4,14 +4,6 @@ import { ILink } from "@/interfaces/types";
 import { LINK_CLASSES } from "@/constants";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import {
-  AboutPageContent,
-  ContactPageContent,
-  DataSourcesPageContent,
-  HomePageContent,
-  PrivacyPageContent,
-  ClinicalDataPageContent,
-} from "../content/content";
 import React, { useState } from "react";
 import clsx from "clsx";
 
@@ -20,54 +12,25 @@ export default function HeaderComponent() {
   const pathname = usePathname();
 
   const links: { [id: string]: ILink } = {
-    l1: { text: "Data Sources", classes: LINK_CLASSES, link: "/datasources" },
+    l1: { text: "Data sources", classes: LINK_CLASSES, link: "/datasources" },
     l2: {
-      text: "Quality Registries",
+      text: "Quality registries",
       classes: LINK_CLASSES,
       link: "/registries",
     },
     l3: {
-      text: "Access Clinical Data",
+      text: "Access clinical data",
       classes: LINK_CLASSES,
       link: "/accessclinicaldata",
     },
     l4: {
-      text: "KIARVA Dashboard",
+      text: "KIARVA dashboard",
       classes: LINK_CLASSES,
       link: "/kiarva",
     },
     l5: { text: "Contact", classes: LINK_CLASSES, link: "/contact" },
-    l6: { text: "About Us", classes: LINK_CLASSES, link: "/about/product" },
+    l6: { text: "About us", classes: LINK_CLASSES, link: "/about/product" },
   };
-
-  let textBar: string = "";
-
-  switch (pathname) {
-    case "/":
-      textBar = HomePageContent.textBar;
-      break;
-    case "/datasources":
-      textBar = DataSourcesPageContent.textBar;
-      break;
-    case "/contact":
-      textBar = ContactPageContent.textBar;
-      break;
-    case "/about/product":
-    case "/about/faq":
-    case "/about/team":
-    case "/about/partners":
-      textBar = AboutPageContent.textBar;
-      break;
-    case "/privacy":
-      textBar = PrivacyPageContent.textBar;
-      break;
-    case "/accessclinicaldata":
-      textBar = ClinicalDataPageContent.textBar;
-      break;
-    default:
-      textBar = "";
-      break;
-  }
 
   return (
     <div className="bg-gradient-to-b from-secondary to-primary">
@@ -132,9 +95,6 @@ export default function HeaderComponent() {
               ))}
             </ul>
           </nav>
-        </div>
-        <div className="text-left text-4xl leading-tight tracking-tight font-bold py-6 px-4">
-          <p>{textBar}</p>
         </div>
       </div>
     </div>

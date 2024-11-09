@@ -2,12 +2,12 @@
 
 import { ReactElement } from "react";
 
-import { H_1 } from "@/constants";
 import Link from "next/link";
 import { ILink } from "@/interfaces/types";
 import { ContactPageContent } from "@/content/content";
 import ContactFormComponent from "@/components/ContactFormComponent";
 import { TrackPageViewIfEnabled } from "@/util/cookiesHandling";
+import Title from "@/components/common/title";
 
 export default function ContactPage(): ReactElement {
   TrackPageViewIfEnabled();
@@ -34,7 +34,7 @@ export default function ContactPage(): ReactElement {
           ))}
         </ul>
       </div>
-      <div className={H_1}>Contact</div>
+      <Title level={1}>Contact</Title>
       <div className="divider">{ContactPageContent.content[0].header}</div>
       <p className="mb-4">{ContactPageContent.content[0].body}</p>
       <ContactFormComponent />

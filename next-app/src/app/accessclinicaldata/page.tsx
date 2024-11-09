@@ -6,6 +6,7 @@ import { ILink } from "@/interfaces/types";
 
 import { LastUpdated } from "@/components/common/last-updated";
 import { TrackPageViewIfEnabled } from "@/util/cookiesHandling";
+import Title from "@/components/common/title";
 
 export default function AboutPage(): ReactElement {
   TrackPageViewIfEnabled();
@@ -32,15 +33,15 @@ export default function AboutPage(): ReactElement {
           ))}
         </ul>
       </div>
-      {/* Paragraph before the first heading */}
-      <p>
+      <Title level={1}>How to access clinical data</Title>
+      <p className="py-4">
         Human data for research can be accessed from several sources such as:
         medical records, quality registries, research databases, etc. If
         sensitive personal data (
         <a
           href="https://www.imy.se/en/individuals/data-protection/introduktion-till-gdpr/what-is-actually-meant-by-personal-data/what-is-meant-by-sensitive-personal-data/"
           target="_blank"
-          className="text-primary hover:text-black"
+          className="text-primary hover:text-black underline"
         >
           definition
         </a>
@@ -48,7 +49,7 @@ export default function AboutPage(): ReactElement {
         <a
           href="https://etikprovningsmyndigheten.se/en/"
           target="_blank"
-          className="text-primary hover:text-black"
+          className="text-primary hover:text-black underline"
         >
           Swedish Ethical Review Authority
         </a>
@@ -59,12 +60,8 @@ export default function AboutPage(): ReactElement {
         for research and how the data is disclosed differ between various
         authorities or organisations.
       </p>
-      {/* The first heading */}
-      <div className="flex items-center">
-        <h1 className="text-2xl my-2">Patient records and medical records</h1>
-      </div>
-      {/* Paragraph under the first heading */}
-      <p>
+      <Title level={2}>Patient records and medical records</Title>
+      <p className="py-4">
         Healthcare staff document patient interactions, and after a
         confidentiality assessment, this information can be requested for
         medical research. In Sweden, the 21 regions are responsible for most
@@ -73,11 +70,9 @@ export default function AboutPage(): ReactElement {
         to conduct research using patient records from across the country, it
         may be necessary to request data from multiple sources.
       </p>
-
-      {/* The second heading */}
       <div className="flex items-center">
-        <h1 className="text-2xl my-2">Quality registers</h1>
-        <Link href="/quality-registers">
+        <Title level={2}>Quality registers</Title>
+        <Link href="/registries">
           <svg
             className="ml-2 fill-primary w-7 h-7"
             xmlns="http://www.w3.org/2000/svg"
@@ -90,8 +85,7 @@ export default function AboutPage(): ReactElement {
           </svg>
         </Link>
       </div>
-      {/* Paragraph under the second heading */}
-      <p>
+      <p className="py-4">
         The Swedish quality registries aim to improve the health care system by
         collecting individualised health data about, for example, certain
         diagnoses or problems (further information in Swedish). Data from a
@@ -113,12 +107,12 @@ export default function AboutPage(): ReactElement {
         Every quality registry in Sweden is connected to one of six centres that
         provide support:
       </p>
-      <ul className="list-disc pl-4">
+      <ul className="list-disc pl-4 pt-4">
         <li>
           <a
             href="https://qrcstockholm.se/"
             target="_blank"
-            className="text-primary hover:text-black"
+            className="text-primary hover:text-black underline"
           >
             Stockholm (QRC STHLM)
           </a>
@@ -127,7 +121,7 @@ export default function AboutPage(): ReactElement {
           <a
             href="https://rcsyd.se/"
             target="_blank"
-            className="text-primary hover:text-black"
+            className="text-primary hover:text-black underline"
           >
             Syd (RC SYD)
           </a>
@@ -136,7 +130,7 @@ export default function AboutPage(): ReactElement {
           <a
             href="https://rcnorr.se/"
             target="_blank"
-            className="text-primary hover:text-black"
+            className="text-primary hover:text-black underline"
           >
             Norr (RCN)
           </a>
@@ -145,7 +139,7 @@ export default function AboutPage(): ReactElement {
           <a
             href="https://www.ucr.uu.se/"
             target="_blank"
-            className="text-primary hover:text-black"
+            className="text-primary hover:text-black underline"
           >
             Uppsala Clinical Research Center (UCR)
           </a>
@@ -154,7 +148,7 @@ export default function AboutPage(): ReactElement {
           <a
             href="https://registercentrum.se/rc-vast/vastra-gotaland"
             target="_blank"
-            className="text-primary hover:text-black"
+            className="text-primary hover:text-black underline"
           >
             Västra Götaland
           </a>
@@ -163,7 +157,7 @@ export default function AboutPage(): ReactElement {
           <a
             href="https://registercentrum.se/rc-sydost/sydost"
             target="_blank"
-            className="text-primary hover:text-black"
+            className="text-primary hover:text-black underline"
           >
             SydOst (RCSO)
           </a>
