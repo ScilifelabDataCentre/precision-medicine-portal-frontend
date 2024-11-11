@@ -1,4 +1,3 @@
-import { BODY_CLASSES } from "@/constants";
 import "../globals.css";
 import AboutPageComponent from "@/components/AboutPageComponent";
 import { LastUpdated } from "@/components/common/last-updated";
@@ -9,7 +8,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className={BODY_CLASSES}>
+    <div className="container mx-auto px-4 py-8">
       <AboutPageComponent />
       {children}
       <LastUpdated date="11-11-2024" />

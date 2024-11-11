@@ -3,27 +3,33 @@
 import { ReactElement } from "react";
 import { ILink, ISVG } from "@/interfaces/types";
 import Link from "next/link";
+import Image from "next/image";
 import { LINK_CLASSES } from "@/constants";
 
 export default function FooterComponent(): ReactElement {
   const linksCol1: { [id: string]: ILink } = {
     l1: { text: "Data Sources", classes: LINK_CLASSES, link: "/datasources" },
     l2: {
-      text: "Events & Trainings",
+      text: "Registries",
       classes: LINK_CLASSES,
-      link: "/eventsandtrainings",
+      link: "/registries",
     },
     l3: {
       text: "Access Clinical Data",
       classes: LINK_CLASSES,
       link: "/accessclinicaldata",
     },
+    l4: {
+      text: "KIARVA Dashboard",
+      classes: LINK_CLASSES,
+      link: "/kiarva",
+    },
   };
 
   const linksCol2: { [id: string]: ILink } = {
-    l4: { text: "About Us", classes: LINK_CLASSES, link: "/about/product" },
-    l5: { text: "Contact", classes: LINK_CLASSES, link: "/contact" },
-    l6: { text: "Privacy Policy", classes: LINK_CLASSES, link: "/privacy" },
+    l5: { text: "About Us", classes: LINK_CLASSES, link: "/about/product" },
+    l6: { text: "Contact", classes: LINK_CLASSES, link: "/contact" },
+    l7: { text: "Privacy Policy", classes: LINK_CLASSES, link: "/privacy" },
   };
 
   const svgs: { [id: string]: ISVG } = {
@@ -90,6 +96,32 @@ export default function FooterComponent(): ReactElement {
             ))}
           </div>
         </nav>
+        <div className="flex justify-start items-center gap-4 flex-wrap md:flex-nowrap">
+          <div className="w-20 md:w-auto">
+            <Image
+              src="/Partner logo/KI_digital_logotyp_negativ_vert.png"
+              alt="Karolinska Institutet logo"
+              width={110}
+              height={131}
+            />
+          </div>
+          <div className="w-16 md:w-auto">
+            <Image
+              src="/Partner logo/SciLifeLab_symbol_NEG.png"
+              alt="SciLifeLab Logo"
+              width={70}
+              height={66}
+            />
+          </div>
+          <div className="w-20 md:w-auto">
+            <Image
+              src="/Partner logo/KAW Logotype Medium 1.png"
+              alt="Knut and Alice Wallenberg Foundation logo"
+              width={151}
+              height={87}
+            />
+          </div>
+        </div>
       </footer>
       <div className="bg-primary text-white flex flex-col items-center pt-12 pb-6 text-xs">
         <p>Website code is available on Github:</p>

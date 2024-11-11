@@ -21,7 +21,7 @@ export default function CardComponent(prop: {
       <img
         src={prop.cardContent.imageSrc}
         alt={prop.cardContent.imageAlt}
-        className={prop.cardConfig.imgClasses}
+        className={prop.cardConfig.imgClasses + " mx-auto d-block"}
       />
     </>
   );
@@ -37,7 +37,7 @@ export default function CardComponent(prop: {
   );
 
   return (
-    <div className={"card " + prop.cardConfig.cardClasses}>
+    <div className={"card" + prop.cardConfig.cardClasses + " p-4"}>
       {prop.cardContent.imageSrc && image}
       <div className="card-body">
         {prop.cardContent.title && title}
