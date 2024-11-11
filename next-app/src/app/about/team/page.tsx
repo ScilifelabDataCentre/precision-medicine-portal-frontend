@@ -3,8 +3,6 @@
 import { ReactElement } from "react";
 import { ICardConfig, ICardContent } from "@/interfaces/types";
 import CardComponent from "@/components/CardComponent";
-
-import { TeamDescriptions } from "@/content/content";
 import { TrackPageViewIfEnabled } from "@/util/cookiesHandling";
 
 export default function AboutTeamPage(): ReactElement {
@@ -24,44 +22,44 @@ export default function AboutTeamPage(): ReactElement {
 
   const cardContent: { [id: string]: ICardContent } = {
     JanCard: {
-      title: TeamDescriptions.teamMembers.jan.name,
-      subTitle: TeamDescriptions.teamMembers.jan.title,
-      text: TeamDescriptions.teamMembers.jan.description,
+      title: "Jan Lorenz",
+      subTitle: "Product Owner",
+      text: "Jan holds a Master's degree in Health Informatics from Karolinska Institute and a Bachelor's degree in Business Informatics. He possesses management and leadership experience from his previous roles in management consultancy and from serving on the boards of startups.",
       buttonText: "",
-      imageSrc: TeamDescriptions.teamMembers.jan.img,
-      imageAlt: TeamDescriptions.teamMembers.jan.imgAlt,
+      imageSrc: "/TeamPics/JanTeamPic.jpg",
+      imageAlt: "Portrait of Jan Lorenz - Product Owner",
     },
     NatCard: {
-      title: TeamDescriptions.teamMembers.natashia.name,
-      subTitle: TeamDescriptions.teamMembers.natashia.title,
-      text: TeamDescriptions.teamMembers.natashia.description,
+      title: "Natashia Benzian Olsson",
+      subTitle: "Data Steward",
+      text: "Natashia holds a MSc in Behavioural Genetics and a BSc in Psychology. She has numerous years of hands-on experience with NGS data and bioinformatics at King's College London with several publications in high-impact journals. She is currently involved in content development and ensuring data quality at the PMD DSN.",
       buttonText: "",
-      imageSrc: TeamDescriptions.teamMembers.natashia.img,
-      imageAlt: TeamDescriptions.teamMembers.natashia.imgAlt,
+      imageSrc: "/TeamPics/NatTeamPic.jpg",
+      imageAlt: "Portrait of Natashia Benzian Olsson - Data Steward",
     },
     SebCard: {
-      title: TeamDescriptions.teamMembers.sebastian.name,
-      subTitle: TeamDescriptions.teamMembers.sebastian.title,
-      text: TeamDescriptions.teamMembers.sebastian.description,
+      title: "Sebastian Lindbom Gunnari",
+      subTitle: "Software Engineer",
+      text: "Sebastian has a BSc in Computer Science from Stockholm University. He has previously worked as a data engineering consultant, building platforms and pipelines handling analytical data flows. Currently, he's working with web development at the PMD DSN.",
       buttonText: "",
-      imageSrc: TeamDescriptions.teamMembers.sebastian.img,
-      imageAlt: TeamDescriptions.teamMembers.sebastian.imgAlt,
+      imageSrc: "/TeamPics/SebTeamPic.png",
+      imageAlt: "Portait of Sebastian Lindbom Gunnari - Software Engineer",
     },
     SamCard: {
-      title: TeamDescriptions.teamMembers.saman.name,
-      subTitle: TeamDescriptions.teamMembers.saman.title,
-      text: TeamDescriptions.teamMembers.saman.description,
+      title: "Saman Rassam",
+      subTitle: "Data Engineer",
+      text: "Saman has a MSc in Computer Science and Engineering from KTH. He is focusing on Kubernetes and back-end development at the PMD DSN. He is also supporting the TEF-Health initiative.",
       buttonText: "",
-      imageSrc: TeamDescriptions.teamMembers.saman.img,
-      imageAlt: TeamDescriptions.teamMembers.saman.imgAlt,
+      imageSrc: "/TeamPics/SamTeamPic.jpg",
+      imageAlt: "Portait of Saman Rassam - Data Engineer",
     },
     MarCard: {
-      title: TeamDescriptions.teamMembers.maria.name,
-      subTitle: TeamDescriptions.teamMembers.maria.title,
-      text: TeamDescriptions.teamMembers.maria.description,
+      title: "Maria Ahlsén",
+      subTitle: "Coordinator",
+      text: "Maria holds a PhD in Physiology from Karolinska Institutet and a bachelor’s degree in Chemistry from Stockholm University. She has coordinated several research studies at both universities and hospitals, with a particular expertise in ethics and contractual matters related to handling sensitive data.",
       buttonText: "",
-      imageSrc: TeamDescriptions.teamMembers.maria.img,
-      imageAlt: TeamDescriptions.teamMembers.maria.imgAlt,
+      imageSrc: "/TeamPics/MarTeamPic.png",
+      imageAlt: "Portait of Maria Ahlsén - Coordinator",
     },
   };
 

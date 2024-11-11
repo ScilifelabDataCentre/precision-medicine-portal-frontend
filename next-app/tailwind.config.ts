@@ -86,4 +86,7 @@ export default {
     },
     require("tailwindcss-animate"),
   ],
+  daisyui: {
+    themes: [],
+  },
 };
