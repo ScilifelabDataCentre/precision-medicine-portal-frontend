@@ -8,28 +8,28 @@ import { LINK_CLASSES } from "@/constants";
 
 export default function FooterComponent(): ReactElement {
   const linksCol1: { [id: string]: ILink } = {
-    l1: { text: "Data Sources", classes: LINK_CLASSES, link: "/datasources" },
+    l1: { text: "Data sources", classes: LINK_CLASSES, link: "/datasources" },
     l2: {
       text: "Registries",
       classes: LINK_CLASSES,
       link: "/registries",
     },
     l3: {
-      text: "Access Clinical Data",
+      text: "Access clinical data",
       classes: LINK_CLASSES,
       link: "/accessclinicaldata",
     },
     l4: {
-      text: "KIARVA Dashboard",
+      text: "KIARVA dashboard",
       classes: LINK_CLASSES,
       link: "/kiarva",
     },
   };
 
   const linksCol2: { [id: string]: ILink } = {
-    l5: { text: "About Us", classes: LINK_CLASSES, link: "/about/product" },
+    l5: { text: "About us", classes: LINK_CLASSES, link: "/about/product" },
     l6: { text: "Contact", classes: LINK_CLASSES, link: "/contact" },
-    l7: { text: "Privacy Policy", classes: LINK_CLASSES, link: "/privacy" },
+    l7: { text: "Privacy policy", classes: LINK_CLASSES, link: "/privacy" },
   };
 
   const svgs: { [id: string]: ISVG } = {
