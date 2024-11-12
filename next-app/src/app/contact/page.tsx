@@ -34,6 +34,33 @@ export default function ContactPage(): ReactElement {
         </ul>
       </div>
       <div className="flex flex-col gap-y-4">
+        <div className="alert">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            className="h-6 w-6 shrink-0 stroke-current"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+            ></path>
+          </svg>
+          <span className="text-sm lg:text-base">
+            The contact page is currently under reconstruction, and the contact
+            form below has been disabled. In the meantime, please reach out to
+            the Data Science Node in Precision Medicine and Diagnostics at{" "}
+            <a
+              href="mailto:precisionmedicine@scilifelab.se"
+              className="text-primary hover:text-black underline"
+            >
+              precisionmedicine@scilifelab.se
+            </a>
+            .
+          </span>
+        </div>
         <Title level={1}>Contact</Title>
         <p>
           Please fill out this form if you need to contact us at the Swedish
