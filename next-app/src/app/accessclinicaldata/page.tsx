@@ -13,7 +13,7 @@ export default function AboutPage(): ReactElement {
 
   const breadcrumbs: { [id: string]: ILink } = {
     l1: { text: "Home", classes: "", link: "/" },
-    l2: { text: "Access Clinical Data", classes: "", link: "" },
+    l2: { text: "Access clinical data", classes: "", link: "" },
   };
 
   return (
@@ -90,10 +90,17 @@ export default function AboutPage(): ReactElement {
         <p>
           The Swedish quality registries aim to improve the health care system
           by collecting individualised health data about, for example, certain
-          diagnoses or problems (further information in Swedish). Data from a
-          certain registry can be requested by researchers after approval by a
-          steering group consisting of health care professionals and patient
-          representatives.
+          diagnoses or problems{" "}
+          <a
+            href="https://www.1177.se/sa-fungerar-varden/lagar-och-bestammelser/nationella-kvalitetsregister/#:~:text=I%20nationella%20kvalitetsregister%20samlas%20information,l%C3%A4mnas%20till%20ett%20nationellt%20kvalitetsregister"
+            target="_blank"
+            className="text-primary hover:text-black underline"
+          >
+            (further information in Swedish)
+          </a>
+          . Data from a certain registry can be requested by researchers after
+          approval by a steering group consisting of health care professionals
+          and patient representatives.
         </p>
         <p>
           Healthcare providers must inform patients before their medical
@@ -103,7 +110,15 @@ export default function AboutPage(): ReactElement {
           quality register or research study if the individual objects. If a
           person opposes the processing of their personal data after it has
           begun, the information should be erased from the register as soon as
-          possible (further information in Swedish).
+          possible{" "}
+          <a
+            href="https://www.riksdagen.se/sv/dokument-och-lagar/dokument/svensk-forfattningssamling/patientdatalag-2008355_sfs-2008-355/#K7"
+            target="_blank"
+            className="text-primary hover:text-black underline"
+          >
+            (further information in Swedish)
+          </a>
+          .
         </p>
         <p>
           Every quality registry in Sweden is connected to one of six centres
