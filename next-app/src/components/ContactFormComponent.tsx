@@ -159,7 +159,7 @@ export default function ContactFormComponent(): ReactElement {
             />
           </div>
           <div className="flex flex-col items-center">
-            {checkFormFilled() && checkValidForm() ? (
+            {checkFormFilled() && checkValidForm() && false ? (
               recaptchaPassed ? (
                 <input
                   type="submit"

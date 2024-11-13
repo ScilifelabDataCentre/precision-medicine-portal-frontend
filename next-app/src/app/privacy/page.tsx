@@ -59,11 +59,10 @@ export default function PrivacyPage(): ReactElement {
       <div className="flex flex-col gap-y-4">
         <Title level={1}>Privacy policy</Title>
         <p>
-          SciLifeLab operates the Swedish Precision Medicine Portal, which
-          provides the Service. This page is intended to inform website visitors
-          about our personal data processing policy. By using our Service, you
-          agree that your personal data will be processed in accordance with
-          this policy.
+          Data Centre at SciLifeLab provides and operates the Precision Medicine
+          Portal. This page is intended to inform website visitors about our
+          personal data processing policy. By using our Service, you agree that
+          your personal data will be processed in accordance with this policy.
         </p>
         <Title level={2}>Data collection and usage</Title>
         <p>
