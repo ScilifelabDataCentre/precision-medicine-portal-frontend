@@ -196,8 +196,9 @@ export default function RegistryPage() {
           <div className="space-y-8">
             {/* Disclaimer */}
             <div className="w-full max-w-lg bg-muted border border-neutral rounded-lg p-4 text-sm text-muted-foreground text-left mx-auto">
-            To access data, researchers may need to obtain ethical approval, submit data requests and set up data management agreements.
-</div>
+              To access data, researchers may need to obtain ethical approval,
+              submit data requests and set up data management agreements.
+            </div>
             {/* Search */}
             <div className="space-y-4">
               <label
@@ -287,6 +288,7 @@ export default function RegistryPage() {
             .filter((registry) => applyRegistryCentreFilter(registry))
             .filter((registry) => applyRegistryCategoryFilter(registry))
             .filter((registry) => applySearchBar(registry))
+            .sort((a, b) => a.name.localeCompare(b.name))
             .map((item, index) => (
               <Card key={index}>
                 <CardHeader className="bg-muted">
