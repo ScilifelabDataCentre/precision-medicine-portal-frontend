@@ -93,13 +93,13 @@ export default function DataPage(): ReactElement {
   }
 
   function checkedDataFilter(
-    tagType: string,
+    tagType: keyof IDataSourceFilters,
     tagName: string,
     boxIndex: number
   ) {
     setSelectedFilters((prev) => {
       const newFilters = { ...prev };
-      const key = tagType === "dataType" ? "dataTypes" : "diseaseTypes";
+      const key = tagType === "dataTypes" ? "dataTypes" : "diseaseTypes";
       if (newFilters[key].includes(tagName)) {
         newFilters[key] = newFilters[key].filter((item) => item !== tagName);
       } else {
@@ -118,10 +118,8 @@ export default function DataPage(): ReactElement {
   function applyDataTypeFilter(dataSource: IDataSourcesDC) {
     return (
       selectedFilters.dataTypes.length === 0 ||
-      selectedFilters.dataTypes.every((filter) =>
-        dataSource.data.some(
-          (tag) => tag.toLowerCase() === filter.toLowerCase()
-        )
+      selectedFilters.dataTypes.some((filter) =>
+        dataSource.data.some((tag) => tag.toLowerCase() === filter.toLowerCase())
       )
     );
   }
@@ -129,7 +127,7 @@ export default function DataPage(): ReactElement {
   function applyDiseaseTypeFilter(dataSource: IDataSourcesDC) {
     return (
       selectedFilters.diseaseTypes.length === 0 ||
-      selectedFilters.diseaseTypes.every((filter) =>
+      selectedFilters.diseaseTypes.some((filter) =>
         dataSource.disease_type.some(
           (tag) => tag.toLowerCase() === filter.toLowerCase()
         )
@@ -158,13 +156,11 @@ export default function DataPage(): ReactElement {
   function sanitizeURL(url: string) {
     try {
       const parsedURL = new URL(url);
-      // Only allow http and https protocols
       if (parsedURL.protocol !== "http:" && parsedURL.protocol !== "https:") {
         return "#";
       }
       return parsedURL.toString();
     } catch {
-      // If URL is invalid, return a safe default
       return "#";
     }
   }
@@ -199,6 +195,11 @@ export default function DataPage(): ReactElement {
       <div className="lg:grid lg:grid-cols-4 lg:gap-8 pt-8">
         <div className="lg:col-span-1 mb-8 lg:mb-0">
           <div className="space-y-8">
+            {/* Disclaimer */}
+            <div className="w-full max-w-lg bg-muted border border-neutral rounded-lg p-4 text-sm text-muted-foreground text-left mx-auto">
+            To access data, researchers may need to obtain ethical approval, submit data requests and set up data management agreements.
+            </div>
+            {/* Search */}
             <div className="space-y-4">
               <label
                 htmlFor="search"
@@ -210,12 +211,13 @@ export default function DataPage(): ReactElement {
                 id="search"
                 type="text"
                 name="search"
-                placeholder="Name/Keywords"
+                placeholder="Search by name or keyword"
                 value={searchBar}
                 onChange={(e) => setSearchBar(e.target.value)}
                 className="bg-muted"
               />
             </div>
+            {/* Data Type Filters */}
             <div className="space-y-4">
               <h2 className="font-bold text-2xl text-foreground">Data Type</h2>
               <Card>
@@ -229,11 +231,7 @@ export default function DataPage(): ReactElement {
                         id={`dataType-${index}`}
                         checked={checkedList[index]}
                         onCheckedChange={() =>
-                          checkedDataFilter(
-                            "dataType",
-                            element.toLowerCase(),
-                            index
-                          )
+                          checkedDataFilter("dataTypes", element, index)
                         }
                       />
                       <label
@@ -247,6 +245,7 @@ export default function DataPage(): ReactElement {
                 </CardContent>
               </Card>
             </div>
+            {/* Disease Type Filters */}
             <div className="space-y-4">
               <h2 className="font-bold text-2xl text-foreground">
                 Disease Type
@@ -263,8 +262,8 @@ export default function DataPage(): ReactElement {
                         checked={checkedList[filters.dataTypes.length + index]}
                         onCheckedChange={() =>
                           checkedDataFilter(
-                            "diseaseType",
-                            element.toLowerCase(),
+                            "diseaseTypes",
+                            element,
                             filters.dataTypes.length + index
                           )
                         }
