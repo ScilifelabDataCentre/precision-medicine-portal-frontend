@@ -1,0 +1,274 @@
+{
+    "Projects": [
+        {
+            "name": "BIG3",
+            "link": "https://kliniskastudier.se/forum-soder/regionala-forskningsprojekt/big3#:~:text=BIG3%20är%20en%20öppen%20prospektiv,och%20är%20samfinansierat%20med%20AstraZeneca.",
+            "description": "BIG3 is a collaborative initiative focusing on biobanking and molecular research in glioma, a type of brain tumour. The project aims to integrate clinical data with molecular analyses to enhance the understanding of glioma biology and develop more effective treatments. By establishing a comprehensive biobank of glioma samples, BIG3 facilitates research into tumour genetics, microenvironment, and response to therapies. This resource is instrumental in identifying biomarkers for early diagnosis and potential therapeutic targets, thereby contributing to personalised medicine approaches in neuro-oncology. The collaborative nature of BIG3, involving multiple research institutions and healthcare providers, ensures a multidisciplinary approach to tackling the complexities of glioma, ultimately aiming to improve patient outcomes and survival rates.",
+            "tags": {
+                "disease": [
+                    "Cancer",
+                    "Neurology"
+                ],
+                "participants": [
+                    "1.000-10.000 participants"
+                ],
+                "contextual": [
+                    "Translational Research",
+                    "Drug Discovery"
+                ]
+            }
+        },
+        {
+            "name": "Betydelsen av Migration & Etnicitet för Diabetsutvecklingen I Malmö (MEDIM)",
+            "link": "https://www.diabetesportalen.lu.se/artikel/manga-manga-fler-typ-2-diabetiker-vantat",
+            "description": "The MEDIM study investigates how migration and ethnicity influence diabetes development. By examining diverse populations in Malmö, it seeks to identify specific risk factors and inform culturally sensitive prevention strategies, addressing health disparities in diabetes care. MEDIM's findings are crucial for developing inclusive public health policies that cater to diverse communities.",
+            "tags": {
+                "disease": [
+                    "Diabetes",
+                    "Public Health"
+                ],
+                "participants": [
+                    "1.000-10.000 participants"
+                ],
+                "contextual": [
+                    "Preventive Health",
+                    "Population-Based Study"
+                ]
+            }
+        },
+        {
+            "name": "EIMS, IMSE och andra multipel skleros fall-kontroll och läkemedelsstudier",
+            "link": "https://ki.se/cns/forskning/avdelningen-for-neuro/om-avdelningen-for-neuro/imse",
+            "description": "The Epidemiological Investigation of Multiple Sclerosis (EIMS) and the Immunomodulation and Multiple Sclerosis Epidemiology (IMSE) studies are pivotal in understanding multiple sclerosis (MS) in Sweden. EIMS is a nationwide case-control study that examines genetic and environmental risk factors for MS by enrolling newly diagnosed patients from 42 neurological clinics across the country. IMSE is an ongoing phase IV clinical trial that monitors the long-term safety and efficacy of immunomodulatory treatments for MS. These studies provide comprehensive data on the interplay between genetic predispositions, environmental exposures, and therapeutic interventions in MS. Their extensive datasets support advancements in MS treatment and management strategies, benefiting researchers in neurology and immunology.",
+            "tags": {
+                "disease": [
+                    "Neurology",
+                    "Autoimmune Disease"
+                ],
+                "participants": [
+                    "1.000-10.000 participants"
+                ],
+                "contextual": [
+                    "Case-Control Studies",
+                    "Epidemiological Research"
+                ]
+            }
+        },
+        {
+            "name": "Human Glioblastoma Cell Cultures (HGCC)",
+            "link": "https://www.hgcc.se/",
+            "description": "The Human Glioblastoma Cell Cultures (HGCC) initiative provides a comprehensive biobank of glioblastoma cell lines. These 48 well-characterised cell lines are derived from Swedish patients and represent all molecular subtypes of glioblastoma: Classical, Mesenchymal, Neural, and Proneural. HGCC preserves the stem cell-like properties of glioblastoma stem cells, supporting in vitro and in vivo studies. This resource plays a pivotal role in advancing glioblastoma research, including tumour biology, genetic studies, and therapy development. By facilitating targeted therapy discovery, HGCC contributes to improving treatment outcomes for patients with this aggressive brain tumour.",
+            "tags": {
+                "disease": [
+                    "Cancer",
+                    "Neurology"
+                ],
+                "participants": [
+                    "< 1.000 participants"
+                ],
+                "contextual": [
+                    "Preclinical Resource",
+                    "Drug Discovery"
+                ]
+            }
+        },
+        {
+            "name": "KARMA bröstcancerstudien",
+            "link": "https://karmastudy.org/",
+            "description": "The KARMA (Karolinska Mammography Project for Risk Prediction of Breast Cancer) study is a prospective cohort involving over 70,000 women attending mammography screening across four hospitals in Sweden. The study collects comprehensive data, including mammographic images, blood samples, and detailed questionnaires covering reproductive health, lifestyle factors, and medical history. The primary objective of KARMA is to develop individualised risk prediction models for breast cancer, incorporating factors such as mammographic density, genetic markers, and lifestyle variables. By identifying women at high risk, the study aims to tailor screening and prevention strategies, thereby reducing breast cancer incidence and mortality. The extensive dataset also supports research into the natural history of breast cancer, the impact of hormonal and reproductive factors, and the development of new diagnostic tools.",
+            "tags": {
+                "disease": [
+                    "Cancer",
+                    "Public Health"
+                ],
+                "participants": [
+                    "> 100.000 participants"
+                ],
+                "contextual": [
+                    "Longitudinal Study",
+                    "Precision Medicine Focus"
+                ]
+            }
+        },
+        {
+            "name": "LifeGene",
+            "link": "https://www.lifegene.se/",
+            "description": "Initiated in September 2009, LifeGene is a national prospective population-based cohort study involving over 50,000 participants aged 0–95 years. The KI Biobank stores blood, serum, and urine samples from approximately 30,000 of these participants. Supported by seven Swedish universities with medical faculties, LifeGene aims to explore the complex interactions between genetic predispositions and environmental exposures in health and disease. By facilitating large-scale studies on common diseases, LifeGene contributes to the development of personalised medicine and targeted public health strategies.",
+            "tags": {
+                "disease": [
+                    "Public Health",
+                    "Genetics"
+                ],
+                "participants": [
+                    "10.000-100.000 participants"
+                ],
+                "contextual": [
+                    "Prospective Study",
+                    "Population-Based Study"
+                ]
+            }
+        },
+        {
+            "name": "Malmö förebyggande Medicin (MFM)",
+            "link": "https://www.malmo-kohorter.lu.se/malmo-forebyggande-medicin-mfm",
+            "description": "Conducted between 1974 and 1991, involved extensive health screenings of Malmö residents to identify risk factors for cardiovascular diseases and diabetes. The collected data includes biological samples and detailed health information, serving as a foundation for preventive medicine research. MPM has been instrumental in developing risk prediction models and informing public health policies aimed at reducing the burden of chronic diseases.",
+            "tags": {
+                "disease": [
+                    "Cardiovascular Disease",
+                    "Diabetes"
+                ],
+                "participants": [
+                    "10.000-100.000 participants"
+                ],
+                "contextual": [
+                    "Preventive Health",
+                    "Retrospective Study"
+                ]
+            }
+        },
+        {
+            "name": "Malmö Kost Cancer (MKC)",
+            "link": "https://www.malmo-kohorter.lu.se/malmo-kost-cancer-mkc",
+            "description": "Initiated in 1991, MDCS investigates the relationships between diet, lifestyle factors, and the incidence of cancer and other chronic diseases. By analysing dietary habits alongside health outcomes, the study provides critical insights into how nutrition influences disease development. The findings from MDCS have informed dietary guidelines and public health recommendations, emphasising the role of nutrition in disease prevention.",
+            "tags": {
+                "disease": [
+                    "Cancer",
+                    "Lifestyle and Diet"
+                ],
+                "participants": [
+                    "10.000\u2013100.000 participants"
+                ],
+                "contextual": [
+                    "Longitudinal Study"
+                ]
+            }
+        },
+        {
+            "name": "Northern Sweden Health and Disease Study (NSHDS)",
+            "link": "https://www.umu.se/en/biobank-research-unit/provsamlingar-och-register/northern-sweden-health-and-disease-study-vip-monica-and-the-mammography-screening-project/",
+            "description": "Established in 1985, NSHDS integrates three major cohorts: the Västerbotten Intervention Programme (VIP), the Northern Sweden MONICA study, and the Mammography Screening Project. Collectively, these cohorts encompass over 135,000 participants, providing a rich repository of biological samples and extensive health data. This comprehensive dataset enables researchers to investigate the interplay between genetic, environmental, and lifestyle factors in the development of chronic diseases such as cardiovascular conditions and cancer. The longitudinal nature of NSHDS allows for the study of disease progression and the identification of potential preventive strategies, making it an invaluable resource for epidemiological research and public health interventions.",
+            "tags": {
+                "disease": [
+                    "Cardiovascular Disease",
+                    "Cancer"
+                ],
+                "participants": [
+                    "> 100.000 participants"
+                ],
+                "contextual": [
+                    "Longitudinal Study",
+                    "Population-Based Study"
+                ]
+            }
+        },
+        {
+            "name": "Svenska Tvillingregistret (STR)",
+            "link": "https://ki.se/forskning/forskningsinfrastruktur-och-miljoer/core-faciliteter-for-forskning/svenska-tvillingregistret",
+            "description": "One of the world's largest twin registries, encompassing data from both identical and fraternal twins. This unique resource allows researchers to disentangle the relative contributions of genetic and environmental factors to various health outcomes. Studies utilising STR have provided insights into the heritability of diseases, behavioural traits, and the impact of environmental exposures, thereby informing prevention and intervention strategies.",
+            "tags": {
+                "disease": [
+                    "Genetics",
+                    "Neurology"
+                ],
+                "participants": [
+                    "> 100,000 participants"
+                ],
+                "contextual": [
+                    "Longitudinal Study",
+                    "Population-Based Study"
+
+                ]
+            }
+        },
+        {
+            "name": "Swedish Infrastructure for Medical Population-Based Life-Course and Environmental Research (SIMPLER)",
+            "link": "https://www.simpler4health.se/",
+            "description": "SIMPLER consolidates data from several Swedish cohorts to facilitate research on life-course and environmental factors affecting health. By providing a unified platform for data access, it streamlines research processes and promotes comprehensive studies on public health issues. SIMPLER supports multidisciplinary research, enabling the development of holistic approaches to health promotion and disease prevention.",
+            "tags": {
+                "disease": [
+                    "Public Health",
+                    "Lifestyle and Diet"
+                ],
+                "participants": [
+                    "> 100.000 participants"
+                ],
+                "contextual": [
+                    "Resource Development",
+                    "Population-Based Study"
+                ]
+            }
+        },
+        {
+            "name": "The Environmental Determinants of Diabetes in the Young (TEDDY)",
+            "link": "https://teddy.epi.usf.edu",
+            "description": "TEDDY is an international study aiming to identify environmental triggers of type 1 diabetes in genetically susceptible children. By monitoring participants from birth, it endeavours to uncover factors that initiate the autoimmune process, paving the way for preventive interventions. TEDDY's research holds the promise of reducing the incidence of type 1 diabetes through early-life modifications.",
+            "tags": {
+                "disease": [
+                    "Diabetes",
+                    "Paediatrics"
+                ],
+                "participants": [
+                    "10.000-100.000 participants"
+                ],
+                "contextual": [
+                    "International Collaboration",
+                    "Prospective Study",
+                    "Preventive Health"
+                ]
+            }
+        },
+        {
+            "name": "The Malmö Offspring Study (MOS)",
+            "link": "https://www.malmo-kohorter.lu.se/malmo-offspring-study-mos",
+            "description": "MOS examines the health and disease patterns across generations by studying the offspring of participants from previous Malmö cohorts. This intergenerational approach allows researchers to explore genetic and environmental contributions to health, enhancing our understanding of familial disease transmission. MOS contributes to the development of strategies aimed at breaking the cycle of hereditary diseases through early interventions.",
+            "tags": {
+                "disease": [
+                    "Public Health",
+                    "Genetics"
+                ],
+                "participants": [
+                    "1.000-10.000 participants"
+                ],
+                "contextual": [
+                    "Intergenerational Study",
+                    "Prospective Study"
+                ]
+            }
+        },
+        {
+            "name": "The Swedish CArdioPulmonary BioImage Study (SCAPIS)",
+            "link": "https://www.scapis.org/",
+            "description": "focused on improving the prevention and treatment of cardiovascular and pulmonary diseases. Conducted between 2013 and 2018, the study examined over 30,000 participants aged 50 to 64 across six Swedish university hospitals. SCAPIS utilises advanced imaging techniques, such as coronary computed tomography angiography (CCTA) and carotid ultrasound, combined with biomarker and genetic analyses to detect early signs of disease. The extensive dataset collected includes information on genetic predispositions, lifestyle factors, and environmental exposures. This resource supports the development of predictive models and precision medicine approaches, enabling tailored preventive strategies to reduce morbidity and mortality. SCAPIS also serves as an open-access platform for researchers, fostering collaboration and innovation in cardiopulmonary health research.",
+            "tags": {
+                "disease": [
+                    "Cardiovascular Disease",
+                    "Pulmonary Disease"
+                ],
+                "participants": [
+                    "> 100.000 participants"
+                ],
+                "contextual": [
+                    "Precision Medicine Focus",
+                    "Preventive Health"
+                ]
+            }
+        },
+        {
+            "name": "Uppsala-Umeå Comprehensive Cancer Consortium (U-CAN)",
+            "link": "https://www.u-can.uu.se/",
+            "description": "U-CAN collects biological samples and clinical data from cancer patients to support research into cancer diagnostics and treatment. Its systematic biobanking enables the development of personalised cancer therapies, aiming to improve patient outcomes through tailored treatment strategies. U-CAN serves as a critical resource for translational cancer research, bridging the gap between laboratory discoveries and clinical applications.",
+            "tags": {
+                "disease": [
+                    "Cancer",
+                    "Genetics"
+                ],
+                "participants": [
+                    "> 100.000 participants"
+                ],
+                "contextual": [
+                    "Translational Research"
+                ]
+            }
+        }
+    ]
+}
