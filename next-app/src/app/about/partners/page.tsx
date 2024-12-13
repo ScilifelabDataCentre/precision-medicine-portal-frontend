@@ -10,6 +10,7 @@ const nbisImage = "/Partner logo/nbislogo_orange_txt_3cb0778d90.svg";
 const kawImage = "/Partner logo/kaw_sv_300x300.png";
 const kiImage = "/Partner logo/KI_digital_logotyp_positiv_RGB.png";
 const scilifelabImage = "/Partner logo/SciLifeLab_Logotype_Green_POS.png";
+const tefImage = "/Partner logo/tefhealth_logo.png";
 
 export default function AboutPartnersPage(): ReactElement {
   TrackPageViewIfEnabled();
@@ -18,7 +19,7 @@ export default function AboutPartnersPage(): ReactElement {
     "flex flex-row justify-center items-center w-full h-full bg-white shadow-xl";
   const cardConfig: { [id: string]: ICardConfig } = {
     dcCard: {
-      cardClasses: cardClasses + " pl-6",
+      cardClasses: cardClasses,
       titleClasses: "card-title",
       subTitleClasses: "",
       textClasses: "",
@@ -36,7 +37,7 @@ export default function AboutPartnersPage(): ReactElement {
       buttonPlacement: "",
     },
     ddlsCard: {
-      cardClasses: cardClasses + " pl-6",
+      cardClasses: cardClasses,
       titleClasses: "card-title",
       subTitleClasses: "",
       textClasses: "",
@@ -45,7 +46,7 @@ export default function AboutPartnersPage(): ReactElement {
       buttonPlacement: "",
     },
     kawCard: {
-      cardClasses: "w-full h-full card lg:card-side bg-white shadow-xl",
+      cardClasses: cardClasses,
       titleClasses: "card-title",
       subTitleClasses: "",
       textClasses: "",
@@ -54,11 +55,20 @@ export default function AboutPartnersPage(): ReactElement {
       buttonPlacement: "",
     },
     nbisCard: {
-      cardClasses: cardClasses + " pl-10",
+      cardClasses: cardClasses,
       titleClasses: "card-title",
       subTitleClasses: "",
       textClasses: "",
       imgClasses: "object-contain h-36 w-36",
+      buttonClasses: "",
+      buttonPlacement: "",
+    },
+    tefCard: {
+      cardClasses: cardClasses,
+      titleClasses: "card-title",
+      subTitleClasses: "",
+      textClasses: "",
+      imgClasses: "object-contain h-72 w-96",
       buttonClasses: "",
       buttonPlacement: "",
     },
@@ -107,6 +117,14 @@ export default function AboutPartnersPage(): ReactElement {
       imageSrc: nbisImage,
       imageAlt: "NBIS and ELIXIR Sweden logos",
     },
+    tefCard: {
+      title: "TEF-Health",
+      subTitle: "",
+      text: "The European Commission has co-funded an initiative to establish Testing and Experimentation Facilities (TEFs) for artificial intelligence and robotics, with healthcare as one of the targeted sectors. TEF-Health aims to provide expertise and assistance to small and medium-sized enterprises and innovators, promoting the transfer of research innovations to healthcare applications. The Data Science Node in Precision Medicine and Diagnostics contributes to and collaborates specifically with Work Package 4 - Virtual Testing Centers, to co-develop and maintain services and products beneficial for innovators and researchers.",
+      buttonText: "",
+      imageSrc: tefImage,
+      imageAlt: "TEF-Health logo",
+    },
   };
 
   return (
@@ -140,6 +158,12 @@ export default function AboutPartnersPage(): ReactElement {
           <CardComponent
             cardConfig={cardConfig["kawCard"]}
             cardContent={cardContent["kawCard"]}
+          />
+        </div>
+        <div className="w-full md:w-1/2 p-2">
+          <CardComponent
+            cardConfig={cardConfig["tefCard"]}
+            cardContent={cardContent["tefCard"]}
           />
         </div>
       </div>

@@ -83,8 +83,6 @@ export default function RegistryPage() {
   useEffect(() => {
     async function fetchRegistryData() {
       try {
-        // In a real-world scenario, you might fetch this data from an API
-        // For this example, we'll simulate an API call with a local import
         const registryData = await import(
           "@/assets/Kvalitetsregister_geo_dates_02.09.2024.json"
         );
@@ -196,6 +194,12 @@ export default function RegistryPage() {
       <div className="lg:grid lg:grid-cols-4 lg:gap-8 pt-8">
         <div className="lg:col-span-1 mb-8 lg:mb-0">
           <div className="space-y-8">
+            {/* Disclaimer */}
+            <div className="w-full max-w-lg bg-muted border border-neutral rounded-lg p-4 text-sm text-muted-foreground text-left mx-auto">
+              To access data, researchers may need to obtain ethical approval,
+              submit data requests and set up data management agreements.
+            </div>
+            {/* Search */}
             <div className="space-y-4">
               <label
                 htmlFor="search"
@@ -207,12 +211,13 @@ export default function RegistryPage() {
                 id="search"
                 type="text"
                 name="search"
-                placeholder="Name/Keywords"
+                placeholder="Search by name or keyword"
                 value={searchBar}
                 onChange={(e) => setSearchBar(e.target.value)}
                 className="bg-muted"
               />
             </div>
+            {/* Organisation Filters */}
             <div className="space-y-4">
               <h2 className="font-bold text-2xl text-foreground">
                 Organisation
@@ -242,6 +247,7 @@ export default function RegistryPage() {
                 </CardContent>
               </Card>
             </div>
+            {/* Category Filters */}
             <div className="space-y-4">
               <h2 className="font-bold text-2xl text-foreground">Category</h2>
               <Card>
@@ -282,6 +288,7 @@ export default function RegistryPage() {
             .filter((registry) => applyRegistryCentreFilter(registry))
             .filter((registry) => applyRegistryCategoryFilter(registry))
             .filter((registry) => applySearchBar(registry))
+            .sort((a, b) => a.name.localeCompare(b.name))
             .map((item, index) => (
               <Card key={index}>
                 <CardHeader className="bg-muted">
