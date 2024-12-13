@@ -5,6 +5,7 @@ import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import Title from "@/components/common/title";
 import { LastUpdated } from "@/components/common/last-updated";
 import Link from "next/link";
+import { ILink } from "@/interfaces/types";
 
 // Define the type for a single project
 type Project = {
@@ -18,17 +19,10 @@ type Project = {
   };
 };
 
-// Define breadcrumb type
-type Breadcrumb = {
-  text: string;
-  link?: string;
+const breadcrumbs: { [id: string]: ILink } = {
+  l1: { text: "Home", classes: "", link: "/" },
+  l2: { text: "Research Projects", classes: "", link: "" },
 };
-
-// Breadcrumb data
-const breadcrumbs: Breadcrumb[] = [
-  { text: "Home", link: "/" },
-  { text: "Research Projects" }, // Current page has no link
-];
 
 // Tag colours
 const TAG_COLOURS: { [key: string]: string } = {
@@ -42,7 +36,9 @@ export default function ProjectsPage() {
 
   async function fetchProjectData() {
     try {
-      const data = await import("@/assets/Sorted_Swedish_Research_Projects.json");
+      const data = await import(
+        "@/assets/Sorted_Swedish_Research_Projects.json"
+      );
       setProjectData(data.Projects as Project[]); // Explicitly cast data to the correct type
       setIsLoading(false);
     } catch (error) {
@@ -61,23 +57,21 @@ export default function ProjectsPage() {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      {/* Breadcrumbs */}
-      <nav className="text-sm breadcrumbs mb-6">
-        <ul className="flex space-x-2">
-          {breadcrumbs.map((breadcrumb, index) => (
-            <li key={index}>
-              {breadcrumb.link ? (
-                <Link href={breadcrumb.link} className="text-primary hover:underline">
-                  {breadcrumb.text}
+      <div className="text-sm breadcrumbs">
+        <ul>
+          {Object.keys(breadcrumbs).map((key) => (
+            <li key={key}>
+              {breadcrumbs[key].link ? (
+                <Link href={breadcrumbs[key].link}>
+                  {breadcrumbs[key].text}
                 </Link>
               ) : (
-                <span>{breadcrumb.text}</span>
+                <>{breadcrumbs[key].text}</>
               )}
-              {index < breadcrumbs.length - 1 && <span className="mx-1">/</span>}
             </li>
           ))}
         </ul>
-      </nav>
+      </div>
 
       {/* Title */}
       <Title level={1} className="mb-12">
@@ -87,7 +81,17 @@ export default function ProjectsPage() {
       {/* Introductory Section */}
       <div className="prose prose-lg text-gray-700 text-justify mx-auto mb-12">
         <p className="mb-4">
-          This page highlights 15 selected research projects tied to biobanks, showcasing their significant role in advancing scientific research and medical innovation. These projects, conducted by academic institutions, healthcare providers, and industry collaborators in Sweden, address key scientific questions, drive technological development, and improve healthcare outcomes. By integrating biological material with comprehensive health data, Swedish biobanks provide a unique platform for longitudinal studies, translational research, and precision medicine. These projects demonstrate how biobank resources bridge the gap between fundamental science and clinical applications.
+          This page highlights 15 selected research projects tied to biobanks,
+          showcasing their significant role in advancing scientific research and
+          medical innovation. These projects, conducted by academic
+          institutions, healthcare providers, and industry collaborators in
+          Sweden, address key scientific questions, drive technological
+          development, and improve healthcare outcomes. By integrating
+          biological material with comprehensive health data, Swedish biobanks
+          provide a unique platform for longitudinal studies, translational
+          research, and precision medicine. These projects demonstrate how
+          biobank resources bridge the gap between fundamental science and
+          clinical applications.
         </p>
         <p>
           The information on this page is based on the brochure{" "}
@@ -97,22 +101,36 @@ export default function ProjectsPage() {
             rel="noopener noreferrer"
             className="text-primary hover:underline"
           >
-            "15 Swedish Research Projects"
+            &quot;15 Swedish Research Projects&quot;
           </a>{" "}
-          published by Biobank Sweden. See the brochure for a more comprehensive overview of the projects.
+          published by Biobank Sweden. See the brochure for a more comprehensive
+          overview of the projects.
         </p>
       </div>
 
       {/* Disclaimer */}
-      <div className="w-full max-w-prose bg-muted border border-neutral rounded-lg p-4 text-sm text-muted-foreground text-center mx-auto mb-12">
-        <p>
-          To access data, researchers may need to obtain ethical approval, submit
-          data requests, and set up data management agreements.
-        </p>
+      <div className="alert">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          className="h-6 w-6 shrink-0 stroke-current"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+          ></path>
+        </svg>
+        <span className="text-sm lg:text-base">
+          To access data, researchers may need to obtain ethical approval,
+          submit data requests, and set up data management agreements.
+        </span>
       </div>
 
       {/* Projects */}
-      <div className="space-y-6">
+      <div className="space-y-6 pt-12">
         {projectData.map((project, index) => (
           <Card
             key={index}
@@ -134,16 +152,17 @@ export default function ProjectsPage() {
                 {project.description || "Description not provided."}
               </p>
               <div className="flex flex-wrap gap-2">
-                {Object.entries(project.tags).map(([category, tags]) =>
-                  category !== "disease" &&
-                  tags?.map((tag, i) => (
-                    <span
-                      key={`${category}-${i}`}
-                      className={`px-3 py-1 rounded-full text-sm ${TAG_COLOURS[category]}`}
-                    >
-                      {tag}
-                    </span>
-                  ))
+                {Object.entries(project.tags).map(
+                  ([category, tags]) =>
+                    category !== "disease" &&
+                    tags?.map((tag, i) => (
+                      <span
+                        key={`${category}-${i}`}
+                        className={`px-3 py-1 rounded-full text-sm ${TAG_COLOURS[category]}`}
+                      >
+                        {tag}
+                      </span>
+                    ))
                 )}
               </div>
             </CardContent>
