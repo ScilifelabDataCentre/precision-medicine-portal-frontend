@@ -82,10 +82,12 @@ export default function DataPage(): ReactElement {
   async function getData() {
     try {
       const response = await axios.get(dataSourcesURI);
-      const tmpDataSourcesJSON = response.data.filter(
-        (element: IDataSourcesDC) =>
-          element.ddls.includes("Precision Medicine and Diagnostics")
-      );
+      const tmpDataSourcesJSON = response.data
+        .filter(
+          (element: IDataSourcesDC) =>
+            element.ddls.includes("Precision Medicine and Diagnostics")
+        )
+        .filter((element) => element.name !== "SCAPIS database"); // Exclude "SCAPIS"
       setDataSourcesJSON(tmpDataSourcesJSON);
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -197,12 +199,10 @@ export default function DataPage(): ReactElement {
       <div className="lg:grid lg:grid-cols-4 lg:gap-8 pt-8">
         <div className="lg:col-span-1 mb-8 lg:mb-0">
           <div className="space-y-8">
-            {/* Disclaimer */}
             <div className="w-full max-w-lg bg-muted border border-neutral rounded-lg p-4 text-sm text-muted-foreground text-left mx-auto">
               To access data, researchers may need to obtain ethical approval,
               submit data requests and set up data management agreements.
             </div>
-            {/* Search */}
             <div className="space-y-4">
               <label
                 htmlFor="search"
@@ -220,7 +220,6 @@ export default function DataPage(): ReactElement {
                 className="bg-muted"
               />
             </div>
-            {/* Data Type Filters */}
             <div className="space-y-4">
               <h2 className="font-bold text-2xl text-foreground">Data Type</h2>
               <Card>
@@ -248,7 +247,6 @@ export default function DataPage(): ReactElement {
                 </CardContent>
               </Card>
             </div>
-            {/* Disease Type Filters */}
             <div className="space-y-4">
               <h2 className="font-bold text-2xl text-foreground">
                 Disease Type
@@ -303,7 +301,7 @@ export default function DataPage(): ReactElement {
                       {item.name}
                     </a>
                     <img
-                      className="float-right w-62 h-12 object-scale-down object-right pl-2"
+                      className="float-right w-40 h-10 object-contain object-right pl-2"
                       src={`/img/datasources/${sanitizeString(
                         item.thumbnail.split("/").pop()?.split(".")[0] || ""
                       )}.png`}
@@ -318,7 +316,7 @@ export default function DataPage(): ReactElement {
             ))}
         </div>
       </div>
-      <LastUpdated date="11-11-2024" />
+      <LastUpdated date="18-12-2024" />
     </div>
   );
 }
