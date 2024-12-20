@@ -291,17 +291,17 @@ export default function DataPage(): ReactElement {
             .map((item, index) => (
               <Card key={index}>
                 <CardHeader className="bg-muted">
-                  <CardTitle className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                  <CardTitle className="flex flex-row justify-between items-center gap-4 sm:flex-row">
                     <a
                       href={sanitizeURL(item.url)}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-xl text-primary hover:underline"
+                      className="text-xl text-primary hover:underline flex-grow"
                     >
                       {item.name}
                     </a>
                     <img
-                      className="float-right w-40 h-10 object-contain object-right pl-2"
+                      className="w-40 h-10 object-contain object-right"
                       src={`/img/datasources/${sanitizeString(
                         item.thumbnail.split("/").pop()?.split(".")[0] || ""
                       )}.png`}
