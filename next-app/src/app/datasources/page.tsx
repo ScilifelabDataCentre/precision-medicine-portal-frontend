@@ -83,11 +83,12 @@ export default function DataPage(): ReactElement {
     try {
       const response = await axios.get(dataSourcesURI);
       const tmpDataSourcesJSON = response.data
-        .filter(
-          (element: IDataSourcesDC) =>
-            element.ddls.includes("Precision Medicine and Diagnostics")
+        .filter((element: IDataSourcesDC) =>
+          element.ddls.includes("Precision Medicine and Diagnostics")
         )
-        .filter((element) => element.name !== "SCAPIS database"); // Exclude "SCAPIS"
+        .filter(
+          (element: IDataSourcesDC) => element.name !== "SCAPIS database"
+        ); // Exclude "SCAPIS"
       setDataSourcesJSON(tmpDataSourcesJSON);
     } catch (error) {
       console.error("Error fetching data:", error);
