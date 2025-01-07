@@ -224,7 +224,7 @@
             "neonatalt",
             "SNQ"
         ],
-        "Information": "he SNQ collects extensive data on all newborns admitted to neonatal intensive care units (NICUs) in Sweden. This includes demographic information, birth details, diagnoses, treatments, complications, and outcomes. The data covers a wide range of neonatal conditions and interventions, such as respiratory support, infections, congenital anomalies, and more..",
+        "Information": "The SNQ collects extensive data on all newborns admitted to neonatal intensive care units (NICUs) in Sweden. This includes demographic information, birth details, diagnoses, treatments, complications, and outcomes. The data covers a wide range of neonatal conditions and interventions, such as respiratory support, infections, congenital anomalies, and more..",
         "category": [
             "National quality registry"
         ],
@@ -453,7 +453,7 @@
             "vision",
             "cataract"
         ],
-        "Information": " The register gathers comprehensive data on cataract surgeries performed in Sweden, including patient demographics, types of cataract, surgical techniques, intraocular lenses used, complications, and visual outcomes. This registry covers over 99% of all cataract surgeries in Sweden, including data from all ophthalmology clinics and hospitals performing these procedures.",
+        "Information": "The register gathers comprehensive data on cataract surgeries performed in Sweden, including patient demographics, types of cataract, surgical techniques, intraocular lenses used, complications, and visual outcomes. This registry covers over 99% of all cataract surgeries in Sweden, including data from all ophthalmology clinics and hospitals performing these procedures.",
         "category": [
             "National quality registry"
         ],
@@ -489,7 +489,7 @@
             "hip",
             "bone"
         ],
-        "Information": "gathers data on patients with hip fractures, including demographic details, fracture types, treatments (surgical and non-surgical), complications, rehabilitation, and functional outcomes such as mobility and pain. It covers nearly all hospitals in Sweden that treat hip fractures, with around 90% of cases included in the registry.",
+        "Information": "Gathers data on patients with hip fractures, including demographic details, fracture types, treatments (surgical and non-surgical), complications, rehabilitation, and functional outcomes such as mobility and pain. It covers nearly all hospitals in Sweden that treat hip fractures, with around 90% of cases included in the registry.",
         "category": [
             "National quality registry"
         ],
@@ -876,7 +876,7 @@
             "PsoReg",
             "psoriasis treatment"
         ],
-        "Information": "soReg tracks patients undergoing systemic treatment for psoriasis, collecting data on treatment efficacy, patient demographics, disease severity, and quality of life. It covers dermatology clinics across Sweden, aiming for nationwide coverage to monitor long-term outcomes and improve patient care.",
+        "Information": "PsoReg tracks patients undergoing systemic treatment for psoriasis, collecting data on treatment efficacy, patient demographics, disease severity, and quality of life. It covers dermatology clinics across Sweden, aiming for nationwide coverage to monitor long-term outcomes and improve patient care.",
         "category": [
             "National quality registry"
         ],
@@ -992,7 +992,7 @@
         "search_tags": [
             "aferes"
         ],
-        "Information": "his international registry gathers data on therapeutic apheresis treatments, tracking patient demographics, procedures, and outcomes to improve treatment protocols across participating countries​.",
+        "Information": "This international registry gathers data on therapeutic apheresis treatments, tracking patient demographics, procedures, and outcomes to improve treatment protocols across participating countries​.",
         "category": [
             "Other quality registry"
         ],
@@ -1299,7 +1299,7 @@
             "Thorax",
             "Thoraxkirurgi"
         ],
-        "Information": "collects data on surgeries involving the lungs, trachea, esophagus, pleura, pericardium, thymus, diaphragm, and the chest wall including bones and muscles. While a significant portion of the surgeries focus on lung cancer, it also includes data on surgeries for benign conditions. The registry tracks surgical outcomes and complications to improve thoracic surgery care across Sweden​.",
+        "Information": "Collects data on surgeries involving the lungs, trachea, esophagus, pleura, pericardium, thymus, diaphragm, and the chest wall including bones and muscles. While a significant portion of the surgeries focus on lung cancer, it also includes data on surgeries for benign conditions. The registry tracks surgical outcomes and complications to improve thoracic surgery care across Sweden​.",
         "category": [
             "Other quality registry"
         ],
@@ -1451,7 +1451,7 @@
             "SESAR",
             "sleep apnea"
         ],
-        "Information": " focuses on tracking the diagnosis, treatment, and follow-up of patients with suspected or confirmed sleep apnea (mostly obstructive sleep apnea, OSA). The registry now includes around 120,000 patients. The number of healthcare units reporting to SESAR has grown steadily, and as of 2023, over 50 units are actively contributing data. In the last year, approximately 40,000 patient care events were registered, showing significant growth in both reporting and registry coverage​",
+        "Information": "SESAR focuses on tracking the diagnosis, treatment, and follow-up of patients with suspected or confirmed sleep apnea (mostly obstructive sleep apnea, OSA). The registry now includes around 120,000 patients. The number of healthcare units reporting to SESAR has grown steadily, and as of 2023, over 50 units are actively contributing data. In the last year, approximately 40,000 patient care events were registered, showing significant growth in both reporting and registry coverage​",
         "category": [
             "National quality registry"
         ],
@@ -1484,7 +1484,7 @@
             "prothese",
             "SLR"
         ],
-        "Information": "s a national quality registry that tracks all hip and knee joint replacement surgeries, including primary operations, revisions, and osteotomies (surgical bone cuts to correct alignment) performed across Sweden. The registry was officially established in 2020 after merging two previously separate registers—the Swedish Hip Arthroplasty Register (started in 1979) and the Swedish Knee Arthroplasty Register (started in 1975). Since then, SLR has been systematically collecting data to monitor and improve the quality of joint replacement surgeries nationwide​. The registry covers all units performing joint replacements in Sweden, ensuring a very high coverage rate.",
+        "Information": "This is a national quality registry that tracks all hip and knee joint replacement surgeries, including primary operations, revisions, and osteotomies (surgical bone cuts to correct alignment) performed across Sweden. The registry was officially established in 2020 after merging two previously separate registers—the Swedish Hip Arthroplasty Register (started in 1979) and the Swedish Knee Arthroplasty Register (started in 1975). Since then, SLR has been systematically collecting data to monitor and improve the quality of joint replacement surgeries nationwide​. The registry covers all units performing joint replacements in Sweden, ensuring a very high coverage rate.",
         "category": [
             "National quality registry"
         ],
@@ -1502,7 +1502,7 @@
             "child",
             "Pediatric care"
         ],
-        "Information": "was established in 2015 and focuses on five major pediatric orthopedic conditions: hip instability (DDH), Perthes disease, slipped capital femoral epiphysis (SCFE), clubfoot (PEVA), and patellar dislocation. These conditions are significant for child orthopedics in Sweden, as untreated or delayed interventions can lead to lifelong physical impairments. The primary goal of SPOQ is to monitor and improve the quality of care by ensuring timely diagnosis and treatment. It tracks patient outcomes to prevent long-term issues like residual deformities, early-onset osteoarthritis, and the need for reoperations later in life. Data from the registry is used to evaluate treatment methods and inform clinical practice, with approximately 1 in 800 children born in Sweden being diagnosed with clubfoot​.",
+        "Information": "Was established in 2015 and focuses on five major pediatric orthopedic conditions: hip instability (DDH), Perthes disease, slipped capital femoral epiphysis (SCFE), clubfoot (PEVA), and patellar dislocation. These conditions are significant for child orthopedics in Sweden, as untreated or delayed interventions can lead to lifelong physical impairments. The primary goal of SPOQ is to monitor and improve the quality of care by ensuring timely diagnosis and treatment. It tracks patient outcomes to prevent long-term issues like residual deformities, early-onset osteoarthritis, and the need for reoperations later in life. Data from the registry is used to evaluate treatment methods and inform clinical practice, with approximately 1 in 800 children born in Sweden being diagnosed with clubfoot​.",
         "category": [
             "National quality registry"
         ],
@@ -1616,7 +1616,7 @@
             "Beroendevård",
             "addiction"
         ],
-        "Information": "focuses on patients receiving specialised care for substance use disorders, covering diagnoses such as alcohol, opioid, and multi-substance dependencies (ICD-10 codes F10-F19). Established to improve the quality and accessibility of addiction treatment, the registry tracks data on care plans, participation in medication-assisted programs (e.g., LARO for opioid addiction), and questions about the patient’s family situation, such as the presence of minors. The registry collaborates with healthcare units across Sweden, ensuring that treatment outcomes are monitored and used to refine addiction care strategies.",
+        "Information": "Focuses on patients receiving specialised care for substance use disorders, covering diagnoses such as alcohol, opioid, and multi-substance dependencies (ICD-10 codes F10-F19). Established to improve the quality and accessibility of addiction treatment, the registry tracks data on care plans, participation in medication-assisted programs (e.g., LARO for opioid addiction), and questions about the patient’s family situation, such as the presence of minors. The registry collaborates with healthcare units across Sweden, ensuring that treatment outcomes are monitored and used to refine addiction care strategies.",
         "category": [
             "National quality registry"
         ],
@@ -1632,7 +1632,7 @@
             "ECT",
             "electroconvulsive therapy"
         ],
-        "Information": "he registry includes data on electroconvulsive therapy (ECT) treatments, which are used primarily for severe psychiatric conditions like depression. It has a coverage rate of approximately 96% as of 2022, with all hospitals in Sweden that provide ECT contributing data. Since 2018, it has also tracked repetitive transcranial magnetic stimulation (rTMS) treatments, covering 11 regions and with a 90% data coverage rate.",
+        "Information": "The registry includes data on electroconvulsive therapy (ECT) treatments, which are used primarily for severe psychiatric conditions like depression. It has a coverage rate of approximately 96% as of 2022, with all hospitals in Sweden that provide ECT contributing data. Since 2018, it has also tracked repetitive transcranial magnetic stimulation (rTMS) treatments, covering 11 regions and with a 90% data coverage rate.",
         "category": [
             "National quality registry"
         ],
@@ -1649,7 +1649,7 @@
             "child psychiatry",
             "psychiatry"
         ],
-        "Information": "focused on psychiatric care for children and adolescents across Sweden. Its primary aim is to improve the quality and equality of mental health services by collecting comprehensive data from various regions. This data includes patient demographics, diagnoses, treatments, and outcomes, providing a national benchmark for psychiatric services. As of recent reports, it had a national coverage rate of around 22%, with higher regional coverage in areas like Kalmar, Stockholm, Gävleborg, and Jämtland/Härjedalen, reaching 76%.",
+        "Information": "Focused on psychiatric care for children and adolescents across Sweden. Its primary aim is to improve the quality and equality of mental health services by collecting comprehensive data from various regions. This data includes patient demographics, diagnoses, treatments, and outcomes, providing a national benchmark for psychiatric services. As of recent reports, it had a national coverage rate of around 22%, with higher regional coverage in areas like Kalmar, Stockholm, Gävleborg, and Jämtland/Härjedalen, reaching 76%.",
         "category": [
             "National quality registry"
         ],
@@ -1683,7 +1683,7 @@
             "RättspsyK",
             "psychiatry"
         ],
-        "Information": "t tracks patients receiving forensic psychiatric care in Sweden, which involves compulsory treatment following legal decisions. The registry collects comprehensive data on 25 different indicators, including treatment plans, risk assessments, recidivism in criminal activity, use of coercive measures, and patient health status. In 2023, the registry followed up on 2,070 patients, marking its highest recorded coverage since inception.",
+        "Information": "Tracks patients receiving forensic psychiatric care in Sweden, which involves compulsory treatment following legal decisions. The registry collects comprehensive data on 25 different indicators, including treatment plans, risk assessments, recidivism in criminal activity, use of coercive measures, and patient health status. In 2023, the registry followed up on 2,070 patients, marking its highest recorded coverage since inception.",
         "category": [
             "National quality registry"
         ],
