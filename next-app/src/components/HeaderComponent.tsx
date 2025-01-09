@@ -9,15 +9,10 @@ import clsx from "clsx";
 
 export default function HeaderComponent() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const pathname = usePathname();
 
   const links: { [id: string]: ILink } = {
-    l1: { text: "Data sources", classes: LINK_CLASSES, link: "/datasources" },
-    l2: {
-      text: "Quality registries",
-      classes: LINK_CLASSES,
-      link: "/registries",
-    },
     l3: {
       text: "Access clinical data",
       classes: LINK_CLASSES,
@@ -31,6 +26,12 @@ export default function HeaderComponent() {
     l5: { text: "Contact", classes: LINK_CLASSES, link: "/contact" },
     l6: { text: "About us", classes: LINK_CLASSES, link: "/about/product" },
   };
+
+  const dropdownLinks = [
+    { text: "Quality registries", link: "/registries" },
+    { text: "Swedish research projects", link: "/swedishresearchprojects" },
+    { text: "Other data sources", link: "/datasources" },
+  ];
 
   return (
     <div className="bg-gradient-to-b from-secondary to-primary">
@@ -78,6 +79,43 @@ export default function HeaderComponent() {
             } lg:block mt-4 lg:mt-0`}
           >
             <ul className="flex flex-col lg:flex-row lg:space-x-6 space-y-2 lg:space-y-0 text-lg">
+              <li className="relative">
+                <button
+                  className="flex items-center text-white focus:outline-none"
+                  onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                >
+                  Data sources
+                  <svg
+                    className="ml-1 h-3 w-3"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M19 9l-7 7-7-7"
+                    />
+                  </svg>
+                </button>
+                {isDropdownOpen && (
+                  <ul className="absolute left-0 mt-2 w-40 bg-white text-black py-1 rounded-lg shadow-lg z-10">
+                    {dropdownLinks.map((link, index) => (
+                      <li key={index}>
+                        <Link
+                          className="block px-3 py-1 text-sm hover:bg-gray-200 rounded"
+                          href={link.link}
+                          onClick={() => setIsDropdownOpen(false)}
+                        >
+                          {link.text}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </li>
               {Object.keys(links).map((key) => (
                 <li key={key}>
                   <Link
