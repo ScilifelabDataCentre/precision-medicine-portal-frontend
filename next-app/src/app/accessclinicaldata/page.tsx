@@ -34,11 +34,19 @@ export default function AboutPage(): ReactElement {
         </ul>
       </div>
       <div className="flex flex-col gap-y-4">
-        <Title level={1}>How to access clinical data</Title>
+        <Title level={1}>Access data for precision medicine research</Title>
         <p>
-          Human data for research can be accessed from several sources such as:
-          medical records, quality registries, research databases, etc. If
-          sensitive personal data (
+          Researchers can access human data for research from various national
+          and international sources, such as research databases, quality
+          registries, patient or medical records, biobanks, and more. However,
+          human data is often not freely available. Researchers seeking access
+          to human data must submit an application outlining their project and
+          its requirements. The responsible institution, typically a healthcare
+          region or university, will release the data only after conducting
+          harm and confidentiality assessments.
+        </p>
+        <p>
+          If sensitive personal data (
           <a
             href="https://www.imy.se/en/individuals/data-protection/introduktion-till-gdpr/what-is-actually-meant-by-personal-data/what-is-meant-by-sensitive-personal-data/"
             target="_blank"
@@ -46,7 +54,7 @@ export default function AboutPage(): ReactElement {
           >
             definition
           </a>
-          ) will be used, the research project must be approved by the{" "}
+          ) is involved, the research project must be approved by the{" "}
           <a
             href="https://etikprovningsmyndigheten.se/en/"
             target="_blank"
@@ -54,26 +62,42 @@ export default function AboutPage(): ReactElement {
           >
             Swedish Ethical Review Authority
           </a>
-          . This applies even if all the sensitive personal data being processed
-          is pseudonymised. Moreover, necessary legal measures must be in place
-          before the data can be transferred from the agency or organisation
-          that provides the source data. Exactly how the procedures for
-          requesting data for research and how the data is disclosed differ
-          between various authorities or organisations.
+          , even if the data is pseudonymised. Additionally, necessary legal
+          measures must be in place before the data can be transferred from the
+          agency or organisation providing it. The procedures for requesting
+          data and the process of data disclosure vary between different
+          authorities and organisations.
         </p>
-        <Title level={2}>Patient records and medical records</Title>
+        <Title level={2}>Swedish research projects or databases</Title>
         <p>
-          Healthcare staff document patient interactions, and after a
-          confidentiality assessment, this information can be requested for
-          medical research. In Sweden, the 21 regions are responsible for most
-          healthcare services, while municipalities handle services like home
-          care, and private practitioners manage their own records.
-          Consequently, to conduct research using patient records from across
-          the country, it may be necessary to request data from multiple
-          sources.
-        </p>
+  It is possible to request existing data from several research projects or
+  research databases in Sweden. Projects can be found, for example, on the
+  website of the project’s entity responsible for the research, the{" "}
+  <a
+    href="https://snd.se/en/catalogue/search"
+    target="_blank"
+    className="text-primary hover:text-black underline"
+  >
+    Swedish National Data Service (SND)
+  </a>
+  , or the{" "}
+  <a
+    href="https://precision-medicine-portal.scilifelab.se/swedishresearchprojects"
+    target="_blank"
+    className="text-primary hover:text-black underline"
+  >
+    Precision Medicine Portal
+  </a>
+  .
+</p>
+<p>
+  In the research data catalogue at SND, it is possible to search for research
+  projects and data from several disciplines. Some data and metadata can be
+  downloaded directly from the catalogue. SND also provides information about
+  data management and a service for data sharing.
+</p>
         <div className="flex flex-row items-center">
-          <Title level={2}>Quality registers</Title>
+          <Title level={2}>Quality registries</Title>
           <Link href="/registries">
             <svg
               className="ml-2 fill-primary w-7 h-7"
@@ -180,8 +204,100 @@ export default function AboutPage(): ReactElement {
             </a>
           </li>
         </ul>
+        <p>
+        </p>
+        <Title level={2}>Research data management</Title>
+<p>
+  SciLifeLab provides general research data management (RDM) guidelines,{" "}
+  <a
+    href="https://data-guidelines.scilifelab.se/"
+    target="_blank"
+    className="text-primary hover:text-black underline"
+  >
+    available here
+  </a>
+  , and specific information about the ethical, legal, and societal
+  implications (ELSI) for research involving human data,{" "}
+  <a
+    href="https://data-guidelines.scilifelab.se/topics/research-involving-human-data/"
+    target="_blank"
+    className="text-primary hover:text-black underline"
+  >
+    available here
+  </a>
+  . They also offer guidance on{" "}
+  <a
+    href="https://data-guidelines.scilifelab.se/topics/sharing-human-data/"
+    target="_blank"
+    className="text-primary hover:text-black underline"
+  >
+    sharing sensitive human data
+  </a>
+  .
+</p>
+<p>
+  More information and tailored research support can be found at universities,
+  colleges, and healthcare regions or hospitals. A selection of links:
+</p>
+<ul className="list-disc pl-4">
+  <li>
+    <a
+      href="https://www.oru.se/english/research/research-support/"
+      target="_blank"
+      className="text-primary hover:text-black underline"
+    >
+      Örebro University
+    </a>
+  </li>
+  <li>
+    <a
+      href="https://www.oru.se/english/research/research-support/"
+      target="_blank"
+      className="text-primary hover:text-black underline"
+    >
+      Karolinska University Hospital
+    </a>
+  </li>
+  <li>
+    <a
+      href="https://www.staff.lu.se/research-and-education/research-support"
+      target="_blank"
+      className="text-primary hover:text-black underline"
+    >
+      Lund University
+    </a>
+  </li>
+  <li>
+    <a
+      href="https://www.umu.se/en/research-support-and-collaboration-office/"
+      target="_blank"
+      className="text-primary hover:text-black underline"
+    >
+      Umeå University
+    </a>
+  </li>
+  <li>
+    <a
+      href="https://www.uu.se/en/staff/gateway/research/research-handbook/uppsala-universitys-research-support/the-medfarm-research-support"
+      target="_blank"
+      className="text-primary hover:text-black underline"
+    >
+      Uppsala University
+    </a>
+  </li>
+  <li>
+    <a
+      href="https://staff.ki.se/research-support"
+      target="_blank"
+      className="text-primary hover:text-black underline"
+    >
+      Karolinska Universitetet
+    </a>
+  </li>
+</ul>
+<LastUpdated date="11-11-2024" />
+
       </div>
-      <LastUpdated date="11-11-2024" />
     </div>
   );
 }
