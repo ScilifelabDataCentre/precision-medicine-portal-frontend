@@ -45,29 +45,6 @@ export default function AboutPage(): ReactElement {
           region or university, will release the data only after conducting
           harm and confidentiality assessments.
         </p>
-        <p>
-          If sensitive personal data (
-          <a
-            href="https://www.imy.se/en/individuals/data-protection/introduktion-till-gdpr/what-is-actually-meant-by-personal-data/what-is-meant-by-sensitive-personal-data/"
-            target="_blank"
-            className="text-primary hover:text-black underline"
-          >
-            definition
-          </a>
-          ) is involved, the research project must be approved by the{" "}
-          <a
-            href="https://etikprovningsmyndigheten.se/en/"
-            target="_blank"
-            className="text-primary hover:text-black underline"
-          >
-            Swedish Ethical Review Authority
-          </a>
-          , even if the data is pseudonymised. Additionally, necessary legal
-          measures must be in place before the data can be transferred from the
-          agency or organisation providing it. The procedures for requesting
-          data and the process of data disclosure vary between different
-          authorities and organisations.
-        </p>
         <Title level={2}>Swedish research projects or databases</Title>
         <p>
   It is possible to request existing data from several research projects or
@@ -206,6 +183,14 @@ export default function AboutPage(): ReactElement {
         </ul>
         <p>
         </p>
+        <Title level={2}>Patient and medical records</Title>
+        <p>
+        Healthcare staff document patient interactions, and after a confidentiality assessment, 
+        this information can be requested for medical research by lämna in en begäran om utlämnande av patientdata. 
+        In Sweden, the 21 regions are responsible for most healthcare services, while 
+        municipalities handle services like home care, and private practitioners manage their own records. 
+        Consequently, to conduct research using patient records from across the country, it may be necessary to request data from multiple sources.
+        </p>
         <Title level={2}>Research data management</Title>
 <p>
   SciLifeLab provides general research data management (RDM) guidelines,{" "}
@@ -295,7 +280,7 @@ export default function AboutPage(): ReactElement {
     </a>
   </li>
 </ul>
-<LastUpdated date="11-11-2024" />
+<LastUpdated date="13-01-2025" />
 
       </div>
     </div>
