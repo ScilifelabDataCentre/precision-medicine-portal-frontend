@@ -151,23 +151,23 @@ export default function ProjectsPage() {
               <div className="flex flex-col gap-3">
                 {/* SND Button */}
                 {project.SND && (
-                 <a
-                 href={project.SND}
-                 target="_blank"
-                 rel="noopener noreferrer"
-                 className={`inline-flex items-center gap-2 px-3 py-1 text-sm font-medium rounded-full text-blackç ${TAG_COLOURS.snd} hover:opacity-90 self-start`}
-               >
-                 SND Metadata
-                 <svg
-                   xmlns="http://www.w3.org/2000/svg"
-                   width="20"
-                   height="20.092"
-                   className="flex-shrink-0"
-                 >
-                   <path d="m12 0 2.561 2.537-6.975 6.976 2.828 2.828 6.988-6.988L20 7.927 19.998 0H12z" />
-                   <path d="M9 4.092v-2H0v18h18v-9h-2v7H2v-14h7z" />
-                 </svg>
-               </a>
+                  <a
+                    href={project.SND}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`inline-flex items-center gap-2 px-3 py-1 text-sm font-medium rounded-full text-black ${TAG_COLOURS.snd} hover:opacity-90 self-start transition-opacity duration-100`}
+                  >
+                    SND Metadata
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="20"
+                      height="20.092"
+                      className="flex-shrink-0"
+                    >
+                      <path d="m12 0 2.561 2.537-6.975 6.976 2.828 2.828 6.988-6.988L20 7.927 19.998 0H12z" />
+                      <path d="M9 4.092v-2H0v18h18v-9h-2v7H2v-14h7z" />
+                    </svg>
+                  </a>
                 )}
                 {/* Other Tags */}
                 <div className="flex flex-wrap gap-2">
