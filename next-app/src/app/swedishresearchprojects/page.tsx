@@ -12,6 +12,7 @@ type Project = {
   name: string;
   link: string;
   description: string;
+  SND?: string; // Optional SND field
   tags: {
     disease?: string[];
     participants: string[];
@@ -28,6 +29,7 @@ const breadcrumbs: { [id: string]: ILink } = {
 const TAG_COLOURS: { [key: string]: string } = {
   participants: "bg-[#82AEB2] text-black",
   contextual: "bg-[#E9F2D1] text-black",
+  snd: "bg-[#649ED2] text-black", // Custom SND button colour
 };
 
 export default function ProjectsPage() {
@@ -81,17 +83,12 @@ export default function ProjectsPage() {
       {/* Introductory Section */}
       <div className="prose prose-lg text-gray-700 text-justify mx-auto mb-12">
         <p className="mb-4">
-          This page highlights 15 selected research projects tied to biobanks,
+          This page highlights selected research projects tied to biobanks,
           showcasing their significant role in advancing scientific research and
           medical innovation. These projects, conducted by academic
           institutions, healthcare providers, and industry collaborators in
           Sweden, address key scientific questions, drive technological
-          development, and improve healthcare outcomes. By integrating
-          biological material with comprehensive health data, Swedish biobanks
-          provide a unique platform for longitudinal studies, translational
-          research, and precision medicine. These projects demonstrate how
-          biobank resources bridge the gap between fundamental science and
-          clinical applications.
+          development, and improve healthcare outcomes.
         </p>
         <p>
           The information on this page is based on the brochure{" "}
@@ -151,19 +148,42 @@ export default function ProjectsPage() {
               <p className="text-muted-foreground mb-4">
                 {project.description || "Description not provided."}
               </p>
-              <div className="flex flex-wrap gap-2">
-                {Object.entries(project.tags).map(
-                  ([category, tags]) =>
-                    category !== "disease" &&
-                    tags?.map((tag, i) => (
-                      <span
-                        key={`${category}-${i}`}
-                        className={`px-3 py-1 rounded-full text-sm ${TAG_COLOURS[category]}`}
-                      >
-                        {tag}
-                      </span>
-                    ))
+              <div className="flex flex-col gap-3">
+                {/* SND Button */}
+                {project.SND && (
+                 <a
+                 href={project.SND}
+                 target="_blank"
+                 rel="noopener noreferrer"
+                 className={`inline-flex items-center gap-2 px-3 py-1 text-sm font-medium rounded-full text-blackç ${TAG_COLOURS.snd} hover:opacity-90 self-start`}
+               >
+                 SND Metadata
+                 <svg
+                   xmlns="http://www.w3.org/2000/svg"
+                   width="20"
+                   height="20.092"
+                   className="flex-shrink-0"
+                 >
+                   <path d="m12 0 2.561 2.537-6.975 6.976 2.828 2.828 6.988-6.988L20 7.927 19.998 0H12z" />
+                   <path d="M9 4.092v-2H0v18h18v-9h-2v7H2v-14h7z" />
+                 </svg>
+               </a>
                 )}
+                {/* Other Tags */}
+                <div className="flex flex-wrap gap-2">
+                  {Object.entries(project.tags).map(
+                    ([category, tags]) =>
+                      category !== "disease" &&
+                      tags?.map((tag, i) => (
+                        <span
+                          key={`${category}-${i}`}
+                          className={`px-3 py-1 rounded-full text-sm ${TAG_COLOURS[category]}`}
+                        >
+                          {tag}
+                        </span>
+                      ))
+                  )}
+                </div>
               </div>
             </CardContent>
           </Card>
