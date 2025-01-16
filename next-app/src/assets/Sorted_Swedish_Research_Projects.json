@@ -3,25 +3,26 @@
         {
             "name": "BIG3",
             "link": "https://kliniskastudier.se/forum-soder/regionala-forskningsprojekt/big3#:~:text=BIG3%20är%20en%20öppen%20prospektiv,och%20är%20samfinansierat%20med%20AstraZeneca.",
-            "description": "BIG3 is a collaborative initiative focusing on biobanking and molecular research in glioma, a type of brain tumour. The project aims to integrate clinical data with molecular analyses to enhance the understanding of glioma biology and develop more effective treatments. By establishing a comprehensive biobank of glioma samples, BIG3 facilitates research into tumour genetics, microenvironment, and response to therapies. This resource is instrumental in identifying biomarkers for early diagnosis and potential therapeutic targets, thereby contributing to personalised medicine approaches in neuro-oncology. The collaborative nature of BIG3, involving multiple research institutions and healthcare providers, ensures a multidisciplinary approach to tackling the complexities of glioma, ultimately aiming to improve patient outcomes and survival rates.",
+            "description": "A long-term research initiative in Skåne, launched in 2013, focusing on three major public health challenges: COPD, cardiovascular diseases, and lung cancer. Since its launch, approximately 100,000 Skåne residents aged 45–75 have been invited to participate by completing a survey on lifestyle, living environment, and tobacco habits. From this group, around 10,000 participants have undergone detailed tests, including ECGs, CT scans, lung function tests, and blood sampling. Blood samples are analysed for biomarkers and stored in a biobank for future research. The cohort has been designed to include roughly 50% smokers. The ongoing research continues to identify individuals at higher risk of these diseases and uncover why some people appear more resilient, with the ultimate goal of reducing illness and improving care for affected individuals.",
+            "SND": "https://snd.se/sv/catalogue/dataset/ext0129-1",
             "tags": {
                 "disease": [
                     "Cancer",
                     "Neurology"
                 ],
                 "participants": [
-                    "1.000-10.000 participants"
+                    "10.000-100.000 participants"
                 ],
                 "contextual": [
-                    "Translational Research",
-                    "Drug Discovery"
+                    "Longitudinal Study",
+                    "Population-Based Study"
                 ]
             }
         },
         {
-            "name": "Betydelsen av Migration & Etnicitet för Diabetsutvecklingen I Malmö (MEDIM)",
+            "name": "Betydelsen av Migration & Etnicitet för Diabetsutvecklingen i Malmö (MEDIM)",
             "link": "https://www.diabetesportalen.lu.se/artikel/manga-manga-fler-typ-2-diabetiker-vantat",
-            "description": "The MEDIM study investigates how migration and ethnicity influence diabetes development. By examining diverse populations in Malmö, it seeks to identify specific risk factors and inform culturally sensitive prevention strategies, addressing health disparities in diabetes care. MEDIM's findings are crucial for developing inclusive public health policies that cater to diverse communities.",
+            "description": "The MEDIM study investigated how migration and ethnicity influence diabetes development between 2010 and 2015. By examining diverse populations in Malmö, it seeked to identify specific risk factors and inform culturally sensitive prevention strategies, addressing health disparities in diabetes care.",
             "tags": {
                 "disease": [
                     "Diabetes",
@@ -37,9 +38,45 @@
             }
         },
         {
-            "name": "EIMS, IMSE och andra multipel skleros fall-kontroll och läkemedelsstudier",
+            "name": "COMBAT-MS",
+            "link": "https://ki.se/cns/forskning/combat-ms",
+            "description": "The COMBAT-MS study involved all Swedish university clinics and Kaiser Permanente Southern California, focusing on nearly 4,000 individuals diagnosed with MS in Sweden who started or switched their first disease-modifying treatment between 2011 and 2018. The study featured collaboration with a clinical expert group from the participating clinics, an international scientific expert group, and representatives from patient organisations in Sweden and the USA. Data collection included disease impact, patient-reported outcomes, blood samples, and MRIs, primarily through the Swedish MS Registry. The project continues under the Karolinska Neuro-Immunology & MS Center (KNIMS) and forms part of the European brain imaging network, MAGNIMS, to enhance understanding of disease progression and mechanisms.",
+            "tags": {
+                "disease": [
+                    "Neurology",
+                    "Autoimmune Disease"
+                ],
+                "participants": [
+                    "1.000-10.000 participants"
+                ],
+                "contextual": [
+                    "Longitudinal Study",
+                    "Epidemiological Research"
+                ]
+            }
+        },
+        {
+            "name": "Epidemiological Investigation of Risk Factors for Multiple Sclerosis (EIMS)",
+            "link": "https://ki.se/cns/forskning/eims-epidemiologisk-undersokning-av-riskfaktorer-for-multipel-skleros/om-eims",
+            "description": "EIMS is Sweden’s largest study exploring how environmental and genetic factors contribute to the development and progression of multiple sclerosis (MS). Conducted nationally in collaboration with neurology units and Karolinska Institutet, the study has so far enrolled 3,900 MS patients and over 7,200 healthy controls. Patients and controls complete questionnaires and provide blood samples, with data processed at Karolinska's biobank. By comparing the two groups, EIMS aims to uncover MS risk factors, improve understanding of its causes, and enhance possibilities for treatment and prevention.",
+            "tags": {
+                "disease": [
+                    "Neurology",
+                    "Autoimmune Disease"
+                ],
+                "participants": [
+                    "10.000-100.000 participants"
+                ],
+                "contextual": [
+                    "Case-Control Studies",
+                    "Epidemiological Research"
+                ]
+            }
+        },
+        {
+            "name": "Immunomodulation and Mutiple Sclerosis Epidemiology study (IMSE)",
             "link": "https://ki.se/cns/forskning/avdelningen-for-neuro/om-avdelningen-for-neuro/imse",
-            "description": "The Epidemiological Investigation of Multiple Sclerosis (EIMS) and the Immunomodulation and Multiple Sclerosis Epidemiology (IMSE) studies are pivotal in understanding multiple sclerosis (MS) in Sweden. EIMS is a nationwide case-control study that examines genetic and environmental risk factors for MS by enrolling newly diagnosed patients from 42 neurological clinics across the country. IMSE is an ongoing phase IV clinical trial that monitors the long-term safety and efficacy of immunomodulatory treatments for MS. These studies provide comprehensive data on the interplay between genetic predispositions, environmental exposures, and therapeutic interventions in MS. Their extensive datasets support advancements in MS treatment and management strategies, benefiting researchers in neurology and immunology.",
+            "description": "The IMSE study is an ongoing phase IV clinical trial that monitors the long-term safety and efficacy of immunomodulatory treatments for multiple sclerosis (MS). Its primary aim is to explore the impact of demographic and clinical factors on the effectiveness of these newly introduced treatments. Additionally, the study seeks to deepen our understanding of the underlying causes of inflammation in the nervous system and how the interplay between genetic and environmental factors contributes to the onset of MS and shapes its progression.",
             "tags": {
                 "disease": [
                     "Neurology",
@@ -73,9 +110,9 @@
             }
         },
         {
-            "name": "KARMA bröstcancerstudien",
+            "name": "Karolinska Mammography Project for Risk Prediction of Breast Cancer",
             "link": "https://karmastudy.org/",
-            "description": "The KARMA (Karolinska Mammography Project for Risk Prediction of Breast Cancer) study is a prospective cohort involving over 70,000 women attending mammography screening across four hospitals in Sweden. The study collects comprehensive data, including mammographic images, blood samples, and detailed questionnaires covering reproductive health, lifestyle factors, and medical history. The primary objective of KARMA is to develop individualised risk prediction models for breast cancer, incorporating factors such as mammographic density, genetic markers, and lifestyle variables. By identifying women at high risk, the study aims to tailor screening and prevention strategies, thereby reducing breast cancer incidence and mortality. The extensive dataset also supports research into the natural history of breast cancer, the impact of hormonal and reproductive factors, and the development of new diagnostic tools.",
+            "description": "The KARMA study is a prospective cohort involving over 70,000 women attending mammography screening across four hospitals in Sweden. The study collects comprehensive data, including mammographic images, blood samples, and detailed questionnaires covering reproductive health, lifestyle factors, and medical history. The primary objective of KARMA is to develop individualised risk prediction models for breast cancer, incorporating factors such as mammographic density, genetic markers, and lifestyle variables. By identifying women at high risk, the study aims to tailor screening and prevention strategies, thereby reducing breast cancer incidence and mortality. The extensive dataset also supports research into the natural history of breast cancer, the impact of hormonal and reproductive factors, and the development of new diagnostic tools.",
             "tags": {
                 "disease": [
                     "Cancer",
@@ -94,6 +131,7 @@
             "name": "LifeGene",
             "link": "https://www.lifegene.se/",
             "description": "Initiated in September 2009, LifeGene is a national prospective population-based cohort study involving over 50,000 participants aged 0–95 years. The KI Biobank stores blood, serum, and urine samples from approximately 30,000 of these participants. Supported by seven Swedish universities with medical faculties, LifeGene aims to explore the complex interactions between genetic predispositions and environmental exposures in health and disease. By facilitating large-scale studies on common diseases, LifeGene contributes to the development of personalised medicine and targeted public health strategies.",
+            "SND": "https://snd.se/en/catalogue/dataset/ext0172-1",
             "tags": {
                 "disease": [
                     "Public Health",
@@ -147,6 +185,7 @@
             "name": "Northern Sweden Health and Disease Study (NSHDS)",
             "link": "https://www.umu.se/en/biobank-research-unit/provsamlingar-och-register/northern-sweden-health-and-disease-study-vip-monica-and-the-mammography-screening-project/",
             "description": "Established in 1985, NSHDS integrates three major cohorts: the Västerbotten Intervention Programme (VIP), the Northern Sweden MONICA study, and the Mammography Screening Project. Collectively, these cohorts encompass over 135,000 participants, providing a rich repository of biological samples and extensive health data. This comprehensive dataset enables researchers to investigate the interplay between genetic, environmental, and lifestyle factors in the development of chronic diseases such as cardiovascular conditions and cancer. The longitudinal nature of NSHDS allows for the study of disease progression and the identification of potential preventive strategies, making it an invaluable resource for epidemiological research and public health interventions.",
+            "SND": "https://snd.se/en/catalogue/dataset/ext0043-1",
             "tags": {
                 "disease": [
                     "Cardiovascular Disease",
@@ -165,6 +204,7 @@
             "name": "Svenska Tvillingregistret (STR)",
             "link": "https://ki.se/forskning/forskningsinfrastruktur-och-miljoer/core-faciliteter-for-forskning/svenska-tvillingregistret",
             "description": "One of the world's largest twin registries, encompassing data from both identical and fraternal twins. This unique resource allows researchers to disentangle the relative contributions of genetic and environmental factors to various health outcomes. Studies utilising STR have provided insights into the heritability of diseases, behavioural traits, and the impact of environmental exposures, thereby informing prevention and intervention strategies.",
+            "SND": "https://snd.se/sv/catalogue/dataset/ext0163-1",
             "tags": {
                 "disease": [
                     "Genetics",
@@ -184,6 +224,7 @@
             "name": "Swedish Infrastructure for Medical Population-Based Life-Course and Environmental Research (SIMPLER)",
             "link": "https://www.simpler4health.se/",
             "description": "SIMPLER consolidates data from several Swedish cohorts to facilitate research on life-course and environmental factors affecting health. By providing a unified platform for data access, it streamlines research processes and promotes comprehensive studies on public health issues. SIMPLER supports multidisciplinary research, enabling the development of holistic approaches to health promotion and disease prevention.",
+            "SND": "https://snd.se/sv/catalogue/collection/simpler",
             "tags": {
                 "disease": [
                     "Public Health",
@@ -202,6 +243,7 @@
             "name": "The Environmental Determinants of Diabetes in the Young (TEDDY)",
             "link": "https://teddy.epi.usf.edu",
             "description": "TEDDY is an international study aiming to identify environmental triggers of type 1 diabetes in genetically susceptible children. By monitoring participants from birth, it endeavours to uncover factors that initiate the autoimmune process, paving the way for preventive interventions. TEDDY's research holds the promise of reducing the incidence of type 1 diabetes through early-life modifications.",
+           "SND": "https://snd.se/sv/catalogue/dataset/ext0080-1",
             "tags": {
                 "disease": [
                     "Diabetes",
@@ -239,6 +281,7 @@
             "name": "The Swedish CArdioPulmonary BioImage Study (SCAPIS)",
             "link": "https://www.scapis.org/",
             "description": "focused on improving the prevention and treatment of cardiovascular and pulmonary diseases. Conducted between 2013 and 2018, the study examined over 30,000 participants aged 50 to 64 across six Swedish university hospitals. SCAPIS utilises advanced imaging techniques, such as coronary computed tomography angiography (CCTA) and carotid ultrasound, combined with biomarker and genetic analyses to detect early signs of disease. The extensive dataset collected includes information on genetic predispositions, lifestyle factors, and environmental exposures. This resource supports the development of predictive models and precision medicine approaches, enabling tailored preventive strategies to reduce morbidity and mortality. SCAPIS also serves as an open-access platform for researchers, fostering collaboration and innovation in cardiopulmonary health research.",
+            "SND": "https://snd.se/sv/catalogue/dataset/ext0054-1",
             "tags": {
                 "disease": [
                     "Cardiovascular Disease",
