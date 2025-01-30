@@ -13,7 +13,7 @@ export default function AboutPage(): ReactElement {
 
   const breadcrumbs: { [id: string]: ILink } = {
     l1: { text: "Home", classes: "", link: "/" },
-    l2: { text: "Access clinical data", classes: "", link: "" },
+    l2: { text: "License", classes: "", link: "" },
   };
 
   return (
@@ -34,272 +34,128 @@ export default function AboutPage(): ReactElement {
         </ul>
       </div>
       <div className="flex flex-col gap-y-4">
-        <Title level={1}>Access data for precision medicine research</Title>
+        <Title level={1}>License</Title>
+        <Title level={2} className="mt-4">
+          Website content
+        </Title>
+
         <p>
-          Researchers can access human data for research from various national
-          and international sources, such as research databases, quality
-          registries, patient or medical records, biobanks, and more. However,
-          human data is often not freely available. Researchers seeking access
-          to human data must submit an application outlining their project and
-          its requirements. The responsible institution, typically a healthcare
-          region or university, will release the data only after conducting harm
-          and confidentiality assessments.
-        </p>
-        <div className="flex flex-row items-center">
-          <Title level={2}>Swedish research projects or databases</Title>
-          <Link href="/swedishresearchprojects">
-            <svg
-              className="ml-2 fill-primary w-7 h-7"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 32 32"
-            >
-              <g data-name="19-Arrow Right">
-                <path d="M16 0a16 16 0 1 0 16 16A16 16 0 0 0 16 0zm0 30a14 14 0 1 1 14-14 14 14 0 0 1-14 14z" />
-                <path d="m26.71 15.29-7-7-1.42 1.42 5.3 5.29H5v2h18.59l-5.29 5.29 1.41 1.41 7-7a1 1 0 0 0 0-1.41z" />
-              </g>
-            </svg>
-          </Link>
-        </div>{" "}
-        <p>
-          It is possible to request existing data from several research projects
-          or research databases in Sweden. Projects can be found, for example,
-          on the website of the project’s entity responsible for the research,
-          the{" "}
+          Unless specified otherwise, the content (text and images) of this
+          website is licensed{" "}
           <a
-            href="https://snd.se/en/catalogue/search"
+            href="https://creativecommons.org/licenses/by/4.0/"
             target="_blank"
             className="text-primary hover:text-black underline"
           >
-            Swedish National Data Service (SND)
+            Creative Commons Attribution 4.0 International License
           </a>
-          , or the{" "}
+          . This is a human-readable summary of (and not a substitute for){" "}
           <a
-            href="https://precision-medicine-portal.scilifelab.se/swedishresearchprojects"
+            href="https://creativecommons.org/licenses/by/4.0/legalcode"
             target="_blank"
             className="text-primary hover:text-black underline"
           >
-            Precision Medicine Portal
+            the license
           </a>
           .
         </p>
-        <p>
-          In the research data catalogue at SND, it is possible to search for
-          research projects and data from several disciplines. Some data and
-          metadata can be downloaded directly from the catalogue. SND also
-          provides information about data management and a service for data
-          sharing.
-        </p>
-        <div className="flex flex-row items-center">
-          <Title level={2}>Quality registries</Title>
-          <Link href="/registries">
-            <svg
-              className="ml-2 fill-primary w-7 h-7"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 32 32"
-            >
-              <g data-name="19-Arrow Right">
-                <path d="M16 0a16 16 0 1 0 16 16A16 16 0 0 0 16 0zm0 30a14 14 0 1 1 14-14 14 14 0 0 1-14 14z" />
-                <path d="m26.71 15.29-7-7-1.42 1.42 5.3 5.29H5v2h18.59l-5.29 5.29 1.41 1.41 7-7a1 1 0 0 0 0-1.41z" />
-              </g>
-            </svg>
-          </Link>
-        </div>
-        <p>
-          The Swedish quality registries aim to improve the health care system
-          by collecting individualised health data about, for example, certain
-          diagnoses or problems{" "}
-          <a
-            href="https://www.1177.se/sa-fungerar-varden/lagar-och-bestammelser/nationella-kvalitetsregister/#:~:text=I%20nationella%20kvalitetsregister%20samlas%20information,l%C3%A4mnas%20till%20ett%20nationellt%20kvalitetsregister"
-            target="_blank"
-            className="text-primary hover:text-black underline"
-          >
-            (further information in Swedish)
-          </a>
-          . Data from a certain registry can be requested by researchers after
-          approval by a steering group consisting of health care professionals
-          and patient representatives.
-        </p>
-        <p>
-          Healthcare providers must inform patients before their medical
-          information is collected in a quality register. This procedure differs
-          from the inclusion of a research subject in a study, where written
-          consent is required. However, personal data cannot be processed in a
-          quality register or research study if the individual objects. If a
-          person opposes the processing of their personal data after it has
-          begun, the information should be erased from the register as soon as
-          possible{" "}
-          <a
-            href="https://www.riksdagen.se/sv/dokument-och-lagar/dokument/svensk-forfattningssamling/patientdatalag-2008355_sfs-2008-355/#K7"
-            target="_blank"
-            className="text-primary hover:text-black underline"
-          >
-            (further information in Swedish)
-          </a>
-          .
-        </p>
-        <p>
-          Every quality registry in Sweden is connected to one of six centres
-          that provide support:
-        </p>
+
+        <Title level={3}>You are free to:</Title>
         <ul className="list-disc pl-4">
           <li>
-            <a
-              href="https://qrcstockholm.se/"
-              target="_blank"
-              className="text-primary hover:text-black underline"
-            >
-              Stockholm (QRC STHLM)
-            </a>
+            <strong>Share</strong> — copy and redistribute the material in any
+            medium or format
           </li>
           <li>
-            <a
-              href="https://rcsyd.se/"
-              target="_blank"
-              className="text-primary hover:text-black underline"
-            >
-              Syd (RC SYD)
-            </a>
-          </li>
-          <li>
-            <a
-              href="https://rcnorr.se/"
-              target="_blank"
-              className="text-primary hover:text-black underline"
-            >
-              Norr (RCN)
-            </a>
-          </li>
-          <li>
-            <a
-              href="https://www.ucr.uu.se/"
-              target="_blank"
-              className="text-primary hover:text-black underline"
-            >
-              Uppsala Clinical Research Center (UCR)
-            </a>
-          </li>
-          <li>
-            <a
-              href="https://registercentrum.se/rc-vast/vastra-gotaland"
-              target="_blank"
-              className="text-primary hover:text-black underline"
-            >
-              Västra Götaland
-            </a>
-          </li>
-          <li>
-            <a
-              href="https://registercentrum.se/rc-sydost/sydost"
-              target="_blank"
-              className="text-primary hover:text-black underline"
-            >
-              SydOst (RCSO)
-            </a>
+            <strong>Adapt</strong> — remix, transform, and build upon the
+            material for any purpose, even commercially.
           </li>
         </ul>
-        <p></p>
-        <Title level={2}>Patient and medical records</Title>
         <p>
-          Healthcare staff document patient interactions, and after a
-          confidentiality assessment, this information can be requested for
-          medical research by lämna in en begäran om utlämnande av patientdata.
-          In Sweden, the 21 regions are responsible for most healthcare
-          services, while municipalities handle services like home care, and
-          private practitioners manage their own records. Consequently, to
-          conduct research using patient records from across the country, it may
-          be necessary to request data from multiple sources.
+          The licensor cannot revoke these freedoms as long as you follow the
+          license terms.
         </p>
-        <Title level={2}>Research data management</Title>
+
+        <Title level={3}>Under the following terms:</Title>
+        <ul className="list-disc pl-4">
+          <li>
+            <strong>Attribution</strong> — You must give appropriate credit,
+            provide a link to the license, and indicate if changes were made.
+            You may do so in any reasonable manner, but not in any way that
+            suggests the licensor endorses you or your use.
+          </li>
+          <li>
+            <strong>No additional restrictions</strong> — You may not apply
+            legal terms or technological measures that legally restrict others
+            from doing anything the license permits.
+          </li>
+        </ul>
+
+        <Title level={3}>Notices:</Title>
         <p>
-          SciLifeLab provides general research data management (RDM) guidelines,{" "}
+          You do not have to comply with the license for elements of the
+          material in the public domain or where your use is permitted by an
+          applicable exception or limitation.
+        </p>
+        <p>
+          No warranties are given. The license may not give you all of the
+          permissions necessary for your intended use. For example, other rights
+          such as publicity, privacy, or moral rights may limit how you use the
+          material.
+        </p>
+
+        <Title level={2} className="mt-4">
+          Software
+        </Title>
+        <p>
+          Except where otherwise noted, any software in this repository are made
+          available under the{" "}
           <a
-            href="https://data-guidelines.scilifelab.se/"
+            href="https://opensource.org/"
             target="_blank"
             className="text-primary hover:text-black underline"
           >
-            available here
+            OSI
           </a>
-          , and specific information about the ethical, legal, and societal
-          implications (ELSI) for research involving human data,{" "}
+          -approved{" "}
           <a
-            href="https://data-guidelines.scilifelab.se/topics/research-involving-human-data/"
+            href="https://opensource.org/licenses/mit-license.html"
             target="_blank"
             className="text-primary hover:text-black underline"
           >
-            available here
-          </a>
-          . They also offer guidance on{" "}
-          <a
-            href="https://data-guidelines.scilifelab.se/topics/sharing-human-data/"
-            target="_blank"
-            className="text-primary hover:text-black underline"
-          >
-            sharing sensitive human data
+            MIT license
           </a>
           .
         </p>
+
+        <Title level={3}>For the rest of the code</Title>
+        <p>Copyright (c) 2025 SciLifeLab Data Centre</p>
+
+        <Title level={3}>The MIT License (MIT)</Title>
         <p>
-          More information and tailored research support can be found at
-          universities, colleges, and healthcare regions or hospitals. A
-          selection of links:
+          Permission is hereby granted, free of charge, to any person obtaining
+          a copy of this software and associated documentation files (the
+          "Software"), to deal in the Software without restriction, including
+          without limitation the rights to use, copy, modify, merge, publish,
+          distribute, sublicense, and/or sell copies of the Software, and to
+          permit persons to whom the Software is furnished to do so, subject to
+          the following conditions:
         </p>
-        <ul className="list-disc pl-4">
-          <li>
-            <a
-              href="https://www.oru.se/english/research/research-support/"
-              target="_blank"
-              className="text-primary hover:text-black underline"
-            >
-              Örebro University
-            </a>
-          </li>
-          <li>
-            <a
-              href="https://www.oru.se/english/research/research-support/"
-              target="_blank"
-              className="text-primary hover:text-black underline"
-            >
-              Karolinska University Hospital
-            </a>
-          </li>
-          <li>
-            <a
-              href="https://www.staff.lu.se/research-and-education/research-support"
-              target="_blank"
-              className="text-primary hover:text-black underline"
-            >
-              Lund University
-            </a>
-          </li>
-          <li>
-            <a
-              href="https://www.umu.se/en/research-support-and-collaboration-office/"
-              target="_blank"
-              className="text-primary hover:text-black underline"
-            >
-              Umeå University
-            </a>
-          </li>
-          <li>
-            <a
-              href="https://www.uu.se/en/staff/gateway/research/research-handbook/uppsala-universitys-research-support/the-medfarm-research-support"
-              target="_blank"
-              className="text-primary hover:text-black underline"
-            >
-              Uppsala University
-            </a>
-          </li>
-          <li>
-            <a
-              href="https://staff.ki.se/research-support"
-              target="_blank"
-              className="text-primary hover:text-black underline"
-            >
-              Karolinska Universitetet
-            </a>
-          </li>
-        </ul>
-        <LastUpdated date="13-01-2025" />
+        <p>
+          The above copyright notice and this permission notice shall be
+          included in all copies or substantial portions of the Software.
+        </p>
+        <p>
+          THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+          EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+          MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+          IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+          CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+          TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+          SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+        </p>
+
+        <LastUpdated date="30-01-2025" />
       </div>
     </div>
   );
