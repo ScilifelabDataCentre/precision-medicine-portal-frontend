@@ -112,7 +112,7 @@ const HeaderComponent = React.memo(() => {
                         <Link
                           className={clsx(
                             "block px-4 py-2 text-sm transition-colors duration-200 hover:bg-gray-100 rounded",
-                            index !== 0 && "pl-6"
+                            index !== 0 && "pl-8"
                           )}
                           href={link.link}
                           onClick={() => setIsDropdownOpen(false)}
@@ -146,5 +146,7 @@ const HeaderComponent = React.memo(() => {
     </header>
   );
 });
+
+HeaderComponent.displayName = "HeaderComponent";
 
 export default HeaderComponent;
