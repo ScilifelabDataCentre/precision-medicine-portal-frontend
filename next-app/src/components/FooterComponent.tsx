@@ -30,6 +30,7 @@ export default function FooterComponent(): ReactElement {
     l5: { text: "About us", classes: LINK_CLASSES, link: "/about/product" },
     l6: { text: "Contact", classes: LINK_CLASSES, link: "/contact" },
     l7: { text: "Privacy policy", classes: LINK_CLASSES, link: "/privacy" },
+    l8: { text: "License", classes: LINK_CLASSES, link: "/license" },
   };
 
   const svgs: { [id: string]: ISVG } = {
