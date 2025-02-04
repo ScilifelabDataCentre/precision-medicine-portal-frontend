@@ -77,7 +77,6 @@ export default {
   	}
   },
     plugins: [
-      require("daisyui"),
       function ({ addBase, theme }) {
         addBase({
           body: {

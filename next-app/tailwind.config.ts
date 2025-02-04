@@ -76,7 +76,6 @@ export default {
     },
   },
   plugins: [
-    require("daisyui"),
     function ({ addBase, theme }) {
       addBase({
         body: {
@@ -86,7 +85,4 @@ export default {
     },
     require("tailwindcss-animate"),
   ],
-  daisyui: {
-    themes: [],
-  },
 };

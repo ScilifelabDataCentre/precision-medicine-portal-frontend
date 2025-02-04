@@ -1,7 +1,7 @@
 "use client";
 
 import { ReactElement, useState } from "react";
-import { BUTTON_TYPE_ONE } from "@/constants";
+import { BUTTON_STYLE } from "@/constants";
 import Link from "next/link";
 import { ILink } from "@/interfaces/types";
 import {
@@ -90,7 +90,7 @@ export default function PrivacyPage(): ReactElement {
           </svg>
           <span>{optInText[0]}</span>
           <div className="space-x-2">
-            <button onClick={handleOptOut} className={BUTTON_TYPE_ONE}>
+            <button onClick={handleOptOut} className={BUTTON_STYLE}>
               {optInText[1]}
             </button>
           </div>
