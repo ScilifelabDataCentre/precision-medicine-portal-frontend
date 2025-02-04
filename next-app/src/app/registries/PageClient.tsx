@@ -135,7 +135,7 @@ export default function DataPageClient({
                   <label className="label cursor-pointer">
                     <input
                       type="checkbox"
-                      className="checkbox border-gray-300 [--chkbg:theme(colors.primary)] [--chkfg:white]"
+                      className="checkbox border-gray-300 bg-primary text-white"
                       onChange={() =>
                         handleFilterChange("registryCentre", centre, idx)
                       }
@@ -157,7 +157,7 @@ export default function DataPageClient({
                   <label className="label cursor-pointer">
                     <input
                       type="checkbox"
-                      className="checkbox border-gray-300 [--chkbg:theme(colors.primary)] [--chkfg:white]"
+                      className="checkbox border-gray-300 bg-primary text-white"
                       onChange={() =>
                         handleFilterChange(
                           "registryCategory",
