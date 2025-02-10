@@ -5,9 +5,14 @@ import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import Title from "@/components/common/title";
-import { ILink } from "@/interfaces/types";
-import Link from "next/link";
 import { LastUpdated } from "@/components/common/last-updated";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
 
 interface IRegistryFilters {
   registryCentre: string[];
@@ -168,28 +173,27 @@ export default function RegistryPage() {
     return <div>Loading...</div>;
   }
 
-  const breadcrumbs: { [id: string]: ILink } = {
-    l1: { text: "Home", classes: "", link: "/" },
-    l2: { text: "Quality registries", classes: "", link: "" },
-  };
-
   return (
     <div className="container mx-auto px-4 py-8">
-      <div className="text-sm breadcrumbs">
-        <ul>
-          {Object.keys(breadcrumbs).map((key) => (
-            <li key={key}>
-              {breadcrumbs[key].link ? (
-                <Link href={breadcrumbs[key].link}>
-                  {breadcrumbs[key].text}
-                </Link>
-              ) : (
-                <>{breadcrumbs[key].text}</>
-              )}
-            </li>
-          ))}
-        </ul>
-      </div>
+      <Breadcrumb>
+        <BreadcrumbList>
+          <BreadcrumbItem>
+            <BreadcrumbLink href="/">Home</BreadcrumbLink>
+          </BreadcrumbItem>
+          <BreadcrumbSeparator />
+          <BreadcrumbItem>
+            <BreadcrumbLink href="/accessclinicaldata">
+              Data sources
+            </BreadcrumbLink>
+          </BreadcrumbItem>
+          <BreadcrumbSeparator />
+          <BreadcrumbItem>
+            <BreadcrumbLink href="/registries">
+              Quality registries
+            </BreadcrumbLink>
+          </BreadcrumbItem>
+        </BreadcrumbList>
+      </Breadcrumb>
       <Title level={1}>Quality registries</Title>
       <div className="lg:grid lg:grid-cols-4 lg:gap-8 pt-8">
         <div className="lg:col-span-1 mb-8 lg:mb-0">

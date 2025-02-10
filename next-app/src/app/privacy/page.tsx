@@ -3,7 +3,6 @@
 import { ReactElement, useState } from "react";
 import { BUTTON_STYLE } from "@/constants";
 import Link from "next/link";
-import { ILink } from "@/interfaces/types";
 import {
   TrackPageViewIfEnabled,
   trackingDisabled,
@@ -11,14 +10,16 @@ import {
 import React from "react";
 import { deleteCookie, setCookie } from "cookies-next";
 import Title from "@/components/common/title";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
 
 export default function PrivacyPage(): ReactElement {
   TrackPageViewIfEnabled();
-
-  const breadcrumbs: { [id: string]: ILink } = {
-    l1: { text: "Home", classes: "", link: "/" },
-    l2: { text: "Privacy policy", classes: "", link: "" },
-  };
 
   const optInOrOutTextActive = (isTrackingEnabled: boolean): string[] => {
     if (isTrackingEnabled) {
@@ -41,21 +42,17 @@ export default function PrivacyPage(): ReactElement {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <div className="text-sm breadcrumbs">
-        <ul>
-          {Object.keys(breadcrumbs).map((key) => (
-            <li key={key}>
-              {breadcrumbs[key].link ? (
-                <Link href={breadcrumbs[key].link}>
-                  {breadcrumbs[key].text}
-                </Link>
-              ) : (
-                <>{breadcrumbs[key].text}</>
-              )}
-            </li>
-          ))}
-        </ul>
-      </div>
+      <Breadcrumb>
+        <BreadcrumbList>
+          <BreadcrumbItem>
+            <BreadcrumbLink href="/">Home</BreadcrumbLink>
+          </BreadcrumbItem>
+          <BreadcrumbSeparator />
+          <BreadcrumbItem>
+            <BreadcrumbLink href="/privacy">Privacy policy</BreadcrumbLink>
+          </BreadcrumbItem>
+        </BreadcrumbList>
+      </Breadcrumb>
       <div className="flex flex-col gap-y-4">
         <Title level={1}>Privacy policy</Title>
         <p>

@@ -2,37 +2,33 @@
 
 import { ReactElement } from "react";
 
-import Link from "next/link";
-import { ILink } from "@/interfaces/types";
 import ContactFormComponent from "@/components/ContactFormComponent";
 import { TrackPageViewIfEnabled } from "@/util/cookiesHandling";
 import Title from "@/components/common/title";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
 
 export default function ContactPage(): ReactElement {
   TrackPageViewIfEnabled();
 
-  const breadcrumbs: { [id: string]: ILink } = {
-    l1: { text: "Home", classes: "", link: "/" },
-    l2: { text: "Contact", classes: "", link: "" },
-  };
-
   return (
     <div className="container mx-auto px-4 py-8">
-      <div className="text-sm breadcrumbs">
-        <ul>
-          {Object.keys(breadcrumbs).map((key) => (
-            <li key={key}>
-              {breadcrumbs[key].link ? (
-                <Link href={breadcrumbs[key].link}>
-                  {breadcrumbs[key].text}
-                </Link>
-              ) : (
-                <>{breadcrumbs[key].text}</>
-              )}
-            </li>
-          ))}
-        </ul>
-      </div>
+      <Breadcrumb>
+        <BreadcrumbList>
+          <BreadcrumbItem>
+            <BreadcrumbLink href="/">Home</BreadcrumbLink>
+          </BreadcrumbItem>
+          <BreadcrumbSeparator />
+          <BreadcrumbItem>
+            <BreadcrumbLink href="/contact">Contact</BreadcrumbLink>
+          </BreadcrumbItem>
+        </BreadcrumbList>
+      </Breadcrumb>
       <div className="flex flex-col gap-y-4">
         <div className="alert">
           <svg

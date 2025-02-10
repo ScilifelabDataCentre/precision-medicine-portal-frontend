@@ -2,7 +2,6 @@
 
 import { ReactElement } from "react";
 import Link from "next/link";
-import { ILink } from "@/interfaces/types";
 
 import { LastUpdated } from "@/components/common/last-updated";
 import { TrackPageViewIfEnabled } from "@/util/cookiesHandling";
@@ -12,7 +11,6 @@ import {
   BreadcrumbItem,
   BreadcrumbLink,
   BreadcrumbList,
-  BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 

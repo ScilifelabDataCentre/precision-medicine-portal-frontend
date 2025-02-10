@@ -9,8 +9,13 @@ import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import Title from "@/components/common/title";
-import Link from "next/link";
-import { ILink } from "@/interfaces/types";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
 
 interface IDataSourceFilters {
   dataTypes: string[];
@@ -174,28 +179,27 @@ export default function DataPage(): ReactElement {
     getData();
   }, []);
 
-  const breadcrumbs: { [id: string]: ILink } = {
-    l1: { text: "Home", classes: "", link: "/" },
-    l2: { text: "Data sources", classes: "", link: "" },
-  };
-
   return (
     <div className="container mx-auto px-4 py-8">
-      <div className="text-sm breadcrumbs">
-        <ul>
-          {Object.keys(breadcrumbs).map((key) => (
-            <li key={key}>
-              {breadcrumbs[key].link ? (
-                <Link href={breadcrumbs[key].link}>
-                  {breadcrumbs[key].text}
-                </Link>
-              ) : (
-                <>{breadcrumbs[key].text}</>
-              )}
-            </li>
-          ))}
-        </ul>
-      </div>
+      <Breadcrumb>
+        <BreadcrumbList>
+          <BreadcrumbItem>
+            <BreadcrumbLink href="/">Home</BreadcrumbLink>
+          </BreadcrumbItem>
+          <BreadcrumbSeparator />
+          <BreadcrumbItem>
+            <BreadcrumbLink href="/accessclinicaldata">
+              Data sources
+            </BreadcrumbLink>
+          </BreadcrumbItem>
+          <BreadcrumbSeparator />
+          <BreadcrumbItem>
+            <BreadcrumbLink href="/datasources">
+              Other data sources
+            </BreadcrumbLink>
+          </BreadcrumbItem>
+        </BreadcrumbList>
+      </Breadcrumb>
       <Title level={1}>Data sources</Title>
       <div className="lg:grid lg:grid-cols-4 lg:gap-8 pt-8">
         <div className="lg:col-span-1 mb-8 lg:mb-0">
