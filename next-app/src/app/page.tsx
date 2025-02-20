@@ -3,17 +3,18 @@
 import { ReactElement } from "react";
 import { TrackPageViewIfEnabled } from "../util/cookiesHandling";
 import Link from "next/link";
+import Image from "next/image";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 
 // Image paths
 const dataSourcesImg = "/HomePageImages/dataSourcesIndexImage.png";
-const hedestamImg = "/HomePageImages/hedestamIndexImage.png";
-const registriesImage = "/HomePageImages/RegistriesImage.jpg";
+const kiarvaImg = "/HomePageImages/kiarvaIndexImage.png";
+const ragnarImg = "/HomePageImages/kiarvaIndexImage.png";
 
 // Colors for styling consistency
 const primaryColor = "#4F5D75"; // Dark text color
-const backgroundColor = "#F7F7FF"; // Light background color
 const cardBackgroundColor = "#FFFFFF"; // White card background
-//const accentColor = "#EF8354"; // Accent color for hover
 const betaBadgeColor = "#D3E4A3"; // Light green for "Beta coming soon" badge
 
 export default function HomePage(): ReactElement {
@@ -21,70 +22,96 @@ export default function HomePage(): ReactElement {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <div className="w-full space-y-16 py-12" style={{ backgroundColor }}>
+      <div className="w-full space-y-16 pb-12">
         {/* Main Cards Section */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 px-4 md:px-0">
           {/* Data Sources Card */}
-          <Link
-            href="datasources"
-            className="block rounded-xl shadow-lg cursor-pointer transition-transform transform hover:scale-105 hover:shadow-xl"
-            style={{ backgroundColor: cardBackgroundColor }}
-          >
-            <div className="relative overflow-hidden rounded-t-xl">
-              <img
-                src={dataSourcesImg}
-                alt="Data Sources"
-                className="h-64 w-full object-cover"
-              />
-              <div className="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-black to-transparent">
-                <h1 className="text-white font-bold">Data Sources</h1>
-                <p className="text-white text-sm">
-                  Repositories and data sources in life science
-                </p>
-              </div>
-            </div>
-          </Link>
-
-          {/* Registries Card */}
-          <Link
-            href="registries"
-            className="block rounded-xl shadow-lg cursor-pointer transition-transform transform hover:scale-105 hover:shadow-xl"
-            style={{ backgroundColor: cardBackgroundColor }}
-          >
-            <div className="relative overflow-hidden rounded-t-xl">
-              <img
-                src={registriesImage}
-                alt="Quality Registers"
-                className="h-64 w-full object-cover"
-              />
-              <div className="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-black to-transparent">
-                <h1 className="text-white font-bold">Quality Registers</h1>
-                <p className="text-white text-sm">
-                  A comprehensive list of quality registers in Sweden
-                </p>
-              </div>
-            </div>
+          <Link href="accessclinicaldata" className="block">
+            <Card className="overflow-hidden transition-transform hover:scale-105">
+              <CardContent className="p-0">
+                <div className="relative h-[32rem]">
+                  <Image
+                    src={dataSourcesImg}
+                    alt="Data Sources"
+                    layout="fill"
+                    objectFit="cover"
+                    className="opacity-70"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent">
+                    <div className="absolute inset-x-0 bottom-0 p-6 h-full flex flex-col justify-end">
+                      <CardTitle className="text-white mb-2 text-3xl">
+                        Data for PM research
+                      </CardTitle>
+                      <div className="flex flex-col space-y-3 h-36">
+                        <Button asChild variant="secondary">
+                          <Link href="registries">Quality registries</Link>
+                        </Button>
+                        <Button asChild variant="secondary">
+                          <Link href="swedishresearchprojects">
+                            Swedish research projects
+                          </Link>
+                        </Button>
+                        <Button asChild variant="secondary">
+                          <Link href="datasources">Other data sources</Link>
+                        </Button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
           </Link>
 
           {/* KIARVA Card */}
-          <Link
-            href="kiarva"
-            className="block rounded-xl shadow-lg cursor-pointer transition-transform transform hover:scale-105 hover:shadow-xl"
-            style={{ backgroundColor: cardBackgroundColor }}
-          >
-            <div className="relative overflow-hidden rounded-t-xl">
-              <img
-                src={hedestamImg}
-                alt="KIARVA"
-                className="h-64 w-full object-cover"
-              />
-              <div className="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-black to-transparent">
-                <h1 className="text-white font-bold">KIARVA</h1>
-                <p className="text-white text-sm">
-                  KI Adaptive Immune Receptor Gene Variant Atlas
-                </p>
-              </div>
-            </div>
+          <Link href="kiarva" className="block">
+            <Card className="overflow-hidden transition-transform hover:scale-105">
+              <CardContent className="p-0">
+                <div className="relative h-[32rem]">
+                  <Image
+                    src={kiarvaImg}
+                    alt="KIARVA"
+                    layout="fill"
+                    objectFit="cover"
+                    className="opacity-70"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent">
+                    <div className="absolute inset-x-0 bottom-0 p-6 h-full flex flex-col justify-end">
+                      <CardTitle className="text-white mb-2 text-3xl">
+                        KIARVA
+                      </CardTitle>
+                      <p className="text-white h-36">
+                        KI Adaptive Immune Receptor Gene Variant Atlas
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </Link>
+
+          {/* RAGnar Card */}
+          <Link href="ragnar" className="block">
+            <Card className="overflow-hidden transition-transform hover:scale-105">
+              <CardContent className="p-0">
+                <div className="relative h-[32rem]">
+                  <Image
+                    src={ragnarImg}
+                    alt="RAGnar"
+                    layout="fill"
+                    objectFit="cover"
+                    className="opacity-70"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent">
+                    <div className="absolute inset-x-0 bottom-0 p-6 h-full flex flex-col justify-end">
+                      <CardTitle className="text-white mb-2 text-3xl">
+                        RAGnar
+                      </CardTitle>
+                      <p className="text-white h-36">TBD </p>
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
           </Link>
         </div>
 
