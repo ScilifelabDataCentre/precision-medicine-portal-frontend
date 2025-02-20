@@ -21,8 +21,8 @@ export default function HomePage(): ReactElement {
         {/* Main Cards Section */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 px-4 md:px-0">
           {/* Data Sources Card */}
-          <Link href="accessclinicaldata" className="block">
-            <Card className="overflow-hidden transition-transform hover:scale-105">
+          <Link href="accessclinicaldata" className="block group">
+            <Card className="overflow-hidden transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-xl">
               <CardContent className="p-0">
                 <div className="relative h-[32rem]">
                   <Image
@@ -30,23 +30,35 @@ export default function HomePage(): ReactElement {
                     alt="Data Sources"
                     layout="fill"
                     objectFit="cover"
-                    className="opacity-70"
+                    className="opacity-65 transition-opacity duration-300 group-hover:opacity-80"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent">
                     <div className="absolute inset-x-0 bottom-0 p-6 h-full flex flex-col justify-end">
-                      <CardTitle className="text-white mb-2 text-3xl">
+                      <CardTitle className="text-white mb-2 text-2xl group-hover:text-3xl transition-all duration-300">
                         Data for PM research
                       </CardTitle>
                       <div className="flex flex-col space-y-3 h-36">
-                        <Button asChild variant="secondary">
+                        <Button
+                          asChild
+                          variant="secondary"
+                          className="transition-all duration-300 hover:bg-primary hover:text-primary-foreground"
+                        >
                           <Link href="registries">Quality registries</Link>
                         </Button>
-                        <Button asChild variant="secondary">
+                        <Button
+                          asChild
+                          variant="secondary"
+                          className="transition-all duration-300 hover:bg-primary hover:text-primary-foreground"
+                        >
                           <Link href="swedishresearchprojects">
                             Swedish research projects
                           </Link>
                         </Button>
-                        <Button asChild variant="secondary">
+                        <Button
+                          asChild
+                          variant="secondary"
+                          className="transition-all duration-300 hover:bg-primary hover:text-primary-foreground"
+                        >
                           <Link href="datasources">Other data sources</Link>
                         </Button>
                       </div>
@@ -58,8 +70,8 @@ export default function HomePage(): ReactElement {
           </Link>
 
           {/* KIARVA Card */}
-          <Link href="kiarva" className="block">
-            <Card className="overflow-hidden transition-transform hover:scale-105">
+          <Link href="kiarva" className="block group">
+            <Card className="overflow-hidden transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-xl">
               <CardContent className="p-0">
                 <div className="relative h-[32rem]">
                   <Image
@@ -67,11 +79,11 @@ export default function HomePage(): ReactElement {
                     alt="KIARVA"
                     layout="fill"
                     objectFit="cover"
-                    className="opacity-70"
+                    className="opacity-65 transition-opacity duration-300 group-hover:opacity-80"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent">
                     <div className="absolute inset-x-0 bottom-0 p-6 h-full flex flex-col justify-end">
-                      <CardTitle className="text-white mb-2 text-3xl">
+                      <CardTitle className="text-white mb-2 text-2xl group-hover:text-3xl transition-all duration-300">
                         KIARVA
                       </CardTitle>
                       <p className="text-white text-sm h-36">
@@ -92,8 +104,8 @@ export default function HomePage(): ReactElement {
           </Link>
 
           {/* RAGnar Card */}
-          <Link href="ragnar" className="block">
-            <Card className="overflow-hidden transition-transform hover:scale-105">
+          <Link href="ragnar" className="block group">
+            <Card className="overflow-hidden transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-xl">
               <CardContent className="p-0">
                 <div className="relative h-[32rem]">
                   <Image
@@ -106,7 +118,7 @@ export default function HomePage(): ReactElement {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent">
                     <div className="absolute inset-x-0 bottom-0 p-6 h-full flex flex-col justify-end">
-                      <CardTitle className="text-white mb-2 text-3xl">
+                      <CardTitle className="text-white mb-2 text-2xl group-hover:text-3xl transition-all duration-300">
                         RAGnar{" "}
                         <span className="px-2 py-0.5 text-sm text-black rounded-full bg-accent">
                           Beta coming soon
