@@ -4,7 +4,7 @@ import { ReactElement } from "react";
 import { TrackPageViewIfEnabled } from "../util/cookiesHandling";
 import Link from "next/link";
 import Image from "next/image";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 
 // Image paths
@@ -86,15 +86,11 @@ export default function HomePage(): ReactElement {
                       <CardTitle className="text-white mb-2 text-2xl group-hover:text-3xl transition-all duration-300">
                         KIARVA
                       </CardTitle>
-                      <p className="text-white text-sm h-36">
-                        We are excited to introduce the light version of our new
-                        research tool, designed to provide an early glimpse into
-                        the DSN&apos;s first dashboard. The Karolinska
-                        Institutet Adaptive Immune Receptor Gene Variant Atlas
-                        (KIARVA) hosts germline-encoded IG heavy chain (IGH)
-                        alleles identified in 2485 individuals from the 1000
-                        Genomes Project (1KGP) collection, in total 479 IGHV, 10
-                        IGHJ and 40 IGHD alleles.
+                      <p className="text-white h-36">
+                        The Karolinska Institutet Adaptive Immune Receptor Gene
+                        Variant Atlas (KIARVA) hosts germline-encoded IG heavy
+                        chain (IGH) alleles identified in 2485 individuals, in
+                        total 479 IGHV, 10 IGHJ and 40 IGHD alleles.
                       </p>
                     </div>
                   </div>
@@ -124,7 +120,7 @@ export default function HomePage(): ReactElement {
                           Beta coming soon
                         </span>
                       </CardTitle>
-                      <p className="text-white text-sm h-36">
+                      <p className="text-white h-36">
                         A retrieval-augmented generation (RAG) AI tool for
                         precision medicine, initially drawing on PubMed papers
                         to answer questions with referenced sources.
