@@ -121,9 +121,11 @@ export default function HomePage(): ReactElement {
                         </span>
                       </CardTitle>
                       <p className="text-white h-36">
-                        A retrieval-augmented generation (RAG) AI tool for
-                        precision medicine, initially drawing on PubMed papers
-                        to answer questions with referenced sources.
+                        RAGnar is a retrieval-augmented generation AI tool built
+                        to answer questions in the precision medicine field.
+                        Initially, it uses PubMed papers as a source of
+                        knowledge and references any paper it bases its answers
+                        on.
                       </p>
                     </div>
                   </div>
