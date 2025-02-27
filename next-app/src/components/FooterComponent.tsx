@@ -10,25 +10,33 @@ import { Separator } from "@/components/ui/separator";
 
 export default function Footer(): ReactElement {
   const linksCol1: { [id: string]: ILink } = {
-    l1: { text: "Data sources", classes: LINK_CLASSES, link: "/datasources" },
-    l2: {
-      text: "Registries",
-      classes: LINK_CLASSES,
-      link: "/registries",
-    },
-    l3: {
+    l1: {
       text: "Access clinical data",
       classes: LINK_CLASSES,
       link: "/accessclinicaldata",
     },
-    l4: {
-      text: "KIARVA dashboard",
+    l2: {
+      text: "Quality registries",
       classes: LINK_CLASSES,
-      link: "/kiarva",
+      link: "/registries",
+    },
+    l3: {
+      text: "Swedish research projects",
+      classes: LINK_CLASSES,
+      link: "/swedishresearchprojects",
+    },
+    l4: {
+      text: "Other data sources",
+      classes: LINK_CLASSES,
+      link: "/otherdatasources",
     },
   };
 
   const linksCol2: { [id: string]: ILink } = {
+    l5: { text: "KIARVA dashboard", classes: LINK_CLASSES, link: "/kiarva" },
+  };
+
+  const linksCol3: { [id: string]: ILink } = {
     l5: { text: "About us", classes: LINK_CLASSES, link: "/about/product" },
     l6: { text: "Contact", classes: LINK_CLASSES, link: "/contact" },
     l7: { text: "Privacy policy", classes: LINK_CLASSES, link: "/privacy" },
@@ -38,7 +46,7 @@ export default function Footer(): ReactElement {
   return (
     <div className="bg-primary text-white">
       <div className="container mx-auto px-4 py-10 max-w-7xl">
-        <div className="grid grid-cols-2 lg:grid-cols-5 gap-8">
+        <div className="grid grid-cols-2 lg:grid-cols-6 gap-8">
           {/* First column - Partner logos */}
           <div className="flex gap-6 items-center col-span-1 lg:col-span-2">
             <div className="w-20 lg:w-auto">
@@ -129,7 +137,7 @@ export default function Footer(): ReactElement {
 
           {/* Third column - Links */}
           <div className="space-y-6">
-            <h3 className="text-sm font-medium mb-4">Resources</h3>
+            <h3 className="text-sm font-medium mb-4">Data sources</h3>
             <nav className="flex flex-col space-y-4">
               {Object.keys(linksCol1).map((key) => (
                 <Link
@@ -145,7 +153,7 @@ export default function Footer(): ReactElement {
 
           {/* Fourth column - Links */}
           <div className="space-y-6">
-            <h3 className="text-sm font-medium mb-4">Company</h3>
+            <h3 className="text-sm font-medium mb-4">KIARVA</h3>
             <nav className="flex flex-col space-y-4">
               {Object.keys(linksCol2).map((key) => (
                 <Link
@@ -158,6 +166,22 @@ export default function Footer(): ReactElement {
               ))}
             </nav>
           </div>
+
+          {/* Fifth column - Links */}
+          <div className="space-y-6">
+            <h3 className="text-sm font-medium mb-4">More</h3>
+            <nav className="flex flex-col space-y-4">
+              {Object.keys(linksCol3).map((key) => (
+                <Link
+                  className="text-sm text-white/80 hover:text-white transition-colors"
+                  href={linksCol3[key].link}
+                  key={key}
+                >
+                  {linksCol3[key].text}
+                </Link>
+              ))}
+            </nav>
+          </div>
         </div>
 
         <Separator className="my-8 bg-white/20" />
@@ -165,8 +189,8 @@ export default function Footer(): ReactElement {
         {/* GitHub links */}
         <div className="text-sm text-white/70 md:text-left">
           <p className="leading-loose">
-            Built by Data Science Node in Precision Medicine and Diagnostics.
-            The source code is available on{" "}
+            Built by the Data Science Node in Precision Medicine and
+            Diagnostics. The source code is available on{" "}
             <a
               href="https://github.com/ScilifelabDataCentre/precision-medicine-portal-frontend"
               className="font-medium text-white/80 hover:text-white underline underline-offset-4 transition-colors"

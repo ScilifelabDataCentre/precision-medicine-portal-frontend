@@ -21,53 +21,50 @@ export default function HomePage(): ReactElement {
         {/* Main Cards Section */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 px-4 md:px-0">
           {/* Data Sources Card */}
-          <Link href="accessclinicaldata" className="block group">
-            <Card className="overflow-hidden transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-xl">
-              <CardContent className="p-0">
-                <div className="relative h-[32rem]">
-                  <Image
-                    src={dataSourcesImg}
-                    alt="Data Sources"
-                    layout="fill"
-                    objectFit="cover"
-                    className="opacity-65 transition-opacity duration-300 group-hover:opacity-80"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent">
-                    <div className="absolute inset-x-0 bottom-0 p-6 h-full flex flex-col justify-end">
-                      <CardTitle className="text-white mb-2 text-2xl group-hover:text-3xl transition-all duration-300">
-                        Data for PM research
-                      </CardTitle>
-                      <div className="flex flex-col space-y-3 h-36">
-                        <Button
-                          asChild
-                          variant="secondary"
-                          className="transition-all duration-300 hover:bg-primary hover:text-primary-foreground"
-                        >
-                          <Link href="registries">Quality registries</Link>
-                        </Button>
-                        <Button
-                          asChild
-                          variant="secondary"
-                          className="transition-all duration-300 hover:bg-primary hover:text-primary-foreground"
-                        >
-                          <Link href="swedishresearchprojects">
-                            Swedish research projects
-                          </Link>
-                        </Button>
-                        <Button
-                          asChild
-                          variant="secondary"
-                          className="transition-all duration-300 hover:bg-primary hover:text-primary-foreground"
-                        >
-                          <Link href="datasources">Other data sources</Link>
-                        </Button>
-                      </div>
+          <Card className="overflow-hidden transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-xl">
+            <CardContent className="p-0">
+              <div className="relative h-[32rem]">
+                <Image
+                  src={dataSourcesImg}
+                  alt="Data Sources"
+                  fill
+                  className="object-cover opacity-65 transition-opacity duration-300 group-hover:opacity-80"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent">
+                  <div className="absolute inset-x-0 bottom-0 p-6 h-full flex flex-col justify-end">
+                    <CardTitle className="text-white mb-2 text-2xl group-hover:text-3xl transition-all duration-300">
+                      Data for PM research
+                    </CardTitle>
+                    <div className="flex flex-col space-y-3 h-36">
+                      <Button
+                        asChild
+                        variant="secondary"
+                        className="transition-all duration-300 hover:bg-primary hover:text-primary-foreground"
+                      >
+                        <Link href="registries">Quality registries</Link>
+                      </Button>
+                      <Button
+                        asChild
+                        variant="secondary"
+                        className="transition-all duration-300 hover:bg-primary hover:text-primary-foreground"
+                      >
+                        <Link href="swedishresearchprojects">
+                          Swedish research projects
+                        </Link>
+                      </Button>
+                      <Button
+                        asChild
+                        variant="secondary"
+                        className="transition-all duration-300 hover:bg-primary hover:text-primary-foreground"
+                      >
+                        <Link href="datasources">Other data sources</Link>
+                      </Button>
                     </div>
                   </div>
                 </div>
-              </CardContent>
-            </Card>
-          </Link>
+              </div>
+            </CardContent>
+          </Card>
 
           {/* KIARVA Card */}
           <Link href="kiarva" className="block group">
@@ -77,9 +74,8 @@ export default function HomePage(): ReactElement {
                   <Image
                     src={kiarvaImg}
                     alt="KIARVA"
-                    layout="fill"
-                    objectFit="cover"
-                    className="opacity-65 transition-opacity duration-300 group-hover:opacity-80"
+                    fill
+                    className="object-cover opacity-65 transition-opacity duration-300 group-hover:opacity-80"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent">
                     <div className="absolute inset-x-0 bottom-0 p-6 h-full flex flex-col justify-end">
@@ -107,10 +103,8 @@ export default function HomePage(): ReactElement {
                   <Image
                     src={ragnarImg}
                     alt="RAGnar"
-                    layout="fill"
-                    objectFit="contain"
-                    objectPosition="top"
-                    className="opacity-70"
+                    fill
+                    className="object-contain object-top opacity-65 transition-opacity duration-300 group-hover:opacity-80"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent">
                     <div className="absolute inset-x-0 bottom-0 p-6 h-full flex flex-col justify-end">
