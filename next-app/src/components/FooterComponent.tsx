@@ -38,41 +38,37 @@ export default function Footer(): ReactElement {
   return (
     <div className="bg-primary text-white">
       <div className="container mx-auto px-4 py-10 max-w-7xl">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {/* First column - Links */}
-          <div className="space-y-3">
-            <h3 className="text-sm font-medium mb-4">Resources</h3>
-            <nav className="flex flex-col space-y-2">
-              {Object.keys(linksCol1).map((key) => (
-                <Link
-                  className="text-sm text-white/80 hover:text-white transition-colors"
-                  href={linksCol1[key].link}
-                  key={key}
-                >
-                  {linksCol1[key].text}
-                </Link>
-              ))}
-            </nav>
+        <div className="grid grid-cols-2 lg:grid-cols-5 gap-8">
+          {/* First column - Partner logos */}
+          <div className="flex gap-6 items-center col-span-1 lg:col-span-2">
+            <div className="w-20 lg:w-auto">
+              <Image
+                src="/Partner logo/KI_digital_logotyp_negativ_vert.png"
+                alt="Karolinska Institutet logo"
+                width={110}
+                height={131}
+              />
+            </div>
+            <div className="w-16 lg:w-auto">
+              <Image
+                src="/Partner logo/SciLifeLab_symbol_NEG.png"
+                alt="SciLifeLab Logo"
+                width={70}
+                height={66}
+              />
+            </div>
+            <div className="w-20 lg:w-auto">
+              <Image
+                src="/Partner logo/KAW Logotype Medium 1.png"
+                alt="Knut and Alice Wallenberg Foundation logo"
+                width={151}
+                height={87}
+              />
+            </div>
           </div>
 
-          {/* Second column - Links */}
-          <div className="space-y-3">
-            <h3 className="text-sm font-medium mb-4">Company</h3>
-            <nav className="flex flex-col space-y-2">
-              {Object.keys(linksCol2).map((key) => (
-                <Link
-                  className="text-sm text-white/80 hover:text-white transition-colors"
-                  href={linksCol2[key].link}
-                  key={key}
-                >
-                  {linksCol2[key].text}
-                </Link>
-              ))}
-            </nav>
-          </div>
-
-          {/* Third column - Social */}
-          <div className="space-y-3">
+          {/* Second column - Social */}
+          <div className="space-y-6">
             <h3 className="text-sm font-medium mb-4">Social</h3>
             <div className="flex space-x-4">
               <a
@@ -131,35 +127,36 @@ export default function Footer(): ReactElement {
             </div>
           </div>
 
-          {/* Fourth column - Partner logos */}
-          <div className="flex flex-wrap gap-6 items-center">
-            <div className="w-20 md:w-auto">
-              <Image
-                src="/Partner logo/KI_digital_logotyp_negativ_vert.png"
-                alt="Karolinska Institutet logo"
-                width={110}
-                height={131}
-                className="h-auto w-auto"
-              />
-            </div>
-            <div className="w-16 md:w-auto">
-              <Image
-                src="/Partner logo/SciLifeLab_symbol_NEG.png"
-                alt="SciLifeLab Logo"
-                width={70}
-                height={66}
-                className="h-auto w-auto"
-              />
-            </div>
-            <div className="w-20 md:w-auto">
-              <Image
-                src="/Partner logo/KAW Logotype Medium 1.png"
-                alt="Knut and Alice Wallenberg Foundation logo"
-                width={151}
-                height={87}
-                className="h-auto w-auto"
-              />
-            </div>
+          {/* Third column - Links */}
+          <div className="space-y-6">
+            <h3 className="text-sm font-medium mb-4">Resources</h3>
+            <nav className="flex flex-col space-y-4">
+              {Object.keys(linksCol1).map((key) => (
+                <Link
+                  className="text-sm text-white/80 hover:text-white transition-colors"
+                  href={linksCol1[key].link}
+                  key={key}
+                >
+                  {linksCol1[key].text}
+                </Link>
+              ))}
+            </nav>
+          </div>
+
+          {/* Fourth column - Links */}
+          <div className="space-y-6">
+            <h3 className="text-sm font-medium mb-4">Company</h3>
+            <nav className="flex flex-col space-y-4">
+              {Object.keys(linksCol2).map((key) => (
+                <Link
+                  className="text-sm text-white/80 hover:text-white transition-colors"
+                  href={linksCol2[key].link}
+                  key={key}
+                >
+                  {linksCol2[key].text}
+                </Link>
+              ))}
+            </nav>
           </div>
         </div>
 
@@ -172,7 +169,7 @@ export default function Footer(): ReactElement {
             The source code is available on{" "}
             <a
               href="https://github.com/ScilifelabDataCentre/precision-medicine-portal-frontend"
-              className="font-medium text-white hover:text-white/90 underline underline-offset-4 transition-colors"
+              className="font-medium text-white/80 hover:text-white underline underline-offset-4 transition-colors"
             >
               Github
             </a>
