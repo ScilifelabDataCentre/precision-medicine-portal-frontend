@@ -67,7 +67,7 @@ const organisationLinks: { [key: string]: string } = {
   "RCC Syd": "https://cancercentrum.se/syd/",
 };
 
-export default function RegistryPage() {
+export default function QualityRegistryPage() {
   const [registrySourcesJSON, setRegistrySourcesJSON] = useState<
     IRegistrySource[]
   >([]);
@@ -182,13 +182,11 @@ export default function RegistryPage() {
           </BreadcrumbItem>
           <BreadcrumbSeparator />
           <BreadcrumbItem>
-            <BreadcrumbLink href="/accessclinicaldata">
-              Data sources
-            </BreadcrumbLink>
+            <BreadcrumbLink href="/data-sources">Data sources</BreadcrumbLink>
           </BreadcrumbItem>
           <BreadcrumbSeparator />
           <BreadcrumbItem>
-            <BreadcrumbLink href="/registries">
+            <BreadcrumbLink href="/data-sources/quality-registries">
               Quality registries
             </BreadcrumbLink>
           </BreadcrumbItem>

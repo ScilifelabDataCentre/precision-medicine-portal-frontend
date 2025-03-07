@@ -33,7 +33,7 @@ interface IDataSourcesDC {
   search_tags: string[];
 }
 
-export default function DataPage(): ReactElement {
+export default function DataSourcesOthersPage(): ReactElement {
   TrackPageViewIfEnabled();
 
   const [dataSourcesJSON, setDataSourcesJSON] = useState<IDataSourcesDC[]>([]);
@@ -188,13 +188,11 @@ export default function DataPage(): ReactElement {
           </BreadcrumbItem>
           <BreadcrumbSeparator />
           <BreadcrumbItem>
-            <BreadcrumbLink href="/accessclinicaldata">
-              Data sources
-            </BreadcrumbLink>
+            <BreadcrumbLink href="/data-sources">Data sources</BreadcrumbLink>
           </BreadcrumbItem>
           <BreadcrumbSeparator />
           <BreadcrumbItem>
-            <BreadcrumbLink href="/datasources">
+            <BreadcrumbLink href="/data-sources/others">
               Other data sources
             </BreadcrumbLink>
           </BreadcrumbItem>

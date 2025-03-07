@@ -13,22 +13,22 @@ export default function Footer(): ReactElement {
     l1: {
       text: "Access clinical data",
       classes: LINK_CLASSES,
-      link: "/accessclinicaldata",
+      link: "/data-sources",
     },
     l2: {
       text: "Quality registries",
       classes: LINK_CLASSES,
-      link: "/registries",
+      link: "/data-sources/quality-registries",
     },
     l3: {
       text: "Swedish research projects",
       classes: LINK_CLASSES,
-      link: "/swedishresearchprojects",
+      link: "/data-sources/swedish-research-projects",
     },
     l4: {
       text: "Other data sources",
       classes: LINK_CLASSES,
-      link: "/otherdatasources",
+      link: "/data-sources/others",
     },
   };
 

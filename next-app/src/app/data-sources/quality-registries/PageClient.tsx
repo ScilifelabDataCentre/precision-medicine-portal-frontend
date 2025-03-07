@@ -43,7 +43,7 @@ const organisationLinks: { [key: string]: string } = {
   "RCC Syd": "https://cancercentrum.se/syd/",
 };
 
-export default function DataPageClient({
+export default function QualityRegistriesPageClient({
   initialData,
 }: {
   initialData: RegistrySources[];

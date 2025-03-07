@@ -41,14 +41,16 @@ export default function HomePage(): ReactElement {
                         variant="secondary"
                         className="transition-all duration-300 hover:bg-primary hover:text-primary-foreground"
                       >
-                        <Link href="registries">Quality registries</Link>
+                        <Link href="/data-sources/quality-registries">
+                          Quality registries
+                        </Link>
                       </Button>
                       <Button
                         asChild
                         variant="secondary"
                         className="transition-all duration-300 hover:bg-primary hover:text-primary-foreground"
                       >
-                        <Link href="swedishresearchprojects">
+                        <Link href="/data-sources/swedish-research-projects">
                           Swedish research projects
                         </Link>
                       </Button>
@@ -57,7 +59,9 @@ export default function HomePage(): ReactElement {
                         variant="secondary"
                         className="transition-all duration-300 hover:bg-primary hover:text-primary-foreground"
                       >
-                        <Link href="datasources">Other data sources</Link>
+                        <Link href="/data-sources/others">
+                          Other data sources
+                        </Link>
                       </Button>
                     </div>
                   </div>

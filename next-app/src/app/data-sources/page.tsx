@@ -14,7 +14,7 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 
-export default function AboutPage(): ReactElement {
+export default function DataSourcesPage(): ReactElement {
   TrackPageViewIfEnabled();
 
   return (
@@ -26,9 +26,7 @@ export default function AboutPage(): ReactElement {
           </BreadcrumbItem>
           <BreadcrumbSeparator />
           <BreadcrumbItem>
-            <BreadcrumbLink href="/accessclinicaldata">
-              Access clinical data
-            </BreadcrumbLink>
+            <BreadcrumbLink href="/data-sources">Data sources</BreadcrumbLink>
           </BreadcrumbItem>
         </BreadcrumbList>
       </Breadcrumb>
@@ -47,7 +45,7 @@ export default function AboutPage(): ReactElement {
         </p>
         <div className="flex flex-row items-center">
           <Title level={2}>Swedish research projects or databases</Title>
-          <Link href="/swedishresearchprojects">
+          <Link href="/data-sources/swedish-research-projects">
             <svg
               className="ml-2 fill-primary w-7 h-7"
               xmlns="http://www.w3.org/2000/svg"
@@ -91,7 +89,7 @@ export default function AboutPage(): ReactElement {
         </p>
         <div className="flex flex-row items-center">
           <Title level={2}>Quality registries</Title>
-          <Link href="/registries">
+          <Link href="/data-sources/quality-registries">
             <svg
               className="ml-2 fill-primary w-7 h-7"
               xmlns="http://www.w3.org/2000/svg"

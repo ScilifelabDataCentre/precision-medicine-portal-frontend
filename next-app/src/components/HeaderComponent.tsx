@@ -102,7 +102,7 @@ function DesktopNav() {
                 <NavigationMenuLink asChild>
                   <a
                     className="flex h-full w-full select-none flex-col rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
-                    href="/accessclinicaldata"
+                    href="/data-sources"
                   >
                     <div className="mb-2 mt-4 text-lg font-medium">
                       Access clinical data
@@ -114,17 +114,20 @@ function DesktopNav() {
                   </a>
                 </NavigationMenuLink>
               </li>
-              <ListItem href="/registries" title="Quality registries">
+              <ListItem
+                href="/data-sources/quality-registries"
+                title="Quality registries"
+              >
                 Explore various Swedish registries offering individualised
                 health data
               </ListItem>
               <ListItem
-                href="/swedishresearchprojects"
+                href="/data-sources/swedish-research-projects"
                 title="Swedish research projects"
               >
                 Discover Swedish research projects and databases
               </ListItem>
-              <ListItem href="/datasources" title="Other data sources">
+              <ListItem href="/data-sources/others" title="Other data sources">
                 Access a comprehensive overview of data sources
               </ListItem>
             </ul>

@@ -32,7 +32,7 @@ const TAG_COLOURS: { [key: string]: string } = {
   snd: "bg-[#649ED2] text-black", // Custom SND button colour
 };
 
-export default function ProjectsPage() {
+export default function SwedishResearchProjectsPage() {
   const [projectData, setProjectData] = useState<Project[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -66,13 +66,11 @@ export default function ProjectsPage() {
           </BreadcrumbItem>
           <BreadcrumbSeparator />
           <BreadcrumbItem>
-            <BreadcrumbLink href="/accessclinicaldata">
-              Data sources
-            </BreadcrumbLink>
+            <BreadcrumbLink href="/data-sources">Data sources</BreadcrumbLink>
           </BreadcrumbItem>
           <BreadcrumbSeparator />
           <BreadcrumbItem>
-            <BreadcrumbLink href="/swedishresearchprojects">
+            <BreadcrumbLink href="/data-sources/swedish-research-projects">
               Swedish research projects
             </BreadcrumbLink>
           </BreadcrumbItem>
