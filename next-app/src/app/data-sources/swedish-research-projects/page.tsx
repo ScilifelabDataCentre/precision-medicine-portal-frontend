@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import Title from "@/components/common/title";
 import { LastUpdated } from "@/components/common/last-updated";
+import { Database } from "lucide-react";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -11,6 +12,7 @@ import {
   BreadcrumbList,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
+import { Alert, AlertDescription } from "@/components/ui/alert";
 
 // Define the type for a single project
 type Project = {
@@ -83,8 +85,8 @@ export default function SwedishResearchProjectsPage() {
       </Title>
 
       {/* Introductory Section */}
-      <div className="prose prose-lg text-gray-700 text-justify mx-auto mb-12">
-        <p className="mb-4">
+      <div className="text-justify mx-auto mb-4">
+        <p className="mb-2">
           This page highlights selected research projects tied to biobanks,
           showcasing their significant role in advancing scientific research and
           medical innovation. These projects, conducted by academic
@@ -108,28 +110,16 @@ export default function SwedishResearchProjectsPage() {
       </div>
 
       {/* Disclaimer */}
-      <div className="alert">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          className="h-6 w-6 shrink-0 stroke-current"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-          ></path>
-        </svg>
-        <span className="text-sm lg:text-base">
+      <Alert className="bg-muted text-muted-foreground">
+        <Database className="h-4 w-4" />
+        <AlertDescription>
           To access data, researchers may need to obtain ethical approval,
           submit data requests, and set up data management agreements.
-        </span>
-      </div>
+        </AlertDescription>
+      </Alert>
 
       {/* Projects */}
-      <div className="space-y-6 pt-12">
+      <div className="space-y-6 pt-6">
         {projectData.map((project, index) => (
           <Card
             key={index}

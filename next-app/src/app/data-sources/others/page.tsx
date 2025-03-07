@@ -204,7 +204,7 @@ export default function DataSourcesOthersPage(): ReactElement {
           <div className="space-y-8">
             <div className="w-full max-w-lg bg-muted border border-neutral rounded-lg p-4 text-sm text-muted-foreground text-left mx-auto">
               To access data, researchers may need to obtain ethical approval,
-              submit data requests and set up data management agreements.
+              submit data requests, and set up data management agreements.
             </div>
             <div className="space-y-4">
               <label
