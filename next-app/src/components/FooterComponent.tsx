@@ -77,7 +77,7 @@ export default function Footer(): ReactElement {
 
           {/* Second column - Social */}
           <div className="space-y-6">
-            <h3 className="text-sm font-medium mb-4">Social</h3>
+            <h3 className="text-sm font-semibold mb-4">Social</h3>
             <div className="flex space-x-4">
               <a
                 href="https://x.com/scilifelab_dc"
@@ -137,7 +137,7 @@ export default function Footer(): ReactElement {
 
           {/* Third column - Links */}
           <div className="space-y-6">
-            <h3 className="text-sm font-medium mb-4">Data sources</h3>
+            <h3 className="text-sm font-semibold mb-4">Data sources</h3>
             <nav className="flex flex-col space-y-4">
               {Object.keys(linksCol1).map((key) => (
                 <Link
@@ -153,7 +153,7 @@ export default function Footer(): ReactElement {
 
           {/* Fourth column - Links */}
           <div className="space-y-6">
-            <h3 className="text-sm font-medium mb-4">KIARVA</h3>
+            <h3 className="text-sm font-semibold mb-4">KIARVA</h3>
             <nav className="flex flex-col space-y-4">
               {Object.keys(linksCol2).map((key) => (
                 <Link
@@ -169,7 +169,7 @@ export default function Footer(): ReactElement {
 
           {/* Fifth column - Links */}
           <div className="space-y-6">
-            <h3 className="text-sm font-medium mb-4">More</h3>
+            <h3 className="text-sm font-semibold mb-4">More</h3>
             <nav className="flex flex-col space-y-4">
               {Object.keys(linksCol3).map((key) => (
                 <Link
