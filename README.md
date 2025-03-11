@@ -1,18 +1,18 @@
 # precision-medicine-portal-frontend
+
 React project for the frontend of the Precision Medicine Portal by DC Data Science Node
 
 - [Introduction](#introduction)
 - [Development](#development)
-    - [Step 1: Clone the repository](#step-1-clone-the-repository)
-    - [Step 2: Create a branch and develop](#step-2-create-a-branch-and-develop)
-    - [Step 3: Make a pull request](#step-3-make-a-pull-request)
+  - [Step 1: Clone the repository](#step-1-clone-the-repository)
+  - [Step 2: Create a branch and develop](#step-2-create-a-branch-and-develop)
+  - [Step 3: Make a pull request](#step-3-make-a-pull-request)
 
 ## Introduction
 
 The [Data Driven Life Science](https://www.scilifelab.se/data-driven/) (DDLS) initiative has appointed four [Data Science Nodes](https://www.scilifelab.se/news/ddls-data-science-nodes-to-be-launched/) (DSNs) to serve as database, data and bioinformatics support for data driven research in life science. This repository contains the code for the frontend of a Precision Medicine Portal by the Precision Medicine DSN, which is hosted at [Karolinska Institutet](https://ki.se/en) and [SciLifeLab](https://www.scilifelab.se).
 
-The short term aim of this portal is to host content related to precision medicine as a starting point for the project.
-
+The aim of this portal is to provide an overview of available data sources as well as customized and interactive dashboards related to precision medicine. Moreover, the projects and background of the DSN will be presented on the portal in the future.
 
 ### Step 1: Clone the Repository
 
@@ -71,15 +71,13 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 
 You will see that a local development server starts running. You can access the web page by opening a web browser and visiting the URI "localhost:5000". To stop the server press CTRL+C in the terminal.
 
-
 #### Docker
 
 You can use the provided Dockerfile to build and run a container.
 
-
 ### Step 2: Create a branch and develop
 
-Note that commits need to be signed as per SciLifeLab policy. There are many different ways to sign github commits and how to set it up may vary based on your operating system. An example of how to set it up for MacOS can be seen here: 
+Note that commits need to be signed as per SciLifeLab policy. There are many different ways to sign github commits and how to set it up may vary based on your operating system. An example of how to set it up for MacOS can be seen here:
 
 https://gist.github.com/troyfontaine/18c9146295168ee9ca2b30c00bd1b41e
 
@@ -112,7 +110,6 @@ git push origin my_branch
 ```
 
 The code is now in my_branch in the repository, but you it does not get merged into the main branches without being reviewed as a pull request.
-
 
 ### Step 3: Make a pull request
 

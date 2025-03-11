@@ -1,38 +1,35 @@
 "use client";
 
 import { ReactElement } from "react";
-import Link from "next/link";
-import { ILink } from "@/interfaces/types";
 
 import { LastUpdated } from "@/components/common/last-updated";
 import { TrackPageViewIfEnabled } from "@/util/cookiesHandling";
 import Title from "@/components/common/title";
 
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
+
 export default function AboutPage(): ReactElement {
   TrackPageViewIfEnabled();
 
-  const breadcrumbs: { [id: string]: ILink } = {
-    l1: { text: "Home", classes: "", link: "/" },
-    l2: { text: "License", classes: "", link: "" },
-  };
-
   return (
     <div className="container mx-auto px-4 py-8">
-      <div className="text-sm breadcrumbs">
-        <ul>
-          {Object.keys(breadcrumbs).map((key) => (
-            <li key={key}>
-              {breadcrumbs[key].link ? (
-                <Link href={breadcrumbs[key].link}>
-                  {breadcrumbs[key].text}
-                </Link>
-              ) : (
-                <>{breadcrumbs[key].text}</>
-              )}
-            </li>
-          ))}
-        </ul>
-      </div>
+      <Breadcrumb>
+        <BreadcrumbList>
+          <BreadcrumbItem>
+            <BreadcrumbLink href="/">Home</BreadcrumbLink>
+          </BreadcrumbItem>
+          <BreadcrumbSeparator />
+          <BreadcrumbItem>
+            <BreadcrumbLink href="/license">License</BreadcrumbLink>
+          </BreadcrumbItem>
+        </BreadcrumbList>
+      </Breadcrumb>
       <div className="flex flex-col gap-y-4">
         <Title level={1}>License</Title>
         <Title level={2} className="mt-4">

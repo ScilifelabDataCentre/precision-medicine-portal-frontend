@@ -1,8 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 declare var require: any;
 export default {
-  darkMode: ["class"],
-  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+  content: ["./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
       colors: {
@@ -73,10 +72,12 @@ export default {
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
+      fontFamily: {
+        sans: ["Lato", "sans-serif"],
+      },
     },
   },
   plugins: [
-    require("daisyui"),
     function ({ addBase, theme }) {
       addBase({
         body: {
@@ -84,9 +85,5 @@ export default {
         },
       });
     },
-    require("tailwindcss-animate"),
   ],
-  daisyui: {
-    themes: [],
-  },
 };
