@@ -4,6 +4,15 @@ import { ReactElement } from "react";
 import { ICardConfig, ICardContent } from "@/interfaces/types";
 import CardComponent from "@/components/CardComponent";
 import { TrackPageViewIfEnabled } from "@/util/cookiesHandling";
+import Title from "@/components/common/title";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
+import { LastUpdated } from "@/components/common/last-updated";
 
 export default function AboutTeamPage(): ReactElement {
   TrackPageViewIfEnabled();
@@ -64,7 +73,23 @@ export default function AboutTeamPage(): ReactElement {
   };
 
   return (
-    <>
+    <div className="container mx-auto px-4 py-8">
+      <Breadcrumb>
+        <BreadcrumbList>
+          <BreadcrumbItem>
+            <BreadcrumbLink href="/">Home</BreadcrumbLink>
+          </BreadcrumbItem>
+          <BreadcrumbSeparator />
+          <BreadcrumbItem>
+            <BreadcrumbLink href="/about">About us</BreadcrumbLink>
+          </BreadcrumbItem>
+          <BreadcrumbSeparator />
+          <BreadcrumbItem>
+            <BreadcrumbLink href="/about/team">Team</BreadcrumbLink>
+          </BreadcrumbItem>
+        </BreadcrumbList>
+      </Breadcrumb>
+      <Title level={1}>Team</Title>
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 place-items-center gap-2">
         {Object.keys(cardContent).map((key) => (
           <CardComponent
@@ -74,6 +99,7 @@ export default function AboutTeamPage(): ReactElement {
           />
         ))}
       </div>
-    </>
+      <LastUpdated date="11-03-2025" />
+    </div>
   );
 }

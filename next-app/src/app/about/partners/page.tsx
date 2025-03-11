@@ -4,6 +4,15 @@ import { ReactElement } from "react";
 import { ICardConfig, ICardContent } from "@/interfaces/types";
 import CardComponent from "@/components/CardComponent";
 import { TrackPageViewIfEnabled } from "@/util/cookiesHandling";
+import Title from "@/components/common/title";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
+import { LastUpdated } from "@/components/common/last-updated";
 
 const dcImage = "/Partner logo/dc.png";
 const nbisImage = "/Partner logo/nbislogo_orange_txt_3cb0778d90.svg";
@@ -128,7 +137,23 @@ export default function AboutPartnersPage(): ReactElement {
   };
 
   return (
-    <>
+    <div className="container mx-auto px-4 py-8">
+      <Breadcrumb>
+        <BreadcrumbList>
+          <BreadcrumbItem>
+            <BreadcrumbLink href="/">Home</BreadcrumbLink>
+          </BreadcrumbItem>
+          <BreadcrumbSeparator />
+          <BreadcrumbItem>
+            <BreadcrumbLink href="/about">About us</BreadcrumbLink>
+          </BreadcrumbItem>
+          <BreadcrumbSeparator />
+          <BreadcrumbItem>
+            <BreadcrumbLink href="/about/partners">Partners</BreadcrumbLink>
+          </BreadcrumbItem>
+        </BreadcrumbList>
+      </Breadcrumb>
+      <Title level={1}>Partners</Title>
       <div className="flex flex-wrap">
         <div className="w-full md:w-1/2 p-2">
           <CardComponent
@@ -167,6 +192,7 @@ export default function AboutPartnersPage(): ReactElement {
           />
         </div>
       </div>
-    </>
+      <LastUpdated date="11-03-2025" />
+    </div>
   );
 }
