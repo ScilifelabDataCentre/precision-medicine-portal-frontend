@@ -11,7 +11,7 @@ export default function RootLayout({
     <div className="container mx-auto px-4 py-8">
       <AboutPageComponent />
       {children}
-      <LastUpdated date="04-12-2024" />
+      <LastUpdated date="11-03-2025" />
     </div>
   );
 }
