@@ -4,9 +4,9 @@ import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import Image from "next/image";
 
 const logos: { [key: string]: string } = {
-  pmPortal: "/Partner logo/SciLifeLab_Logotype_Green_POS.png",  
-  tefHealth: "/Partner logo/tefhealth_logo.png",  
-  brainchild: "/Partner logo/Barncancerfonden.png",  
+  pmPortal: "/Partner logo/SciLifeLab_Logotype_Green_POS.png",
+  tefHealth: "/Partner logo/tefhealth_logo.png",
+  brainchild: "/Partner logo/Barncancerfonden.png",
 };
 
 interface Project {
@@ -34,11 +34,13 @@ const projects: Project[] = [
     name: "PM Sample Central",
     description:
       "This project is part of the Personalised Cancer Medicine Program at KI, aiming to improve the use of cancer patient samples for advanced profiling to enhance precision medicine. It addresses challenges in sample handling, data integration, and stakeholder coordination while ensuring high-quality preparation and data integrity. The PMD Data Science Node drives Work Package 2, with the key goal of developing unique sample ID and pseudonymisation tools to track samples and safeguard patient data. Funded by Radiumhemmet.",
+    url: "https://ki.se/en/cancer-research-ki/research/personalised-cancer-medicine-pcm-program",
   },
   {
     name: "RAGnar",
     description:
       "RAGnar is a retrieval-augmented generation (RAG) AI tool aiming to support researchers and students in the field of precision medicine. It combines the capabilities of large language models with the ability to retrieve relevant information from external knowledge sources, ensuring that responses are accurate and well-grounded in reliable data.\n\nCurrently, RAGnar leverages open-access publications and abstracts from PubMed, referencing any paper it bases its answers on. This approach enhances transparency and credibility, making it a valuable resource for exploring precision medicine topics. RAGnar will be launched as a standalone page and will also be prominently featured on the Precision Medicine Portal.",
+    url: "https://precision-medicine-portal.scilifelab.se",
   },
   {
     name: "TEF-Health",
@@ -51,9 +53,10 @@ const projects: Project[] = [
     name: "Trusted Research Environment exploration",
     description:
       "Trusted Research Environments (TREs), also called Secure Processing Environments, are secure, controlled computing platforms designed to enable authorized researchers from approved institutions to remotely access, store, and analyze sensitive data in a protected manner.\n\nThe PMD Data Science Node led a pre-study for Data Centre where an initial evaluation of suitable providers was performed as well as interviewing SciLifeLab platforms and facilities and creating recommendations for future work and projects. Apart from SciLifeLab-specific studies, leadership was also taken for regional, national, and European initiatives. This includes creating and guiding a TRE-specific working group within the TEF-Health project and contributing to Work Package 7.4 in TEHDAS2, a project that supports the development and implementation of the European Health Data Space. Finally, the Data Science Node also participated in relevant conferences and regional and national discussions.",
+    url: "https://tehdas.eu",
   },
   {
-    name: "BrainChild",
+    name: "BrainChild (previous involvement)",
     description:
       "The BrainChild project, led by the Swedish Childhood Cancer Fund, aims to create a centralised data platform for securely collecting, storing, analysing, and sharing childhood cancer data, integrating AI to enhance research and healthcare. By addressing data fragmentation, BrainChild strives to improve treatment outcomes and advance childhood cancer care.\n\nThe PMD Data Science Node was part of the Technical Design & Architecture working group in the pilot project.",
     logoKey: "brainchild",
@@ -66,10 +69,10 @@ export default function DSNProjectsPage() {
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-3xl font-bold mb-6">DSN Projects</h1>
 
-      <div className="space-y-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {projects.map((project, index) => (
           <Card key={index} className="shadow-md">
-            <CardHeader className="bg-muted flex flex-row items-center justify-between p-4">
+            <CardHeader className="bg-muted flex flex-row items-center justify-between p-4 h-20">
               {/* Left-aligned title */}
               <div className="flex-1 text-left">
                 <CardTitle className="text-lg">
@@ -88,14 +91,14 @@ export default function DSNProjectsPage() {
                 </CardTitle>
               </div>
 
-              {/* Right-aligned logo */}
+              {/* Right-aligned logo (consistent size) */}
               {project.logoKey && logos[project.logoKey] && (
                 <div className="flex-shrink-0">
                   <Image
                     src={logos[project.logoKey]}
                     alt={project.name}
-                    width={150} // Increased logo size
-                    height={150} // Increased logo size
+                    width={128} // Standardized width
+                    height={64} // Standardized height
                     className="object-contain"
                   />
                 </div>
