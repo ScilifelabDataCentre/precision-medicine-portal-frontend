@@ -19,9 +19,9 @@ import { Button } from "@/components/ui/button";
 
 const components: { title: string; href: string; description: string }[] = [
   {
-    title: "Our projects",
-    href: "/about/ourprojects",
-    description: "Find out more about our initiatives",
+    title: "DSN-PMD projects",
+    href: "/about/dsnpmd-projects",
+    description: "Find out more about our ongoing and previous projects",
   },
   {
     title: "FAQ",

@@ -87,7 +87,7 @@ export default function DSNProjectsPage() {
           </BreadcrumbItem>
           <BreadcrumbSeparator />
           <BreadcrumbItem>
-            <BreadcrumbLink href="/about/product">
+            <BreadcrumbLink href="/about/dsnpmd-projects">
               DSN-PMD Projects
             </BreadcrumbLink>
           </BreadcrumbItem>
