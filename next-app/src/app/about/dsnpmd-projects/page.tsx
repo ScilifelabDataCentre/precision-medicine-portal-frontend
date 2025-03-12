@@ -2,6 +2,16 @@
 
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import Image from "next/image";
+import Title from "@/components/common/title";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
+import { LastUpdated } from "@/components/common/last-updated";
+import { TrackPageViewIfEnabled } from "@/util/cookiesHandling";
 
 const logos: { [key: string]: string } = {
   pmPortal: "/Partner logo/SciLifeLab_Logotype_Green_POS.png",
@@ -65,12 +75,30 @@ const projects: Project[] = [
 ];
 
 export default function DSNProjectsPage() {
+  TrackPageViewIfEnabled();
+
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-6">
+      <Breadcrumb>
+        <BreadcrumbList>
+          <BreadcrumbItem>
+            <BreadcrumbLink href="/">Home</BreadcrumbLink>
+          </BreadcrumbItem>
+          <BreadcrumbSeparator />
+          <BreadcrumbItem>
+            <BreadcrumbLink href="/about">About us</BreadcrumbLink>
+          </BreadcrumbItem>
+          <BreadcrumbSeparator />
+          <BreadcrumbItem>
+            <BreadcrumbLink href="/about/dsnpmd-projects">
+              DSN-PMD Projects
+            </BreadcrumbLink>
+          </BreadcrumbItem>
+        </BreadcrumbList>
+      </Breadcrumb>
+      <Title level={2} className="mb-4">
         Projects of the Data Science Node in Precision Medicine and Diagnostics
-      </h1>
-
+      </Title>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {projects.map((project, index) => (
           <Card key={index} className="shadow-md">
@@ -78,18 +106,14 @@ export default function DSNProjectsPage() {
               {/* Left-aligned title */}
               <div className="flex-1 text-left">
                 <CardTitle className="text-lg">
-                  {project.url ? (
-                    <a
-                      href={project.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-primary hover:underline"
-                    >
-                      {project.name}
-                    </a>
-                  ) : (
-                    project.name
-                  )}
+                  <a
+                    href={project.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-primary hover:underline"
+                  >
+                    {project.name}
+                  </a>
                 </CardTitle>
               </div>
 
@@ -112,6 +136,7 @@ export default function DSNProjectsPage() {
           </Card>
         ))}
       </div>
+      <LastUpdated date="11-03-2025" />
     </div>
   );
 }

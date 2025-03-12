@@ -37,7 +37,11 @@ export default function Footer(): ReactElement {
   };
 
   const linksCol3: { [id: string]: ILink } = {
-    l5: { text: "About us", classes: LINK_CLASSES, link: "/about/product" },
+    l5: {
+      text: "About us",
+      classes: LINK_CLASSES,
+      link: "/about/dsnpmd-projects",
+    },
     l6: { text: "Contact", classes: LINK_CLASSES, link: "/contact" },
     l7: { text: "Privacy policy", classes: LINK_CLASSES, link: "/privacy" },
     l8: { text: "License", classes: LINK_CLASSES, link: "/license" },
