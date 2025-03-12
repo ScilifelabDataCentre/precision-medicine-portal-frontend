@@ -3,6 +3,10 @@
 import { ChangeEvent, ReactElement, useState } from "react";
 import React from "react";
 import ReCAPTCHA from "react-google-recaptcha";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
+import { Button } from "@/components/ui/button";
 
 export default function ContactFormComponent(): ReactElement {
   const [inputFields, setInputFields] = useState({
@@ -93,35 +97,31 @@ export default function ContactFormComponent(): ReactElement {
         accept-charset="utf-8"
       >
         <div className="flex flex-col p-6 gap-6">
-          <div className="space-y-2 flex flex-col">
-            <label>Name</label>
-            <input
+          <div className="grid w-full max-w-sm items-center gap-1.5">
+            <Label htmlFor="name">Name</Label>
+            <Input
               type="text"
+              id="name"
               name="name"
               placeholder="Type here"
-              className="input bg-white input-bordered border-neutral w-full max-w-xs"
               defaultValue={inputFields.name}
               onChange={handleChange}
               required
             />
-            {errors.name ? (
-              <p className="error text-error">{errors.name}</p>
-            ) : null}
+            {errors.name ? <p className="text-error">{errors.name}</p> : null}
           </div>
-          <div className="space-y-2 flex flex-col">
-            <label>E-Mail</label>
-            <input
-              type="text"
+          <div className="grid w-full max-w-sm items-center gap-1.5">
+            <Label htmlFor="email">Email</Label>
+            <Input
+              type="email"
+              id="email"
               name="email"
               placeholder="Type here"
-              className="input bg-white input-bordered border-neutral w-full max-w-xs"
               defaultValue={inputFields.email}
               onChange={handleChange}
               required
             />
-            {errors.email ? (
-              <p className="error text-error">{errors.email}</p>
-            ) : null}
+            {errors.email ? <p className="text-error">{errors.name}</p> : null}
           </div>
           <input
             type="hidden"
@@ -131,24 +131,28 @@ export default function ContactFormComponent(): ReactElement {
             aria-labelledby="precision-medicine-portal-contact"
           ></input>
 
-          <div className="space-y-2 flex flex-col">
-            <label>Message</label>
-            <textarea
+          <div className="grid w-full gap-1.5">
+            <Label htmlFor="message">Your message</Label>
+            <Textarea
+              placeholder={
+                "Type your message here. Max length " +
+                +messageCharLimit +
+                " characters."
+              }
+              id="message"
               name="message"
-              className="textarea bg-white textarea-bordered border-neutral w-full h-48"
-              placeholder={"Max length " + messageCharLimit + " characters"}
               defaultValue={inputFields.message}
               onChange={handleChange}
               required
             />
             {inputFields.message.length <= messageCharLimit ? (
-              <p>
+              <p className="text-sm text-muted-foreground">
                 {messageCharLimit -
                   inputFields.message.length +
-                  " characters left"}
+                  " characters left"}{" "}
               </p>
             ) : (
-              <p className="error text-error">{errors.message}</p>
+              <p className="text-error">{errors.message}</p>
             )}
           </div>
           <div className="">
@@ -161,26 +165,31 @@ export default function ContactFormComponent(): ReactElement {
           <div className="flex flex-col items-center">
             {checkFormFilled() && checkValidForm() && false ? (
               recaptchaPassed ? (
-                <input
+                <Button
                   type="submit"
-                  value="Submit"
-                  className="btn btn-wide bg-fuchsia-950 text-white hover:bg-fuchsia-800 active:bg-fuchsia-900 focus:outline-none focus:ring focus:ring-fuchsia-300"
-                />
+                  className="w-full lg:w-auto lg:min-w-48 bg-fuchsia-950 hover:bg-fuchsia-800 focus:ring focus:ring-fuchsia-300"
+                >
+                  Submit
+                </Button>
               ) : (
                 <>
-                  <p className="error text-error">
+                  <p className="text-error">
                     Please tick &apos;I&apos;m not a robot&apos; above the
                     &apos;Submit&apos; button.
                   </p>
-                  <div className="btn btn-wide bg-neutral text-neutral-content cursor-not-allowed">
+                  <Button disabled className="w-full lg:w-auto lg:min-w-48">
                     Submit
-                  </div>
+                  </Button>
                 </>
               )
             ) : (
-              <div className="btn btn-wide bg-neutral text-gray-500 cursor-not-allowed">
+              <Button
+                disabled
+                variant="outline"
+                className="w-full lg:w-auto lg:min-w-48 bg-neutral text-gray-500"
+              >
                 Submit
-              </div>
+              </Button>
             )}
           </div>
         </div>
