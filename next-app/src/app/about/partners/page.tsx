@@ -115,17 +115,15 @@ export default function AboutPartnersPage() {
               </div>
 
               {/* Right-aligned logo (consistent size) */}
-              {partner.logoKey && logos[partner.logoKey] && (
-                <div className="flex-shrink-0">
-                  <Image
-                    src={logos[partner.logoKey]}
-                    alt={partner.name}
-                    width={128} // Standardized width
-                    height={64} // Standardized height
-                    className="object-contain"
-                  />
-                </div>
-              )}
+              <div className="flex-shrink-0">
+                <Image
+                  src={logos[partner.logoKey]}
+                  alt={partner.name}
+                  width={128} // Standardized width
+                  height={64} // Standardized height
+                  className="object-contain"
+                />
+              </div>
             </CardHeader>
             <CardContent className="p-4">
               <p className="whitespace-pre-line">{partner.description}</p>
