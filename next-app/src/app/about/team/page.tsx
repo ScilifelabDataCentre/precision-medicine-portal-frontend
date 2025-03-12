@@ -33,7 +33,9 @@ export default function AboutTeamPage(): ReactElement {
           </BreadcrumbItem>
         </BreadcrumbList>
       </Breadcrumb>
-      <Title level={1}>Team</Title>
+      <Title level={1} className="mb-4">
+        Team
+      </Title>
 
       <ProfileComponent
         imageUrl="/TeamPics/JanTeamPic.jpg"

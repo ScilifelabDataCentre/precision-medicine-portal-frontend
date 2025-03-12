@@ -96,7 +96,7 @@ export default function DSNProjectsPage() {
           </BreadcrumbItem>
         </BreadcrumbList>
       </Breadcrumb>
-      <Title level={2}>
+      <Title level={2} className="mb-4">
         Projects of the Data Science Node in Precision Medicine and Diagnostics
       </Title>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

@@ -38,7 +38,9 @@ export default function AboutFAQPage(): ReactElement {
           </BreadcrumbItem>
         </BreadcrumbList>
       </Breadcrumb>
-      <Title level={1}>Frequently Asked Questions</Title>
+      <Title level={1} className="mb-4">
+        Frequently Asked Questions
+      </Title>
 
       <Accordion type="single" collapsible className="w-full">
         <AccordionItem value="item-1">

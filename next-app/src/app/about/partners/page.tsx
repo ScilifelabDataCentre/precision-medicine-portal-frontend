@@ -94,7 +94,9 @@ export default function AboutPartnersPage() {
           </BreadcrumbItem>
         </BreadcrumbList>
       </Breadcrumb>
-      <Title level={1}>Partners</Title>
+      <Title level={1} className="mb-4">
+        Partners
+      </Title>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {partners.map((partner, index) => (
