@@ -5,6 +5,7 @@ import { TrackPageViewIfEnabled } from "@/util/cookiesHandling";
 import { LastUpdated } from "@/components/common/last-updated";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import Image from "next/image";
 import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
@@ -303,11 +304,13 @@ export default function DataSourcesOthersPage(): ReactElement {
                     >
                       {item.name}
                     </a>
-                    <img
+                    <Image
                       className="w-40 h-10 object-contain object-right"
                       src={`/img/datasources/${sanitizeString(
                         item.thumbnail.split("/").pop()?.split(".")[0] || ""
                       )}.png`}
+                      width={160}
+                      height={40}
                       alt={item.name}
                     />
                   </CardTitle>
