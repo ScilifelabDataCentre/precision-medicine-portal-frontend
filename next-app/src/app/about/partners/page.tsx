@@ -1,6 +1,6 @@
 "use client";
 
-import { TrackPageViewIfEnabled } from "@/util/cookiesHandling";
+
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import Title from "@/components/common/title";
 import {
@@ -75,7 +75,7 @@ const partners: Partner[] = [
 ];
 
 export default function AboutPartnersPage() {
-  TrackPageViewIfEnabled();
+  
 
   return (
     <div className="container mx-auto px-4 py-8">

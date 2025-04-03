@@ -2,7 +2,7 @@
 
 import { ReactElement } from "react";
 import ProfileComponent from "@/components/ProfileComponent";
-import { TrackPageViewIfEnabled } from "@/util/cookiesHandling";
+
 import Title from "@/components/common/title";
 import {
   Breadcrumb,
@@ -14,7 +14,7 @@ import {
 import { LastUpdated } from "@/components/common/last-updated";
 
 export default function AboutTeamPage(): ReactElement {
-  TrackPageViewIfEnabled();
+  
 
   return (
     <div className="container mx-auto px-4 py-8">

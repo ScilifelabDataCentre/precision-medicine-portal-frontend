@@ -3,7 +3,7 @@
 import { ReactElement } from "react";
 
 import ContactFormComponent from "@/components/ContactFormComponent";
-import { TrackPageViewIfEnabled } from "@/util/cookiesHandling";
+
 import Title from "@/components/common/title";
 import {
   Breadcrumb,
@@ -16,7 +16,7 @@ import { Alert, AlertDescription } from "@/components/ui/alert";
 import { MailX } from "lucide-react";
 
 export default function ContactPage(): ReactElement {
-  TrackPageViewIfEnabled();
+  
 
   return (
     <div className="container mx-auto px-4 py-8">

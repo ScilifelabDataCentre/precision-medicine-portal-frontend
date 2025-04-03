@@ -11,7 +11,7 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import { LastUpdated } from "@/components/common/last-updated";
-import { TrackPageViewIfEnabled } from "@/util/cookiesHandling";
+
 
 const logos: { [key: string]: string } = {
   pmPortal: "/Partner logo/SciLifeLab_Logotype_Green_POS.png",
@@ -75,7 +75,7 @@ const projects: Project[] = [
 ];
 
 export default function DSNProjectsPage() {
-  TrackPageViewIfEnabled();
+  
 
   return (
     <div className="container mx-auto px-4 py-8">

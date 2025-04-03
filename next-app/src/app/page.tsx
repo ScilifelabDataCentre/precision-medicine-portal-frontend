@@ -13,7 +13,7 @@ const kiarvaImg = "/HomePageImages/kiarvaIndexImage.png";
 const ragnarImg = "/HomePageImages/ragnarIndexImage.png";
 
 export default function HomePage(): ReactElement {
-  TrackPageViewIfEnabled();
+  
 
   return (
     <div className="container mx-auto px-4 py-8">
