@@ -1,12 +1,12 @@
 "use client";
 
 import { ReactElement } from "react";
-import { TrackPageViewIfEnabled } from "@/util/cookiesHandling";
+
 
 // simport Iframe from "react-iframe";
 
 export default function KiarvaIFramePage(): ReactElement {
-  TrackPageViewIfEnabled();
+  
 
   const kiarva_hostname = "https://kiarva.scilifelab.se/";
 
@@ -23,12 +23,12 @@ export default function KiarvaIFramePage(): ReactElement {
 "use client";
 
 import { ReactElement } from "react";
-import { TrackPageViewIfEnabled } from "@/util/cookiesHandling";
+
 
 // simport Iframe from "react-iframe";
 
 export default function KiarvaIFramePage(): ReactElement {
-  TrackPageViewIfEnabled();
+  
 
   const kiarva_hostname = "https://kiarva.scilifelab.se/";
 

@@ -1,14 +1,10 @@
 "use client";
 
 import { ReactElement, useState } from "react";
-import { BUTTON_STYLE } from "@/constants";
+// import { BUTTON_STYLE } from "@/constants";
 import Link from "next/link";
-import {
-  TrackPageViewIfEnabled,
-  trackingDisabled,
-} from "@/util/cookiesHandling";
 import React from "react";
-import { deleteCookie, setCookie } from "cookies-next";
+// import { deleteCookie, setCookie } from "cookies-next";
 import Title from "@/components/common/title";
 import {
   Breadcrumb,
@@ -17,30 +13,30 @@ import {
   BreadcrumbList,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
-import { Alert, AlertDescription } from "@/components/ui/alert";
-import { Cookie } from "lucide-react";
+// import { Alert, AlertDescription } from "@/components/ui/alert";
+// import { Cookie } from "lucide-react";
 
 export default function PrivacyPage(): ReactElement {
-  TrackPageViewIfEnabled();
+  
 
-  const optInOrOutTextActive = (isTrackingEnabled: boolean): string[] => {
-    if (isTrackingEnabled) {
-      return ["Click on the button to opt out", "Opt Out"];
-    } else {
-      return ["Click on the button to opt in", "Opt In"];
-    }
-  };
+  // const optInOrOutTextActive = (isTrackingEnabled: boolean): string[] => {
+  //   if (isTrackingEnabled) {
+  //     return ["Click on the button to opt out", "Opt Out"];
+  //   } else {
+  //     return ["Click on the button to opt in", "Opt In"];
+  //   }
+  // };
 
-  const [optInText, setOptInText] = useState(
-    optInOrOutTextActive(!trackingDisabled())
-  );
+  // const [optInText, setOptInText] = useState(
+  //   optInOrOutTextActive(!trackingDisabled())
+  // );
 
-  const handleOptOut = () => {
-    trackingDisabled()
-      ? deleteCookie("trackingDisabled")
-      : setCookie("trackingDisabled", "true", { maxAge: 365 });
-    setOptInText(optInOrOutTextActive(!trackingDisabled()));
-  };
+  // const handleOptOut = () => {
+  //   trackingDisabled()
+  //     ? deleteCookie("trackingDisabled")
+  //     : setCookie("trackingDisabled", "true", { maxAge: 365 });
+  //   setOptInText(optInOrOutTextActive(!trackingDisabled()));
+  // };
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -73,7 +69,7 @@ export default function PrivacyPage(): ReactElement {
           2016/679 of the European Parliament and of the Council of 27 April
           2016, the General Data Protection Regulation (GDPR).
         </p>
-        <Alert className="bg-muted text-muted-foreground">
+        {/* <Alert className="bg-muted text-muted-foreground">
           <div className="flex items-start space-x-2">
             <Cookie className="h-4 w-4 mt-2" />
             <AlertDescription className="flex flex-col sm:flex-row sm:items-center w-full">
@@ -86,7 +82,7 @@ export default function PrivacyPage(): ReactElement {
               </button>
             </AlertDescription>
           </div>
-        </Alert>
+        </Alert> */}
 
         <Title level={2}>Visitor statistics</Title>
         <p>

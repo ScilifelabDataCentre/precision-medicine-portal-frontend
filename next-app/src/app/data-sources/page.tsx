@@ -4,7 +4,7 @@ import { ReactElement } from "react";
 import Link from "next/link";
 
 import { LastUpdated } from "@/components/common/last-updated";
-import { TrackPageViewIfEnabled } from "@/util/cookiesHandling";
+
 import Title from "@/components/common/title";
 import {
   Breadcrumb,
@@ -15,7 +15,7 @@ import {
 } from "@/components/ui/breadcrumb";
 
 export default function DataSourcesPage(): ReactElement {
-  TrackPageViewIfEnabled();
+  
 
   return (
     <div className="container mx-auto px-4 py-8">
