@@ -197,6 +197,8 @@ export default function Footer(): ReactElement {
             Diagnostics. The source code is available on{" "}
             <a
               href="https://github.com/ScilifelabDataCentre/precision-medicine-portal-frontend"
+              target="_blank"
+              rel="noopener noreferrer"
               className="font-medium text-white/80 hover:text-white underline underline-offset-4 transition-colors"
             >
               Github

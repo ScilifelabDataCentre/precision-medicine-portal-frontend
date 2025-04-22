@@ -69,7 +69,12 @@ export default function HomePage(): ReactElement {
           </Card>
 
           {/* KIARVA Card */}
-          <Link href="kiarva" className="block group">
+          <Link
+            href="kiarva"
+            className="block group"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <Card className="overflow-hidden transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-xl">
               <CardContent className="p-0">
                 <div className="relative h-[32rem]">
