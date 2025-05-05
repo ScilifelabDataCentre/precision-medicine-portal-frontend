@@ -37,20 +37,30 @@ export default function Footer(): ReactElement {
   };
 
   const linksCol3: { [id: string]: ILink } = {
-    l5: {
-      text: "About us",
+    l6: {
+      text: "DSN-PMD projects",
       classes: LINK_CLASSES,
       link: "/about/dsnpmd-projects",
     },
-    l6: { text: "Contact", classes: LINK_CLASSES, link: "/contact" },
-    l7: { text: "Privacy policy", classes: LINK_CLASSES, link: "/privacy" },
-    l8: { text: "License", classes: LINK_CLASSES, link: "/license" },
+    l7: { text: "Team", classes: LINK_CLASSES, link: "/about/team" },
+    l8: {
+      text: "FAQ",
+      classes: LINK_CLASSES,
+      link: "/about/faq",
+    },
+    l9: { text: "Partners", classes: LINK_CLASSES, link: "/about/partners" },
+  };
+
+  const linksCol4: { [id: string]: ILink } = {
+    l10: { text: "Contact", classes: LINK_CLASSES, link: "/contact" },
+    l11: { text: "Privacy policy", classes: LINK_CLASSES, link: "/privacy" },
+    l12: { text: "License", classes: LINK_CLASSES, link: "/license" },
   };
 
   return (
     <div className="bg-primary text-white">
       <div className="container mx-auto px-4 py-10 max-w-7xl">
-        <div className="grid grid-cols-2 lg:grid-cols-6 gap-8">
+        <div className="grid grid-cols-2 lg:grid-cols-7 gap-8">
           {/* First column - Partner logos */}
           <div className="flex gap-6 items-center col-span-1 lg:col-span-2">
             <div className="w-20 lg:w-auto">
@@ -173,7 +183,7 @@ export default function Footer(): ReactElement {
 
           {/* Fifth column - Links */}
           <div className="space-y-6">
-            <h3 className="text-sm font-semibold mb-4">More</h3>
+            <h3 className="text-sm font-semibold mb-4">About us</h3>
             <nav className="flex flex-col space-y-4">
               {Object.keys(linksCol3).map((key) => (
                 <Link
@@ -182,6 +192,22 @@ export default function Footer(): ReactElement {
                   key={key}
                 >
                   {linksCol3[key].text}
+                </Link>
+              ))}
+            </nav>
+          </div>
+
+          {/* Sixth column - Links */}
+          <div className="space-y-6">
+            <h3 className="text-sm font-semibold mb-4">More</h3>
+            <nav className="flex flex-col space-y-4">
+              {Object.keys(linksCol4).map((key) => (
+                <Link
+                  className="text-sm text-white/80 hover:text-white transition-colors"
+                  href={linksCol4[key].link}
+                  key={key}
+                >
+                  {linksCol4[key].text}
                 </Link>
               ))}
             </nav>
