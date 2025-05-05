@@ -1,6 +1,5 @@
 "use client";
 
-
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import Title from "@/components/common/title";
 import {
@@ -33,35 +32,35 @@ const partners: Partner[] = [
   {
     name: "SciLifeLab Data Centre",
     description:
-      "SciLifeLab Data Centre is a central unit within SciLifeLab with responsibility for IT- and data management issues, serving the SciLifeLab and the Data Driven Life Science (DDLS) research program. At SciLifeLab, we see data as one of the most valuable and long-lasting products of our operations and strive to make our data FAIR, handled according to open science standards and that its long-term value to the scientific community is maximised.",
+      "SciLifeLab Data Centre is a central unit within SciLifeLab with responsibility for IT- and data management issues, serving SciLifeLab and the Data-Driven Life Science (DDLS) research program. At SciLifeLab, we see data as one of the most valuable and long-lasting products of our operations and strive to make our data FAIR, handled according to open science standards and that its long-term value to the scientific community is maximised.",
     url: "https://www.scilifelab.se/contact/data-center/",
     logoKey: "dc",
   },
   {
     name: "Karolinska Institutet",
     description:
-      "Karolinska Institutet is a research-led medical university in Solna within the Stockholm urban area of Sweden and one of the foremost medical research institutes globally. KI hosts the Data Science Node in Precision Medicine and Diagnostics as part of the national Data-Driven Life Science program and associated to the SciLifeLab Data Platform.",
+      "Karolinska Institutet is a world-leading medical university located in the Stockholm region, renowned for its pioneering research and education in medicine and health sciences. KI hosts the Data Science Node in Precision Medicine and Diagnostics as part of the national Data-Driven Life Science program.",
     url: "https://ki.se",
     logoKey: "ki",
   },
   {
     name: "Data-Driven Precision Medicine and Diagnostics",
     description:
-      "The Data-Driven Life Science subject area hosted by KI concerns research that will make use of computational tools to integrate molecular and clinical data for precision medicine and diagnostic development. The focus is on data integration, analysis, visualisation, and data interpretation for patient stratification, discovery of biomarkers for disease risks, diagnosis, drug response and monitoring of health.",
+      "The Data-Driven Life Science subject area hosted by KI concerns research that will make use of computational tools to integrate molecular and clinical data for precision medicine and diagnostic development. The focus is on data integration, analysis, visualisation, and data interpretation for patient stratification, discovery of biomarkers for disease risks, diagnosis, drug response and health monitoring.",
     url: "https://www.scilifelab.se/data-driven/about/",
     logoKey: "scilifelab",
   },
   {
     name: "SciLifeLab & Wallenberg National Program for Data-Driven Life Science",
     description:
-      "Life science research is becoming increasingly data-driven. The amount and complexity of data is also growing exponentially. Data is one of the most valuable products of research, and it is therefore crucially important that we ensure it is managed appropriately throughout its lifecycle. In response, SciLifeLab and The Knut and Alice Wallenberg Foundation (KAW) have launched the DDLS program in Sweden. This initiative aims to train and develop the next wave of life scientists, enhancing Sweden's capabilities in data science within the life sciences to achieve international competitiveness. The DDLS program has been funded by KAW for 12 years. SciLifeLab, as a national infrastructure for life science, coordinates this program in close collaboration with ten Swedish universities and the Swedish Museum of Natural History.",
+      "Life science research is becoming increasingly data-driven. The amount and complexity of data is also growing exponentially. Data is one of the most valuable products of research, and it is therefore crucially important that we ensure that it is managed appropriately throughout its lifecycle. In response, SciLifeLab and The Knut and Alice Wallenberg Foundation (KAW) have launched the DDLS program in Sweden. This initiative aims to train and develop the next wave of life scientists, enhancing Sweden's capabilities in data science within the life sciences to achieve international competitiveness. The DDLS program has been funded by KAW for 12 years. SciLifeLab, as a national infrastructure for life science, coordinates this program in close collaboration with ten Swedish universities and the Swedish Museum of Natural History.",
     url: "https://www.scilifelab.se/data-driven/about/",
     logoKey: "kaw",
   },
   {
     name: "National Bioinformatics Infrastructure Sweden and ELIXIR Sweden",
     description:
-      "National Bioinformatics Infrastructure Sweden (NBIS) is a distributed national research infrastructure supported by the Swedish Research Council (Vetenskapsrådet), Science for Life Laboratory, all major Swedish universities, and the Knut and Alice Wallenberg Foundation. It provides state-of-the-art bioinformatics to the life science research community in Sweden. NBIS is also the Swedish contact point to the European infrastructure for biological information, ELIXIR Europe.",
+      "National Bioinformatics Infrastructure Sweden (NBIS) is a distributed national research infrastructure supported by the Swedish Research Council (Vetenskapsrådet), Science for Life Laboratory, all major Swedish universities, and the Knut and Alice Wallenberg Foundation. It provides state-of-the-art bioinformatics to the life science research community in Sweden. NBIS is also the Swedish contact point to the European infrastructure for biological information (ELIXIR).",
     url: "https://nbis.se",
     logoKey: "nbis",
   },
@@ -75,8 +74,6 @@ const partners: Partner[] = [
 ];
 
 export default function AboutPartnersPage() {
-  
-
   return (
     <div className="container mx-auto px-4 py-8">
       <Breadcrumb>
@@ -134,7 +131,7 @@ export default function AboutPartnersPage() {
         ))}
       </div>
 
-      <LastUpdated date="11-03-2025" />
+      <LastUpdated date="05-05-2025" />
     </div>
   );
 }

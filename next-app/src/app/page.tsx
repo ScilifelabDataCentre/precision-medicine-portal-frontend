@@ -1,7 +1,6 @@
 "use client";
 
 import { ReactElement } from "react";
-import { TrackPageViewIfEnabled } from "../util/cookiesHandling";
 import Link from "next/link";
 import Image from "next/image";
 import { Card, CardContent, CardTitle } from "@/components/ui/card";

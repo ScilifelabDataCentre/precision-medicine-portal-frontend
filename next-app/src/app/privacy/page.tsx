@@ -1,6 +1,6 @@
 "use client";
 
-import { ReactElement, useState } from "react";
+import { ReactElement } from "react";
 // import { BUTTON_STYLE } from "@/constants";
 import Link from "next/link";
 import React from "react";
@@ -17,8 +17,6 @@ import {
 // import { Cookie } from "lucide-react";
 
 export default function PrivacyPage(): ReactElement {
-  
-
   // const optInOrOutTextActive = (isTrackingEnabled: boolean): string[] => {
   //   if (isTrackingEnabled) {
   //     return ["Click on the button to opt out", "Opt Out"];
@@ -54,10 +52,53 @@ export default function PrivacyPage(): ReactElement {
       <div className="flex flex-col gap-y-4">
         <Title level={1}>Privacy policy</Title>
         <p>
-          Data Centre at SciLifeLab provides and operates the Precision Medicine
-          Portal. This page is intended to inform website visitors about our
-          personal data processing policy. By using our Service, you agree that
-          your personal data will be processed in accordance with this policy.
+          SciLifeLab provides and operates the Precision Medicine Portal. This
+          page is intended to inform website visitors about our personal data
+          processing policy. By using our Service, you agree that your personal
+          data will be processed in accordance with this policy.
+        </p>
+        <Title level={2}>Visitor statistics</Title>
+        <p>
+          We collect information that your browser sends to us whenever you
+          visit our Service, referred to as &apos;log data.&apos; This data may
+          include:
+        </p>
+        <ul className="list-disc pl-4">
+          <li>The website you visited us from</li>
+          <li>The parts of our Service you visit</li>
+          <li>The date and duration of your visit</li>
+          <li>Your anonymised IP address</li>
+          <li>
+            Information about the device you used during your visit (device
+            type, operating system, screen resolution, language, country you are
+            located in, and web browser type)
+          </li>
+        </ul>
+        <p>
+          We process this usage data using Matomo Analytics (hosted on
+          SciLifeLab servers and operated solely by SciLifeLab) for statistical
+          purposes, to improve our Service, and to recognise and prevent any
+          misuse.
+        </p>
+        <Title level={2}>Forms</Title>
+        <p>
+          Our Service can contain forms that visitors can use to contact us or
+          provide suggestions. The website visitors may choose to provide their
+          personal information such as their name and e-mail address through
+          these forms. The following parties will have access to processing the
+          personal data provided through the forms; SciLifeLab Data Centre,
+          Uppsala University, Kungliga Tekniska högskolan (KTH). Your personal
+          data will be deleted when no longer needed, or when stipulated by the
+          archival rules for the university as a government authority. If you
+          want to update or remove your personal data, please contact the
+          controller SciLifeLab Data Centre at Uppsala University using{" "}
+          <a
+            href="mailto:datacentre@scilifelab.se"
+            className="text-primary hover:text-black underline"
+          >
+            datacentre@scilifelab.se
+          </a>
+          .
         </p>
         <Title level={2}>Data collection and usage</Title>
         <p>
@@ -83,45 +124,6 @@ export default function PrivacyPage(): ReactElement {
             </AlertDescription>
           </div>
         </Alert> */}
-
-        <Title level={2}>Visitor statistics</Title>
-        <p>
-          We collect information that your browser sends to us whenever you
-          visit our Service, referred to as &apos;log data.&apos; This data may
-          include:
-        </p>
-        <ul className="list-disc pl-4">
-          <li>The website you visited us from</li>
-          <li>The parts of our Service you visit</li>
-          <li>The date and duration of your visit</li>
-          <li>Your anonymised IP address</li>
-          <li>
-            Information about the device you used during your visit (device
-            type, operating system, screen resolution, language, country you are
-            located in, and web browser type)
-          </li>
-        </ul>
-        <p>
-          We process this usage data using Matomo Analytics (hosted on
-          SciLifeLab servers and operated solely by SciLifeLab) for statistical
-          purposes, to improve our Service, and to recognise and prevent any
-          misuse. You can opt out of your statistics being collected below. Note
-          that the tracking opt-out feature requires cookies to be enabled.
-        </p>
-        <Title level={2}>Forms</Title>
-        <p>
-          Our Service contains several forms that visitors can use to contact us
-          or provide suggestions. The website visitors may choose to provide
-          their personal information such as their name and e-mail address
-          through these forms. The following parties will have access to
-          processing the personal data provided through the forms; SciLifeLab
-          Data Centre, Uppsala University, Kungliga Tekniska högskolan (KTH).
-          Your personal data will be deleted when no longer needed, or when
-          stipulated by the archival rules for the university as a government
-          authority. If you want to update or remove your personal data, please
-          contact the controller SciLifeLab Data Centre at Uppsala University
-          using datacentre@scilifelab.se
-        </p>
         <Title level={2}>Links to other sites</Title>
         <p>
           Our Service may contain links to other sites. If you click on a
@@ -141,8 +143,35 @@ export default function PrivacyPage(): ReactElement {
         <Title level={2}>Contact us</Title>
         <p>
           If you have any questions or suggestions about our privacy policy, do
-          not hesitate to contact us at{" "}
-          <Link href="/contact">the Swedish Precision Medicine Portal</Link>.
+          not hesitate to contact us at the{" "}
+          <Link
+            href="/contact"
+            className="text-primary hover:text-black underline"
+          >
+            Precision Medicine Portal
+          </Link>
+          .
+        </p>
+        <p>
+          Our privacy policy was partially copied and adapted from the{" "}
+          <a
+            href="https://www.pathogens.se"
+            className="text-primary hover:text-black underline"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Pathogens Portal
+          </a>
+          . Please also refer to{" "}
+          <a
+            href="https://www.uu.se/en/about-uu/data-protection-policy"
+            className="text-primary hover:text-black underline"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Uppsala University&apos;s data protection policy
+          </a>
+          .
         </p>
       </div>
     </div>
