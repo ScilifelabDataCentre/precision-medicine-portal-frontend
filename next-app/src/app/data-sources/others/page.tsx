@@ -1,7 +1,7 @@
 "use client";
 
 import { ReactElement } from "react";
-import { TrackPageViewIfEnabled } from "@/util/cookiesHandling";
+
 import { LastUpdated } from "@/components/common/last-updated";
 import { useState, useEffect } from "react";
 import axios from "axios";
@@ -34,7 +34,7 @@ interface IDataSourcesDC {
 }
 
 export default function DataSourcesOthersPage(): ReactElement {
-  TrackPageViewIfEnabled();
+  
 
   const [dataSourcesJSON, setDataSourcesJSON] = useState<IDataSourcesDC[]>([]);
   const [selectedFilters, setSelectedFilters] = useState<IDataSourceFilters>({

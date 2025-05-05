@@ -33,24 +33,34 @@ export default function Footer(): ReactElement {
   };
 
   const linksCol2: { [id: string]: ILink } = {
-    l5: { text: "KIARVA dashboard", classes: LINK_CLASSES, link: "/kiarva" },
+    l5: { text: "KIARVA", classes: LINK_CLASSES, link: "/kiarva" },
   };
 
   const linksCol3: { [id: string]: ILink } = {
-    l5: {
-      text: "About us",
+    l6: {
+      text: "DSN-PMD projects",
       classes: LINK_CLASSES,
       link: "/about/dsnpmd-projects",
     },
-    l6: { text: "Contact", classes: LINK_CLASSES, link: "/contact" },
-    l7: { text: "Privacy policy", classes: LINK_CLASSES, link: "/privacy" },
-    l8: { text: "License", classes: LINK_CLASSES, link: "/license" },
+    l7: { text: "Team", classes: LINK_CLASSES, link: "/about/team" },
+    l8: {
+      text: "FAQ",
+      classes: LINK_CLASSES,
+      link: "/about/faq",
+    },
+    l9: { text: "Partners", classes: LINK_CLASSES, link: "/about/partners" },
+  };
+
+  const linksCol4: { [id: string]: ILink } = {
+    l10: { text: "Contact", classes: LINK_CLASSES, link: "/contact" },
+    l11: { text: "Privacy policy", classes: LINK_CLASSES, link: "/privacy" },
+    l12: { text: "License", classes: LINK_CLASSES, link: "/license" },
   };
 
   return (
     <div className="bg-primary text-white">
       <div className="container mx-auto px-4 py-10 max-w-7xl">
-        <div className="grid grid-cols-2 lg:grid-cols-6 gap-8">
+        <div className="grid grid-cols-2 lg:grid-cols-7 gap-8">
           {/* First column - Partner logos */}
           <div className="flex gap-6 items-center col-span-1 lg:col-span-2">
             <div className="w-20 lg:w-auto">
@@ -113,18 +123,18 @@ export default function Footer(): ReactElement {
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  shape-rendering="geometricPrecision"
-                  text-rendering="geometricPrecision"
-                  image-rendering="optimizeQuality"
-                  fill-rule="evenodd"
-                  clip-rule="evenodd"
+                  shapeRendering="geometricPrecision"
+                  textRendering="geometricPrecision"
+                  imageRendering="optimizeQuality"
+                  fillRule="evenodd"
+                  clipRule="evenodd"
                   width="24"
                   height="24"
                   viewBox="0 0 511.999 452.266"
                   fill="currentColor"
                 >
                   <path
-                    fill-rule="nonzero"
+                    fillRule="nonzero"
                     d="M110.985 30.442c58.695 44.217 121.837 133.856 145.013 181.961 23.176-48.105 86.322-137.744 145.016-181.961 42.361-31.897 110.985-56.584 110.985 21.96 0 15.681-8.962 131.776-14.223 150.628-18.272 65.516-84.873 82.228-144.112 72.116 103.55 17.68 129.889 76.238 73 134.8-108.04 111.223-155.288-27.905-167.385-63.554-3.489-10.262-2.991-10.498-6.561 0-12.098 35.649-59.342 174.777-167.382 63.554-56.89-58.562-30.551-117.12 72.999-134.8-59.239 10.112-125.84-6.6-144.112-72.116C8.962 184.178 0 68.083 0 52.402c0-78.544 68.633-53.857 110.985-21.96z"
                   />
                 </svg>
@@ -157,7 +167,7 @@ export default function Footer(): ReactElement {
 
           {/* Fourth column - Links */}
           <div className="space-y-6">
-            <h3 className="text-sm font-semibold mb-4">KIARVA</h3>
+            <h3 className="text-sm font-semibold mb-4">Dashboards</h3>
             <nav className="flex flex-col space-y-4">
               {Object.keys(linksCol2).map((key) => (
                 <Link
@@ -173,7 +183,7 @@ export default function Footer(): ReactElement {
 
           {/* Fifth column - Links */}
           <div className="space-y-6">
-            <h3 className="text-sm font-semibold mb-4">More</h3>
+            <h3 className="text-sm font-semibold mb-4">About us</h3>
             <nav className="flex flex-col space-y-4">
               {Object.keys(linksCol3).map((key) => (
                 <Link
@@ -182,6 +192,22 @@ export default function Footer(): ReactElement {
                   key={key}
                 >
                   {linksCol3[key].text}
+                </Link>
+              ))}
+            </nav>
+          </div>
+
+          {/* Sixth column - Links */}
+          <div className="space-y-6">
+            <h3 className="text-sm font-semibold mb-4">More</h3>
+            <nav className="flex flex-col space-y-4">
+              {Object.keys(linksCol4).map((key) => (
+                <Link
+                  className="text-sm text-white/80 hover:text-white transition-colors"
+                  href={linksCol4[key].link}
+                  key={key}
+                >
+                  {linksCol4[key].text}
                 </Link>
               ))}
             </nav>
@@ -197,6 +223,8 @@ export default function Footer(): ReactElement {
             Diagnostics. The source code is available on{" "}
             <a
               href="https://github.com/ScilifelabDataCentre/precision-medicine-portal-frontend"
+              target="_blank"
+              rel="noopener noreferrer"
               className="font-medium text-white/80 hover:text-white underline underline-offset-4 transition-colors"
             >
               Github

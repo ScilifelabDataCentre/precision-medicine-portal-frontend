@@ -1,7 +1,6 @@
 "use client";
 
 import { ReactElement } from "react";
-import { TrackPageViewIfEnabled } from "../util/cookiesHandling";
 import Link from "next/link";
 import Image from "next/image";
 import { Card, CardContent, CardTitle } from "@/components/ui/card";
@@ -13,8 +12,6 @@ const kiarvaImg = "/HomePageImages/kiarvaIndexImage.png";
 const ragnarImg = "/HomePageImages/ragnarIndexImage.png";
 
 export default function HomePage(): ReactElement {
-  TrackPageViewIfEnabled();
-
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="w-full space-y-16 pb-12">
@@ -100,7 +97,7 @@ export default function HomePage(): ReactElement {
           </Link>
 
           {/* RAGnar Card */}
-          <Link href="ragnar" className="block group">
+          <div className="block group">
             <Card className="overflow-hidden transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-xl">
               <CardContent className="p-0">
                 <div className="relative h-[32rem]">
@@ -130,7 +127,7 @@ export default function HomePage(): ReactElement {
                 </div>
               </CardContent>
             </Card>
-          </Link>
+          </div>
         </div>
       </div>
     </div>

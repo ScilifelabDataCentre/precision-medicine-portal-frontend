@@ -4,7 +4,7 @@ import { ReactElement } from "react";
 import Link from "next/link";
 
 import { LastUpdated } from "@/components/common/last-updated";
-import { TrackPageViewIfEnabled } from "@/util/cookiesHandling";
+
 import Title from "@/components/common/title";
 import {
   Breadcrumb,
@@ -15,8 +15,6 @@ import {
 } from "@/components/ui/breadcrumb";
 
 export default function DataSourcesPage(): ReactElement {
-  TrackPageViewIfEnabled();
-
   return (
     <div className="container mx-auto px-4 py-8">
       <Breadcrumb>
@@ -37,7 +35,7 @@ export default function DataSourcesPage(): ReactElement {
           Researchers can access human data for research from various national
           and international sources, such as research databases, quality
           registries, patient or medical records, biobanks, and more. However,
-          human data is often not freely available. Researchers seeking access
+          human data is often not openly available. Researchers seeking access
           to human data must submit an application outlining their project and
           its requirements. The responsible institution, typically a healthcare
           region or university, will release the data only after conducting harm
@@ -297,7 +295,7 @@ export default function DataSourcesPage(): ReactElement {
             </a>
           </li>
         </ul>
-        <LastUpdated date="13-01-2025" />
+        <LastUpdated date="05-05-2025" />
       </div>
     </div>
   );

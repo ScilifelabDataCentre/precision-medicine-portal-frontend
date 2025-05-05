@@ -1,7 +1,7 @@
 "use client";
 
 import { ReactElement } from "react";
-import { TrackPageViewIfEnabled } from "@/util/cookiesHandling";
+
 import Title from "@/components/common/title";
 import {
   Breadcrumb,
@@ -19,8 +19,6 @@ import {
 import { LastUpdated } from "@/components/common/last-updated";
 
 export default function AboutFAQPage(): ReactElement {
-  TrackPageViewIfEnabled();
-
   return (
     <div className="container mx-auto px-4 py-8">
       <Breadcrumb>
@@ -106,13 +104,13 @@ export default function AboutFAQPage(): ReactElement {
           <AccordionContent>
             We are always eager to collaborate and support the Swedish precision
             medicine and diagnostics research community. If you would like your
-            project or data source to be featured as a separate page on this
-            portal, please reach out to us via the contact form.
+            project or data source to be featured as a dashboard on this portal,
+            please reach out to us via the contact form.
           </AccordionContent>
         </AccordionItem>
       </Accordion>
 
-      <LastUpdated date="11-03-2025" />
+      <LastUpdated date="05-05-2025" />
     </div>
   );
 }
