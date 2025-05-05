@@ -33,7 +33,7 @@ export default function Footer(): ReactElement {
   };
 
   const linksCol2: { [id: string]: ILink } = {
-    l5: { text: "KIARVA dashboard", classes: LINK_CLASSES, link: "/kiarva" },
+    l5: { text: "KIARVA", classes: LINK_CLASSES, link: "/kiarva" },
   };
 
   const linksCol3: { [id: string]: ILink } = {
@@ -157,7 +157,7 @@ export default function Footer(): ReactElement {
 
           {/* Fourth column - Links */}
           <div className="space-y-6">
-            <h3 className="text-sm font-semibold mb-4">KIARVA</h3>
+            <h3 className="text-sm font-semibold mb-4">Dashboards</h3>
             <nav className="flex flex-col space-y-4">
               {Object.keys(linksCol2).map((key) => (
                 <Link
