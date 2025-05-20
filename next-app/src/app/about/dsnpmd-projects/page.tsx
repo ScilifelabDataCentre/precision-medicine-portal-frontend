@@ -12,7 +12,6 @@ import {
 } from "@/components/ui/breadcrumb";
 import { LastUpdated } from "@/components/common/last-updated";
 
-
 const logos: { [key: string]: string } = {
   pmPortal: "/Partner logo/SciLifeLab_Logotype_Green_POS.png",
   tefHealth: "/Partner logo/tefhealth_logo.png",
@@ -55,7 +54,7 @@ const projects: Project[] = [
   {
     name: "TEF-Health",
     description:
-      "The European Commission co-funded TEF-Health, a major EU project providing expertise and assistance to small and medium-sized enterprises and innovators. The main goal is to boost implementation of AI-driven solutions into healthcare by providing services and tools for validation and certification of the latest technology while ensuring compliance with relevant legal, ethical, quality, and interoperability standards and requirements.\n\nThe DSN-PMD is strongly involved in Work Package 4, which manages all the virtual testing services developed and provided. Apart from working on the services, the Data Science Node is also active in general activities and took leadership in the development of the Curation Tool, an application to streamline and simplify change management for the overall service catalogue.",
+      "The European Commission co-funded TEF-Health, one of four Testing and Experimentation Facilities (TEFs) established by the EU to support innovation in artificial intelligence and robotics. TEF-Health focuses on providing expertise and assistance to small and medium-sized enterprises (SMEs) and innovators working in the health sector. The main goal is to boost implementation of AI-driven solutions into healthcare by providing services and tools for validation and certification of the latest technology while ensuring compliance with relevant legal, ethical, quality, and interoperability standards and requirements.\n\nThe DSN-PMD is strongly involved in Work Package 4, which manages all the virtual testing services developed and provided. Apart from working on the services, the Data Science Node is also active in general activities and took leadership in the development of the Curation Tool, an application to streamline and simplify change management for the overall service catalogue.",
     url: "https://tefhealth.eu/home",
     logoKey: "tefHealth",
   },
@@ -75,8 +74,6 @@ const projects: Project[] = [
 ];
 
 export default function DSNProjectsPage() {
-  
-
   return (
     <div className="container mx-auto px-4 py-8">
       <Breadcrumb>
