@@ -16,6 +16,7 @@ const logos: { [key: string]: string } = {
   pmPortal: "/Partner logo/SciLifeLab_Logotype_Green_POS.png",
   tefHealth: "/Partner logo/tefhealth_logo.png",
   brainchild: "/Partner logo/Barncancerfonden.png",
+  tehdas2: "/Partner logo/tehdas2_logo.png",
 };
 
 interface Project {
@@ -59,10 +60,17 @@ const projects: Project[] = [
     logoKey: "tefHealth",
   },
   {
+    name: "Towards European health data space 2nd joint action (TEHDAS2)",
+    description:
+      "The EU regulation on the European health data space (EHDS) came into force in March 2025, and will be fully implemented in 2031. EHDS primary use of health data enables individuals to securely share their electronic health data with healthcare providers across member states. EHDS secondary use of health data aims to facilitate the use of health data for research, innovation, policymaking, and public health, while ensuring strong data protection.\n\nThe TEHDAS2 project will develop guidelines and technical specifications to ensure a harmonized implementation of the EHDS regulation with a specific focus on secondary use of health data.\n\nThe DSN-PMD is involved in two of the work packages (WP). In WP 5 'Data discovery – finding and exposing metadata' we are involved in developing guidance on enrichment of datasets. In WP 7 'Safe and secure processing' we are contributing to the documentation on secure processing environments.",
+    url: "https://tehdas.eu/",
+    logoKey: "tehdas2",
+  },
+  {
     name: "Trusted Research Environment (TRE) exploration",
     description:
-      "Trusted Research Environments, also called Secure Processing Environments, are secure, controlled computing platforms designed to enable authorized researchers from approved institutions to remotely access, store, and analyze sensitive data in a protected manner.\n\nThe DSN-PMD led a pre-study for the Data Centre, conducting an initial evaluation of suitable providers, interviewing SciLifeLab platforms and facilities, and creating recommendations for future work and projects. Apart from SciLifeLab-specific studies, leadership was also taken for regional, national, and European initiatives. This includes creating and guiding a TRE-specific working group within the TEF-Health project and contributing to Work Package 7.4 in TEHDAS2, a project that supports the development and implementation of the European Health Data Space. Finally, the Data Science Node also participated in relevant conferences and regional and national discussions.",
-    url: "https://tehdas.eu",
+      "Trusted Research Environments, also called Secure Processing Environments, are secure, controlled computing platforms designed to enable authorized researchers from approved institutions to remotely access, store, and analyze sensitive data in a protected manner.\n\nThe DSN-PMD led a pre-study for the Data Centre, conducting an initial evaluation of suitable providers, interviewing SciLifeLab platforms and facilities, and creating recommendations for future work and projects. Apart from SciLifeLab-specific studies, leadership was also taken for regional, national, and European initiatives. This includes creating and guiding a TRE-specific working group within the TEF-Health project. Finally, the Data Science Node also participated in relevant conferences and regional and national discussions.",
+    url: "https://tefhealth.eu/home",
   },
   {
     name: "BrainChild (previous involvement)",
@@ -122,7 +130,7 @@ export default function DSNProjectsPage() {
                     alt={project.name}
                     width={128} // Standardized width
                     height={64} // Standardized height
-                    className="object-contain"
+                    className="object-contain max-h-[64px]"
                   />
                 </div>
               )}
@@ -133,7 +141,7 @@ export default function DSNProjectsPage() {
           </Card>
         ))}
       </div>
-      <LastUpdated date="11-03-2025" />
+      <LastUpdated date="21-05-2025" />
     </div>
   );
 }
