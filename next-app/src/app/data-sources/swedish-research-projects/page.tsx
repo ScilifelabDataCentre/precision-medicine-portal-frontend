@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import Title from "@/components/common/title";
 import { LastUpdated } from "@/components/common/last-updated";
-import { Database } from "lucide-react";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -12,7 +11,6 @@ import {
   BreadcrumbList,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
-import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
 
