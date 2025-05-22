@@ -183,16 +183,22 @@ function MobileNav() {
       </SheetTrigger>
       <SheetContent side="right">
         <nav className="flex flex-col gap-4">
-          <Link href="/accessclinicaldata" className="font-semibold">
+          <Link href="/data-sources" className="font-semibold">
             Access clinical data
           </Link>
-          <Link href="/registries" className="text-sm pl-4">
+          <Link
+            href="/data-sources/quality-registries"
+            className="text-sm pl-4"
+          >
             Quality registries
           </Link>
-          <Link href="/swedishresearchprojects" className="text-sm pl-4">
+          <Link
+            href="/data-sources/swedish-research-projects"
+            className="text-sm pl-4"
+          >
             Swedish research projects
           </Link>
-          <Link href="/datasources" className="text-sm pl-4">
+          <Link href="/data-sources/others" className="text-sm pl-4">
             Other data sources
           </Link>
           <Link href="/kiarva" className="">

@@ -34,8 +34,6 @@ interface IDataSourcesDC {
 }
 
 export default function DataSourcesOthersPage(): ReactElement {
-  
-
   const [dataSourcesJSON, setDataSourcesJSON] = useState<IDataSourcesDC[]>([]);
   const [selectedFilters, setSelectedFilters] = useState<IDataSourceFilters>({
     dataTypes: [],
@@ -83,6 +81,13 @@ export default function DataSourcesOthersPage(): ReactElement {
 
   const dataSourcesURI: string =
     "https://raw.githubusercontent.com/ScilifelabDataCentre/data.scilifelab.se/develop/data/data_sources.json";
+
+  function getCountForType(type: string, isDataType: boolean): number {
+    return dataSourcesJSON.filter((source) => {
+      const tags = isDataType ? source.data : source.disease_type;
+      return tags.some((tag) => tag.toLowerCase() === type.toLowerCase());
+    }).length;
+  }
 
   async function getData() {
     try {
@@ -243,7 +248,7 @@ export default function DataSourcesOthersPage(): ReactElement {
                         htmlFor={`dataType-${index}`}
                         className="text-base leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                       >
-                        {element}
+                        {element} ({getCountForType(element, true)})
                       </label>
                     </div>
                   ))}
@@ -276,7 +281,7 @@ export default function DataSourcesOthersPage(): ReactElement {
                         htmlFor={`diseaseType-${index}`}
                         className="text-base leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                       >
-                        {element}
+                        {element} ({getCountForType(element, false)})
                       </label>
                     </div>
                   ))}
@@ -319,7 +324,7 @@ export default function DataSourcesOthersPage(): ReactElement {
             ))}
         </div>
       </div>
-      <LastUpdated date="18-12-2024" />
+      <LastUpdated date="21-05-2025" />
     </div>
   );
 }

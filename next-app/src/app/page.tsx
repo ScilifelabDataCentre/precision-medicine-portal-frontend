@@ -30,7 +30,7 @@ export default function HomePage(): ReactElement {
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent">
                   <div className="absolute inset-x-0 bottom-0 p-6 h-full flex flex-col justify-end">
                     <CardTitle className="text-white mb-2 text-2xl group-hover:text-3xl transition-all duration-300">
-                      Data for PM research
+                      Data sources
                     </CardTitle>
                     <div className="flex flex-col space-y-3 h-36">
                       <Button

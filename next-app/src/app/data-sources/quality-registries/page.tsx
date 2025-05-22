@@ -32,22 +32,22 @@ interface IRegistrySource {
 const filters: IRegistryFilters = {
   registryCentre: [
     "Kvalitetsregistercentrum Stockholm",
-    "Registercentrum Syd",
     "Registercentrum Norr",
-    "Uppsala Clinical Research Center",
-    "Registercentrum Västra Götaland",
+    "Registercentrum Syd",
     "Registercentrum Sydost",
-    "RCC Stockholm Gotland",
-    "RCC Sydöst",
-    "RCC Norr",
+    "Registercentrum Västra Götaland",
     "RCC Mellansverige",
-    "RCC Väst",
+    "RCC Norr",
+    "RCC Stockholm Gotland",
     "RCC Syd",
+    "RCC Sydöst",
+    "RCC Väst",
+    "Uppsala Clinical Research Center",
   ],
   registryCategory: [
+    "National cancer quality registry",
     "National quality registry",
     "Other quality registry",
-    "National cancer quality registry",
   ],
 };
 
@@ -108,6 +108,13 @@ export default function QualityRegistryPage() {
 
     fetchRegistryData();
   }, []);
+
+  function getCountForType(type: string, isRegistryCentre: boolean): number {
+    return registrySourcesJSON.filter((source) => {
+      const tags = isRegistryCentre ? source.registry_centre : source.category;
+      return tags.some((tag) => tag.toLowerCase() === type.toLowerCase());
+    }).length;
+  }
 
   function checkedFilter(
     filterType: keyof IRegistryFilters,
@@ -242,7 +249,7 @@ export default function QualityRegistryPage() {
                         htmlFor={`registryCentre-${index}`}
                         className="text-base leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                       >
-                        {element}
+                        {element} ({getCountForType(element, true)})
                       </label>
                     </div>
                   ))}
@@ -276,7 +283,7 @@ export default function QualityRegistryPage() {
                         htmlFor={`registryCategory-${index}`}
                         className="text-base leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                       >
-                        {element}
+                        {element} ({getCountForType(element, false)})
                       </label>
                     </div>
                   ))}
