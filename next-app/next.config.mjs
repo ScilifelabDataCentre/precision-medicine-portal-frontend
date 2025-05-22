@@ -4,7 +4,7 @@ const nextConfig = {
         return [
           {
             source: '/about',
-            destination: '/about/product',
+            destination: '/about/dsnpmd-projects',
             permanent: true,
           },
         ]

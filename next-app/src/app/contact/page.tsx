@@ -3,8 +3,6 @@
 import { ReactElement } from "react";
 import Link from "next/link";
 
-import ContactFormComponent from "@/components/ContactFormComponent";
-
 import Title from "@/components/common/title";
 import {
   Breadcrumb,
@@ -31,36 +29,44 @@ export default function ContactPage(): ReactElement {
         </BreadcrumbList>
       </Breadcrumb>
       <div className="flex flex-col gap-y-4">
+        <Title level={1}>Contact</Title>
+        <p>
+          We welcome questions and suggestions regarding the Precision Medicine
+          Portal and Data Science Node in Precision Medicine and Diagnostics.
+          Moreover, if you have inquiries about data management or data sharing,{" "}
+          <Link
+            href="/about/team"
+            className="text-primary hover:text-black underline"
+          >
+            our team
+          </Link>{" "}
+          is happy to assist — or at least direct you to the right place.
+        </p>
         <Alert className="bg-muted text-muted-foreground">
           <MailX className="h-4 w-4" />
           <AlertDescription>
-            The contact page is currently under reconstruction, and the contact
-            form below has been disabled. In the meantime, please reach out to
-            the Data Science Node in Precision Medicine and Diagnostics at{" "}
+            For all inquiries, please email us at{" "}
             <a
               href="mailto:precisionmedicine@scilifelab.se"
-              className="text-primary hover:text-black underline"
+              className="text-primary font-semibold underline hover:text-black"
             >
               precisionmedicine@scilifelab.se
             </a>
-            .
+            . We aim to respond within a few business days.
           </AlertDescription>
         </Alert>
-        <Title level={1}>Contact</Title>
         <p>
-          Please fill out this form if you need to contact us at the Swedish
-          Precision Medicine Portal. Provide your contact information and we
-          should get back to you within a weeks time. For information about how
-          we handle your personal data, please see our{" "}
+          We are also committed to handling your information responsibly. Please
+          refer to our{" "}
           <Link
             href="/privacy"
             className="text-primary hover:text-black underline"
           >
             privacy policy
-          </Link>
-          .
+          </Link>{" "}
+          to learn how we process your personal data.
         </p>
-        <ContactFormComponent />
+        {/* <ContactFormComponent /> */}
       </div>
     </div>
   );
