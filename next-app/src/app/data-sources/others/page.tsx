@@ -16,6 +16,8 @@ import {
   BreadcrumbList,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
+import DOMPurify from "dompurify";
+import validator from "validator";
 
 interface IDataSourceFilters {
   dataTypes: string[];
@@ -164,20 +166,47 @@ export default function DataSourcesOthersPage(): ReactElement {
     );
   }
 
-  function sanitizeString(str: string) {
-    return str.replace(/[^\w\s-]/gi, "");
-  }
-
   function sanitizeURL(url: string) {
-    try {
-      const parsedURL = new URL(url);
-      if (parsedURL.protocol !== "http:" && parsedURL.protocol !== "https:") {
-        return "#";
-      }
-      return parsedURL.toString();
-    } catch {
+    // Use validator.js for URL validation - much more comprehensive
+    if (
+      !url ||
+      typeof url !== "string" ||
+      !validator.isURL(url, {
+        protocols: ["http", "https"],
+        require_protocol: true,
+        allow_underscores: true,
+      })
+    ) {
       return "#";
     }
+
+    // DOMPurify will handle any remaining XSS attempts
+    return DOMPurify.sanitize(url, { ALLOWED_TAGS: [], ALLOWED_ATTR: [] });
+  }
+
+  // Simplified and safer image src creation
+  function createSafeImageSrc(thumbnail: string) {
+    if (!thumbnail || typeof thumbnail !== "string") {
+      return "/img/datasources/na-sign-icon.png";
+    }
+
+    // Extract and sanitize filename
+    const filename =
+      thumbnail.split("/").pop()?.split(".")[0] || "na-sign-icon";
+    // Use validator to ensure it's alphanumeric with allowed characters
+    const sanitizedFilename = filename.replace(/[^a-zA-Z0-9_-]/g, "");
+
+    if (!sanitizedFilename || sanitizedFilename.length > 50) {
+      return "/img/datasources/na-sign-icon.png";
+    }
+
+    return `/img/datasources/${sanitizedFilename}.png`;
+  }
+
+  // Use DOMPurify for text sanitization
+  function sanitizeText(text: string) {
+    if (!text || typeof text !== "string") return "";
+    return DOMPurify.sanitize(text, { ALLOWED_TAGS: [], ALLOWED_ATTR: [] });
   }
 
   useEffect(() => {
@@ -306,14 +335,12 @@ export default function DataSourcesOthersPage(): ReactElement {
                       rel="noopener noreferrer"
                       className="text-xl text-primary hover:underline flex-grow"
                     >
-                      {item.name}
+                      {sanitizeText(item.name)}
                     </a>
                     <img
                       className="w-40 h-10 object-contain object-right"
-                      src={`/img/datasources/${sanitizeString(
-                        item.thumbnail.split("/").pop()?.split(".")[0] || ""
-                      )}.png`}
-                      alt={item.name}
+                      src={createSafeImageSrc(item.thumbnail)}
+                      alt={sanitizeText(item.name)}
                     />
                   </CardTitle>
                 </CardHeader>
@@ -324,7 +351,7 @@ export default function DataSourcesOthersPage(): ReactElement {
             ))}
         </div>
       </div>
-      <LastUpdated date="21-05-2025" />
+      <LastUpdated date="09-06-2025" />
     </div>
   );
 }
