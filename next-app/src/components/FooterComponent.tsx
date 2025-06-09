@@ -54,7 +54,11 @@ export default function Footer(): ReactElement {
   const linksCol4: { [id: string]: ILink } = {
     l10: { text: "Contact", classes: LINK_CLASSES, link: "/contact" },
     l11: { text: "Privacy policy", classes: LINK_CLASSES, link: "/privacy" },
-    l12: { text: "License", classes: LINK_CLASSES, link: "/license" },
+    l12: {
+      text: "Citation and license",
+      classes: LINK_CLASSES,
+      link: "/citation-and-license",
+    },
   };
 
   return (
