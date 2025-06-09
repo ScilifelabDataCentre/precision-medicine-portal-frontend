@@ -159,19 +159,28 @@ export default function CitationAndLicensePage(): ReactElement {
         </ul>
         <Title level={4}>Notices</Title>
         <p>
-          You do not need to comply with the license for material in the public
-          domain or when your use is covered by an applicable exception or
-          limitation.
+          You do not have to comply with the license for elements of the
+          material in the public domain or where your use is permitted by an
+          applicable exception or limitation.
         </p>
         <p>
-          No warranties are provided. The license may not cover all permissions
-          for your intended use (e.g., publicity, privacy, or moral rights may
-          still apply).
+          No warranties are given. The license may not give you all of the
+          permissions necessary for your intended use. For example, other rights
+          such as publicity, privacy, or moral rights may limit how you use the
+          material.
         </p>
         <Title level={3}>Software</Title>
         <p>
-          Unless otherwise noted, all software in this repository is licensed
-          under the{" "}
+          Except where otherwise noted, any software in this repository are made
+          available under the{" "}
+          <a
+            href="https://opensource.org/"
+            target="_blank"
+            className="text-primary underline"
+          >
+            OSI
+          </a>
+          -approved{" "}
           <a
             href="https://opensource.org/licenses/mit-license.html"
             target="_blank"
@@ -179,24 +188,31 @@ export default function CitationAndLicensePage(): ReactElement {
           >
             MIT License
           </a>
-          .
+          .<br />
+          For the rest of the code, © 2025 SciLifeLab Data Centre.
         </p>
-        <Title level={4}>MIT License Summary</Title>
+        <Title level={4}>MIT License</Title>
         <p>
-          Permission is granted, free of charge, to any person obtaining a copy
-          of the software and associated documentation to use, copy, modify,
-          merge, publish, distribute, sublicense, and/or sell copies, and to
-          permit others to do so.
+          Permission is hereby granted, free of charge, to any person obtaining
+          a copy of this software and associated documentation files (the
+          "Software"), to deal in the Software without restriction, including
+          without limitation the rights to use, copy, modify, merge, publish,
+          distribute, sublicense, and/or sell copies of the Software, and to
+          permit persons to whom the Software is furnished to do so, subject to
+          the following conditions:
         </p>
         <p>
-          This license must appear in all copies or substantial portions of the
-          software.
+          The above copyright notice and this permission notice shall be
+          included in all copies or substantial portions of the Software.
         </p>
-        <p>The software is provided "as is", without warranty of any kind.</p>
-        <p>© 2025 SciLifeLab Data Centre</p>
         <p>
-          For further citation or license inquiries, please contact the
-          SciLifeLab Data Centre.
+          THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+          EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+          MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+          IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+          CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+          TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+          SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
         </p>
         <LastUpdated date="09-06-2025" />
       </div>
