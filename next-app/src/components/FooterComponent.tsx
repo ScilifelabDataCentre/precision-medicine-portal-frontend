@@ -7,6 +7,7 @@ import Image from "next/image";
 import { LINK_CLASSES } from "@/constants";
 import { Linkedin } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
+import { useState, useEffect } from "react";
 
 export default function Footer(): ReactElement {
   const linksCol1: { [id: string]: ILink } = {
@@ -60,6 +61,19 @@ export default function Footer(): ReactElement {
       link: "/citation-and-license",
     },
   };
+
+  // get frontend and backend image versions
+  const [frontendImage, setFrontendImage] = useState<string | null>(null);
+  const [backendImage, setBackendImage] = useState<string | null>(null);
+
+  useEffect(() => {
+    fetch("/meta/version")
+      .then((res) => res.json())
+      .then((data) => {
+        setFrontendImage(data.frontendImage);
+        setBackendImage(data.backendImage);
+      });
+  }, []);
 
   return (
     <div className="bg-primary text-white">
@@ -231,9 +245,27 @@ export default function Footer(): ReactElement {
               rel="noopener noreferrer"
               className="font-medium text-white/80 hover:text-white underline underline-offset-4 transition-colors"
             >
-              Github
+              Github{" "}
             </a>
-            .
+            (Frontend version v
+            <a
+              href={"https://" + frontendImage || "/"}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-medium text-white/80 hover:text-white underline underline-offset-4 transition-colors"
+            >
+              {frontendImage?.split(":")[1] || "n/a"}
+            </a>{" "}
+            and backend version v
+            <a
+              href={"https://" + backendImage || "/"}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-medium text-white/80 hover:text-white underline underline-offset-4 transition-colors"
+            >
+              {backendImage?.split(":")[1] || "n/a"}
+            </a>
+            ).
           </p>
         </div>
       </div>
