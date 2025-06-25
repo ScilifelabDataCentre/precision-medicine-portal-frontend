@@ -9,7 +9,6 @@ import { Button } from "@/components/ui/button";
 // Image paths
 const dataSourcesImg = "/HomePageImages/dataSourcesIndexImage.png";
 const kiarvaImg = "/HomePageImages/kiarvaIndexImage.png";
-const ragnarImg = "/HomePageImages/ragnarIndexImage.png";
 
 export default function HomePage(): ReactElement {
   return (
@@ -33,29 +32,17 @@ export default function HomePage(): ReactElement {
                       Data sources
                     </CardTitle>
                     <div className="flex flex-col space-y-3 h-36">
-                      <Button
-                        asChild
-                        variant="secondary"
-                        className="transition-all duration-300 hover:bg-primary hover:text-primary-foreground"
-                      >
+                      <Button asChild variant="secondary">
                         <Link href="/data-sources/quality-registries">
                           Quality registries
                         </Link>
                       </Button>
-                      <Button
-                        asChild
-                        variant="secondary"
-                        className="transition-all duration-300 hover:bg-primary hover:text-primary-foreground"
-                      >
+                      <Button asChild variant="secondary">
                         <Link href="/data-sources/swedish-research-projects">
                           Swedish research projects
                         </Link>
                       </Button>
-                      <Button
-                        asChild
-                        variant="secondary"
-                        className="transition-all duration-300 hover:bg-primary hover:text-primary-foreground"
-                      >
+                      <Button asChild variant="secondary">
                         <Link href="/data-sources/others">
                           Other data sources
                         </Link>
@@ -95,40 +82,6 @@ export default function HomePage(): ReactElement {
               </CardContent>
             </Card>
           </Link>
-
-          {/* RAGnar Card. Removed until more development is done.
-          <div className="block group">
-            <Card className="overflow-hidden transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-xl">
-              <CardContent className="p-0">
-                <div className="relative h-[32rem]">
-                  <Image
-                    src={ragnarImg}
-                    alt="RAGnar"
-                    fill
-                    className="object-contain object-top opacity-65 transition-opacity duration-300 group-hover:opacity-80"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent">
-                    <div className="absolute inset-x-0 bottom-0 p-6 h-full flex flex-col justify-end">
-                      <CardTitle className="text-white mb-2 text-2xl group-hover:text-3xl transition-all duration-300">
-                        RAGnar{" "}
-                        <span className="px-2 py-0.5 text-sm text-black rounded-full bg-accent">
-                          Beta coming soon
-                        </span>
-                      </CardTitle>
-                      <p className="text-white h-36">
-                        RAGnar is a retrieval-augmented generation AI tool built
-                        to answer questions in the precision medicine field.
-                        Initially, it uses PubMed papers as a source of
-                        knowledge and references any paper it bases its answers
-                        on.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-          */}
         </div>
       </div>
     </div>

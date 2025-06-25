@@ -66,7 +66,6 @@ export default function ContactPage(): ReactElement {
           </Link>{" "}
           to learn how we process your personal data.
         </p>
-        {/* <ContactFormComponent /> */}
       </div>
     </div>
   );
