@@ -4,7 +4,6 @@ import type { ReactElement } from "react";
 import type { ILink } from "@/interfaces/types";
 import Link from "next/link";
 import Image from "next/image";
-import { LINK_CLASSES } from "@/constants";
 import { Linkedin } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import { useState, useEffect } from "react";
@@ -13,51 +12,44 @@ export default function Footer(): ReactElement {
   const linksCol1: { [id: string]: ILink } = {
     l1: {
       text: "Access clinical data",
-      classes: LINK_CLASSES,
       link: "/data-sources",
     },
     l2: {
       text: "Quality registries",
-      classes: LINK_CLASSES,
       link: "/data-sources/quality-registries",
     },
     l3: {
       text: "Swedish research projects",
-      classes: LINK_CLASSES,
       link: "/data-sources/swedish-research-projects",
     },
     l4: {
       text: "Other data sources",
-      classes: LINK_CLASSES,
       link: "/data-sources/others",
     },
   };
 
   const linksCol2: { [id: string]: ILink } = {
-    l5: { text: "KIARVA", classes: LINK_CLASSES, link: "/kiarva" },
+    l5: { text: "KIARVA", link: "/kiarva" },
   };
 
   const linksCol3: { [id: string]: ILink } = {
     l6: {
       text: "DSN-PMD projects",
-      classes: LINK_CLASSES,
       link: "/about/dsnpmd-projects",
     },
-    l7: { text: "Team", classes: LINK_CLASSES, link: "/about/team" },
+    l7: { text: "Team", link: "/about/team" },
     l8: {
       text: "FAQ",
-      classes: LINK_CLASSES,
       link: "/about/faq",
     },
-    l9: { text: "Partners", classes: LINK_CLASSES, link: "/about/partners" },
+    l9: { text: "Partners", link: "/about/partners" },
   };
 
   const linksCol4: { [id: string]: ILink } = {
-    l10: { text: "Contact", classes: LINK_CLASSES, link: "/contact" },
-    l11: { text: "Privacy policy", classes: LINK_CLASSES, link: "/privacy" },
+    l10: { text: "Contact", link: "/contact" },
+    l11: { text: "Privacy policy", link: "/privacy" },
     l12: {
       text: "Citation and license",
-      classes: LINK_CLASSES,
       link: "/citation-and-license",
     },
   };
