@@ -10,20 +10,21 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          "bg-primary text-primary-foreground hover:bg-secondary hover:text-secondary-foreground transition-all duration-300",
+          "bg-primary text-primary-foreground hover:bg-primary/80 hover:text-primary-foreground",
         destructive:
-          "bg-destructive text-destructive-foreground hover:bg-destructive/90 transition-all duration-300",
+          "bg-destructive text-destructive-foreground hover:bg-destructive/90",
         outline:
-          "border border-input bg-background hover:bg-accent hover:text-accent-foreground transition-all duration-300",
+          "border border-input bg-background hover:bg-accent hover:text-accent-foreground",
         secondary:
-          "bg-secondary text-secondary-foreground hover:bg-primary hover:text-primary-foreground transition-all duration-300",
+          "bg-secondary text-secondary-foreground hover:bg-secondary/80 ",
         ghost: "hover:bg-accent hover:text-accent-foreground",
-        link: "text-primary underline-offset-4 hover:underline transition-all duration-300",
+        link: "text-primary underline-offset-4 hover:underline",
       },
       size: {
-        default: "h-10 px-4 py-2",
-        sm: "h-9 rounded-md px-3",
-        lg: "h-11 rounded-md px-8",
+        default: "h-10 px-4 py-2 text-base font-medium",
+        sm: "h-9 rounded-md px-3 text-sm font-normal",
+        lg: "h-11 rounded-md px-8 text-lg font-bold",
+        xl: "h-14 w-64 lg:w-96 text-lg font-extrabold  shadow-inner backdrop-blur-2xl ease-in-out hover:scale-105 hover:shadow-lg",
         icon: "h-10 w-10",
       },
     },
