@@ -24,7 +24,7 @@ const buttonVariants = cva(
         default: "h-10 px-4 py-2 text-base font-medium",
         sm: "h-9 rounded-md px-3 text-sm font-normal",
         lg: "h-11 rounded-md px-8 text-lg font-bold",
-        xl: "h-14 w-64 lg:w-96 text-lg font-extrabold  shadow-inner backdrop-blur-2xl ease-in-out hover:scale-105 hover:shadow-lg",
+        xl: "h-14 w-64 lg:w-96 text-lg font-extrabold",
         icon: "h-10 w-10",
       },
     },
