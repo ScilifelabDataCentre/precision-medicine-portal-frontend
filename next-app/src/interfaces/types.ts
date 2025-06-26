@@ -1,6 +1,5 @@
 export interface ILink {
   text: string;
-  classes: string;
   link: string;
 }
 

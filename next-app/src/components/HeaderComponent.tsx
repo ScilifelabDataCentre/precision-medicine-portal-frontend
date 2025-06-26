@@ -16,6 +16,7 @@ import {
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 
 const components: { title: string; href: string; description: string }[] = [
   {
@@ -134,14 +135,17 @@ function DesktopNav() {
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <Link href="/kiarva" legacyBehavior passHref>
+          <Link href="/kiarva" passHref>
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
               KIARVA dashboard
+              <Badge variant="accent" className="ml-1">
+                Demo
+              </Badge>
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <Link href="/contact" legacyBehavior passHref>
+          <Link href="/contact" passHref>
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
               Contact
             </NavigationMenuLink>
@@ -203,6 +207,9 @@ function MobileNav() {
           </Link>
           <Link href="/kiarva" className="">
             KIARVA dashboard
+            <Badge variant="accent" className="ml-1">
+              Demo
+            </Badge>
           </Link>
           <Link href="/contact" className="">
             Contact

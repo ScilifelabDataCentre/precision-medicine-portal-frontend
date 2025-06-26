@@ -1,7 +1,6 @@
 "use client";
 
 import { ReactElement } from "react";
-// import { BUTTON_STYLE } from "@/constants";
 import Link from "next/link";
 import React from "react";
 // import { deleteCookie, setCookie } from "cookies-next";
@@ -117,7 +116,7 @@ export default function PrivacyPage(): ReactElement {
               <span>{optInText[0]}</span>
               <button
                 onClick={handleOptOut}
-                className={`${BUTTON_STYLE} mt-2 sm:mt-0 sm:ml-4`}
+                className={`mt-2 sm:mt-0 sm:ml-4`}
               >
                 {optInText[1]}
               </button>
