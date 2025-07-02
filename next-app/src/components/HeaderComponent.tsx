@@ -135,21 +135,21 @@ function DesktopNav() {
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <Link href="/kiarva" passHref>
-            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+          <NavigationMenuLink asChild>
+            <Link href="/kiarva" className={navigationMenuTriggerStyle()}>
               KIARVA dashboard
               <Badge variant="accent" className="ml-1">
                 Demo
               </Badge>
-            </NavigationMenuLink>
-          </Link>
+            </Link>
+          </NavigationMenuLink>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <Link href="/contact" passHref>
-            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+          <NavigationMenuLink asChild>
+            <Link href="/contact" className={navigationMenuTriggerStyle()}>
               Contact
-            </NavigationMenuLink>
-          </Link>
+            </Link>
+          </NavigationMenuLink>
         </NavigationMenuItem>
         <NavigationMenuItem>
           <NavigationMenuTrigger>About us</NavigationMenuTrigger>
@@ -205,7 +205,7 @@ function MobileNav() {
           <Link href="/data-sources/others" className="text-sm pl-4">
             Other data sources
           </Link>
-          <Link href="/kiarva" className="">
+          <Link href="/kiarva" className="flex items-center">
             KIARVA dashboard
             <Badge variant="accent" className="ml-1">
               Demo
