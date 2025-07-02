@@ -13,7 +13,12 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import {
+  Sheet,
+  SheetContent,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 import { Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -186,6 +191,7 @@ function MobileNav() {
         </Button>
       </SheetTrigger>
       <SheetContent side="right">
+        <SheetTitle className="sr-only">Sidebar</SheetTitle>
         <nav className="flex flex-col gap-4">
           <Link href="/data-sources" className="font-semibold">
             Access clinical data
