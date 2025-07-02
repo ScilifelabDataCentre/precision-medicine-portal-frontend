@@ -54,16 +54,17 @@ export default function Footer(): ReactElement {
     },
   };
 
-  // get frontend and backend image versions
+  // get frontend and backend image versions; uncomment backend when backend is ready
   const [frontendImage, setFrontendImage] = useState<string | null>(null);
-  const [backendImage, setBackendImage] = useState<string | null>(null);
+  // const [backendImage, setBackendImage] = useState<string | null>(null);
 
+  // uncomment backend when backend is ready
   useEffect(() => {
     fetch("/meta/version")
       .then((res) => res.json())
       .then((data) => {
         setFrontendImage(data.frontendImage);
-        setBackendImage(data.backendImage);
+        // setBackendImage(data.backendImage);
       });
   }, []);
 
@@ -239,7 +240,7 @@ export default function Footer(): ReactElement {
             >
               Github{" "}
             </a>
-            (Frontend version v
+            (Version v
             <a
               href={"https://" + frontendImage || "/"}
               target="_blank"
@@ -247,7 +248,8 @@ export default function Footer(): ReactElement {
               className="font-medium text-white/80 hover:text-white underline underline-offset-4 transition-colors"
             >
               {frontendImage?.split(":")[1] || "n/a"}
-            </a>{" "}
+            </a>
+            {/*{" "}
             and backend version v
             <a
               href={"https://" + backendImage || "/"}
@@ -256,7 +258,7 @@ export default function Footer(): ReactElement {
               className="font-medium text-white/80 hover:text-white underline underline-offset-4 transition-colors"
             >
               {backendImage?.split(":")[1] || "n/a"}
-            </a>
+            </a>*/}
             ).
           </p>
         </div>
