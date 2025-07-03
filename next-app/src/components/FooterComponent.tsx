@@ -8,6 +8,8 @@ import { Linkedin } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import { useState, useEffect } from "react";
 
+import DOMPurify from "isomorphic-dompurify";
+
 export default function Footer(): ReactElement {
   const linksCol1: { [id: string]: ILink } = {
     l1: {
@@ -242,7 +244,7 @@ export default function Footer(): ReactElement {
             </a>
             (Version v
             <a
-              href={"https://" + frontendImage || "/"}
+              href={DOMPurify.sanitize("https://" + frontendImage || "/")}
               target="_blank"
               rel="noopener noreferrer"
               className="font-medium text-white/80 hover:text-white underline underline-offset-4 transition-colors"
@@ -252,7 +254,7 @@ export default function Footer(): ReactElement {
             {/*{" "}
             and backend version v
             <a
-              href={"https://" + backendImage || "/"}
+              href={DOMPurify.sanitize("https://" + backendImage || "/")}
               target="_blank"
               rel="noopener noreferrer"
               className="font-medium text-white/80 hover:text-white underline underline-offset-4 transition-colors"

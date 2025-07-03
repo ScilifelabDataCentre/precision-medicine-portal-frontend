@@ -13,7 +13,12 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import {
+  Sheet,
+  SheetContent,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 import { Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -135,21 +140,21 @@ function DesktopNav() {
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <Link href="/kiarva" passHref>
-            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+          <NavigationMenuLink asChild>
+            <Link href="/kiarva" className={navigationMenuTriggerStyle()}>
               KIARVA dashboard
               <Badge variant="accent" className="ml-1">
                 Demo
               </Badge>
-            </NavigationMenuLink>
-          </Link>
+            </Link>
+          </NavigationMenuLink>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <Link href="/contact" passHref>
-            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+          <NavigationMenuLink asChild>
+            <Link href="/contact" className={navigationMenuTriggerStyle()}>
               Contact
-            </NavigationMenuLink>
-          </Link>
+            </Link>
+          </NavigationMenuLink>
         </NavigationMenuItem>
         <NavigationMenuItem>
           <NavigationMenuTrigger>About us</NavigationMenuTrigger>
@@ -186,6 +191,7 @@ function MobileNav() {
         </Button>
       </SheetTrigger>
       <SheetContent side="right">
+        <SheetTitle className="sr-only">Sidebar</SheetTitle>
         <nav className="flex flex-col gap-4">
           <Link href="/data-sources" className="font-semibold">
             Access clinical data
@@ -205,7 +211,7 @@ function MobileNav() {
           <Link href="/data-sources/others" className="text-sm pl-4">
             Other data sources
           </Link>
-          <Link href="/kiarva" className="">
+          <Link href="/kiarva" className="flex items-center">
             KIARVA dashboard
             <Badge variant="accent" className="ml-1">
               Demo
