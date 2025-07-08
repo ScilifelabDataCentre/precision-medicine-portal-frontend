@@ -166,11 +166,15 @@ export default function DataSourcesOthersPage(): ReactElement {
     );
   }
 
+  // Enhanced URL validation to prevent DOM XSS and protocol-based attacks
   function sanitizeURL(url: string) {
+    // Enhanced URL validation with additional safety checks
+    if (!url || typeof url !== "string" || url.trim().length === 0) {
+      return "#";
+    }
+
     // Use validator.js for URL validation - much more comprehensive
     if (
-      !url ||
-      typeof url !== "string" ||
       !validator.isURL(url, {
         protocols: ["http", "https"],
         require_protocol: true,
@@ -180,32 +184,71 @@ export default function DataSourcesOthersPage(): ReactElement {
       return "#";
     }
 
+    // Additional protocol check to prevent javascript: and other dangerous protocols
+    try {
+      const urlObj = new URL(url);
+      if (urlObj.protocol !== "https:" && urlObj.protocol !== "http:") {
+        return "#";
+      }
+    } catch {
+      return "#";
+    }
+
     // DOMPurify will handle any remaining XSS attempts
     return DOMPurify.sanitize(url, { ALLOWED_TAGS: [], ALLOWED_ATTR: [] });
   }
 
-  // Simplified and safer image src creation
+  // Enhanced and safer image src creation
   function createSafeImageSrc(thumbnail: string) {
-    if (!thumbnail || typeof thumbnail !== "string") {
+    if (
+      !thumbnail ||
+      typeof thumbnail !== "string" ||
+      thumbnail.trim().length === 0
+    ) {
       return "/img/datasources/na-sign-icon.png";
     }
 
     // Extract and sanitize filename
     const filename =
       thumbnail.split("/").pop()?.split(".")[0] || "na-sign-icon";
-    // Use validator to ensure it's alphanumeric with allowed characters
+
+    // Enhanced validation to ensure it's alphanumeric with allowed characters
     const sanitizedFilename = filename.replace(/[^a-zA-Z0-9_-]/g, "");
 
-    if (!sanitizedFilename || sanitizedFilename.length > 50) {
+    if (
+      !sanitizedFilename ||
+      sanitizedFilename.length > 50 ||
+      sanitizedFilename.length < 1
+    ) {
+      return "/img/datasources/na-sign-icon.png";
+    }
+
+    // Additional check to prevent directory traversal attempts
+    if (
+      sanitizedFilename.includes("..") ||
+      sanitizedFilename.includes("/") ||
+      sanitizedFilename.includes("\\")
+    ) {
       return "/img/datasources/na-sign-icon.png";
     }
 
     return `/img/datasources/${sanitizedFilename}.png`;
   }
 
-  // Use DOMPurify for text sanitization
+  // Enhanced text sanitization with additional safety checks
   function sanitizeText(text: string) {
-    if (!text || typeof text !== "string") return "";
+    if (!text || typeof text !== "string" || text.trim().length === 0) {
+      return "";
+    }
+
+    // Additional length check to prevent extremely long text
+    if (text.length > 1000) {
+      return DOMPurify.sanitize(text.substring(0, 1000), {
+        ALLOWED_TAGS: [],
+        ALLOWED_ATTR: [],
+      });
+    }
+
     return DOMPurify.sanitize(text, { ALLOWED_TAGS: [], ALLOWED_ATTR: [] });
   }
 
