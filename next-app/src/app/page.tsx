@@ -26,6 +26,7 @@ export default function HomePage(): ReactElement {
                   alt="Data Sources"
                   fill
                   priority
+                  sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover opacity-65 transition-opacity duration-300 group-hover:opacity-80"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent">
@@ -66,6 +67,7 @@ export default function HomePage(): ReactElement {
                     alt="KIARVA"
                     fill
                     priority
+                    sizes="(max-width: 768px) 100vw, 50vw"
                     className="object-cover opacity-65 transition-opacity duration-300 group-hover:opacity-80"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent">
