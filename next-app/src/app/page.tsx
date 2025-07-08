@@ -25,6 +25,7 @@ export default function HomePage(): ReactElement {
                   src={dataSourcesImg}
                   alt="Data Sources"
                   fill
+                  priority
                   className="object-cover opacity-65 transition-opacity duration-300 group-hover:opacity-80"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent">
@@ -64,6 +65,7 @@ export default function HomePage(): ReactElement {
                     src={kiarvaImg}
                     alt="KIARVA"
                     fill
+                    priority
                     className="object-cover opacity-65 transition-opacity duration-300 group-hover:opacity-80"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent">
