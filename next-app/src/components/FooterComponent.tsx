@@ -8,6 +8,32 @@ import { Linkedin } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import { useState, useEffect } from "react";
 
+// URL validation function to prevent DOM XSS
+// This ensures only valid HTTP/HTTPS URLs are accepted
+const isValidUrl = (url: string): boolean => {
+  try {
+    const urlObj = new URL(url);
+    // Only allow https and http protocols to prevent javascript: and other dangerous protocols
+    return urlObj.protocol === "https:" || urlObj.protocol === "http:";
+  } catch {
+    return false;
+  }
+};
+
+// Safe URL construction function
+const createSafeUrl = (baseUrl: string, path?: string | null): string => {
+  if (!path) return baseUrl;
+
+  // If path already contains protocol, validate it
+  if (path.startsWith("http://") || path.startsWith("https://")) {
+    return isValidUrl(path) ? path : baseUrl;
+  }
+
+  // Otherwise, construct URL safely
+  const fullUrl = `https://${path}`;
+  return isValidUrl(fullUrl) ? fullUrl : baseUrl;
+};
+
 export default function Footer(): ReactElement {
   const linksCol1: { [id: string]: ILink } = {
     l1: {
@@ -68,7 +94,7 @@ export default function Footer(): ReactElement {
       });
   }, []);
 
-  const frontendImageHref = "https://" + frontendImage || "/";
+  const frontendImageHref = createSafeUrl("https://", frontendImage);
 
   return (
     <div className="bg-primary text-white">
@@ -243,18 +269,24 @@ export default function Footer(): ReactElement {
               Github{" "}
             </a>
             (Version v
-            <a
-              href={frontendImageHref}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-medium text-white/80 hover:text-white underline underline-offset-4 transition-colors"
-            >
-              {frontendImage?.split(":")[1] || "n/a"}
-            </a>
+            {frontendImageHref !== "https://" ? (
+              <a
+                href={frontendImageHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-medium text-white/80 hover:text-white underline underline-offset-4 transition-colors"
+              >
+                {frontendImage?.split(":")[1] || "n/a"}
+              </a>
+            ) : (
+              <span className="font-medium text-white/80">
+                {frontendImage?.split(":")[1] || "n/a"}
+              </span>
+            )}
             {/*{" "}
             and backend version v
             <a
-              href={DOMPurify.sanitize("https://" + backendImage || "/")}
+              href={createSafeUrl("https://", backendImage)}
               target="_blank"
               rel="noopener noreferrer"
               className="font-medium text-white/80 hover:text-white underline underline-offset-4 transition-colors"
