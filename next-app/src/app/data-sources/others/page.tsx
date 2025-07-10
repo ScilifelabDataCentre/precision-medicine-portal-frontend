@@ -16,8 +16,11 @@ import {
   BreadcrumbList,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
-import DOMPurify from "dompurify";
-import validator from "validator";
+import {
+  sanitizeURL,
+  createSafeImageSrc,
+  sanitizeText,
+} from "@/lib/security-utils";
 
 interface IDataSourceFilters {
   dataTypes: string[];
@@ -164,49 +167,6 @@ export default function DataSourcesOthersPage(): ReactElement {
         )
       )
     );
-  }
-
-  function sanitizeURL(url: string) {
-    // Use validator.js for URL validation - much more comprehensive
-    if (
-      !url ||
-      typeof url !== "string" ||
-      !validator.isURL(url, {
-        protocols: ["http", "https"],
-        require_protocol: true,
-        allow_underscores: true,
-      })
-    ) {
-      return "#";
-    }
-
-    // DOMPurify will handle any remaining XSS attempts
-    return DOMPurify.sanitize(url, { ALLOWED_TAGS: [], ALLOWED_ATTR: [] });
-  }
-
-  // Simplified and safer image src creation
-  function createSafeImageSrc(thumbnail: string) {
-    if (!thumbnail || typeof thumbnail !== "string") {
-      return "/img/datasources/na-sign-icon.png";
-    }
-
-    // Extract and sanitize filename
-    const filename =
-      thumbnail.split("/").pop()?.split(".")[0] || "na-sign-icon";
-    // Use validator to ensure it's alphanumeric with allowed characters
-    const sanitizedFilename = filename.replace(/[^a-zA-Z0-9_-]/g, "");
-
-    if (!sanitizedFilename || sanitizedFilename.length > 50) {
-      return "/img/datasources/na-sign-icon.png";
-    }
-
-    return `/img/datasources/${sanitizedFilename}.png`;
-  }
-
-  // Use DOMPurify for text sanitization
-  function sanitizeText(text: string) {
-    if (!text || typeof text !== "string") return "";
-    return DOMPurify.sanitize(text, { ALLOWED_TAGS: [], ALLOWED_ATTR: [] });
   }
 
   useEffect(() => {
