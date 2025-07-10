@@ -8,31 +8,7 @@ import { Linkedin } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import { useState, useEffect } from "react";
 
-// URL validation function to prevent DOM XSS
-// This ensures only valid HTTP/HTTPS URLs are accepted
-const isValidUrl = (url: string): boolean => {
-  try {
-    const urlObj = new URL(url);
-    // Only allow https and http protocols to prevent javascript: and other dangerous protocols
-    return urlObj.protocol === "https:" || urlObj.protocol === "http:";
-  } catch {
-    return false;
-  }
-};
-
-// Safe URL construction function
-const createSafeUrl = (baseUrl: string, path?: string | null): string => {
-  if (!path) return baseUrl;
-
-  // If path already contains protocol, validate it
-  if (path.startsWith("http://") || path.startsWith("https://")) {
-    return isValidUrl(path) ? path : baseUrl;
-  }
-
-  // Otherwise, construct URL safely
-  const fullUrl = `https://${path}`;
-  return isValidUrl(fullUrl) ? fullUrl : baseUrl;
-};
+import { createSafeUrl } from "@/lib/security-utils";
 
 export default function Footer(): ReactElement {
   const linksCol1: { [id: string]: ILink } = {
