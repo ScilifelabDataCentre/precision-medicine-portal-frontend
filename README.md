@@ -1,18 +1,22 @@
-# precision-medicine-portal-frontend
+# Precision Medicine Portal (Frontend)
 
-React project for the frontend of the Precision Medicine Portal by DC Data Science Node
+The Precision Medicine Portal is a national resource developed and maintained by SciLifeLab Data Centre. It is intended to serve as a resource for professionals in the field of precision medicine, and content will be added continuously.
 
-- [Introduction](#introduction)
+The portal supports researchers in precision medicine by providing information on available datasets, including national quality registries, research cohorts, and other structured data relevant to clinical and translational research. Moreover, it provides links to customised dashboards and resources for navigating data management challenges. Researchers can also find guidance on handling sensitive data.
+
+## Table of Contents
+
+- [Background](#background)
 - [Development](#development)
   - [Step 1: Clone the repository](#step-1-clone-the-repository)
   - [Step 2: Create a branch and develop](#step-2-create-a-branch-and-develop)
   - [Step 3: Make a pull request](#step-3-make-a-pull-request)
 
-## Introduction
+## Background
 
 The [Data Driven Life Science](https://www.scilifelab.se/data-driven/) (DDLS) initiative has appointed four [Data Science Nodes](https://www.scilifelab.se/news/ddls-data-science-nodes-to-be-launched/) (DSNs) to serve as database, data and bioinformatics support for data driven research in life science. This repository contains the code for the frontend of a Precision Medicine Portal by the Precision Medicine DSN, which is hosted at [Karolinska Institutet](https://ki.se/en) and [SciLifeLab](https://www.scilifelab.se).
 
-The aim of this portal is to provide an overview of available data sources as well as customized and interactive dashboards related to precision medicine. Moreover, the projects and background of the DSN will be presented on the portal in the future.
+The portal is one of our main projects. Other projects the team has been or is involed
 
 ### Step 1: Clone the Repository
 
