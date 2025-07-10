@@ -8,6 +8,8 @@ import { Linkedin } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import { useState, useEffect } from "react";
 
+import { createSafeUrl } from "@/lib/security-utils";
+
 export default function Footer(): ReactElement {
   const linksCol1: { [id: string]: ILink } = {
     l1: {
@@ -67,6 +69,8 @@ export default function Footer(): ReactElement {
         // setBackendImage(data.backendImage);
       });
   }, []);
+
+  const frontendImageHref = createSafeUrl("https://", frontendImage);
 
   return (
     <div className="bg-primary text-white">
@@ -241,18 +245,24 @@ export default function Footer(): ReactElement {
               Github{" "}
             </a>
             (Version v
-            <a
-              href={"https://" + frontendImage || "/"}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-medium text-white/80 hover:text-white underline underline-offset-4 transition-colors"
-            >
-              {frontendImage?.split(":")[1] || "n/a"}
-            </a>
+            {frontendImageHref !== "https://" ? (
+              <a
+                href={frontendImageHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-medium text-white/80 hover:text-white underline underline-offset-4 transition-colors"
+              >
+                {frontendImage?.split(":")[1] || "n/a"}
+              </a>
+            ) : (
+              <span className="font-medium text-white/80">
+                {frontendImage?.split(":")[1] || "n/a"}
+              </span>
+            )}
             {/*{" "}
             and backend version v
             <a
-              href={"https://" + backendImage || "/"}
+              href={createSafeUrl("https://", backendImage)}
               target="_blank"
               rel="noopener noreferrer"
               className="font-medium text-white/80 hover:text-white underline underline-offset-4 transition-colors"
