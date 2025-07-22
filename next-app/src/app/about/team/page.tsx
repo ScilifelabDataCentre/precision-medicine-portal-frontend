@@ -65,7 +65,13 @@ export default function AboutTeamPage(): ReactElement {
         title="Coordinator"
         bgColor="bg-muted"
       />
-      <LastUpdated date="05-05-2025" />
+      <ProfileComponent
+        imageUrl="/TeamPics/SteTeamPic.jpg"
+        name="Stefano Rapisarda"
+        title="Database Coordinator"
+        bgColor="bg-neutral"
+      />
+      <LastUpdated date="22-07-2025" />
     </div>
   );
 }
