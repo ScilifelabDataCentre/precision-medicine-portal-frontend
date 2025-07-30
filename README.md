@@ -104,59 +104,7 @@ next-app/
 
 ### Running a local copy of the portal and contributing to the codebase
 
-#### Step 1: Clone the repository
-
-##### Git setup
-
-Clone the repository to your machine:
-
-```bash
-git clone https://github.com/ScilifelabDataCentre/precision-medicine-portal-frontend.git
-```
-
-Fetch changes at any time from this remote:
-
-```bash
-git pull upstream dev
-```
-
-The project is set up using npm. Navigate to the `next-app` directory and use npm to run the available scripts:
-
-##### Available Scripts
-
-Note that you need to be in the "next-app" directory. In this directory, you can run:
-
-##### `npm run dev`
-
-Runs the app in development mode with hot reload.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-##### `npm run build`
-
-Builds the app for production using Next.js optimization.\
-The build is minified and optimized for the best performance.\
-This also checks the linting.
-
-##### `npm start`
-
-Starts the production server after building the app.
-
-##### `npm run lint`
-
-Runs ESLint to check code quality and consistency.
-
-##### `npm test`
-
-Runs Cypress end-to-end tests for the application.
-
-##### Docker
-
-You can use the provided Dockerfile to build and run a container.
-
-#### Step 2: Fork and create a branch
+#### Step 1: Fork and clone the repository
 
 **Important**: You must work through a fork of the repository. Do not commit directly to the main repository.
 
@@ -174,6 +122,54 @@ You can use the provided Dockerfile to build and run a container.
    ```
 
 Please note that we require all commits to be verified, so you must sign your commits. For information on how to set this up, see the GitHub documentation [here](https://docs.github.com/en/authentication/managing-commit-signature-verification/signing-commits).
+
+Fetch changes at any time from this remote:
+
+```bash
+git pull upstream dev
+```
+
+#### Step 2: Set up your development environment
+
+The project is set up using npm. Navigate to the `next-app` directory and use npm to run the available scripts:
+
+##### Available Scripts
+
+###### `npm install`
+
+Installs the dependencies for the project.
+
+###### `npm run dev`
+
+Runs the app in development mode with hot reload.\
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+The page will reload if you make edits.\
+You will also see any lint errors in the console.
+
+###### `npm run build`
+
+Builds the app for production using Next.js optimization.\
+The build is minified and optimized for the best performance.\
+This also checks the linting.
+
+###### `npm start`
+
+Starts the production server after building the app.
+
+###### `npm run lint`
+
+Runs ESLint to check code quality and consistency.
+
+###### `npm test`
+
+Runs Cypress end-to-end tests for the application.
+
+##### Docker
+
+You can use the provided Dockerfile to build and run a container.
+
+#### Step 3: Create a branch and develop
 
 To create a new branch and start developing in it:
 
@@ -205,7 +201,7 @@ git push origin my_branch
 
 The code is now in your branch on your fork, but it does not get merged into the main repository without being reviewed as a pull request.
 
-#### Step 3: Make a pull request
+#### Step 4: Make a pull request
 
 Once you're finished with your edits and they are committed and pushed to your branch, it's time to open a pull request from your fork to the main repository.
 
