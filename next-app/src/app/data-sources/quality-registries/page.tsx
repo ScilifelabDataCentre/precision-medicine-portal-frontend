@@ -6,6 +6,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import Title from "@/components/common/title";
 import { LastUpdated } from "@/components/common/last-updated";
+import { Safe } from "@/components/common/SafeContent";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -536,13 +537,12 @@ export default function QualityRegistryPage() {
               <Card key={index}>
                 <CardHeader className="bg-muted">
                   <CardTitle className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-                    <a
-                      href={item.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                    <Safe.Url
+                      url={item.url}
                       className="text-xl text-primary hover:underline"
-                      dangerouslySetInnerHTML={{
-                        __html:
+                    >
+                      <Safe.HTML
+                        html={
                           searchBar.length > 0
                             ? highlightSearchTerms(
                                 item.name,
@@ -553,27 +553,32 @@ export default function QualityRegistryPage() {
                                     .filter((term) => term.length > 0)
                                 )
                               )
-                            : item.name,
-                      }}
-                    />
+                            : item.name
+                        }
+                        allowedTags={["mark"]}
+                        allowedAttr={["class"]}
+                      />
+                    </Safe.Url>
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="pt-4">
-                  <p
-                    dangerouslySetInnerHTML={{
-                      __html:
-                        searchBar.length > 0
-                          ? highlightSearchTerms(
-                              item.Information || "Information not available.",
-                              expandSearchTerms(
-                                searchBar
-                                  .toLowerCase()
-                                  .split(/\s+/)
-                                  .filter((term) => term.length > 0)
-                              )
+                  <Safe.HTML
+                    html={
+                      searchBar.length > 0
+                        ? highlightSearchTerms(
+                            item.Information || "Information not available.",
+                            expandSearchTerms(
+                              searchBar
+                                .toLowerCase()
+                                .split(/\s+/)
+                                .filter((term) => term.length > 0)
                             )
-                          : item.Information || "Information not available.",
-                    }}
+                          )
+                        : item.Information || "Information not available."
+                    }
+                    allowedTags={["mark"]}
+                    allowedAttr={["class"]}
+                    className="mb-3"
                   />
                   <div className="mt-3 flex flex-wrap gap-2">
                     <div className="px-3 py-1 bg-muted text-muted-foreground rounded-lg text-sm">
@@ -581,13 +586,12 @@ export default function QualityRegistryPage() {
                     </div>
                     <div className="px-3 py-1 bg-muted text-muted-foreground rounded-lg text-sm">
                       <strong>Organisation:</strong>{" "}
-                      <a
-                        href={organisationLinks[item.registry_centre[0]]}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                      <Safe.Url
+                        url={organisationLinks[item.registry_centre[0]]}
                         className="hover:underline"
-                        dangerouslySetInnerHTML={{
-                          __html:
+                      >
+                        <Safe.HTML
+                          html={
                             searchBar.length > 0
                               ? highlightSearchTerms(
                                   item.registry_centre.join(", "),
@@ -598,27 +602,33 @@ export default function QualityRegistryPage() {
                                       .filter((term) => term.length > 0)
                                   )
                                 )
-                              : item.registry_centre.join(", "),
-                        }}
-                      />
+                              : item.registry_centre.join(", ")
+                          }
+                          allowedTags={["mark"]}
+                          allowedAttr={["class"]}
+                          className="inline"
+                        />
+                      </Safe.Url>
                     </div>
                     <div className="px-3 py-1 bg-muted text-muted-foreground rounded-lg text-sm">
                       <strong>Category:</strong>{" "}
-                      <span
-                        dangerouslySetInnerHTML={{
-                          __html:
-                            searchBar.length > 0
-                              ? highlightSearchTerms(
-                                  item.category.join(", "),
-                                  expandSearchTerms(
-                                    searchBar
-                                      .toLowerCase()
-                                      .split(/\s+/)
-                                      .filter((term) => term.length > 0)
-                                  )
+                      <Safe.HTML
+                        html={
+                          searchBar.length > 0
+                            ? highlightSearchTerms(
+                                item.category.join(", "),
+                                expandSearchTerms(
+                                  searchBar
+                                    .toLowerCase()
+                                    .split(/\s+/)
+                                    .filter((term) => term.length > 0)
                                 )
-                              : item.category.join(", "),
-                        }}
+                              )
+                            : item.category.join(", ")
+                        }
+                        allowedTags={["mark"]}
+                        allowedAttr={["class"]}
+                        className="inline"
                       />
                     </div>
                   </div>
