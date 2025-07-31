@@ -1385,7 +1385,7 @@
             "Nationella",
             "Diabetes"
         ],
-        "Information":"The data collected focuses on glycaemic control, risk factors, complications, and treatment outcomes for patients with both type 1 and type 2 diabetes. It promotes evidence-based healthcare by making data available to healthcare providers for regular comparison and quality improvement efforts. The NDR is one of the largest diabetes registries in the world, covering nearly 90% of patients with diabetes in Sweden.",
+        "Information": "The data collected focuses on glycaemic control, risk factors, complications, and treatment outcomes for patients with both type 1 and type 2 diabetes. It promotes evidence-based healthcare by making data available to healthcare providers for regular comparison and quality improvement efforts. The NDR is one of the largest diabetes registries in the world, covering nearly 90% of patients with diabetes in Sweden.",
         "category": [
             "National quality registry"
         ],
@@ -1863,9 +1863,7 @@
         ],
         "Information": "Established to support the treatment and care of patients diagnosed with this aggressive form of blood cancer, the registry collects comprehensive data on demographics, diagnosis, treatment protocols, and patient outcomes. Data variables include genetic markers, chemotherapy protocols, and remission rates, helping healthcare providers make informed decisions for better outcomes.",
         "category": [
-            "National cancer quality registry",
-            "leukemi",
-            "leukemia"
+            "National cancer quality registry"
         ],
         "start_date": "1997"
     },
@@ -1880,10 +1878,7 @@
         ],
         "Information": "Focuses on collecting detailed data related to acute myeloid leukemia (AML) and acute undifferentiated leukemia (AUL) in Sweden. This national cancer quality registry collects information on patient demographics, genetic markers, treatment protocols, and outcomes, with the aim of improving the care and survival of patients with these aggressive hematologic malignancies. Includes data from diagnostic processes, chemotherapy, bone marrow transplants, and patient follow-up care. Coverage is comprehensive across Sweden, including nearly all diagnosed patients.",
         "category": [
-            "National cancer quality registry",
-            "leukemia",
-            "AUL",
-            "AML"
+            "National cancer quality registry"
         ],
         "start_date": "1997"
     },
@@ -1898,9 +1893,7 @@
         ],
         "Information": "It collects comprehensive data on breast cancer patients, covering diagnosis, treatments, and outcomes. The registry includes data on tumour characteristics, surgical interventions, radiotherapy, chemotherapy, and hormone therapies, as well as patient demographics. NKBC is crucial for improving the quality of breast cancer care across the country by enabling continuous monitoring and benchmarking of clinical practices. The registry includes nearly all diagnosed breast cancer cases in Sweden.",
         "category": [
-            "National cancer quality registry",
-            "breast cancer",
-            "bröstcancer"
+            "National cancer quality registry"
         ],
         "start_date": "2008"
     },
@@ -1930,9 +1923,7 @@
         ],
         "Information": "Focuses on tracking and improving the care and outcomes of patients diagnosed with skin melanoma. The registry collects extensive data on tumour characteristics, treatment approaches (such as surgery and immunotherapy), and patient follow-up information. Key variables include Breslow thickness, ulceration, and metastasis status, all of which are critical for prognosis. The registry covers nearly all melanoma cases diagnosed in Sweden",
         "category": [
-            "National cancer quality registry",
-            "melanoma",
-            "skin cancer"
+            "National cancer quality registry"
         ],
         "start_date": "2003"
     },
@@ -1981,9 +1972,7 @@
         ],
         "Information": "The registry aims to collect comprehensive data on patients diagnosed with CLL, including demographic information, genetic markers, treatment approaches, and patient outcomes. Key variables tracked include treatment response, disease progression, and long-term survival rates. The registry provides insights into how different therapeutic strategies affect patient outcomes and supports ongoing clinical research.",
         "category": [
-            "National cancer quality registry",
-            "CLL",
-            "leukemia"
+            "National cancer quality registry"
         ],
         "start_date": "2007"
     },
@@ -2016,9 +2005,7 @@
         ],
         "Information": "Sweden’s national quality registry for lymphoma, covering various types of lymphatic cancers such as Hodgkin's lymphoma and non-Hodgkin's lymphoma. Collects detailed data on patient demographics, tumour characteristics, treatment methods (including chemotherapy, immunotherapy, and radiation), and long-term outcomes. It provides comprehensive national coverage, capturing nearly all lymphoma cases treated in Sweden. ",
         "category": [
-            "National cancer quality registry",
-            "Hodking's lymphoma",
-            "lymphoma"
+            "National cancer quality registry"
         ],
         "start_date": "2000"
     },
@@ -2150,8 +2137,7 @@
         ],
         "Information": "Focuses on colorectal cancer screening and prevention. Collects detailed data on screening participation rates, diagnostic results, follow-up procedures, and treatment outcomes. This registry supports Sweden’s organised colorectal cancer screening program, aimed at early detection and treatment of precancerous lesions and cancer in the colon and rectum. ",
         "category": [
-            "National cancer quality registry",
-            "colorectal cancer"
+            "National cancer quality registry"
         ],
         "start_date": "2017"
     },
@@ -2167,8 +2153,7 @@
         "Information": "Sweden’s national quality registry for anal cancer. It was established to improve the diagnosis, treatment, and outcomes of patients with this relatively rare form of cancer. The registry collects data on patient demographics, tumour characteristics, treatment methods (such as chemotherapy, radiotherapy, and surgery), and long-term patient outcomes, including survival rates and recurrence.",
         "start_date": "2015",
         "category": [
-            "National cancer quality registry",
-            "anal cancer"
+            "National cancer quality registry"
         ]
     },
     {

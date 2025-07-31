@@ -172,7 +172,7 @@ function highlightSearchTerms(text: string, searchTerms: string[]): string {
     const regex = new RegExp(`(${term})`, "gi");
     highlightedText = highlightedText.replace(
       regex,
-      '<mark class="bg-yellow-200 dark:bg-yellow-800">$1</mark>'
+      '<mark class="bg-accent">$1</mark>'
     );
   });
 
@@ -433,25 +433,17 @@ export default function QualityRegistryPage() {
                 id="search"
                 type="text"
                 name="search"
-                placeholder="Search by name, description, or keywords"
+                placeholder="Search by name or keywords"
                 value={searchBar}
                 onChange={(e) => setSearchBar(e.target.value)}
                 className="bg-muted"
               />
               {searchBar.length === 0 && (
                 <div className="text-sm text-muted-foreground">
-                  <p className="mb-2">Search examples:</p>
-                  <ul className="space-y-1 text-xs">
-                    <li>
-                      • "parkinson" / "parkinson" - finds neurological
-                      registries
-                    </li>
-                    <li>• "cancer" / "cancer" - finds oncology registries</li>
-                    <li>
-                      • "stroke" / "stroke" - finds cardiovascular registries
-                    </li>
-                    <li>• "barn" / "child" - finds pediatric registries</li>
-                    <li>• "hjärta" / "heart" - finds cardiac registries</li>
+                  <p className="mb-2">Examples:</p>
+                  <ul className="space-y-1 text-sm">
+                    <li>"barn" / "child" - finds pediatric registries</li>
+                    <li>"hjärta" / "heart" - finds cardiac registries</li>
                   </ul>
                 </div>
               )}
@@ -526,17 +518,8 @@ export default function QualityRegistryPage() {
           {searchBar.length > 0 && (
             <div className="text-sm text-muted-foreground mb-4">
               Found {searchResults.length} result
-              {searchResults.length !== 1 ? "s" : ""} for "{searchBar}"
-              {searchBar
-                .toLowerCase()
-                .split(/\s+/)
-                .some(
-                  (term) => swedishToEnglishTerms[term.toLowerCase().trim()]
-                ) && (
-                <span className="ml-2 text-blue-600 dark:text-blue-400">
-                  (including Swedish translations)
-                </span>
-              )}
+              {searchResults.length !== 1 ? "s" : ""} for "{searchBar}" (ordered
+              by relevance to search query)
             </div>
           )}
           {(searchBar.length > 0
@@ -558,14 +541,21 @@ export default function QualityRegistryPage() {
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-xl text-primary hover:underline"
-                    >
-                      {item.name}
-                    </a>
-                    {searchBar.length > 0 && score > 0 && (
-                      <div className="text-sm text-muted-foreground">
-                        Relevance: {Math.round(score * 100)}%
-                      </div>
-                    )}
+                      dangerouslySetInnerHTML={{
+                        __html:
+                          searchBar.length > 0
+                            ? highlightSearchTerms(
+                                item.name,
+                                expandSearchTerms(
+                                  searchBar
+                                    .toLowerCase()
+                                    .split(/\s+/)
+                                    .filter((term) => term.length > 0)
+                                )
+                              )
+                            : item.name,
+                      }}
+                    />
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="pt-4">
@@ -575,10 +565,12 @@ export default function QualityRegistryPage() {
                         searchBar.length > 0
                           ? highlightSearchTerms(
                               item.Information || "Information not available.",
-                              searchBar
-                                .toLowerCase()
-                                .split(/\s+/)
-                                .filter((term) => term.length > 0)
+                              expandSearchTerms(
+                                searchBar
+                                  .toLowerCase()
+                                  .split(/\s+/)
+                                  .filter((term) => term.length > 0)
+                              )
                             )
                           : item.Information || "Information not available.",
                     }}
@@ -594,12 +586,40 @@ export default function QualityRegistryPage() {
                         target="_blank"
                         rel="noopener noreferrer"
                         className="hover:underline"
-                      >
-                        {item.registry_centre.join(", ")}
-                      </a>
+                        dangerouslySetInnerHTML={{
+                          __html:
+                            searchBar.length > 0
+                              ? highlightSearchTerms(
+                                  item.registry_centre.join(", "),
+                                  expandSearchTerms(
+                                    searchBar
+                                      .toLowerCase()
+                                      .split(/\s+/)
+                                      .filter((term) => term.length > 0)
+                                  )
+                                )
+                              : item.registry_centre.join(", "),
+                        }}
+                      />
                     </div>
                     <div className="px-3 py-1 bg-muted text-muted-foreground rounded-lg text-sm">
-                      <strong>Category:</strong> {item.category.join(", ")}
+                      <strong>Category:</strong>{" "}
+                      <span
+                        dangerouslySetInnerHTML={{
+                          __html:
+                            searchBar.length > 0
+                              ? highlightSearchTerms(
+                                  item.category.join(", "),
+                                  expandSearchTerms(
+                                    searchBar
+                                      .toLowerCase()
+                                      .split(/\s+/)
+                                      .filter((term) => term.length > 0)
+                                  )
+                                )
+                              : item.category.join(", "),
+                        }}
+                      />
                     </div>
                   </div>
                 </CardContent>
@@ -608,7 +628,7 @@ export default function QualityRegistryPage() {
           })}
         </div>
       </div>
-      <LastUpdated date="11-11-2024" />
+      <LastUpdated date="31-07-2025" />
     </div>
   );
 }
