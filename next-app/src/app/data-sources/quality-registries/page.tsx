@@ -67,6 +67,186 @@ const organisationLinks: { [key: string]: string } = {
   "RCC Syd": "https://cancercentrum.se/syd/",
 };
 
+// Swedish to English medical term translations
+const swedishToEnglishTerms: { [key: string]: string[] } = {
+  // Common medical conditions
+  cancer: ["cancer", "tumor", "neoplasia"],
+  hjärtinfarkt: ["heart attack", "myocardial infarction", "cardiac"],
+  stroke: ["stroke", "cerebrovascular", "brain"],
+  diabetes: ["diabetes", "diabetic"],
+  parkinson: ["parkinson", "parkinson's"],
+  alzheimer: ["alzheimer", "dementia"],
+  epilepsi: ["epilepsy", "seizure"],
+  astma: ["asthma", "respiratory"],
+  artrit: ["arthritis", "rheumatoid"],
+  osteoporos: ["osteoporosis", "bone"],
+
+  // Body parts and systems
+  hjärta: ["heart", "cardiac", "cardiovascular"],
+  lungor: ["lung", "pulmonary", "respiratory"],
+  lever: ["liver", "hepatic"],
+  njurar: ["kidney", "renal"],
+  hjärna: ["brain", "cerebral", "neurological"],
+  blod: ["blood", "hematological"],
+  ben: ["bone", "skeletal"],
+  leder: ["joint", "articular"],
+  muskler: ["muscle", "muscular"],
+  nervsystem: ["nervous system", "neurological"],
+
+  // Medical procedures and treatments
+  kirurgi: ["surgery", "surgical"],
+  kemoterapi: ["chemotherapy", "cancer treatment"],
+  strålbehandling: ["radiation", "radiotherapy"],
+  transplantation: ["transplant", "transplantation"],
+  dialys: ["dialysis", "renal replacement"],
+  behandling: ["treatment", "therapy"],
+  medicin: ["medicine", "medication", "drug"],
+
+  // Patient groups
+  barn: ["child", "pediatric", "children"],
+  äldre: ["elderly", "geriatric", "aging"],
+  vuxna: ["adult", "adults"],
+  spädbarn: ["infant", "newborn", "neonatal"],
+  gravid: ["pregnant", "pregnancy", "maternal"],
+
+  // Registry-specific terms
+  kvalitetsregister: ["quality registry", "registry"],
+  nationellt: ["national"],
+  regionalt: ["regional"],
+  sjukhus: ["hospital", "clinical"],
+  vård: ["care", "healthcare"],
+  forskning: ["research", "study"],
+  uppföljning: ["follow-up", "monitoring"],
+
+  // Common Swedish medical abbreviations
+  hiv: ["hiv", "aids"],
+  covid: ["covid", "coronavirus"],
+  ms: ["multiple sclerosis", "ms"],
+  cf: ["cystic fibrosis", "cf"],
+  ivf: ["in vitro fertilization", "ivf"],
+  acls: ["anterior cruciate ligament", "acl"],
+};
+
+// Function to expand search terms with Swedish translations
+function expandSearchTerms(terms: string[]): string[] {
+  const expandedTerms = [...terms];
+
+  terms.forEach((term) => {
+    const normalizedTerm = term.toLowerCase().trim();
+
+    // Check if the term is Swedish and has English translations
+    if (swedishToEnglishTerms[normalizedTerm]) {
+      expandedTerms.push(...swedishToEnglishTerms[normalizedTerm]);
+    }
+
+    // Also check for reverse mapping (English to Swedish)
+    Object.entries(swedishToEnglishTerms).forEach(([swedish, englishTerms]) => {
+      if (
+        englishTerms.some((english) => english.toLowerCase() === normalizedTerm)
+      ) {
+        expandedTerms.push(swedish, ...englishTerms);
+      }
+    });
+  });
+
+  // Remove duplicates and return
+  return [...new Set(expandedTerms)];
+}
+
+// Utility functions for improved search
+function normalizeText(text: string): string {
+  return text
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "") // Remove diacritics
+    .replace(/[^\w\s]/g, " ") // Replace punctuation with spaces
+    .replace(/\s+/g, " ") // Normalize whitespace
+    .trim();
+}
+
+function highlightSearchTerms(text: string, searchTerms: string[]): string {
+  if (searchTerms.length === 0) return text;
+
+  let highlightedText = text;
+  searchTerms.forEach((term) => {
+    const regex = new RegExp(`(${term})`, "gi");
+    highlightedText = highlightedText.replace(
+      regex,
+      '<mark class="bg-yellow-200 dark:bg-yellow-800">$1</mark>'
+    );
+  });
+
+  return highlightedText;
+}
+
+function calculateSimilarity(text1: string, text2: string): number {
+  const normalized1 = normalizeText(text1);
+  const normalized2 = normalizeText(text2);
+
+  // Exact match gets highest score
+  if (normalized1 === normalized2) return 1.0;
+
+  // Check if one contains the other
+  if (normalized1.includes(normalized2) || normalized2.includes(normalized1)) {
+    return 0.9;
+  }
+
+  // Word-based similarity
+  const words1 = new Set(normalized1.split(" "));
+  const words2 = new Set(normalized2.split(" "));
+
+  const intersection = new Set([...words1].filter((x) => words2.has(x)));
+  const union = new Set([...words1, ...words2]);
+
+  return intersection.size / union.size;
+}
+
+function calculateSearchScore(
+  registry: IRegistrySource,
+  searchTerms: string[]
+): number {
+  let maxScore = 0;
+
+  // Expand search terms with Swedish translations
+  const expandedSearchTerms = expandSearchTerms(searchTerms);
+
+  // Search through all relevant fields
+  const searchableTexts = [
+    registry.name,
+    registry.Information,
+    ...registry.search_tags,
+    ...registry.category,
+    ...registry.registry_centre,
+  ];
+
+  for (const searchTerm of expandedSearchTerms) {
+    let termScore = 0;
+
+    for (const text of searchableTexts) {
+      const similarity = calculateSimilarity(searchTerm, text);
+      termScore = Math.max(termScore, similarity);
+    }
+
+    // Bonus for exact matches in name or search tags
+    const normalizedSearchTerm = normalizeText(searchTerm);
+    const normalizedName = normalizeText(registry.name);
+    const normalizedTags = registry.search_tags.map((tag) =>
+      normalizeText(tag)
+    );
+
+    if (
+      normalizedName.includes(normalizedSearchTerm) ||
+      normalizedTags.some((tag) => tag.includes(normalizedSearchTerm))
+    ) {
+      termScore = Math.max(termScore, 0.95);
+    }
+
+    maxScore = Math.max(maxScore, termScore);
+  }
+
+  return maxScore;
+}
+
 export default function QualityRegistryPage() {
   const [registrySourcesJSON, setRegistrySourcesJSON] = useState<
     IRegistrySource[]
@@ -77,6 +257,9 @@ export default function QualityRegistryPage() {
   });
   const [searchBar, setSearchBar] = useState<string>("");
   const [isLoading, setIsLoading] = useState(true);
+  const [searchResults, setSearchResults] = useState<
+    Array<{ registry: IRegistrySource; score: number }>
+  >([]);
 
   const nrOfCheckboxes = filters.registryCentre.concat(
     filters.registryCategory
@@ -164,17 +347,47 @@ export default function QualityRegistryPage() {
 
   function applySearchBar(registry: IRegistrySource) {
     if (searchBar.length === 0) return true;
-    const searchBarLower = searchBar.toLowerCase();
-    const searchTags = searchBarLower.split(" ");
-    return (
-      registry.name.toLowerCase().includes(searchBarLower) ||
-      searchTags.some((tag) =>
-        registry.search_tags.some((searchTag) =>
-          searchTag.toLowerCase().includes(tag)
-        )
-      )
-    );
+
+    const searchTerms = searchBar
+      .toLowerCase()
+      .split(/\s+/)
+      .filter((term) => term.length > 0);
+    if (searchTerms.length === 0) return true;
+
+    const searchScore = calculateSearchScore(registry, searchTerms);
+
+    // Return true if any search term has a reasonable match (threshold: 0.3)
+    return searchScore >= 0.3;
   }
+
+  // Calculate and sort search results by relevance
+  useEffect(() => {
+    if (searchBar.length === 0) {
+      setSearchResults([]);
+      return;
+    }
+
+    const searchTerms = searchBar
+      .toLowerCase()
+      .split(/\s+/)
+      .filter((term) => term.length > 0);
+    if (searchTerms.length === 0) {
+      setSearchResults([]);
+      return;
+    }
+
+    const results = registrySourcesJSON
+      .filter((registry) => applyRegistryCentreFilter(registry))
+      .filter((registry) => applyRegistryCategoryFilter(registry))
+      .map((registry) => ({
+        registry,
+        score: calculateSearchScore(registry, searchTerms),
+      }))
+      .filter((result) => result.score >= 0.3)
+      .sort((a, b) => b.score - a.score);
+
+    setSearchResults(results);
+  }, [searchBar, selectedFilters, registrySourcesJSON]);
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -220,11 +433,28 @@ export default function QualityRegistryPage() {
                 id="search"
                 type="text"
                 name="search"
-                placeholder="Search by name or keyword"
+                placeholder="Search by name, description, or keywords"
                 value={searchBar}
                 onChange={(e) => setSearchBar(e.target.value)}
                 className="bg-muted"
               />
+              {searchBar.length === 0 && (
+                <div className="text-sm text-muted-foreground">
+                  <p className="mb-2">Search examples:</p>
+                  <ul className="space-y-1 text-xs">
+                    <li>
+                      • "parkinson" / "parkinson" - finds neurological
+                      registries
+                    </li>
+                    <li>• "cancer" / "cancer" - finds oncology registries</li>
+                    <li>
+                      • "stroke" / "stroke" - finds cardiovascular registries
+                    </li>
+                    <li>• "barn" / "child" - finds pediatric registries</li>
+                    <li>• "hjärta" / "heart" - finds cardiac registries</li>
+                  </ul>
+                </div>
+              )}
             </div>
             {/* Organisation Filters */}
             <div className="space-y-4">
@@ -293,12 +523,33 @@ export default function QualityRegistryPage() {
           </div>
         </div>
         <div className="lg:col-span-3 space-y-6">
-          {registrySourcesJSON
-            .filter((registry) => applyRegistryCentreFilter(registry))
-            .filter((registry) => applyRegistryCategoryFilter(registry))
-            .filter((registry) => applySearchBar(registry))
-            .sort((a, b) => a.name.localeCompare(b.name))
-            .map((item, index) => (
+          {searchBar.length > 0 && (
+            <div className="text-sm text-muted-foreground mb-4">
+              Found {searchResults.length} result
+              {searchResults.length !== 1 ? "s" : ""} for "{searchBar}"
+              {searchBar
+                .toLowerCase()
+                .split(/\s+/)
+                .some(
+                  (term) => swedishToEnglishTerms[term.toLowerCase().trim()]
+                ) && (
+                <span className="ml-2 text-blue-600 dark:text-blue-400">
+                  (including Swedish translations)
+                </span>
+              )}
+            </div>
+          )}
+          {(searchBar.length > 0
+            ? searchResults
+            : registrySourcesJSON
+                .filter((registry) => applyRegistryCentreFilter(registry))
+                .filter((registry) => applyRegistryCategoryFilter(registry))
+                .sort((a, b) => a.name.localeCompare(b.name))
+                .map((registry) => ({ registry, score: 0 }))
+          ).map((result, index) => {
+            const item = result.registry;
+            const score = result.score;
+            return (
               <Card key={index}>
                 <CardHeader className="bg-muted">
                   <CardTitle className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
@@ -310,10 +561,28 @@ export default function QualityRegistryPage() {
                     >
                       {item.name}
                     </a>
+                    {searchBar.length > 0 && score > 0 && (
+                      <div className="text-sm text-muted-foreground">
+                        Relevance: {Math.round(score * 100)}%
+                      </div>
+                    )}
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="pt-4">
-                  <p>{item.Information || "Information not available."}</p>
+                  <p
+                    dangerouslySetInnerHTML={{
+                      __html:
+                        searchBar.length > 0
+                          ? highlightSearchTerms(
+                              item.Information || "Information not available.",
+                              searchBar
+                                .toLowerCase()
+                                .split(/\s+/)
+                                .filter((term) => term.length > 0)
+                            )
+                          : item.Information || "Information not available.",
+                    }}
+                  />
                   <div className="mt-3 flex flex-wrap gap-2">
                     <div className="px-3 py-1 bg-muted text-muted-foreground rounded-lg text-sm">
                       <strong>Start year:</strong> {item.start_date}
@@ -335,7 +604,8 @@ export default function QualityRegistryPage() {
                   </div>
                 </CardContent>
               </Card>
-            ))}
+            );
+          })}
         </div>
       </div>
       <LastUpdated date="11-11-2024" />
