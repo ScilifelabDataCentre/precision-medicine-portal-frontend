@@ -34,7 +34,6 @@ interface QualityRegistryCardProps {
 export const QualityRegistryCard = ({
   registry,
   searchTerms,
-  index,
   expandSearchTerms,
   highlightSearchTerms,
   organisationLinks,

@@ -489,8 +489,14 @@ export default function QualityRegistryPage() {
                 <div className="text-sm text-muted-foreground">
                   <p className="mb-2">Examples:</p>
                   <ul className="space-y-1 text-sm">
-                    <li>"barn" / "child" - finds pediatric registries</li>
-                    <li>"hjärta" / "heart" - finds cardiac registries</li>
+                    <li>
+                      &quot;barn&quot; / &quot;child&quot; - finds pediatric
+                      registries
+                    </li>
+                    <li>
+                      &quot;hjärta&quot; / &quot;heart&quot; - finds cardiac
+                      registries
+                    </li>
                   </ul>
                 </div>
               )}
@@ -521,11 +527,12 @@ export default function QualityRegistryPage() {
             {searchTerms.length > 0 && (
               <div className="text-sm text-muted-foreground">
                 Found {filteredAndSearchedRegistries.length} result
-                {filteredAndSearchedRegistries.length !== 1 ? "s" : ""} for "
+                {filteredAndSearchedRegistries.length !== 1 ? "s" : ""} for
+                &quot;
                 <span className="font-medium text-foreground">
                   {debouncedSearchTerm}
                 </span>
-                "
+                &quot;
                 {filteredAndSearchedRegistries.length > 0 &&
                   " (ordered by relevance)"}
               </div>
