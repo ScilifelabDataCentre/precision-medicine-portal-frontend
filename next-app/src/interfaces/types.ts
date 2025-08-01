@@ -65,3 +65,40 @@ export interface RegistrySourcesFilters {
   registryCentre: string[];
   registryCategory: string[];
 }
+
+export interface IRegistryFilters {
+  registryCentre: string[];
+  registryCategory: string[];
+}
+
+export interface IRegistrySource {
+  name: string;
+  url: string;
+  Information: string;
+  start_date: string;
+  registry_centre: string[];
+  category: string[];
+  search_tags: string[];
+}
+
+export const filters: IRegistryFilters = {
+  registryCentre: [
+    "Kvalitetsregistercentrum Stockholm",
+    "Registercentrum Norr",
+    "Registercentrum Syd",
+    "Registercentrum Sydost",
+    "Registercentrum Västra Götaland",
+    "RCC Mellansverige",
+    "RCC Norr",
+    "RCC Stockholm Gotland",
+    "RCC Syd",
+    "RCC Sydöst",
+    "RCC Väst",
+    "Uppsala Clinical Research Center",
+  ],
+  registryCategory: [
+    "National cancer quality registry",
+    "National quality registry",
+    "Other quality registry",
+  ],
+};

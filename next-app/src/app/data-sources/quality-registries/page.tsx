@@ -1,12 +1,12 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo, useCallback } from "react";
 import { Input } from "@/components/ui/input";
-import { Checkbox } from "@/components/ui/checkbox";
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import Title from "@/components/common/title";
 import { LastUpdated } from "@/components/common/last-updated";
-import { Safe } from "@/components/common/SafeContent";
+import { LoadingState } from "@/components/common/LoadingState";
+import { FilterSection } from "@/components/common/FilterSection";
+import { QualityRegistryCard } from "@/components/QualityRegistryCard";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -14,45 +14,10 @@ import {
   BreadcrumbList,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
+import { IRegistryFilters, IRegistrySource, filters } from "@/interfaces/types";
 
-interface IRegistryFilters {
-  registryCentre: string[];
-  registryCategory: string[];
-}
-
-interface IRegistrySource {
-  name: string;
-  url: string;
-  Information: string;
-  start_date: string;
-  registry_centre: string[];
-  category: string[];
-  search_tags: string[];
-}
-
-const filters: IRegistryFilters = {
-  registryCentre: [
-    "Kvalitetsregistercentrum Stockholm",
-    "Registercentrum Norr",
-    "Registercentrum Syd",
-    "Registercentrum Sydost",
-    "Registercentrum Västra Götaland",
-    "RCC Mellansverige",
-    "RCC Norr",
-    "RCC Stockholm Gotland",
-    "RCC Syd",
-    "RCC Sydöst",
-    "RCC Väst",
-    "Uppsala Clinical Research Center",
-  ],
-  registryCategory: [
-    "National cancer quality registry",
-    "National quality registry",
-    "Other quality registry",
-  ],
-};
-
-const organisationLinks: { [key: string]: string } = {
+// Configuration constants
+const ORGANISATION_LINKS: Record<string, string> = {
   "Kvalitetsregistercentrum Stockholm": "https://qrcstockholm.se",
   "Registercentrum Syd": "https://registercentrum.se",
   "Registercentrum Norr": "https://rcnorr.se",
@@ -66,26 +31,49 @@ const organisationLinks: { [key: string]: string } = {
   "RCC Mellansverige": "https://cancercentrum.se/mellansverige/",
   "RCC Väst": "https://cancercentrum.se/vast/",
   "RCC Syd": "https://cancercentrum.se/syd/",
-};
+} as const;
+
+const SEARCH_CONFIG = {
+  SCORE_THRESHOLD: 0.3,
+  DEBOUNCE_DELAY: 300,
+} as const;
 
 // Swedish to English medical term translations
 const swedishToEnglishTerms: { [key: string]: string[] } = {
   // Common medical conditions
   cancer: ["cancer", "tumor", "neoplasia"],
   hjärtinfarkt: ["heart attack", "myocardial infarction", "cardiac"],
+  hjärninfarkt: [
+    "cerebral infarction",
+    "brain stroke",
+    "cerebrovascular accident",
+    "cva",
+  ],
   stroke: ["stroke", "cerebrovascular", "brain"],
   diabetes: ["diabetes", "diabetic"],
   parkinson: ["parkinson", "parkinson's"],
   alzheimer: ["alzheimer", "dementia"],
+  demens: ["dementia", "cognitive", "alzheimer"],
   epilepsi: ["epilepsy", "seizure"],
   astma: ["asthma", "respiratory"],
   artrit: ["arthritis", "rheumatoid"],
+  reumatism: ["rheumatism", "rheumatic", "arthritis"],
+  spondylit: ["spondylitis", "ankylosing spondylitis"],
   osteoporos: ["osteoporosis", "bone"],
+  obesitas: ["obesity", "overweight"],
+  hemofili: ["hemophilia", "bleeding disorder"],
+  leukemi: ["leukemia", "leukaemia", "blood cancer"],
+  lymfom: ["lymphoma", "lymphatic cancer"],
+  fibros: ["fibrosis", "scarring"],
+  dermatit: ["dermatitis", "eczema", "skin condition"],
+  katarakt: ["cataract", "lens opacity"],
 
   // Body parts and systems
   hjärta: ["heart", "cardiac", "cardiovascular"],
   lungor: ["lung", "pulmonary", "respiratory"],
   lever: ["liver", "hepatic"],
+  gallblåsa: ["gallbladder", "biliary"],
+  gallvägar: ["bile ducts", "biliary tract"],
   njurar: ["kidney", "renal"],
   hjärna: ["brain", "cerebral", "neurological"],
   blod: ["blood", "hematological"],
@@ -93,13 +81,24 @@ const swedishToEnglishTerms: { [key: string]: string[] } = {
   leder: ["joint", "articular"],
   muskler: ["muscle", "muscular"],
   nervsystem: ["nervous system", "neurological"],
+  hud: ["skin", "dermatological"],
+  ögon: ["eyes", "ocular", "ophthalmology"],
+  öron: ["ears", "auditory", "otology"],
 
   // Medical procedures and treatments
   kirurgi: ["surgery", "surgical"],
+  handkirurgi: ["hand surgery", "microsurgery"],
+  thoraxkirurgi: ["thoracic surgery", "chest surgery"],
+  kärlkirurgi: ["vascular surgery", "vessel surgery"],
+  hjärtkirurgi: ["cardiac surgery", "heart surgery"],
+  bråckkirurgi: ["hernia surgery", "hernia repair"],
+  barnkirurgi: ["pediatric surgery", "children surgery"],
   kemoterapi: ["chemotherapy", "cancer treatment"],
   strålbehandling: ["radiation", "radiotherapy"],
   transplantation: ["transplant", "transplantation"],
   dialys: ["dialysis", "renal replacement"],
+  anestesi: ["anesthesia", "anesthetic"],
+  intensivvård: ["intensive care", "icu", "critical care"],
   behandling: ["treatment", "therapy"],
   medicin: ["medicine", "medication", "drug"],
 
@@ -109,6 +108,28 @@ const swedishToEnglishTerms: { [key: string]: string[] } = {
   vuxna: ["adult", "adults"],
   spädbarn: ["infant", "newborn", "neonatal"],
   gravid: ["pregnant", "pregnancy", "maternal"],
+  neonatal: ["newborn", "neonatal", "infant"],
+
+  // Medical specialties
+  neurologi: ["neurology", "neurological"],
+  onkologi: ["oncology", "cancer"],
+  kardiologi: ["cardiology", "cardiac"],
+  urologi: ["urology", "urological"],
+  gynekologi: ["gynecology", "gynecological"],
+  ortopedi: ["orthopedics", "orthopedic"],
+  reumatologi: ["rheumatology", "rheumatic"],
+  endokrinologi: ["endocrinology", "hormonal"],
+  gastroenterologi: ["gastroenterology", "digestive"],
+
+  // Specific conditions from registries
+  kognitiv: ["cognitive", "mental", "brain function"],
+  psykisk: ["psychiatric", "psychological", "mental health"],
+  beteende: ["behavioral", "behaviour"],
+  dysfori: ["dysphoria", "gender dysphoria"],
+  cerebralparesi: ["cerebral palsy", "cp"],
+  cystiskfibros: ["cystic fibrosis", "cf"],
+  myelomeningocele: ["spina bifida", "neural tube defect"],
+  neuralrörsdefekt: ["neural tube defect", "spina bifida"],
 
   // Registry-specific terms
   kvalitetsregister: ["quality registry", "registry"],
@@ -166,15 +187,23 @@ function normalizeText(text: string): string {
 }
 
 function highlightSearchTerms(text: string, searchTerms: string[]): string {
-  if (searchTerms.length === 0) return text;
+  if (!text || searchTerms.length === 0) return text;
 
   let highlightedText = text;
-  searchTerms.forEach((term) => {
-    const regex = new RegExp(`(${term})`, "gi");
-    highlightedText = highlightedText.replace(
-      regex,
-      '<mark class="bg-accent">$1</mark>'
-    );
+
+  // Escape special regex characters in search terms
+  const escapedTerms = searchTerms.map((term) =>
+    term.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")
+  );
+
+  escapedTerms.forEach((term) => {
+    if (term.trim()) {
+      const regex = new RegExp(`(${term})`, "gi");
+      highlightedText = highlightedText.replace(
+        regex,
+        '<mark class="bg-accent">$1</mark>'
+      );
+    }
   });
 
   return highlightedText;
@@ -248,150 +277,166 @@ function calculateSearchScore(
   return maxScore;
 }
 
+// Custom hook for debouncing
+function useDebounce<T>(value: T, delay: number): T {
+  const [debouncedValue, setDebouncedValue] = useState<T>(value);
+
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      setDebouncedValue(value);
+    }, delay);
+
+    return () => {
+      clearTimeout(handler);
+    };
+  }, [value, delay]);
+
+  return debouncedValue;
+}
+
 export default function QualityRegistryPage() {
-  const [registrySourcesJSON, setRegistrySourcesJSON] = useState<
-    IRegistrySource[]
-  >([]);
+  // State management
+  const [registries, setRegistries] = useState<IRegistrySource[]>([]);
   const [selectedFilters, setSelectedFilters] = useState<IRegistryFilters>({
     registryCentre: [],
     registryCategory: [],
   });
-  const [searchBar, setSearchBar] = useState<string>("");
+  const [searchTerm, setSearchTerm] = useState<string>("");
   const [isLoading, setIsLoading] = useState(true);
-  const [searchResults, setSearchResults] = useState<
-    Array<{ registry: IRegistrySource; score: number }>
-  >([]);
+  const [error, setError] = useState<string | null>(null);
 
-  const nrOfCheckboxes = filters.registryCentre.concat(
-    filters.registryCategory
-  ).length;
-  const [checkedList, setCheckedList] = useState<boolean[]>(
-    new Array(nrOfCheckboxes).fill(false)
+  // Debounce search term for better performance
+  const debouncedSearchTerm = useDebounce(
+    searchTerm,
+    SEARCH_CONFIG.DEBOUNCE_DELAY
   );
 
+  // Data fetching
   useEffect(() => {
-    async function fetchRegistryData() {
+    const fetchRegistryData = async () => {
       try {
+        setIsLoading(true);
+        setError(null);
+
         const registryData = await import(
           "@/assets/Kvalitetsregister_geo_dates_02.09.2024.json"
         );
-        const updatedRegistryData = registryData.default.map(
+
+        const processedData = registryData.default.map(
           (entry: IRegistrySource) => ({
             ...entry,
             start_date: entry.start_date ? entry.start_date.split("-")[0] : "",
             category: entry.category || [],
           })
         );
-        setRegistrySourcesJSON(updatedRegistryData);
-        setIsLoading(false);
-      } catch (error) {
-        console.error("Error fetching registry data:", error);
+
+        setRegistries(processedData);
+      } catch (err) {
+        const errorMessage =
+          err instanceof Error ? err.message : "Failed to load registry data";
+        setError(errorMessage);
+        console.error("Error fetching registry data:", err);
+      } finally {
         setIsLoading(false);
       }
-    }
+    };
 
     fetchRegistryData();
   }, []);
 
-  function getCountForType(type: string, isRegistryCentre: boolean): number {
-    return registrySourcesJSON.filter((source) => {
-      const tags = isRegistryCentre ? source.registry_centre : source.category;
-      return tags.some((tag) => tag.toLowerCase() === type.toLowerCase());
-    }).length;
-  }
+  // Memoized filter counts for performance
+  const getCountForType = useCallback(
+    (type: string, isRegistryCentre: boolean): number => {
+      return registries.filter((source) => {
+        const tags = isRegistryCentre
+          ? source.registry_centre
+          : source.category;
+        return tags.some((tag) => tag.toLowerCase() === type.toLowerCase());
+      }).length;
+    },
+    [registries]
+  );
 
-  function checkedFilter(
-    filterType: keyof IRegistryFilters,
-    filterName: string,
-    boxIndex: number
-  ) {
-    setSelectedFilters((prev) => {
-      const newFilters = { ...prev };
-      if (newFilters[filterType].includes(filterName)) {
-        newFilters[filterType] = newFilters[filterType].filter(
-          (item) => item !== filterName
+  // Filter management
+  const updateFilter = useCallback(
+    (filterType: keyof IRegistryFilters, filterName: string) => {
+      setSelectedFilters((prev) => {
+        const newFilters = { ...prev };
+        if (newFilters[filterType].includes(filterName)) {
+          newFilters[filterType] = newFilters[filterType].filter(
+            (item) => item !== filterName
+          );
+        } else {
+          newFilters[filterType] = [...newFilters[filterType], filterName];
+        }
+        return newFilters;
+      });
+    },
+    []
+  );
+
+  // Search and filter logic
+  const searchTerms = useMemo(() => {
+    return debouncedSearchTerm
+      .toLowerCase()
+      .split(/\s+/)
+      .filter((term) => term.length > 0);
+  }, [debouncedSearchTerm]);
+
+  const filteredAndSearchedRegistries = useMemo(() => {
+    // Apply filters first
+    const filtered = registries.filter((registry) => {
+      const centreFilter =
+        selectedFilters.registryCentre.length === 0 ||
+        selectedFilters.registryCentre.some((filter) =>
+          registry.registry_centre.some(
+            (centre) => centre.toLowerCase() === filter.toLowerCase()
+          )
         );
-      } else {
-        newFilters[filterType].push(filterName);
-      }
-      return newFilters;
+
+      const categoryFilter =
+        selectedFilters.registryCategory.length === 0 ||
+        selectedFilters.registryCategory.some((filter) =>
+          registry.category.some(
+            (cat) => cat.toLowerCase() === filter.toLowerCase()
+          )
+        );
+
+      return centreFilter && categoryFilter;
     });
 
-    setCheckedList((prev) => {
-      const newCheckedList = [...prev];
-      newCheckedList[boxIndex] = !newCheckedList[boxIndex];
-      return newCheckedList;
-    });
-  }
-
-  function applyRegistryCentreFilter(registry: IRegistrySource) {
-    return (
-      selectedFilters.registryCentre.length === 0 ||
-      selectedFilters.registryCentre.some((filter) =>
-        registry.registry_centre.some(
-          (centre) => centre.toLowerCase() === filter.toLowerCase()
-        )
-      )
-    );
-  }
-
-  function applyRegistryCategoryFilter(registry: IRegistrySource) {
-    return (
-      selectedFilters.registryCategory.length === 0 ||
-      selectedFilters.registryCategory.some((filter) =>
-        registry.category.some(
-          (cat) => cat.toLowerCase() === filter.toLowerCase()
-        )
-      )
-    );
-  }
-
-  function applySearchBar(registry: IRegistrySource) {
-    if (searchBar.length === 0) return true;
-
-    const searchTerms = searchBar
-      .toLowerCase()
-      .split(/\s+/)
-      .filter((term) => term.length > 0);
-    if (searchTerms.length === 0) return true;
-
-    const searchScore = calculateSearchScore(registry, searchTerms);
-
-    // Return true if any search term has a reasonable match (threshold: 0.3)
-    return searchScore >= 0.3;
-  }
-
-  // Calculate and sort search results by relevance
-  useEffect(() => {
-    if (searchBar.length === 0) {
-      setSearchResults([]);
-      return;
-    }
-
-    const searchTerms = searchBar
-      .toLowerCase()
-      .split(/\s+/)
-      .filter((term) => term.length > 0);
+    // Apply search if there are search terms
     if (searchTerms.length === 0) {
-      setSearchResults([]);
-      return;
+      return filtered
+        .sort((a, b) => a.name.localeCompare(b.name))
+        .map((registry) => ({ registry, score: 0 }));
     }
 
-    const results = registrySourcesJSON
-      .filter((registry) => applyRegistryCentreFilter(registry))
-      .filter((registry) => applyRegistryCategoryFilter(registry))
+    return filtered
       .map((registry) => ({
         registry,
         score: calculateSearchScore(registry, searchTerms),
       }))
-      .filter((result) => result.score >= 0.3)
+      .filter((result) => result.score >= SEARCH_CONFIG.SCORE_THRESHOLD)
       .sort((a, b) => b.score - a.score);
+  }, [registries, selectedFilters, searchTerms]);
 
-    setSearchResults(results);
-  }, [searchBar, selectedFilters, registrySourcesJSON]);
-
+  // Loading state
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <LoadingState />;
+  }
+
+  // Error state
+  if (error) {
+    return (
+      <div className="container mx-auto px-4 py-8">
+        <div className="text-center py-12">
+          <p className="text-muted-foreground">
+            Error loading registries: {error}
+          </p>
+        </div>
+      </div>
+    );
   }
 
   return (
@@ -422,6 +467,7 @@ export default function QualityRegistryPage() {
               To access data, researchers may need to obtain ethical approval,
               submit data requests, and set up data management agreements.
             </div>
+
             {/* Search */}
             <div className="space-y-4">
               <label
@@ -435,11 +481,11 @@ export default function QualityRegistryPage() {
                 type="text"
                 name="search"
                 placeholder="Search by name or keywords"
-                value={searchBar}
-                onChange={(e) => setSearchBar(e.target.value)}
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
                 className="bg-muted"
               />
-              {searchBar.length === 0 && (
+              {searchTerm.length === 0 && (
                 <div className="text-sm text-muted-foreground">
                   <p className="mb-2">Examples:</p>
                   <ul className="space-y-1 text-sm">
@@ -449,193 +495,88 @@ export default function QualityRegistryPage() {
                 </div>
               )}
             </div>
+
             {/* Organisation Filters */}
-            <div className="space-y-4">
-              <h2 className="font-bold text-2xl text-foreground">
-                Organisation
-              </h2>
-              <Card>
-                <CardContent className="pt-6">
-                  {filters.registryCentre.map((element, index) => (
-                    <div
-                      className="flex items-center space-x-3 mb-4"
-                      key={element}
-                    >
-                      <Checkbox
-                        id={`registryCentre-${index}`}
-                        checked={checkedList[index]}
-                        onCheckedChange={() =>
-                          checkedFilter("registryCentre", element, index)
-                        }
-                      />
-                      <label
-                        htmlFor={`registryCentre-${index}`}
-                        className="text-base leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                      >
-                        {element} ({getCountForType(element, true)})
-                      </label>
-                    </div>
-                  ))}
-                </CardContent>
-              </Card>
-            </div>
+            <FilterSection
+              title="Organisation"
+              items={filters.registryCentre}
+              selectedItems={selectedFilters.registryCentre}
+              onFilterChange={(item) => updateFilter("registryCentre", item)}
+              getItemCount={(item) => getCountForType(item, true)}
+            />
+
             {/* Category Filters */}
-            <div className="space-y-4">
-              <h2 className="font-bold text-2xl text-foreground">Category</h2>
-              <Card>
-                <CardContent className="pt-6">
-                  {filters.registryCategory.map((element, index) => (
-                    <div
-                      className="flex items-center space-x-3 mb-4"
-                      key={element}
-                    >
-                      <Checkbox
-                        id={`registryCategory-${index}`}
-                        checked={
-                          checkedList[filters.registryCentre.length + index]
-                        }
-                        onCheckedChange={() =>
-                          checkedFilter(
-                            "registryCategory",
-                            element,
-                            filters.registryCentre.length + index
-                          )
-                        }
-                      />
-                      <label
-                        htmlFor={`registryCategory-${index}`}
-                        className="text-base leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                      >
-                        {element} ({getCountForType(element, false)})
-                      </label>
-                    </div>
-                  ))}
-                </CardContent>
-              </Card>
-            </div>
+            <FilterSection
+              title="Category"
+              items={filters.registryCategory}
+              selectedItems={selectedFilters.registryCategory}
+              onFilterChange={(item) => updateFilter("registryCategory", item)}
+              getItemCount={(item) => getCountForType(item, false)}
+            />
           </div>
         </div>
         <div className="lg:col-span-3 space-y-6">
-          {searchBar.length > 0 && (
-            <div className="text-sm text-muted-foreground mb-4">
-              Found {searchResults.length} result
-              {searchResults.length !== 1 ? "s" : ""} for "{searchBar}" (ordered
-              by relevance to search query)
+          {/* Results summary */}
+          <div className="space-y-2 mb-6">
+            {searchTerms.length > 0 && (
+              <div className="text-sm text-muted-foreground">
+                Found {filteredAndSearchedRegistries.length} result
+                {filteredAndSearchedRegistries.length !== 1 ? "s" : ""} for "
+                <span className="font-medium text-foreground">
+                  {debouncedSearchTerm}
+                </span>
+                "
+                {filteredAndSearchedRegistries.length > 0 &&
+                  " (ordered by relevance)"}
+              </div>
+            )}
+
+            <div className="flex items-center justify-between text-sm text-muted-foreground">
+              <span>
+                Showing {filteredAndSearchedRegistries.length} of{" "}
+                {registries.length} registries
+                {(selectedFilters.registryCentre.length > 0 ||
+                  selectedFilters.registryCategory.length > 0) &&
+                  " (filtered)"}
+              </span>
+
+              {filteredAndSearchedRegistries.length === 0 &&
+                registries.length > 0 && (
+                  <span className="text-error">No matches found</span>
+                )}
+            </div>
+          </div>
+          {/* Registry cards or empty state */}
+          {filteredAndSearchedRegistries.length === 0 ? (
+            <div className="text-center py-16">
+              <div className="text-muted-foreground space-y-2">
+                <p className="text-lg font-medium">
+                  {searchTerms.length > 0
+                    ? "No registries found matching your search"
+                    : "No registries match the selected filters"}
+                </p>
+                <p className="text-sm">
+                  {searchTerms.length > 0
+                    ? "Try adjusting your search terms or removing filters"
+                    : "Try selecting different filter options"}
+                </p>
+              </div>
+            </div>
+          ) : (
+            <div className="space-y-6">
+              {filteredAndSearchedRegistries.map((result, index) => (
+                <QualityRegistryCard
+                  key={result.registry.name}
+                  registry={result.registry}
+                  searchTerms={searchTerms}
+                  index={index}
+                  expandSearchTerms={expandSearchTerms}
+                  highlightSearchTerms={highlightSearchTerms}
+                  organisationLinks={ORGANISATION_LINKS}
+                />
+              ))}
             </div>
           )}
-          {(searchBar.length > 0
-            ? searchResults
-            : registrySourcesJSON
-                .filter((registry) => applyRegistryCentreFilter(registry))
-                .filter((registry) => applyRegistryCategoryFilter(registry))
-                .sort((a, b) => a.name.localeCompare(b.name))
-                .map((registry) => ({ registry, score: 0 }))
-          ).map((result, index) => {
-            const item = result.registry;
-            const score = result.score;
-            return (
-              <Card key={index}>
-                <CardHeader className="bg-muted">
-                  <CardTitle className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-                    <Safe.Url
-                      url={item.url}
-                      className="text-xl text-primary hover:underline"
-                    >
-                      <Safe.HTML
-                        html={
-                          searchBar.length > 0
-                            ? highlightSearchTerms(
-                                item.name,
-                                expandSearchTerms(
-                                  searchBar
-                                    .toLowerCase()
-                                    .split(/\s+/)
-                                    .filter((term) => term.length > 0)
-                                )
-                              )
-                            : item.name
-                        }
-                        allowedTags={["mark"]}
-                        allowedAttr={["class"]}
-                      />
-                    </Safe.Url>
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="pt-4">
-                  <Safe.HTML
-                    html={
-                      searchBar.length > 0
-                        ? highlightSearchTerms(
-                            item.Information || "Information not available.",
-                            expandSearchTerms(
-                              searchBar
-                                .toLowerCase()
-                                .split(/\s+/)
-                                .filter((term) => term.length > 0)
-                            )
-                          )
-                        : item.Information || "Information not available."
-                    }
-                    allowedTags={["mark"]}
-                    allowedAttr={["class"]}
-                    className="mb-3"
-                  />
-                  <div className="mt-3 flex flex-wrap gap-2">
-                    <div className="px-3 py-1 bg-muted text-muted-foreground rounded-lg text-sm">
-                      <strong>Start year:</strong> {item.start_date}
-                    </div>
-                    <div className="px-3 py-1 bg-muted text-muted-foreground rounded-lg text-sm">
-                      <strong>Organisation:</strong>{" "}
-                      <Safe.Url
-                        url={organisationLinks[item.registry_centre[0]]}
-                        className="hover:underline"
-                      >
-                        <Safe.HTML
-                          html={
-                            searchBar.length > 0
-                              ? highlightSearchTerms(
-                                  item.registry_centre.join(", "),
-                                  expandSearchTerms(
-                                    searchBar
-                                      .toLowerCase()
-                                      .split(/\s+/)
-                                      .filter((term) => term.length > 0)
-                                  )
-                                )
-                              : item.registry_centre.join(", ")
-                          }
-                          allowedTags={["mark"]}
-                          allowedAttr={["class"]}
-                          className="inline"
-                        />
-                      </Safe.Url>
-                    </div>
-                    <div className="px-3 py-1 bg-muted text-muted-foreground rounded-lg text-sm">
-                      <strong>Category:</strong>{" "}
-                      <Safe.HTML
-                        html={
-                          searchBar.length > 0
-                            ? highlightSearchTerms(
-                                item.category.join(", "),
-                                expandSearchTerms(
-                                  searchBar
-                                    .toLowerCase()
-                                    .split(/\s+/)
-                                    .filter((term) => term.length > 0)
-                                )
-                              )
-                            : item.category.join(", ")
-                        }
-                        allowedTags={["mark"]}
-                        allowedAttr={["class"]}
-                        className="inline"
-                      />
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            );
-          })}
         </div>
       </div>
       <LastUpdated date="31-07-2025" />
