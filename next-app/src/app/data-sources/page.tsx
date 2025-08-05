@@ -291,7 +291,7 @@ export default function DataSourcesPage(): ReactElement {
               target="_blank"
               className="text-primary hover:text-black underline"
             >
-              Karolinska Universitetet
+              Karolinska Institutet
             </a>
           </li>
         </ul>
