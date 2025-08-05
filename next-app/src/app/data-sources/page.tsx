@@ -251,7 +251,7 @@ export default function DataSourcesPage(): ReactElement {
           </li>
           <li>
             <a
-              href="https://www.oru.se/english/research/research-support/"
+              href="https://www.karolinska.se/forskning-och-utbildning/forskning/stodenheter-for-klinisk-forskning/"
               target="_blank"
               className="text-primary hover:text-black underline"
             >
@@ -291,7 +291,7 @@ export default function DataSourcesPage(): ReactElement {
               target="_blank"
               className="text-primary hover:text-black underline"
             >
-              Karolinska Universitetet
+              Karolinska Institutet
             </a>
           </li>
         </ul>
