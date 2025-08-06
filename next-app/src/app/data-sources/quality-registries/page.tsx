@@ -55,6 +55,31 @@ const swedishToEnglishTerms: { [key: string]: string[] } = {
   alzheimer: ["alzheimer", "dementia"],
   demens: ["dementia", "cognitive", "alzheimer"],
   epilepsi: ["epilepsy", "seizure"],
+  epilepsikirurgi: ["epilepsy surgery", "epileptic surgery"],
+  hydrocefalus: ["hydrocephalus", "water on brain"],
+  inflammatoriskpolyneuropati: [
+    "inflammatory polyneuropathy",
+    "chronic inflammatory demyelinating polyneuropathy",
+    "cidp",
+  ],
+  motorneuronsjukdom: [
+    "motor neuron disease",
+    "motor neurone disease",
+    "mnd",
+    "als",
+    "amyotrophic lateral sclerosis",
+  ],
+  myasteniagravis: ["myasthenia gravis", "mg", "muscle weakness"],
+  narkolepsi: ["narcolepsy", "sleep disorder"],
+  neuromuskulärasjukdomar: [
+    "neuromuscular diseases",
+    "neuromuscular disorders",
+  ],
+  svårneurovaskulärhuvudvärk: [
+    "severe neurovascular headache",
+    "cluster headache",
+    "migraine",
+  ],
   astma: ["asthma", "respiratory"],
   artrit: ["arthritis", "rheumatoid"],
   reumatism: ["rheumatism", "rheumatic", "arthritis"],
@@ -130,6 +155,22 @@ const swedishToEnglishTerms: { [key: string]: string[] } = {
   cystiskfibros: ["cystic fibrosis", "cf"],
   myelomeningocele: ["spina bifida", "neural tube defect"],
   neuralrörsdefekt: ["neural tube defect", "spina bifida"],
+
+  // Orthopedic and pediatric conditions
+  höftfyseolys: ["slipped capital femoral epiphysis", "scfe", "hip slippage"],
+  höftledsinstabilitet: [
+    "hip joint instability",
+    "hip dysplasia",
+    "ddh",
+    "developmental dysplasia of hip",
+  ],
+  klumpfot: ["clubfoot", "talipes equinovarus", "peva"],
+  patellaluxation: [
+    "patellar dislocation",
+    "kneecap dislocation",
+    "patella luxation",
+  ],
+  perthes: ["perthes disease", "legg-calve-perthes", "avascular necrosis hip"],
 
   // Registry-specific terms
   kvalitetsregister: ["quality registry", "registry"],
