@@ -17,21 +17,23 @@ import {
 export default function DataSourcesPage(): ReactElement {
   return (
     <div className="container mx-auto px-4 py-8">
-      <Breadcrumb>
-        <BreadcrumbList>
-          <BreadcrumbItem>
-            <BreadcrumbLink href="/">Home</BreadcrumbLink>
-          </BreadcrumbItem>
-          <BreadcrumbSeparator />
-          <BreadcrumbItem>
-            <BreadcrumbLink href="/data-sources">Data sources</BreadcrumbLink>
-          </BreadcrumbItem>
-        </BreadcrumbList>
-      </Breadcrumb>
+      <nav aria-label="Breadcrumb navigation" role="navigation">
+        <Breadcrumb>
+          <BreadcrumbList>
+            <BreadcrumbItem>
+              <BreadcrumbLink href="/">Home</BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbLink href="/data-sources">Data sources</BreadcrumbLink>
+            </BreadcrumbItem>
+          </BreadcrumbList>
+        </Breadcrumb>
+      </nav>
 
       <div className="flex flex-col gap-y-4">
         <Title level={1}>Access data for precision medicine research</Title>
-        <p>
+        <p role="doc-abstract">
           Researchers can access human data for research from various national
           and international sources, such as research databases, quality
           registries, patient or medical records, biobanks, and more. However,
@@ -41,13 +43,22 @@ export default function DataSourcesPage(): ReactElement {
           region or university, will release the data only after conducting harm
           and confidentiality assessments.
         </p>
-        <div className="flex flex-row items-center">
+        <div
+          className="flex flex-row items-center"
+          aria-label="Swedish research projects or databases section"
+        >
           <Title level={2}>Swedish research projects or databases</Title>
-          <Link href="/data-sources/swedish-research-projects">
+          <Link
+            href="/data-sources/swedish-research-projects"
+            aria-label="Go to Swedish research projects page"
+            className="focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"
+          >
             <svg
               className="ml-2 fill-primary w-7 h-7"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 32 32"
+              aria-hidden="true"
+              role="presentation"
             >
               <g data-name="19-Arrow Right">
                 <path d="M16 0a16 16 0 1 0 16 16A16 16 0 0 0 16 0zm0 30a14 14 0 1 1 14-14 14 14 0 0 1-14 14z" />
@@ -55,16 +66,18 @@ export default function DataSourcesPage(): ReactElement {
               </g>
             </svg>
           </Link>
-        </div>{" "}
+        </div>
         <p>
           It is possible to request existing data from several research projects
           or research databases in Sweden. Projects can be found, for example,
-          on the website of the project’s entity responsible for the research,
-          the{" "}
+          on the website of the project&apos;s entity responsible for the
+          research, the{" "}
           <a
             href="https://snd.se/en/catalogue/search"
             target="_blank"
-            className="text-primary hover:text-black underline"
+            rel="noopener noreferrer"
+            className="text-primary hover:text-black underline focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"
+            aria-label="Visit Swedish National Data Service catalogue (opens in new tab)"
           >
             Swedish National Data Service (SND)
           </a>
@@ -72,7 +85,9 @@ export default function DataSourcesPage(): ReactElement {
           <a
             href="https://precision-medicine-portal.scilifelab.se/swedishresearchprojects"
             target="_blank"
-            className="text-primary hover:text-black underline"
+            rel="noopener noreferrer"
+            className="text-primary hover:text-black underline focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"
+            aria-label="Visit Precision Medicine Portal Swedish research projects (opens in new tab)"
           >
             Precision Medicine Portal
           </a>
@@ -85,13 +100,22 @@ export default function DataSourcesPage(): ReactElement {
           provides information about data management and a service for data
           sharing.
         </p>
-        <div className="flex flex-row items-center">
+        <div
+          className="flex flex-row items-center"
+          aria-label="Quality registries section"
+        >
           <Title level={2}>Quality registries</Title>
-          <Link href="/data-sources/quality-registries">
+          <Link
+            href="/data-sources/quality-registries"
+            aria-label="Go to quality registries page"
+            className="focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"
+          >
             <svg
               className="ml-2 fill-primary w-7 h-7"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 32 32"
+              aria-hidden="true"
+              role="presentation"
             >
               <g data-name="19-Arrow Right">
                 <path d="M16 0a16 16 0 1 0 16 16A16 16 0 0 0 16 0zm0 30a14 14 0 1 1 14-14 14 14 0 0 1-14 14z" />
@@ -107,7 +131,9 @@ export default function DataSourcesPage(): ReactElement {
           <a
             href="https://www.1177.se/sa-fungerar-varden/lagar-och-bestammelser/nationella-kvalitetsregister/#:~:text=I%20nationella%20kvalitetsregister%20samlas%20information,l%C3%A4mnas%20till%20ett%20nationellt%20kvalitetsregister"
             target="_blank"
-            className="text-primary hover:text-black underline"
+            rel="noopener noreferrer"
+            className="text-primary hover:text-black underline focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"
+            aria-label="Read more about Swedish quality registries (opens in new tab, in Swedish)"
           >
             (further information in Swedish)
           </a>
@@ -115,7 +141,7 @@ export default function DataSourcesPage(): ReactElement {
           approval by a steering group consisting of health care professionals
           and patient representatives.
         </p>
-        <p>
+        <p role="doc-notice">
           Healthcare providers must inform patients before their medical
           information is collected in a quality register. This procedure differs
           from the inclusion of a research subject in a study, where written
@@ -127,7 +153,9 @@ export default function DataSourcesPage(): ReactElement {
           <a
             href="https://www.riksdagen.se/sv/dokument-och-lagar/dokument/svensk-forfattningssamling/patientdatalag-2008355_sfs-2008-355/#K7"
             target="_blank"
-            className="text-primary hover:text-black underline"
+            rel="noopener noreferrer"
+            className="text-primary hover:text-black underline focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"
+            aria-label="Read patient data law information (opens in new tab, in Swedish)"
           >
             (further information in Swedish)
           </a>
@@ -137,64 +165,81 @@ export default function DataSourcesPage(): ReactElement {
           Every quality registry in Sweden is connected to one of six centres
           that provide support:
         </p>
-        <ul className="list-disc pl-4">
-          <li>
+        <ul
+          className="list-disc pl-4"
+          role="list"
+          aria-label="Quality registry support centres"
+        >
+          <li role="listitem">
             <a
               href="https://qrcstockholm.se/"
               target="_blank"
-              className="text-primary hover:text-black underline"
+              rel="noopener noreferrer"
+              className="text-primary hover:text-black underline focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"
+              aria-label="Visit Stockholm Quality Registry Centre website (opens in new tab)"
             >
               Stockholm (QRC STHLM)
             </a>
           </li>
-          <li>
+          <li role="listitem">
             <a
               href="https://rcsyd.se/"
               target="_blank"
-              className="text-primary hover:text-black underline"
+              rel="noopener noreferrer"
+              className="text-primary hover:text-black underline focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"
+              aria-label="Visit Registercentrum Syd website (opens in new tab)"
             >
               Syd (RC SYD)
             </a>
           </li>
-          <li>
+          <li role="listitem">
             <a
               href="https://rcnorr.se/"
               target="_blank"
-              className="text-primary hover:text-black underline"
+              rel="noopener noreferrer"
+              className="text-primary hover:text-black underline focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"
+              aria-label="Visit Registercentrum Norr website (opens in new tab)"
             >
               Norr (RCN)
             </a>
           </li>
-          <li>
+          <li role="listitem">
             <a
               href="https://www.ucr.uu.se/"
               target="_blank"
-              className="text-primary hover:text-black underline"
+              rel="noopener noreferrer"
+              className="text-primary hover:text-black underline focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"
+              aria-label="Visit Uppsala Clinical Research Center website (opens in new tab)"
             >
               Uppsala Clinical Research Center (UCR)
             </a>
           </li>
-          <li>
+          <li role="listitem">
             <a
               href="https://registercentrum.se/rc-vast/vastra-gotaland"
               target="_blank"
-              className="text-primary hover:text-black underline"
+              rel="noopener noreferrer"
+              className="text-primary hover:text-black underline focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"
+              aria-label="Visit Västra Götaland registry centre website (opens in new tab)"
             >
               Västra Götaland
             </a>
           </li>
-          <li>
+          <li role="listitem">
             <a
               href="https://registercentrum.se/rc-sydost/sydost"
               target="_blank"
-              className="text-primary hover:text-black underline"
+              rel="noopener noreferrer"
+              className="text-primary hover:text-black underline focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"
+              aria-label="Visit SydOst registry centre website (opens in new tab)"
             >
               SydOst (RCSO)
             </a>
           </li>
         </ul>
-        <p></p>
-        <Title level={2}>Patient and medical records</Title>
+        <Title level={2} aria-label="Patient and medical records section">
+          Patient and medical records
+        </Title>
         <p>
           Healthcare staff document patient interactions, and after a
           confidentiality assessment, this information can be requested for
@@ -205,13 +250,17 @@ export default function DataSourcesPage(): ReactElement {
           conduct research using patient records from across the country, it may
           be necessary to request data from multiple sources.
         </p>
-        <Title level={2}>Research data management</Title>
+        <Title level={2} aria-label="Research data management section">
+          Research data management
+        </Title>
         <p>
           SciLifeLab provides general research data management (RDM) guidelines,{" "}
           <a
             href="https://data-guidelines.scilifelab.se/"
             target="_blank"
-            className="text-primary hover:text-black underline"
+            rel="noopener noreferrer"
+            className="text-primary hover:text-black underline focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"
+            aria-label="Visit SciLifeLab data guidelines (opens in new tab)"
           >
             available here
           </a>
@@ -220,7 +269,9 @@ export default function DataSourcesPage(): ReactElement {
           <a
             href="https://data-guidelines.scilifelab.se/topics/research-involving-human-data/"
             target="_blank"
-            className="text-primary hover:text-black underline"
+            rel="noopener noreferrer"
+            className="text-primary hover:text-black underline focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"
+            aria-label="Visit SciLifeLab guidelines for research involving human data (opens in new tab)"
           >
             available here
           </a>
@@ -228,7 +279,9 @@ export default function DataSourcesPage(): ReactElement {
           <a
             href="https://data-guidelines.scilifelab.se/topics/sharing-human-data/"
             target="_blank"
-            className="text-primary hover:text-black underline"
+            rel="noopener noreferrer"
+            className="text-primary hover:text-black underline focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"
+            aria-label="Visit SciLifeLab guidelines for sharing human data (opens in new tab)"
           >
             sharing sensitive human data
           </a>
@@ -239,63 +292,79 @@ export default function DataSourcesPage(): ReactElement {
           universities, colleges, and healthcare regions or hospitals. A
           selection of links:
         </p>
-        <ul className="list-disc pl-4">
-          <li>
+        <ul
+          className="list-disc pl-4"
+          role="list"
+          aria-label="Research support resources at universities and institutions"
+        >
+          <li role="listitem">
             <a
               href="https://www.oru.se/english/research/research-support/"
               target="_blank"
-              className="text-primary hover:text-black underline"
+              rel="noopener noreferrer"
+              className="text-primary hover:text-black underline focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"
+              aria-label="Visit Örebro University research support (opens in new tab)"
             >
               Örebro University
             </a>
           </li>
-          <li>
+          <li role="listitem">
             <a
               href="https://www.karolinska.se/forskning-och-utbildning/forskning/stodenheter-for-klinisk-forskning/"
               target="_blank"
-              className="text-primary hover:text-black underline"
+              rel="noopener noreferrer"
+              className="text-primary hover:text-black underline focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"
+              aria-label="Visit Karolinska University Hospital clinical research support (opens in new tab)"
             >
               Karolinska University Hospital
             </a>
           </li>
-          <li>
+          <li role="listitem">
             <a
               href="https://www.staff.lu.se/research-and-education/research-support"
               target="_blank"
-              className="text-primary hover:text-black underline"
+              rel="noopener noreferrer"
+              className="text-primary hover:text-black underline focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"
+              aria-label="Visit Lund University research support (opens in new tab)"
             >
               Lund University
             </a>
           </li>
-          <li>
+          <li role="listitem">
             <a
               href="https://www.umu.se/en/research-support-and-collaboration-office/"
               target="_blank"
-              className="text-primary hover:text-black underline"
+              rel="noopener noreferrer"
+              className="text-primary hover:text-black underline focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"
+              aria-label="Visit Umeå University research support (opens in new tab)"
             >
               Umeå University
             </a>
           </li>
-          <li>
+          <li role="listitem">
             <a
               href="https://www.uu.se/en/staff/gateway/research/research-handbook/uppsala-universitys-research-support/the-medfarm-research-support"
               target="_blank"
-              className="text-primary hover:text-black underline"
+              rel="noopener noreferrer"
+              className="text-primary hover:text-black underline focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"
+              aria-label="Visit Uppsala University research support (opens in new tab)"
             >
               Uppsala University
             </a>
           </li>
-          <li>
+          <li role="listitem">
             <a
               href="https://staff.ki.se/research-support"
               target="_blank"
-              className="text-primary hover:text-black underline"
+              rel="noopener noreferrer"
+              className="text-primary hover:text-black underline focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"
+              aria-label="Visit Karolinska Institutet research support (opens in new tab)"
             >
               Karolinska Institutet
             </a>
           </li>
         </ul>
-        <LastUpdated date="05-05-2025" />
+        <LastUpdated date="06-08-2025" />
       </div>
     </div>
   );
