@@ -13,7 +13,12 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import {
+  Sheet,
+  SheetContent,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 import { Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -43,8 +48,8 @@ const components: { title: string; href: string; description: string }[] = [
 
 const ListItem = React.forwardRef<
   React.ElementRef<"a">,
-  React.ComponentPropsWithoutRef<"a">
->(({ className, title, children, ...props }, ref) => {
+  React.ComponentPropsWithoutRef<"a"> & { role?: string }
+>(({ className, title, children, role, ...props }, ref) => {
   return (
     <li>
       <NavigationMenuLink asChild>
@@ -54,6 +59,7 @@ const ListItem = React.forwardRef<
             "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-neutral hover:text-neutral-foreground focus:bg-secondary/20 focus:text-secondary-foreground",
             className
           )}
+          role={role}
           {...props}
         >
           <div className="text-sm font-medium leading-none">{title}</div>
@@ -69,14 +75,19 @@ ListItem.displayName = "ListItem";
 
 export default function HeaderComponent() {
   return (
-    <header className="bg-gradient-to-b from-secondary to-primary">
+    <header
+      className="bg-gradient-to-b from-secondary to-primary"
+      role="banner"
+      aria-label="Site header"
+    >
       <div className="flex items-center justify-between gap-4 2xl:max-w-screen-2xl 2xl:mx-auto py-2 px-4 lg:px-6">
-        <Link href="/" className="flex-shrink-0">
+        <Link href="/" className="flex-shrink-0" aria-label="Go to homepage">
           <Image
             width={600}
             height={59.5}
             src={"/SciLifeLab logo/Precisionmedicineportal_logo_white.png"}
-            alt="SciLifeLab Logo"
+            alt="Precision Medicine Portal - SciLifeLab"
+            priority
             className="w-auto h-7 lg:h-14"
           />
         </Link>
@@ -94,16 +105,24 @@ export default function HeaderComponent() {
 function DesktopNav() {
   return (
     <NavigationMenu>
-      <NavigationMenuList>
-        <NavigationMenuItem>
-          <NavigationMenuTrigger>Data sources</NavigationMenuTrigger>
+      <NavigationMenuList role="menubar" aria-label="Main navigation">
+        <NavigationMenuItem role="none">
+          <NavigationMenuTrigger aria-label="Data sources menu">
+            Data sources
+          </NavigationMenuTrigger>
           <NavigationMenuContent>
-            <ul className="grid gap-3 p-6 w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
-              <li className="row-span-3">
+            <ul
+              className="grid gap-3 p-6 w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]"
+              role="menu"
+              aria-label="Data sources submenu"
+            >
+              <li className="row-span-3" role="none">
                 <NavigationMenuLink asChild>
                   <a
                     className="flex h-full w-full select-none flex-col rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
                     href="/data-sources"
+                    role="menuitem"
+                    aria-label="Access clinical data - Navigate human data for research"
                   >
                     <div className="mb-2 mt-4 text-lg font-medium">
                       Access clinical data
@@ -118,6 +137,7 @@ function DesktopNav() {
               <ListItem
                 href="/data-sources/quality-registries"
                 title="Quality registries"
+                role="menuitem"
               >
                 Explore various Swedish registries offering individualised
                 health data
@@ -125,41 +145,65 @@ function DesktopNav() {
               <ListItem
                 href="/data-sources/swedish-research-projects"
                 title="Swedish research projects"
+                role="menuitem"
               >
                 Discover Swedish research projects and databases
               </ListItem>
-              <ListItem href="/data-sources/others" title="Other data sources">
+              <ListItem
+                href="/data-sources/others"
+                title="Other data sources"
+                role="menuitem"
+              >
                 Access a comprehensive overview of data sources
               </ListItem>
             </ul>
           </NavigationMenuContent>
         </NavigationMenuItem>
-        <NavigationMenuItem>
-          <Link href="/kiarva" passHref>
-            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+        <NavigationMenuItem role="none">
+          <NavigationMenuLink asChild>
+            <Link
+              href="/kiarva"
+              className={navigationMenuTriggerStyle()}
+              aria-label="KIARVA dashboard - Demo"
+            >
               KIARVA dashboard
-              <Badge variant="accent" className="ml-1">
+              <Badge
+                variant="accent"
+                className="ml-1"
+                aria-label="Demo version"
+              >
                 Demo
               </Badge>
-            </NavigationMenuLink>
-          </Link>
+            </Link>
+          </NavigationMenuLink>
         </NavigationMenuItem>
-        <NavigationMenuItem>
-          <Link href="/contact" passHref>
-            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+        <NavigationMenuItem role="none">
+          <NavigationMenuLink asChild>
+            <Link
+              href="/contact"
+              className={navigationMenuTriggerStyle()}
+              aria-label="Contact us"
+            >
               Contact
-            </NavigationMenuLink>
-          </Link>
+            </Link>
+          </NavigationMenuLink>
         </NavigationMenuItem>
-        <NavigationMenuItem>
-          <NavigationMenuTrigger>About us</NavigationMenuTrigger>
+        <NavigationMenuItem role="none">
+          <NavigationMenuTrigger aria-label="About us menu">
+            About us
+          </NavigationMenuTrigger>
           <NavigationMenuContent>
-            <ul className="grid gap-3 p-4 w-[500px] grid-cols-2">
+            <ul
+              className="grid gap-3 p-4 w-[500px] grid-cols-2"
+              role="menu"
+              aria-label="About us submenu"
+            >
               {components.map((component) => (
                 <ListItem
                   key={component.title}
                   title={component.title}
                   href={component.href}
+                  role="menuitem"
                 >
                   {component.description}
                 </ListItem>
@@ -180,46 +224,65 @@ function MobileNav() {
           variant="ghost"
           size="icon"
           className="text-white hover:bg-secondary/20 focus:bg-secondary/20"
+          aria-label="Open mobile navigation menu"
         >
-          <Menu className="h-6 w-6" />
+          <Menu className="h-6 w-6" aria-hidden="true" />
           <span className="sr-only">Toggle menu</span>
         </Button>
       </SheetTrigger>
-      <SheetContent side="right">
-        <nav className="flex flex-col gap-4">
-          <Link href="/data-sources" className="font-semibold">
+      <SheetContent side="right" aria-label="Mobile navigation menu">
+        <SheetTitle className="sr-only">Mobile Navigation</SheetTitle>
+        <nav className="flex flex-col gap-4" aria-label="Mobile navigation">
+          <Link
+            href="/data-sources"
+            className="font-semibold"
+            aria-label="Access clinical data"
+          >
             Access clinical data
           </Link>
           <Link
             href="/data-sources/quality-registries"
             className="text-sm pl-4"
+            aria-label="Quality registries"
           >
             Quality registries
           </Link>
           <Link
             href="/data-sources/swedish-research-projects"
             className="text-sm pl-4"
+            aria-label="Swedish research projects"
           >
             Swedish research projects
           </Link>
-          <Link href="/data-sources/others" className="text-sm pl-4">
+          <Link
+            href="/data-sources/others"
+            className="text-sm pl-4"
+            aria-label="Other data sources"
+          >
             Other data sources
           </Link>
-          <Link href="/kiarva" className="">
+          <Link
+            href="/kiarva"
+            className="flex items-center"
+            aria-label="KIARVA dashboard - Demo"
+          >
             KIARVA dashboard
-            <Badge variant="accent" className="ml-1">
+            <Badge variant="accent" className="ml-1" aria-label="Demo version">
               Demo
             </Badge>
           </Link>
-          <Link href="/contact" className="">
+          <Link href="/contact" className="" aria-label="Contact us">
             Contact
           </Link>
-          <div className="font-semibold">About us</div>
+          <div className="font-semibold" role="heading" aria-level={2}>
+            About us
+          </div>
           {components.map((component) => (
             <Link
               key={component.title}
               href={component.href}
               className="text-sm pl-4"
+              aria-label={component.title}
             >
               {component.title}
             </Link>

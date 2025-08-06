@@ -8,6 +8,8 @@ import { Linkedin } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import { useState, useEffect } from "react";
 
+import { createSafeUrl } from "@/lib/security-utils";
+
 export default function Footer(): ReactElement {
   const linksCol1: { [id: string]: ILink } = {
     l1: {
@@ -68,12 +70,21 @@ export default function Footer(): ReactElement {
       });
   }, []);
 
+  const frontendImageHref = createSafeUrl("https://", frontendImage);
+
   return (
-    <div className="bg-primary text-white">
+    <footer
+      className="bg-primary text-white"
+      role="contentinfo"
+      aria-label="Site footer"
+    >
       <div className="container mx-auto px-4 py-10 max-w-7xl">
         <div className="grid grid-cols-2 lg:grid-cols-7 gap-8">
           {/* First column - Partner logos */}
-          <div className="flex gap-6 items-center col-span-1 lg:col-span-2">
+          <div
+            className="flex gap-6 items-center col-span-1 lg:col-span-2"
+            aria-label="Partner organizations"
+          >
             <div className="w-20 lg:w-auto">
               <Image
                 src="/Partner logo/KI_digital_logotyp_negativ_vert.png"
@@ -103,11 +114,13 @@ export default function Footer(): ReactElement {
           {/* Second column - Social */}
           <div className="space-y-6">
             <h3 className="text-sm font-semibold mb-4">Social</h3>
-            <div className="flex space-x-4">
+            <nav className="flex space-x-4" aria-label="Social media links">
               <a
                 href="https://x.com/scilifelab_dc"
                 className="hover:text-white/80 transition-colors"
-                aria-label="X (formerly Twitter)"
+                aria-label="Follow us on X (formerly Twitter)"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -120,6 +133,8 @@ export default function Footer(): ReactElement {
                   width="24"
                   height="24"
                   fill="currentColor"
+                  aria-hidden="true"
+                  role="presentation"
                 >
                   <path
                     fillRule="nonzero"
@@ -130,7 +145,9 @@ export default function Footer(): ReactElement {
               <a
                 href="https://bsky.app/profile/scilifelab.se"
                 className="hover:text-white/80 transition-colors"
-                aria-label="Bluesky"
+                aria-label="Follow us on Bluesky"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -143,6 +160,8 @@ export default function Footer(): ReactElement {
                   height="24"
                   viewBox="0 0 511.999 452.266"
                   fill="currentColor"
+                  aria-hidden="true"
+                  role="presentation"
                 >
                   <path
                     fillRule="nonzero"
@@ -153,17 +172,22 @@ export default function Footer(): ReactElement {
               <a
                 href="https://se.linkedin.com/company/scilifelab-data-centre"
                 className="hover:text-white/80 transition-colors"
-                aria-label="LinkedIn"
+                aria-label="Follow us on LinkedIn"
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                <Linkedin size={24} />
+                <Linkedin size={24} aria-hidden="true" role="presentation" />
               </a>
-            </div>
+            </nav>
           </div>
 
           {/* Third column - Links */}
           <div className="space-y-6">
             <h3 className="text-sm font-semibold mb-4">Data sources</h3>
-            <nav className="flex flex-col space-y-4">
+            <nav
+              className="flex flex-col space-y-4"
+              aria-label="Data sources navigation"
+            >
               {Object.keys(linksCol1).map((key) => (
                 <Link
                   className="text-sm text-white/80 hover:text-white transition-colors"
@@ -179,7 +203,10 @@ export default function Footer(): ReactElement {
           {/* Fourth column - Links */}
           <div className="space-y-6">
             <h3 className="text-sm font-semibold mb-4">Dashboards</h3>
-            <nav className="flex flex-col space-y-4">
+            <nav
+              className="flex flex-col space-y-4"
+              aria-label="Dashboard navigation"
+            >
               {Object.keys(linksCol2).map((key) => (
                 <Link
                   className="text-sm text-white/80 hover:text-white transition-colors"
@@ -195,7 +222,10 @@ export default function Footer(): ReactElement {
           {/* Fifth column - Links */}
           <div className="space-y-6">
             <h3 className="text-sm font-semibold mb-4">About us</h3>
-            <nav className="flex flex-col space-y-4">
+            <nav
+              className="flex flex-col space-y-4"
+              aria-label="About us navigation"
+            >
               {Object.keys(linksCol3).map((key) => (
                 <Link
                   className="text-sm text-white/80 hover:text-white transition-colors"
@@ -211,7 +241,10 @@ export default function Footer(): ReactElement {
           {/* Sixth column - Links */}
           <div className="space-y-6">
             <h3 className="text-sm font-semibold mb-4">More</h3>
-            <nav className="flex flex-col space-y-4">
+            <nav
+              className="flex flex-col space-y-4"
+              aria-label="Additional links navigation"
+            >
               {Object.keys(linksCol4).map((key) => (
                 <Link
                   className="text-sm text-white/80 hover:text-white transition-colors"
@@ -228,7 +261,11 @@ export default function Footer(): ReactElement {
         <Separator className="my-8 bg-white/20" />
 
         {/* GitHub links */}
-        <div className="text-sm text-white/70 md:text-left">
+        <div
+          className="text-sm text-white/70 md:text-left"
+          role="contentinfo"
+          aria-label="Project information"
+        >
           <p className="leading-loose">
             Built by the Data Science Node in Precision Medicine and
             Diagnostics. The source code is available on{" "}
@@ -237,22 +274,32 @@ export default function Footer(): ReactElement {
               target="_blank"
               rel="noopener noreferrer"
               className="font-medium text-white/80 hover:text-white underline underline-offset-4 transition-colors"
+              aria-label="View source code on GitHub (opens in new tab)"
             >
               Github{" "}
             </a>
             (Version v
-            <a
-              href={"https://" + frontendImage || "/"}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-medium text-white/80 hover:text-white underline underline-offset-4 transition-colors"
-            >
-              {frontendImage?.split(":")[1] || "n/a"}
-            </a>
+            {frontendImageHref !== "https://" ? (
+              <a
+                href={frontendImageHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-medium text-white/80 hover:text-white underline underline-offset-4 transition-colors"
+                aria-label={`View version ${
+                  frontendImage?.split(":")[1] || "n/a"
+                } details (opens in new tab)`}
+              >
+                {frontendImage?.split(":")[1] || "n/a"}
+              </a>
+            ) : (
+              <span className="font-medium text-white/80">
+                {frontendImage?.split(":")[1] || "n/a"}
+              </span>
+            )}
             {/*{" "}
             and backend version v
             <a
-              href={"https://" + backendImage || "/"}
+              href={createSafeUrl("https://", backendImage)}
               target="_blank"
               rel="noopener noreferrer"
               className="font-medium text-white/80 hover:text-white underline underline-offset-4 transition-colors"
@@ -263,6 +310,6 @@ export default function Footer(): ReactElement {
           </p>
         </div>
       </div>
-    </div>
+    </footer>
   );
 }

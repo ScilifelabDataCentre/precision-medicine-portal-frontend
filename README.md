@@ -1,28 +1,127 @@
-# precision-medicine-portal-frontend
+# Precision Medicine Portal (Frontend)
 
-React project for the frontend of the Precision Medicine Portal by DC Data Science Node
+The Precision Medicine Portal is a national resource developed and maintained by SciLifeLab Data Centre. It is intended to serve as a resource for professionals in the field of precision medicine, and content will be added continuously.
 
-- [Introduction](#introduction)
+The portal supports researchers in precision medicine by providing information on available datasets, including national quality registries, research cohorts, and other structured data relevant to clinical and translational research. Moreover, it provides links to customised dashboards and resources for navigating data management challenges. Researchers can also find guidance on handling sensitive data.
+
+## Table of Contents
+
+- [Background](#background)
+- [Cite this portal](#cite-this-portal)
+- [Contributing](#contributing)
+- [How to get help](#how-to-get-help)
+- [Credits](#credits)
 - [Development](#development)
-  - [Step 1: Clone the repository](#step-1-clone-the-repository)
-  - [Step 2: Create a branch and develop](#step-2-create-a-branch-and-develop)
-  - [Step 3: Make a pull request](#step-3-make-a-pull-request)
+  - [Architecture Overview](#architecture-overview)
+  - [Running a local copy of the portal](#running-a-local-copy-of-the-portal)
 
-## Introduction
+## Background
 
 The [Data Driven Life Science](https://www.scilifelab.se/data-driven/) (DDLS) initiative has appointed four [Data Science Nodes](https://www.scilifelab.se/news/ddls-data-science-nodes-to-be-launched/) (DSNs) to serve as database, data and bioinformatics support for data driven research in life science. This repository contains the code for the frontend of a Precision Medicine Portal by the Precision Medicine DSN, which is hosted at [Karolinska Institutet](https://ki.se/en) and [SciLifeLab](https://www.scilifelab.se).
 
-The aim of this portal is to provide an overview of available data sources as well as customized and interactive dashboards related to precision medicine. Moreover, the projects and background of the DSN will be presented on the portal in the future.
+The portal is one of our main projects. Other projects the team has been or is involved in are presented on the portal.
 
-### Step 1: Clone the Repository
+## Cite this portal
 
-#### Git setup
+Click on 'Cite this repository' near the top right of this repository to see how to formally cite this repository. Also see the [citation and license](https://precision-medicine-portal.scilifelab.se/citation-and-license) site for detailed information.
 
-Clone the repository to your machine:
+## Contributing
 
-```bash
-git clone https://github.com/ScilifelabDataCentre/precision-medicine-portal-frontend.git
+We welcome contributions, small and large, to our codebase, dashboards and documentation. They will be published after review and approval by the Precision Medicine Portal team. Fork, open a pull request, or contact us to discuss ideas!
+Information on the technical details of the portal can be found in the [development](#development) section.
+
+## How to get help
+
+If you have any questions regarding any of the code or content associated with the portal, please get in touch by emailing us at [precisionmedicine@scilifelab.se](mailto:precisionmedicine@scilifelab.se).
+
+## Credits
+
+The website was built and is maintained by a team at SciLifeLab Data Centre and Karolinska Institutet. We are grateful to many collaborators for their contributions.
+
+## Development
+
+### Architecture Overview
+
+This repository contains a modern web application built with the following architecture, technologies, and tools:
+
+#### Core Technologies
+
+- **Framework**: Next.js 15.3.2 (React-based full-stack framework)
+- **Language**: TypeScript 5.x (statically typed JavaScript)
+- **Runtime**: Node.js 18.x (Alpine Linux-based Docker image)
+
+#### Frontend Architecture
+
+- **UI Library**: React 19.1.0 with React DOM
+- **Styling**: Tailwind CSS 3.4.1 with custom design system
+- **Component Library**: Radix UI primitives for accessible components
+- **Icons**: Lucide React for modern iconography
+- **State Management**: React hooks and context (no external state management library)
+
+#### Key Features & Libraries
+
+- **Analytics**: Matomo integration for web analytics
+- **Content**: React Markdown with GitHub Flavored Markdown support
+- **Security**: DOMPurify for XSS protection, Google reCAPTCHA integration
+- **HTTP Client**: Axios for API requests
+- **Utilities**: Class Variance Authority, clsx, tailwind-merge for styling utilities
+- **Cookies**: js-cookie and cookies-next for cookie management
+
+#### Development Tools
+
+- **Linting**: ESLint with Next.js configuration
+- **Testing**: Cypress 14.3.3 for end-to-end testing
+- **Build Tool**: Next.js built-in bundler with Webpack
+- **Package Manager**: npm with package-lock.json for dependency management
+
+#### Deployment & Infrastructure
+
+- **Containerization**: Multi-stage Docker build with Node.js Alpine base
+- **Output**: Standalone Next.js build for optimized production deployment
+- **Port**: Configured for port 3000 with hostname binding
+
+#### Project Structure
+
 ```
+next-app/
+├── src/
+│   ├── app/           # Next.js App Router pages and layouts
+│   ├── components/    # Reusable React components
+│   ├── lib/          # Utility functions and configurations
+│   ├── interfaces/   # TypeScript type definitions
+│   └── assets/       # Static assets and data files
+├── public/           # Static files served directly
+├── cypress/         # End-to-end test configuration
+└── fonts/           # Custom font files
+```
+
+#### Design System
+
+- Custom color palette with semantic naming (primary, secondary, accent, etc.)
+- Responsive design with Tailwind CSS breakpoints
+- Lato font family integration
+- Accessible component primitives from Radix UI
+
+### Running a local copy of the portal and contributing to the codebase
+
+#### Step 1: Fork and clone the repository
+
+**Important**: You must work through a fork of the repository. Do not commit directly to the main repository.
+
+1. Fork the repository: Click the "Fork" button at the top right of the [main repository page](https://github.com/ScilifelabDataCentre/precision-medicine-portal-frontend) to create your own copy.
+
+2. Clone your fork: Clone your forked repository to your local machine:
+
+   ```bash
+   git clone https://github.com/YOUR_USERNAME/precision-medicine-portal-frontend.git
+   ```
+
+3. Add the upstream remote: Add the original repository as an upstream remote to keep your fork updated:
+   ```bash
+   git remote add upstream https://github.com/ScilifelabDataCentre/precision-medicine-portal-frontend.git
+   ```
+
+Please note that we require all commits to be verified, so you must sign your commits. For information on how to set this up, see the GitHub documentation [here](https://docs.github.com/en/authentication/managing-commit-signature-verification/signing-commits).
 
 Fetch changes at any time from this remote:
 
@@ -30,56 +129,47 @@ Fetch changes at any time from this remote:
 git pull upstream dev
 ```
 
-The project is set up using npm. If you want to run the project locally, install npm and use it to run the available scripts:
+#### Step 2: Set up your development environment
 
-## Available Scripts
+The project is set up using npm. Navigate to the `next-app` directory and use npm to run the available scripts:
 
-Note that you need to be in the "react-app" directory. In this directory, you can run:
+##### Available Scripts
 
-### `npm start`
+###### `npm install`
 
-Runs the app in the development mode.\
+Installs the dependencies for the project.
+
+###### `npm run dev`
+
+Runs the app in development mode with hot reload.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
 
-### `npm test`
+###### `npm run build`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Builds the app for production using Next.js optimization.\
+The build is minified and optimized for the best performance.\
+This also checks the linting.
 
-### `npm run build`
+###### `npm start`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Starts the production server after building the app.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+###### `npm run lint`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Runs ESLint to check code quality and consistency.
 
-### `npm run eject`
+###### `npm test`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Runs Cypress end-to-end tests for the application.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-You will see that a local development server starts running. You can access the web page by opening a web browser and visiting the URI "localhost:5000". To stop the server press CTRL+C in the terminal.
-
-#### Docker
+##### Docker
 
 You can use the provided Dockerfile to build and run a container.
 
-### Step 2: Create a branch and develop
-
-Note that commits need to be signed as per SciLifeLab policy. There are many different ways to sign github commits and how to set it up may vary based on your operating system. An example of how to set it up for MacOS can be seen here:
-
-https://gist.github.com/troyfontaine/18c9146295168ee9ca2b30c00bd1b41e
+#### Step 3: Create a branch and develop
 
 To create a new branch and start developing in it:
 
@@ -109,34 +199,21 @@ git commit -S -m "My commit"
 git push origin my_branch
 ```
 
-The code is now in my_branch in the repository, but you it does not get merged into the main branches without being reviewed as a pull request.
+The code is now in your branch on your fork, but it does not get merged into the main repository without being reviewed as a pull request.
 
-### Step 3: Make a pull request
+#### Step 4: Make a pull request
 
-Once you're finished with your edits and they are committed and pushed to your branch, it's time to open a pull request.
+Once you're finished with your edits and they are committed and pushed to your branch, it's time to open a pull request from your fork to the main repository.
 
-You can find full documentation on the [GitHub help website](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests), however in short:
+You can find full documentation on the [GitHub help website](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests). In short:
 
-- Visit the dev repository: [https://github.com/ScilifelabDataCentre/precision-medicine-portal-frontend](https://github.com/ScilifelabDataCentre/precision-medicine-portal-frontend)
-- Find the branch my_branch that you created and pushed to
+- Visit your fork: `https://github.com/YOUR_USERNAME/precision-medicine-portal-frontend`
+- Find the branch `my_branch` that you created and pushed to
 - Click the button that reads _"New Pull Request"_
+- GitHub will automatically detect that you want to create a pull request to the upstream repository
 - Add/change title as well as a description of what you've done
 - Add reviewers from the organization to review your pull request
 - Click Create Pull Request
 
-Once created, a member of the website team will review your changes.
-Once approved, they will be merged and deployed.
-
-## How to get help
-
-If in doubt, you can ask for help by emailing [datacentre@scilifelab.se](mailto:datacentre@scilifelab.se).
-
-## Credits
-
-The portal was built by the DDLS Precision Medicine Data Science Node with colleagues at SciLifeLab.
-
-# License
-
-This project is licensed under the terms of the MIT license.
-
-Copyright &copy; 2025 SciLifeLab Data Centre
+Once created, a member of our team will review your changes and reach out to you if they have any questions or requests for changes.
+Once approved, they will be merged and deployed in the next release.

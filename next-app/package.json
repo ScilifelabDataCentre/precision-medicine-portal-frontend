@@ -1,6 +1,6 @@
 {
   "name": "precision-medicine-portal-frontend",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "private": true,
   "license": "MIT",
   "scripts": {
@@ -24,6 +24,7 @@
     "clsx": "^2.1.1",
     "cookies-next": "^4.2.1",
     "dompurify": "^3.2.6",
+    "isomorphic-dompurify": "^2.25.0",
     "js-cookie": "^3.0.5",
     "lucide-react": "^0.446.0",
     "nanoid": "^5.1.5",

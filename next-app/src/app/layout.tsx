@@ -35,10 +35,21 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      </head>
       <body>
         <MatomoInit></MatomoInit>
         <HeaderComponent />
-        <main className="2xl:max-w-screen-2xl 2xl:mx-auto">{children}</main>
+        <main
+          id="main-content"
+          role="main"
+          className="2xl:max-w-screen-2xl 2xl:mx-auto"
+          aria-label="Main content"
+        >
+          {children}
+        </main>
         <FooterComponent />
       </body>
     </html>
