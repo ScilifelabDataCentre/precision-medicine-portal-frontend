@@ -198,31 +198,35 @@ export default function SwedishResearchProjectsPage() {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <Breadcrumb>
-        <BreadcrumbList>
-          <BreadcrumbItem>
-            <BreadcrumbLink href="/">Home</BreadcrumbLink>
-          </BreadcrumbItem>
-          <BreadcrumbSeparator />
-          <BreadcrumbItem>
-            <BreadcrumbLink href="/data-sources">Data sources</BreadcrumbLink>
-          </BreadcrumbItem>
-          <BreadcrumbSeparator />
-          <BreadcrumbItem>
-            <BreadcrumbLink href="/data-sources/swedish-research-projects">
-              Swedish research projects
-            </BreadcrumbLink>
-          </BreadcrumbItem>
-        </BreadcrumbList>
-      </Breadcrumb>
+      <nav aria-label="Breadcrumb navigation" role="navigation">
+        <Breadcrumb>
+          <BreadcrumbList>
+            <BreadcrumbItem>
+              <BreadcrumbLink href="/">Home</BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbLink href="/data-sources">Data sources</BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbLink href="/data-sources/swedish-research-projects">
+                Swedish research projects
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+          </BreadcrumbList>
+        </Breadcrumb>
+      </nav>
 
-      {/* Title */}
       <Title level={1} className="mb-4">
         Swedish Research Projects
       </Title>
 
-      {/* Introductory Section */}
-      <div className="text-justify mx-auto mb-4">
+      <div
+        className="text-justify mx-auto mb-4"
+        role="doc-abstract"
+        aria-label="Page introduction and overview"
+      >
         <p className="mb-2">
           This page highlights selected research projects tied to biobanks,
           showcasing their significant role in advancing scientific research and
@@ -237,7 +241,8 @@ export default function SwedishResearchProjectsPage() {
             href="https://biobanksverige.se/wp-content/uploads/2022/11/digital-broschyr-15-svenska-forskningsprojekt-version-10.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-primary hover:underline"
+            className="text-primary hover:underline focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"
+            aria-label="Read 15 Swedish Research Projects brochure (opens in new tab)"
           >
             &quot;15 Swedish Research Projects&quot;
           </a>{" "}
@@ -245,163 +250,220 @@ export default function SwedishResearchProjectsPage() {
           overview of the projects.
         </p>
       </div>
-      {/* Main Content with Filters */}
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
-        {/* Left Column - Filters */}
-        <div className="space-y-8">
-          <div className="w-full max-w-lg bg-muted border border-neutral rounded-lg p-4 text-sm text-muted-foreground text-left mx-auto">
+        <aside
+          className="space-y-8"
+          aria-label="Search and filter options"
+          role="complementary"
+        >
+          <div
+            className="w-full max-w-lg bg-muted border border-neutral rounded-lg p-4 text-sm text-muted-foreground text-left mx-auto"
+            role="note"
+            aria-label="Data access information"
+          >
             To access data, researchers may need to obtain ethical approval,
             submit data requests, and set up data management agreements.
           </div>
-          {/* Search */}
-          <div className="space-y-4">
-            <label
-              htmlFor="search"
-              className="font-bold text-2xl text-foreground"
-            >
-              Search
-            </label>
-            <Input
-              id="search"
-              type="text"
-              name="search"
-              placeholder="Search by name or keyword"
-              value={searchBar}
-              onChange={(e) => setSearchBar(e.target.value)}
-              className="bg-muted"
-            />
-          </div>
 
-          {/* Participants Filters */}
-          <div className="space-y-4">
-            <h2 className="font-bold text-2xl text-foreground">Participants</h2>
-            <Card>
-              <CardContent className="pt-6">
-                {sortedTags.participants.map((tag, index) => (
-                  <div className="flex items-center space-x-3 mb-4" key={tag}>
-                    <Checkbox
-                      id={`participant-${index}`}
-                      checked={checkedList[index]}
-                      onCheckedChange={() =>
-                        checkedFilter("participants", tag, index)
-                      }
-                    />
-                    <label
-                      htmlFor={`participant-${index}`}
-                      className="text-base leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                    >
-                      {tag} ({getCountForType(tag, true)})
-                    </label>
-                  </div>
-                ))}
-              </CardContent>
-            </Card>
-          </div>
-
-          {/* Contextual Filters */}
-          <div className="space-y-4">
-            <h2 className="font-bold text-2xl text-foreground">Contextual</h2>
-            <Card>
-              <CardContent className="pt-6">
-                {sortedTags.contextual.map((tag, index) => (
-                  <div className="flex items-center space-x-3 mb-4" key={tag}>
-                    <Checkbox
-                      id={`contextual-${index}`}
-                      checked={
-                        checkedList[sortedTags.participants.length + index]
-                      }
-                      onCheckedChange={() =>
-                        checkedFilter(
-                          "contextual",
-                          tag,
-                          sortedTags.participants.length + index
-                        )
-                      }
-                    />
-                    <label
-                      htmlFor={`contextual-${index}`}
-                      className="text-base leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                    >
-                      {tag} ({getCountForType(tag, false)})
-                    </label>
-                  </div>
-                ))}
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-
-        {/* Right Column - Projects */}
-        <div className="lg:col-span-3 space-y-6">
-          {projectData
-            .filter((project) => applyParticipantFilter(project))
-            .filter((project) => applyContextualFilter(project))
-            .filter((project) => applySearchBar(project))
-            .sort((a, b) => a.name.localeCompare(b.name))
-            .map((project, index) => (
-              <Card
-                key={index}
-                className="bg-muted border border-neutral rounded-lg shadow-sm hover:shadow-md transition-shadow"
+          <section aria-label="Search research projects">
+            <div className="space-y-4">
+              <label
+                htmlFor="search"
+                className="font-bold text-2xl text-foreground"
               >
-                <CardHeader className="bg-muted p-4">
-                  <CardTitle className="text-lg font-medium text-primary hover:underline">
-                    <a
-                      href={project.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      {project.name}
-                    </a>
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="bg-card p-4">
-                  <p className="text-muted-foreground mb-4">
-                    {project.description || "Description not provided."}
-                  </p>
-                  <div className="flex flex-col gap-3">
-                    {/* SND Button */}
-                    {project.SND && (
-                      <a
-                        href={project.SND}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={`inline-flex items-center gap-2 px-3 py-1 text-sm font-medium rounded-full text-black ${TAG_COLOURS.snd} hover:opacity-90 self-start transition-opacity duration-100`}
+                Search
+              </label>
+              <Input
+                id="search"
+                type="text"
+                name="search"
+                placeholder="Search by name or keyword"
+                value={searchBar}
+                onChange={(e) => setSearchBar(e.target.value)}
+                className="bg-muted"
+                aria-describedby="search-help"
+              />
+              <div id="search-help" className="sr-only">
+                Search through research project names, descriptions, and tags
+              </div>
+            </div>
+          </section>
+
+          <section aria-label="Filter by number of participants">
+            <fieldset className="space-y-4">
+              <legend className="font-bold text-2xl text-foreground">
+                Participants
+              </legend>
+              <Card>
+                <CardContent className="pt-6">
+                  <div role="group" aria-label="Participant count filters">
+                    {sortedTags.participants.map((tag, index) => (
+                      <div
+                        className="flex items-center space-x-3 mb-4"
+                        key={tag}
                       >
-                        SND Metadata
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="20"
-                          height="20.092"
-                          className="flex-shrink-0"
+                        <Checkbox
+                          id={`participant-${index}`}
+                          checked={checkedList[index]}
+                          onCheckedChange={() =>
+                            checkedFilter("participants", tag, index)
+                          }
+                          aria-describedby={`participant-count-${index}`}
+                        />
+                        <label
+                          htmlFor={`participant-${index}`}
+                          className="text-base leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                         >
-                          <path d="m12 0 2.561 2.537-6.975 6.976 2.828 2.828 6.988-6.988L20 7.927 19.998 0H12z" />
-                          <path d="M9 4.092v-2H0v18h18v-9h-2v7H2v-14h7z" />
-                        </svg>
-                      </a>
-                    )}
-                    {/* Other Tags */}
-                    <div className="flex flex-wrap gap-2">
-                      {Object.entries(project.tags).map(
-                        ([category, tags]) =>
-                          category !== "disease" &&
-                          tags?.map((tag, i) => (
-                            <span
-                              key={`${category}-${i}`}
-                              className={`px-3 py-1 rounded-full text-sm ${TAG_COLOURS[category]}`}
-                            >
-                              {tag}
-                            </span>
-                          ))
-                      )}
-                    </div>
+                          {tag}{" "}
+                          <span id={`participant-count-${index}`}>
+                            ({getCountForType(tag, true)})
+                          </span>
+                        </label>
+                      </div>
+                    ))}
                   </div>
                 </CardContent>
               </Card>
-            ))}
-        </div>
-      </div>
+            </fieldset>
+          </section>
 
-      {/* Last Updated */}
+          <section aria-label="Filter by contextual information">
+            <fieldset className="space-y-4">
+              <legend className="font-bold text-2xl text-foreground">
+                Contextual
+              </legend>
+              <Card>
+                <CardContent className="pt-6">
+                  <div role="group" aria-label="Contextual filters">
+                    {sortedTags.contextual.map((tag, index) => (
+                      <div
+                        className="flex items-center space-x-3 mb-4"
+                        key={tag}
+                      >
+                        <Checkbox
+                          id={`contextual-${index}`}
+                          checked={
+                            checkedList[sortedTags.participants.length + index]
+                          }
+                          onCheckedChange={() =>
+                            checkedFilter(
+                              "contextual",
+                              tag,
+                              sortedTags.participants.length + index
+                            )
+                          }
+                          aria-describedby={`contextual-count-${index}`}
+                        />
+                        <label
+                          htmlFor={`contextual-${index}`}
+                          className="text-base leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                        >
+                          {tag}{" "}
+                          <span id={`contextual-count-${index}`}>
+                            ({getCountForType(tag, false)})
+                          </span>
+                        </label>
+                      </div>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            </fieldset>
+          </section>
+        </aside>
+
+        <section
+          className="lg:col-span-3 space-y-6"
+          aria-label="Research projects results"
+          role="region"
+        >
+          <div
+            className="space-y-6"
+            role="list"
+            aria-label={`${
+              projectData
+                .filter((project) => applyParticipantFilter(project))
+                .filter((project) => applyContextualFilter(project))
+                .filter((project) => applySearchBar(project)).length
+            } research projects found`}
+          >
+            {projectData
+              .filter((project) => applyParticipantFilter(project))
+              .filter((project) => applyContextualFilter(project))
+              .filter((project) => applySearchBar(project))
+              .sort((a, b) => a.name.localeCompare(b.name))
+              .map((project, index) => (
+                <article key={index} role="listitem">
+                  <Card className="bg-muted border border-neutral rounded-lg shadow-sm hover:shadow-md transition-shadow">
+                    <CardHeader className="bg-muted p-4">
+                      <CardTitle className="text-lg font-medium text-primary hover:underline">
+                        <a
+                          href={project.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"
+                          aria-label={`Visit ${project.name} project website (opens in new tab)`}
+                        >
+                          {project.name}
+                        </a>
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent className="bg-card p-4">
+                      <p className="text-muted-foreground mb-4">
+                        {project.description || "Description not provided."}
+                      </p>
+                      <div className="flex flex-col gap-3">
+                        {/* SND Button */}
+                        {project.SND && (
+                          <a
+                            href={project.SND}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className={`inline-flex items-center gap-2 px-3 py-1 text-sm font-medium rounded-full text-black ${TAG_COLOURS.snd} hover:opacity-90 self-start transition-opacity duration-100 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2`}
+                            aria-label={`View SND metadata for ${project.name} (opens in new tab)`}
+                          >
+                            SND Metadata
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="20"
+                              height="20.092"
+                              className="flex-shrink-0"
+                              aria-hidden="true"
+                              role="presentation"
+                            >
+                              <path d="m12 0 2.561 2.537-6.975 6.976 2.828 2.828 6.988-6.988L20 7.927 19.998 0H12z" />
+                              <path d="M9 4.092v-2H0v18h18v-9h-2v7H2v-14h7z" />
+                            </svg>
+                          </a>
+                        )}
+                        {/* Other Tags */}
+                        <div
+                          className="flex flex-wrap gap-2"
+                          role="list"
+                          aria-label="Project tags"
+                        >
+                          {Object.entries(project.tags).map(
+                            ([category, tags]) =>
+                              category !== "disease" &&
+                              tags?.map((tag, i) => (
+                                <span
+                                  key={`${category}-${i}`}
+                                  className={`px-3 py-1 rounded-full text-sm ${TAG_COLOURS[category]}`}
+                                  role="listitem"
+                                >
+                                  {tag}
+                                </span>
+                              ))
+                          )}
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </article>
+              ))}
+          </div>
+        </section>
+      </div>
       <LastUpdated date="21-05-2025" />
     </div>
   );

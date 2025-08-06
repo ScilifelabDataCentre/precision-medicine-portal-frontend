@@ -482,89 +482,125 @@ export default function QualityRegistryPage() {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <Breadcrumb>
-        <BreadcrumbList>
-          <BreadcrumbItem>
-            <BreadcrumbLink href="/">Home</BreadcrumbLink>
-          </BreadcrumbItem>
-          <BreadcrumbSeparator />
-          <BreadcrumbItem>
-            <BreadcrumbLink href="/data-sources">Data sources</BreadcrumbLink>
-          </BreadcrumbItem>
-          <BreadcrumbSeparator />
-          <BreadcrumbItem>
-            <BreadcrumbLink href="/data-sources/quality-registries">
-              Quality registries
-            </BreadcrumbLink>
-          </BreadcrumbItem>
-        </BreadcrumbList>
-      </Breadcrumb>
+      <nav aria-label="Breadcrumb navigation" role="navigation">
+        <Breadcrumb>
+          <BreadcrumbList>
+            <BreadcrumbItem>
+              <BreadcrumbLink href="/">Home</BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbLink href="/data-sources">Data sources</BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbLink href="/data-sources/quality-registries">
+                Quality registries
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+          </BreadcrumbList>
+        </Breadcrumb>
+      </nav>
+
       <Title level={1}>Quality registries</Title>
+
       <div className="lg:grid lg:grid-cols-4 lg:gap-8 pt-8">
-        <div className="lg:col-span-1 mb-8 lg:mb-0">
+        <aside
+          className="lg:col-span-1 mb-8 lg:mb-0"
+          aria-label="Search and filter options"
+          role="complementary"
+        >
           <div className="space-y-8">
             {/* Disclaimer */}
-            <div className="w-full max-w-lg bg-muted border border-neutral rounded-lg p-4 text-sm text-muted-foreground text-left mx-auto">
+            <div
+              className="w-full max-w-lg bg-muted border border-neutral rounded-lg p-4 text-sm text-muted-foreground text-left mx-auto"
+              role="note"
+              aria-label="Data access information"
+            >
               To access data, researchers may need to obtain ethical approval,
               submit data requests, and set up data management agreements.
             </div>
 
             {/* Search */}
-            <div className="space-y-4">
-              <label
-                htmlFor="search"
-                className="font-bold text-2xl text-foreground"
-              >
-                Search
-              </label>
-              <Input
-                id="search"
-                type="text"
-                name="search"
-                placeholder="Search by name or keywords"
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className="bg-muted"
-              />
-              {searchTerm.length === 0 && (
-                <div className="text-sm text-muted-foreground">
-                  <p className="mb-2">Examples:</p>
-                  <ul className="space-y-1 text-sm">
-                    <li>
-                      &quot;barn&quot; / &quot;child&quot; - finds pediatric
-                      registries
-                    </li>
-                    <li>
-                      &quot;hjärta&quot; / &quot;heart&quot; - finds cardiac
-                      registries
-                    </li>
-                  </ul>
-                </div>
-              )}
-            </div>
+            <section aria-label="Search quality registries">
+              <div className="space-y-4">
+                <label
+                  htmlFor="search"
+                  className="font-bold text-2xl text-foreground"
+                >
+                  Search
+                </label>
+                <Input
+                  id="search"
+                  type="text"
+                  name="search"
+                  placeholder="Search by name or keywords"
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  className="bg-muted"
+                  aria-describedby="search-help"
+                />
+                {searchTerm.length === 0 && (
+                  <div
+                    id="search-help"
+                    className="text-sm text-muted-foreground"
+                    role="region"
+                    aria-label="Search examples"
+                  >
+                    <p className="mb-2">Examples:</p>
+                    <ul className="space-y-1 text-sm" role="list">
+                      <li role="listitem">
+                        &quot;barn&quot; / &quot;child&quot; - finds pediatric
+                        registries
+                      </li>
+                      <li role="listitem">
+                        &quot;hjärta&quot; / &quot;heart&quot; - finds cardiac
+                        registries
+                      </li>
+                    </ul>
+                  </div>
+                )}
+              </div>
+            </section>
 
             {/* Organisation Filters */}
-            <FilterSection
-              title="Organisation"
-              items={filters.registryCentre}
-              selectedItems={selectedFilters.registryCentre}
-              onFilterChange={(item) => updateFilter("registryCentre", item)}
-              getItemCount={(item) => getCountForType(item, true)}
-            />
+            <section aria-label="Filter by organisation">
+              <FilterSection
+                title="Organisation"
+                items={filters.registryCentre}
+                selectedItems={selectedFilters.registryCentre}
+                onFilterChange={(item) => updateFilter("registryCentre", item)}
+                getItemCount={(item) => getCountForType(item, true)}
+              />
+            </section>
 
             {/* Category Filters */}
-            <FilterSection
-              title="Category"
-              items={filters.registryCategory}
-              selectedItems={selectedFilters.registryCategory}
-              onFilterChange={(item) => updateFilter("registryCategory", item)}
-              getItemCount={(item) => getCountForType(item, false)}
-            />
+            <section aria-label="Filter by category">
+              <FilterSection
+                title="Category"
+                items={filters.registryCategory}
+                selectedItems={selectedFilters.registryCategory}
+                onFilterChange={(item) =>
+                  updateFilter("registryCategory", item)
+                }
+                getItemCount={(item) => getCountForType(item, false)}
+              />
+            </section>
           </div>
-        </div>
-        <div className="lg:col-span-3 space-y-6">
+        </aside>
+
+        <section
+          className="lg:col-span-3 space-y-6"
+          aria-label="Quality registries results"
+          role="region"
+        >
           {/* Results summary */}
-          <div className="space-y-2 mb-6">
+          <div
+            className="space-y-2 mb-6"
+            role="status"
+            aria-live="polite"
+            aria-label="Search and filter results summary"
+          >
             {searchTerms.length > 0 && (
               <div className="text-sm text-muted-foreground">
                 Found {filteredAndSearchedRegistries.length} result
@@ -594,9 +630,14 @@ export default function QualityRegistryPage() {
                 )}
             </div>
           </div>
+
           {/* Registry cards or empty state */}
           {filteredAndSearchedRegistries.length === 0 ? (
-            <div className="text-center py-16">
+            <div
+              className="text-center py-16"
+              role="status"
+              aria-label="No results found"
+            >
               <div className="text-muted-foreground space-y-2">
                 <p className="text-lg font-medium">
                   {searchTerms.length > 0
@@ -611,23 +652,29 @@ export default function QualityRegistryPage() {
               </div>
             </div>
           ) : (
-            <div className="space-y-6">
+            <div
+              className="space-y-6"
+              role="list"
+              aria-label={`${filteredAndSearchedRegistries.length} quality registries found`}
+            >
               {filteredAndSearchedRegistries.map((result, index) => (
-                <QualityRegistryCard
-                  key={result.registry.name}
-                  registry={result.registry}
-                  searchTerms={searchTerms}
-                  index={index}
-                  expandSearchTerms={expandSearchTerms}
-                  highlightSearchTerms={highlightSearchTerms}
-                  organisationLinks={ORGANISATION_LINKS}
-                />
+                <div key={result.registry.name} role="listitem">
+                  <QualityRegistryCard
+                    registry={result.registry}
+                    searchTerms={searchTerms}
+                    index={index}
+                    expandSearchTerms={expandSearchTerms}
+                    highlightSearchTerms={highlightSearchTerms}
+                    organisationLinks={ORGANISATION_LINKS}
+                  />
+                </div>
               ))}
             </div>
           )}
-        </div>
+        </section>
       </div>
-      <LastUpdated date="31-07-2025" />
+
+      <LastUpdated date="06-08-2025" />
     </div>
   );
 }

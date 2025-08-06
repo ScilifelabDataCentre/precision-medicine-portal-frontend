@@ -84,64 +84,75 @@ const projects: Project[] = [
 export default function AboutDSNPMDProjectsPage() {
   return (
     <div className="container mx-auto px-4 py-8">
-      <Breadcrumb>
-        <BreadcrumbList>
-          <BreadcrumbItem>
-            <BreadcrumbLink href="/">Home</BreadcrumbLink>
-          </BreadcrumbItem>
-          <BreadcrumbSeparator />
-          <BreadcrumbItem>
-            <BreadcrumbLink href="/about">About us</BreadcrumbLink>
-          </BreadcrumbItem>
-          <BreadcrumbSeparator />
-          <BreadcrumbItem>
-            <BreadcrumbLink href="/about/dsnpmd-projects">
-              DSN-PMD Projects
-            </BreadcrumbLink>
-          </BreadcrumbItem>
-        </BreadcrumbList>
-      </Breadcrumb>
-      <Title level={2} className="mb-4">
+      <nav aria-label="Breadcrumb navigation" role="navigation">
+        <Breadcrumb>
+          <BreadcrumbList>
+            <BreadcrumbItem>
+              <BreadcrumbLink href="/">Home</BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbLink href="/about">About us</BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbLink href="/about/dsnpmd-projects">
+                DSN-PMD Projects
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+          </BreadcrumbList>
+        </Breadcrumb>
+      </nav>
+
+      <Title level={2} className="mb-10">
         Projects of the Data Science Node in Precision Medicine and Diagnostics
       </Title>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {projects.map((project, index) => (
-          <Card key={index} className="shadow-md">
-            <CardHeader className="bg-muted flex flex-row items-center justify-between p-4 h-auto lg:h-20">
-              {/* Left-aligned title */}
-              <div className="flex-1 text-left">
-                <CardTitle className="text-lg">
-                  <a
-                    href={project.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-primary hover:underline"
-                  >
-                    {project.name}
-                  </a>
-                </CardTitle>
-              </div>
 
-              {/* Right-aligned logo (consistent size) */}
-              {project.logoKey && logos[project.logoKey] && (
-                <div className="flex-shrink-0">
-                  <Image
-                    src={logos[project.logoKey]}
-                    alt={project.name}
-                    width={128} // Standardized width
-                    height={64} // Standardized height
-                    className="object-contain max-h-[64px]"
-                  />
-                </div>
-              )}
-            </CardHeader>
-            <CardContent className="p-4">
-              <p className="whitespace-pre-line">{project.description}</p>
-            </CardContent>
-          </Card>
-        ))}
+      <section aria-label="DSN-PMD Projects" className="mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6" role="list">
+          {projects.map((project, index) => (
+            <article key={index} role="listitem" className="h-full">
+              <Card className="shadow-md h-full flex flex-col">
+                <CardHeader className="bg-muted flex flex-row items-center justify-between p-4 h-auto lg:h-20">
+                  <div className="flex-1 text-left">
+                    <CardTitle className="text-lg">
+                      <a
+                        href={project.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-primary hover:underline focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"
+                        aria-label={`Visit ${project.name} website (opens in new tab)`}
+                      >
+                        {project.name}
+                      </a>
+                    </CardTitle>
+                  </div>
+
+                  {project.logoKey && logos[project.logoKey] && (
+                    <div className="flex-shrink-0" aria-hidden="true">
+                      <Image
+                        src={logos[project.logoKey]}
+                        alt=""
+                        width={128}
+                        height={64}
+                        className="object-contain max-h-[64px]"
+                        role="presentation"
+                      />
+                    </div>
+                  )}
+                </CardHeader>
+                <CardContent className="p-4 flex-1">
+                  <p className="whitespace-pre-line">{project.description}</p>
+                </CardContent>
+              </Card>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <div className="mt-8">
+        <LastUpdated date="21-05-2025" />
       </div>
-      <LastUpdated date="21-05-2025" />
     </div>
   );
 }

@@ -45,82 +45,101 @@ export const QualityRegistryCard = ({
   const hasSearch = searchTerms.length > 0;
 
   return (
-    <Card key={registry.name} className="transition-shadow hover:shadow-md">
-      <CardHeader className="bg-muted">
-        <CardTitle className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-          <Safe.Url
-            url={registry.url}
-            className="text-xl text-primary hover:underline"
-          >
-            <Safe.HTML
-              html={
-                hasSearch
-                  ? highlightSearchTerms(registry.name, expandedTerms)
-                  : registry.name
-              }
-              allowedTags={["mark"]}
-              allowedAttr={["class"]}
-            />
-          </Safe.Url>
-        </CardTitle>
-      </CardHeader>
-      <CardContent className="pt-4">
-        <Safe.HTML
-          html={
-            hasSearch
-              ? highlightSearchTerms(
-                  registry.Information || "Information not available.",
-                  expandedTerms
-                )
-              : registry.Information || "Information not available."
-          }
-          allowedTags={["mark"]}
-          allowedAttr={["class"]}
-          className="mb-3"
-        />
-        <div className="mt-3 flex flex-wrap gap-2">
-          <div className="px-3 py-1 bg-muted text-muted-foreground rounded-lg text-sm">
-            <strong>Start year:</strong> {registry.start_date}
-          </div>
-          <div className="px-3 py-1 bg-muted text-muted-foreground rounded-lg text-sm">
-            <strong>Organisation:</strong>{" "}
+    <article
+      key={registry.name}
+      className="transition-shadow hover:shadow-md"
+      role="listitem"
+      aria-label={`Quality registry: ${registry.name}`}
+    >
+      <Card>
+        <CardHeader className="bg-muted">
+          <CardTitle className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
             <Safe.Url
-              url={organisationLinks[registry.registry_centre[0]]}
-              className="hover:underline"
+              url={registry.url}
+              className="text-xl text-primary hover:underline"
+              aria-label={`Visit ${registry.name} website (opens in new tab)`}
             >
               <Safe.HTML
                 html={
                   hasSearch
-                    ? highlightSearchTerms(
-                        registry.registry_centre.join(", "),
-                        expandedTerms
-                      )
-                    : registry.registry_centre.join(", ")
+                    ? highlightSearchTerms(registry.name, expandedTerms)
+                    : registry.name
                 }
                 allowedTags={["mark"]}
                 allowedAttr={["class"]}
-                className="inline"
               />
             </Safe.Url>
-          </div>
-          <div className="px-3 py-1 bg-muted text-muted-foreground rounded-lg text-sm">
-            <strong>Category:</strong>{" "}
-            <Safe.HTML
-              html={
-                hasSearch
-                  ? highlightSearchTerms(
-                      registry.category.join(", "),
-                      expandedTerms
-                    )
-                  : registry.category.join(", ")
-              }
-              allowedTags={["mark"]}
-              allowedAttr={["class"]}
-              className="inline"
-            />
-          </div>
-        </div>
-      </CardContent>
-    </Card>
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="pt-4">
+          <Safe.HTML
+            html={
+              hasSearch
+                ? highlightSearchTerms(
+                    registry.Information || "Information not available.",
+                    expandedTerms
+                  )
+                : registry.Information || "Information not available."
+            }
+            allowedTags={["mark"]}
+            allowedAttr={["class"]}
+            className="mb-3"
+          />
+          <dl
+            className="mt-3 flex flex-wrap gap-2"
+            aria-label="Registry details"
+          >
+            <div className="px-3 py-1 bg-muted text-muted-foreground rounded-lg text-sm">
+              <dt className="inline font-semibold">Start year:</dt>{" "}
+              <dd className="inline">{registry.start_date}</dd>
+            </div>
+            <div className="px-3 py-1 bg-muted text-muted-foreground rounded-lg text-sm">
+              <dt className="inline font-semibold">Organisation:</dt>{" "}
+              <dd className="inline">
+                <Safe.Url
+                  url={organisationLinks[registry.registry_centre[0]]}
+                  className="hover:underline"
+                  aria-label={`Visit ${registry.registry_centre.join(
+                    ", "
+                  )} website (opens in new tab)`}
+                >
+                  <Safe.HTML
+                    html={
+                      hasSearch
+                        ? highlightSearchTerms(
+                            registry.registry_centre.join(", "),
+                            expandedTerms
+                          )
+                        : registry.registry_centre.join(", ")
+                    }
+                    allowedTags={["mark"]}
+                    allowedAttr={["class"]}
+                    className="inline"
+                  />
+                </Safe.Url>
+              </dd>
+            </div>
+            <div className="px-3 py-1 bg-muted text-muted-foreground rounded-lg text-sm">
+              <dt className="inline font-semibold">Category:</dt>{" "}
+              <dd className="inline">
+                <Safe.HTML
+                  html={
+                    hasSearch
+                      ? highlightSearchTerms(
+                          registry.category.join(", "),
+                          expandedTerms
+                        )
+                      : registry.category.join(", ")
+                  }
+                  allowedTags={["mark"]}
+                  allowedAttr={["class"]}
+                  className="inline"
+                />
+              </dd>
+            </div>
+          </dl>
+        </CardContent>
+      </Card>
+    </article>
   );
 };
