@@ -235,7 +235,7 @@
         "registry_centre": [
             "Kvalitetsregistercentrum Stockholm"
         ],
-        "url": "https://infcare.com/",
+        "url": "https://qrcstockholm.se/kvalitetsregister/anslutna-register",
         "search_tags": [
             "Sprututbyte",
             "needle exchange",
@@ -926,7 +926,7 @@
             "GynOp",
             "gynecological"
         ],
-        "Information": "Tracks outcomes of gynaecological surgeries, collecting data on patient demographics, surgical methods, complications, and recovery. It covers nearly all hospitals in Sweden performing gynaecological surgeries, offering extensive national coverage to improve surgical outcomes and patient safety.",
+        "Information": "Tracks outcomes of gynaecological surgeries, collecting data on patient demographics, surgical methods, complications, and recovery. It covers nearly all hospitals in Sweden performing gynaecological surgeries, offering extensive national coverage to improve surgical outcomes and patient safety. The register includes the following subregisters: Intrauterin kirurgi; Rekonstruktiv bäckenbottenkirurgi; Inkontinens; Bristning; Hysterektomi, adnex- och endometrioskirurgi",
         "category": [
             "National quality registry"
         ],
@@ -2222,7 +2222,7 @@
         ]
     },
     {
-        "name": "Nationellt kvalitetsregister för KML",
+        "name": "Nationellt kvalitetsregister för KML (kronisk myeloisk leukemi)",
         "registry_centre": [
             "RCC Mellansverige"
         ],
@@ -2366,6 +2366,70 @@
         "start_date": "1997",
         "category": [
             "National cancer quality registry"
+        ]
+    },
+    {
+        "name": "Nationella prostatacancerregistret (NPCR)",
+        "registry_centre": [
+            "RCC Mellansverige"
+        ],
+        "url": "https://npcr.se/",
+        "search_tags": [
+            "Nationellt kvalitetsregister för prostatacancer",
+            "prostate cancer"
+        ],
+        "Information": "NPCR collects comprehensive data on diagnostic procedures, disease characteristics, treatment, and outcomes for all men diagnosed with prostate cancer in Sweden. Established to support quality improvement and clinical research, NPCR enables benchmarking across healthcare providers and contributes to evidence-based care.",
+        "start_date": "1987",
+        "category": [
+            "National cancer quality registry"
+        ]
+    },
+    {
+        "name": "Nationellt kvalitetsregister peniscancer (NPECR)",
+        "registry_centre": [
+            "RCC Mellansverige"
+        ],
+        "url": "https://cancercentrum.se/diagnosbehandling/cancerdiagnoser/penis.8266.html",
+        "search_tags": [
+            "Nationellt kvalitetsregister för peniscancer",
+            "penis cancer"
+        ],
+        "Information": "NPECR monitors penile cancer care in Sweden, and more than 3,900 patients are included. Over the past six years, the coverage rate has been 88% compared to the Swedish Cancer Register, ensuring that the data is nationwide and population based. The register collects information on disease incidence, diagnostics, tumor stage distribution, morphological classification, treatment, surgical complications, and follow-up. Since 2015, it also includes patient-reported outcome and experience measures and referrals to the national center.",
+        "start_date": "2000",
+        "category": [
+            "National cancer quality registry"
+        ]
+    },
+    {
+        "name": "Nationellt kvalitetsregister för mammografiscreening (NKM)",
+        "registry_centre": [
+            "RCC Väst"
+        ],
+        "url": "https://cancercentrum.se/preventiontidigupptackt/screeningochtestning/brostcancerscreening/kvalitetsregister",
+        "search_tags": [
+            "Nationellt kvalitetsregister för mammografiscreening",
+            "breast cancer screening"
+        ],
+        "Information": "NKM monitors the entire breast cancer screening process in Sweden, covering invitation, participation, imaging results, and diagnostic follow-up. Targeting women aged 40–74, the registry also includes referred patients of all ages undergoing breast radiology.",
+        "start_date": "about 2020",
+        "category": [
+            "National cancer quality registry"
+        ]
+    },
+    {
+        "name": "Svenskt bråckregister",
+        "registry_centre": [
+            "Registercentrum Norr"
+        ],
+        "url": "https://www.svensktbrackregister.se/",
+        "search_tags": [
+            "hernia",
+            "inguinal hernia"
+        ],
+        "Information": "The Swedish Hernia Register collects nationwide data on inguinal hernia surgeries in patients aged 15 and older. It supports quality improvement, clinical benchmarking, and research in hernia care across Sweden. As of March 2024, the register has merged with the Swedish Ventral Hernia Register (Registret för Svenska Bukväggsbråck), creating a unified national database for both inguinal and ventral hernia surgeries.",
+        "start_date": "1992",
+        "category": [
+            "National quality registry"
         ]
     }
 ]
