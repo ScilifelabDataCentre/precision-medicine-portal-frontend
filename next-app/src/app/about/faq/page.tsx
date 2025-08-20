@@ -45,7 +45,7 @@ export default function AboutFAQPage(): ReactElement {
 
       <section aria-labelledby="faq-heading" className="mb-8">
         <h2 id="faq-heading" className="sr-only">
-          Questions and Answers
+          Frequently Asked Questions
         </h2>
         <Accordion
           type="single"
