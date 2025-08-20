@@ -122,10 +122,10 @@ function DesktopNav() {
                     className="flex h-full w-full select-none flex-col rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
                     href="/data-sources"
                     role="menuitem"
-                    aria-label="Access clinical data - Navigate human data for research"
+                    aria-label="Access data - Navigate data for research"
                   >
                     <div className="mb-2 mt-4 text-lg font-medium">
-                      Access clinical data
+                      Access data
                     </div>
                     <p className="text-sm leading-tight text-muted-foreground">
                       Navigate human data for research, including clinical
@@ -236,9 +236,9 @@ function MobileNav() {
           <Link
             href="/data-sources"
             className="font-semibold"
-            aria-label="Access clinical data"
+            aria-label="Access data"
           >
-            Access clinical data
+            Access data
           </Link>
           <Link
             href="/data-sources/quality-registries"
