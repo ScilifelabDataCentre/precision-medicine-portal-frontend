@@ -1855,7 +1855,7 @@
     {
         "name": "Nationellt kvalitetsregister akut lymfatisk leukemi",
         "registry_centre": [
-            "RCC Mellansverige"
+            "Regionala Cancercentrum i Samverkan"
         ],
         "url": "https://cancercentrum.se/samverkan/cancerdiagnoser/blod-lymfom-myelom/akut-lymfatiskt-leukemi-all/kvalitetsregister/",
         "search_tags": [
@@ -1868,13 +1868,13 @@
         "start_date": "1997"
     },
     {
-        "name": "Akut myeloisk leukemi (AML) inklusive akut oklassificerad leukemi (AUL)",
+        "name": "Nationellt kvalitetsregister akut myeloisk leukemi (AML), inklusive akut oklassificerad leukemi (AUL)",
         "registry_centre": [
-            "RCC Mellansverige"
+            "Regionala Cancercentrum i Samverkan"
         ],
-        "url": "https://cancercentrum.se/samverkan/vara-uppdrag/kunskapsstyrning/kvalitetsregister/",
+        "url": "https://cancercentrum.se/diagnosbehandling/cancerdiagnoser/hematologiskacancersjukdomar/akutmyeloiskleukemiamlinklusiveakutoklassificeradleukemiaul/kvalitetsregister.7181.html",
         "search_tags": [
-            "Akut myeloisk leukemi (AML) inklusive akut oklassificerad leukemi (AUL)"
+            "Nationellt kvalitetsregister akut myeloisk leukemi (AML), inklusive akut oklassificerad leukemi (AUL)"
         ],
         "Information": "Focuses on collecting detailed data related to acute myeloid leukemia (AML) and acute undifferentiated leukemia (AUL) in Sweden. This national cancer quality registry collects information on patient demographics, genetic markers, treatment protocols, and outcomes, with the aim of improving the care and survival of patients with these aggressive hematologic malignancies. Includes data from diagnostic processes, chemotherapy, bone marrow transplants, and patient follow-up care. Coverage is comprehensive across Sweden, including nearly all diagnosed patients.",
         "category": [
@@ -1885,7 +1885,7 @@
     {
         "name": "Nationellt Kvalitetsregister för Bröstcancer NKBC",
         "registry_centre": [
-            "RCC Stockholm Gotland"
+            "Regionala Cancercentrum i Samverkan"
         ],
         "url": "https://cancercentrum.se/samverkan/cancerdiagnoser/brost/kvalitetsregister/",
         "search_tags": [
@@ -1900,7 +1900,7 @@
     {
         "name": "Svenska kvalitetsregistret för gynekologisk cancer",
         "registry_centre": [
-            "RCC Väst"
+            "Regionala Cancercentrum i Samverkan"
         ],
         "url": "https://cancercentrum.se/samverkan/cancerdiagnoser/gynekologi/kvalitetsregister/",
         "search_tags": [
@@ -1915,7 +1915,7 @@
     {
         "name": "Nationellt kvalitetsregister hudmelanom (SweMR)",
         "registry_centre": [
-            "RCC Syd"
+            "Regionala Cancercentrum i Samverkan"
         ],
         "url": "https://cancercentrum.se/samverkan/cancerdiagnoser/hud-och-melanom/malignt-melanom/kvalitetsregister/",
         "search_tags": [
@@ -1930,7 +1930,7 @@
     {
         "name": "Svenskt kvalitetsregister för huvud- och halscancer",
         "registry_centre": [
-            "RCC Mellansverige"
+            "Regionala Cancercentrum i Samverkan"
         ],
         "url": "https://cancercentrum.se/samverkan/cancerdiagnoser/huvud-och-hals/kvalitetsregister/",
         "search_tags": [
@@ -1947,7 +1947,7 @@
     {
         "name": "Svenska Hypofysregistret",
         "registry_centre": [
-            "RCC Mellansverige"
+            "Regionala Cancercentrum i Samverkan"
         ],
         "url": "https://cancercentrum.se/samverkan/cancerdiagnoser/hjarna-ryggmarg-och-hypofys/hypofys/kvalitetsregister-for-hypofystumorer/",
         "search_tags": [
@@ -1962,13 +1962,13 @@
         "start_date": "2011"
     },
     {
-        "name": "Nationellt kvalitetsregister kronisk lymfatisk leukemi",
+        "name": "Nationellt kvalitetsregister kronisk lymfatisk leukemi (ALL)",
         "registry_centre": [
-            "RCC Stockholm Gotland"
+            "Regionala Cancercentrum i Samverkan"
         ],
         "url": "https://cancercentrum.se/samverkan/cancerdiagnoser/blod-lymfom-myelom/kronisk-lymfatisk-leukemi-kll/kvalitetsregister/",
         "search_tags": [
-            "Nationellt kvalitetsregister kronisk lymfatisk leukemi"
+            "Nationellt kvalitetsregister kronisk lymfatisk leukemi (ALL)"
         ],
         "Information": "The registry aims to collect comprehensive data on patients diagnosed with CLL, including demographic information, genetic markers, treatment approaches, and patient outcomes. Key variables tracked include treatment response, disease progression, and long-term survival rates. The registry provides insights into how different therapeutic strategies affect patient outcomes and supports ongoing clinical research.",
         "category": [
@@ -1979,7 +1979,7 @@
     {
         "name": "Svenska registret för cancer i lever, gallblåsa och gallvägar (SweLiv)",
         "registry_centre": [
-            "RCC Väst"
+            "Regionala Cancercentrum i Samverkan"
         ],
         "url": "https://cancercentrum.se/samverkan/cancerdiagnoser/lever-och-galla/kvalitetsregister/",
         "search_tags": [
@@ -1997,7 +1997,7 @@
     {
         "name": "Nationellt kvalitetsregister lymfom",
         "registry_centre": [
-            "RCC Stockholm Gotland"
+            "Regionala Cancercentrum i Samverkan"
         ],
         "url": "https://cancercentrum.se/samverkan/cancerdiagnoser/blod-lymfom-myelom/lymfom-lymfkortelcancer/kvalitetsregister/",
         "search_tags": [
@@ -2012,7 +2012,7 @@
     {
         "name": "Nationellt kvalitetsregister myelodysplastiskt syndrom",
         "registry_centre": [
-            "RCC Mellansverige"
+            "Regionala Cancercentrum i Samverkan"
         ],
         "url": "https://cancercentrum.se/samverkan/cancerdiagnoser/blod-lymfom-myelom/myelodysplastiskt-syndrom-mds/kvalitetsregister/",
         "search_tags": [
@@ -2029,7 +2029,7 @@
     {
         "name": "Nationellt kvalitetsregister myeloproliferativa sjukdomar",
         "registry_centre": [
-            "RCC Mellansverige"
+            "Regionala Cancercentrum i Samverkan"
         ],
         "url": "https://cancercentrum.se/samverkan/cancerdiagnoser/blod-lymfom-myelom/myeloproliferativa-sjukdomar-mpn/kvalitetsregister/",
         "search_tags": [
@@ -2046,7 +2046,7 @@
     {
         "name": "Nationellt kvalitetsregister myelom",
         "registry_centre": [
-            "RCC Väst"
+            "Regionala Cancercentrum i Samverkan"
         ],
         "url": "https://cancercentrum.se/samverkan/cancerdiagnoser/blod-lymfom-myelom/myelom/kvalitetsregister/",
         "search_tags": [
@@ -2062,7 +2062,7 @@
     {
         "name": "Nationellt kvalitetsregister neuroendokrina buktumörer (GEP-NET)",
         "registry_centre": [
-            "RCC Mellansverige"
+            "Regionala Cancercentrum i Samverkan"
         ],
         "url": "https://cancercentrum.se/samverkan/cancerdiagnoser/neuroendokrina-buktumorer/kvalitetsregister/",
         "search_tags": [
@@ -2076,30 +2076,13 @@
         "start_date": "2010"
     },
     {
-        "name": "Cancer utan känd primärtumör, CUP",
+        "name": "Regionalt kvalitetsregister för skelettmetastaser",
         "registry_centre": [
-            "RCC Norr"
-        ],
-        "url": "https://cancercentrum.se/samverkan/cancerdiagnoser/okand-primartumor/",
-        "search_tags": [
-            "Cancer utan känd primärtumör, CUP",
-            "CUP",
-            "primary origin"
-        ],
-        "Information": "Sweden's national quality registry for cancer of unknown primary origin.  It collects detailed data on patient demographics, diagnostic procedures, treatment approaches (such as chemotherapy, radiotherapy, and palliative care), and patient outcomes.",
-        "category": [
-            "National cancer quality registry"
-        ],
-        "start_date": "2013"
-    },
-    {
-        "name": "Forskningsregister för skelettmetastaser",
-        "registry_centre": [
-            "RCC Stockholm Gotland"
+            "Regionala Cancercentrum i Samverkan"
         ],
         "url": "https://cancercentrum.se/samverkan/cancerdiagnoser/overgripande-kunskapsstod/skelettmetastaser/",
         "search_tags": [
-            "Forskningsregister för skelettmetastaser",
+            "Regionalt kvalitetsregister för skelettmetastaser",
             "bone metastases",
             "cancer"
         ],
@@ -2112,7 +2095,7 @@
     {
         "name": "Nationellt kvalitetsregister sköldkörtelcancer",
         "registry_centre": [
-            "RCC Väst"
+            "Regionala Cancercentrum i Samverkan"
         ],
         "url": "https://cancercentrum.se/samverkan/cancerdiagnoser/skoldkortel/kvalitetsregister/",
         "search_tags": [
@@ -2127,9 +2110,9 @@
         "start_date": "2003"
     },
     {
-        "name": "SveReKKS - kvalitetsregister",
+        "name": "Svenskt kvalitetsregister för koloskopier och kolorektalcancerscreening (SveReKKS)",
         "registry_centre": [
-            "RCC Väst"
+            "Regionala Cancercentrum i Samverkan"
         ],
         "url": "https://cancercentrum.se/samverkan/vara-uppdrag/prevention-och-tidig-upptackt/Screening-tjock-och-andtarmscancer/sverekks/",
         "search_tags": [
@@ -2144,7 +2127,7 @@
     {
         "name": "Nationellt kvalitetsregister för analcancer",
         "registry_centre": [
-            "RCC Norr"
+            "Regionala Cancercentrum i Samverkan"
         ],
         "url": "https://cancercentrum.se/samverkan/cancerdiagnoser/tjocktarm-andtarm-och-anal/anal/kvalitetsregister/",
         "search_tags": [
@@ -2159,7 +2142,7 @@
     {
         "name": "Nationellt kvalitetsregister för barncancer",
         "registry_centre": [
-            "RCC Stockholm Gotland"
+            "Regionala Cancercentrum i Samverkan"
         ],
         "url": "https://cancercentrum.se/samverkan/cancerdiagnoser/barn/kvalitetsregister/",
         "search_tags": [
@@ -2176,7 +2159,7 @@
     {
         "name": "Nationellt kvalitetsregister för bukspottkörtelcancer (Pankreasregistret)",
         "registry_centre": [
-            "RCC Syd"
+            "Regionala Cancercentrum i Samverkan"
         ],
         "url": "https://cancercentrum.se/samverkan/cancerdiagnoser/bukspottkortel/kvalitetsregister/",
         "search_tags": [
@@ -2192,7 +2175,7 @@
     {
         "name": "Nationella Kvalitetsregistret för Cervixcancerprevention (NKCx)",
         "registry_centre": [
-            "RCC Stockholm Gotland"
+            "Regionala Cancercentrum i Samverkan"
         ],
         "url": "https://cancercentrum.se/samverkan/vara-uppdrag/prevention-och-tidig-upptackt/gynekologisk-cellprovskontroll/kvalitetsregister/",
         "search_tags": [
@@ -2207,7 +2190,7 @@
     {
         "name": "Nationellt kvalitetsregister för hjärntumörer och centrala nervsystemet",
         "registry_centre": [
-            "RCC Norr"
+            "Regionala Cancercentrum i Samverkan"
         ],
         "url": "https://cancercentrum.se/samverkan/cancerdiagnoser/hjarna-ryggmarg-och-hypofys/hjarna-och-ryggmarg/kvalitetsregister/",
         "search_tags": [
@@ -2224,7 +2207,7 @@
     {
         "name": "Nationellt kvalitetsregister för KML (kronisk myeloisk leukemi)",
         "registry_centre": [
-            "RCC Mellansverige"
+            "Regionala Cancercentrum i Samverkan"
         ],
         "url": "https://cancercentrum.se/samverkan/cancerdiagnoser/blod-lymfom-myelom/kronisk-myeloisk-leukemi-kml/kvalitetsregister/",
         "search_tags": [
@@ -2240,7 +2223,7 @@
     {
         "name": "Nationellt kvalitetsregister för lungcancer",
         "registry_centre": [
-            "RCC Mellansverige"
+            "Regionala Cancercentrum i Samverkan"
         ],
         "url": "https://cancercentrum.se/samverkan/cancerdiagnoser/lunga-och-lungsack/kvalitetsregister/",
         "search_tags": [
@@ -2256,7 +2239,7 @@
     {
         "name": "Nationellt kvalitetsregister för matstrups- och magsäckscancer (NREV)",
         "registry_centre": [
-            "RCC Syd"
+            "Regionala Cancercentrum i Samverkan"
         ],
         "url": "https://cancercentrum.se/samverkan/cancerdiagnoser/matstrupe-och-magsack/kvalitetsregister/",
         "search_tags": [
@@ -2273,7 +2256,7 @@
     {
         "name": "Nationellt kvalitetsregister för njurcancer",
         "registry_centre": [
-            "RCC Norr"
+            "Regionala Cancercentrum i Samverkan"
         ],
         "url": "https://cancercentrum.se/samverkan/cancerdiagnoser/njure/kvalitetsregister/",
         "search_tags": [
@@ -2289,7 +2272,7 @@
     {
         "name": "Nationella kvalitetsregistret för organiserad prostatacancertestning (SweOPT)",
         "registry_centre": [
-            "RCC Väst"
+            "Regionala Cancercentrum i Samverkan"
         ],
         "url": "https://cancercentrum.se/samverkan/vara-uppdrag/prevention-och-tidig-upptackt/prostatacancertestning/kvalitetsregister/",
         "search_tags": [
@@ -2306,7 +2289,7 @@
     {
         "name": "Nationellt kvalitetsregister för sarkom",
         "registry_centre": [
-            "RCC Syd"
+            "Regionala Cancercentrum i Samverkan"
         ],
         "url": "https://cancercentrum.se/samverkan/cancerdiagnoser/sarkom/kvalitetsregister/",
         "search_tags": [
@@ -2323,7 +2306,7 @@
     {
         "name": "Nationellt kvalitetsregister för testikelcancer seminom",
         "registry_centre": [
-            "RCC Syd"
+            "Regionala Cancercentrum i Samverkan"
         ],
         "url": "https://cancercentrum.se/samverkan/cancerdiagnoser/testikel/kvalitetsregister/#:~:text=Det%20nationella%20kvalitetsregistret%20för%20seminom,behandling%20av%20testikelcancer%20i%20Sverige.",
         "search_tags": [
@@ -2339,7 +2322,7 @@
     {
         "name": "Nationellt kvalitetsregister för tjock- och ändtarmscancer",
         "registry_centre": [
-            "RCC Sydöst"
+            "Regionala Cancercentrum i Samverkan"
         ],
         "url": "https://cancercentrum.se/samverkan/cancerdiagnoser/tjocktarm-andtarm-och-anal/tjock--och-andtarm/kvalitetsregister/",
         "search_tags": [
@@ -2355,7 +2338,7 @@
     {
         "name": "Nationellt kvalitetsregister för urinblåsecancer",
         "registry_centre": [
-            "RCC Stockholm Gotland"
+            "Regionala Cancercentrum i Samverkan"
         ],
         "url": "https://cancercentrum.se/samverkan/cancerdiagnoser/urinblasa-urinvagar/kvalitetsregister/",
         "search_tags": [
@@ -2371,7 +2354,7 @@
     {
         "name": "Nationella prostatacancerregistret (NPCR)",
         "registry_centre": [
-            "RCC Mellansverige"
+            "Regionala Cancercentrum i Samverkan"
         ],
         "url": "https://npcr.se/",
         "search_tags": [
@@ -2387,7 +2370,7 @@
     {
         "name": "Nationellt kvalitetsregister peniscancer (NPECR)",
         "registry_centre": [
-            "RCC Mellansverige"
+            "Regionala Cancercentrum i Samverkan"
         ],
         "url": "https://cancercentrum.se/diagnosbehandling/cancerdiagnoser/penis.8266.html",
         "search_tags": [
@@ -2403,7 +2386,7 @@
     {
         "name": "Nationellt kvalitetsregister för mammografiscreening (NKM)",
         "registry_centre": [
-            "RCC Väst"
+            "Regionala Cancercentrum i Samverkan"
         ],
         "url": "https://cancercentrum.se/preventiontidigupptackt/screeningochtestning/brostcancerscreening/kvalitetsregister",
         "search_tags": [
@@ -2430,6 +2413,39 @@
         "start_date": "1992",
         "category": [
             "National quality registry"
+        ]
+    },
+    {
+        "name": "Nationellt onkogenetiskt kvalitetsregister (NOGA)",
+        "registry_centre": [
+            "Registercentrum Norr"
+        ],
+        "url": "https://cancercentrum.se/preventiontidigupptackt/arftligcancer/kvalitetsregisterforarftligcancernoga.7556.html",
+        "search_tags": [
+            "Nationellt onkogenetiskt kvalitetsregister (NOGA)"
+        ],
+        "Information": "The National Oncogenetic Quality Registry (NOGA) collects data on individuals undergoing genetic evaluation for hereditary cancer. Its aim is to improve and standardize care across Sweden by monitoring diagnostic lead times, adherence to clinical guidelines, and outcomes. The registry also supports research and quality improvement in hereditary cancer care.",
+        "start_date": "2021",
+        "category": [
+            "National cancer quality registry"
+        ]
+    },
+    {
+        "name": "Register för cancerläkemedel",
+        "registry_centre": [
+            "Registercentrum Norr"
+        ],
+        "url": "https://cancercentrum.se/diagnosbehandling/cancerlakemedel/registerforcancerlakemedel.7318.html",
+        "search_tags": [
+            "Register för cancerläkemedel",
+            "cancer drugs",
+            "cancer",
+            "läkemedel"
+        ],
+        "Information": "The Cancer Drug Registry monitors the use of selected cancer medications across Sweden. It consists of 17 regional and one interregional registry, aiming to track treatment patterns, ensure equitable access, and support clinical decision-making. Annual reports provide insights into national trends and regional variations in cancer drug usage.",
+        "start_date": "2018",
+        "category": [
+            "National cancer quality registry"
         ]
     }
 ]

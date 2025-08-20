@@ -25,12 +25,7 @@ const ORGANISATION_LINKS: Record<string, string> = {
   "Registercentrum Västra Götaland": "https://registercentrum.se",
   "Registercentrum Sydost":
     "https://sydostrasjukvardsregionen.se/samverkansgrupper/data-och-analys/registercentrum-sydost/",
-  "RCC Stockholm Gotland": "https://cancercentrum.se/stockholm-gotland/",
-  "RCC Sydöst": "https://cancercentrum.se/sydost/",
-  "RCC Norr": "https://cancercentrum.se/norr/",
-  "RCC Mellansverige": "https://cancercentrum.se/mellansverige/",
-  "RCC Väst": "https://cancercentrum.se/vast/",
-  "RCC Syd": "https://cancercentrum.se/syd/",
+  "Regionala Cancercentrum i Samverkan": "https://cancercentrum.se/",
 } as const;
 
 const SEARCH_CONFIG = {
@@ -674,7 +669,7 @@ export default function QualityRegistryPage() {
         </section>
       </div>
 
-      <LastUpdated date="06-08-2025" />
+      <LastUpdated date="20-08-2025" />
     </div>
   );
 }
