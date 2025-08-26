@@ -180,6 +180,17 @@ function DesktopNav() {
         <NavigationMenuItem role="none">
           <NavigationMenuLink asChild>
             <Link
+              href="/omop-cdm"
+              className={navigationMenuTriggerStyle()}
+              aria-label="OMOP common data model - Demo"
+              >
+              OMOP CDM
+            </Link>
+          </NavigationMenuLink>  
+        </NavigationMenuItem>
+        <NavigationMenuItem role="none">
+          <NavigationMenuLink asChild>
+            <Link
               href="/contact"
               className={navigationMenuTriggerStyle()}
               aria-label="Contact us"

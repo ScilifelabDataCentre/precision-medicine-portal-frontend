@@ -1,0 +1,110 @@
+"use client";
+
+import { ReactElement } from "react";
+
+import { LastUpdated } from "@/components/common/last-updated";
+
+import Title from "@/components/common/title";
+
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
+
+export default function OMOPCDMPage(): ReactElement {
+  return (
+    <div className="container mx-auto px-4 py-8">
+      <nav aria-label="Breadcrumb navigation" role="navigation">
+        <Breadcrumb>
+          <BreadcrumbList>
+            <BreadcrumbItem>
+              <BreadcrumbLink href="/">Home</BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbLink href="/OMOP-CDM/intro-pages">
+                Introduction to OMOP-CDM
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+          </BreadcrumbList>
+        </Breadcrumb>
+      </nav>
+
+      <div
+        className="flex flex-col gap-y-4"
+        aria-label="What is OMOP"
+      >
+        <Title level={3}>What is the OMOP CDM?</Title>
+        <p>
+          <ul>
+            <li>Definition of OMOP common data model</li>
+            <li>Few lines of OMOP history</li>
+            <li>OMOP CDM features</li>
+            <li>Current usage of OMOP CDM around the world (maybe with some numbers and statistics)</li>
+            <li>Few lines on the current status of OMOP in Sweden</li>
+          </ul>
+        </p>
+        <Title level={3} aria-label="Why OMOP">
+          Why should I use the OMOP CDM?
+        </Title>
+        <p>
+          <ul>
+            <li>General intro on the variety of health care data and on the problem of sharing sensitive data</li>
+            <li>Introduction of the concept of federated data</li>
+            <li>OMOP CDM as a proven effective way to implement federated data</li>
+            <li>Few lines on LLM applications with OMOP</li>
+            <li>Few lines on OMOP OHDSI very active community</li>
+            <li>Few lines on the future OMOP perspectives in Sweden</li>
+          </ul>
+        </p>
+        <Title level={3} aria-label="How OMOP">
+          How does the OMOP CDM work?
+        </Title>
+        <p>
+          <ul>
+            <li>OMOP CDM: just a standardised way to represent information in your dataset</li>
+            <li>Few words on mapping and data transition</li>
+            <li>Few words on OHDSI tools for mapping, data transition, and analysis</li>
+            <li>Current status of SciLifeLab as OMOP service provider</li>
+          </ul>
+        </p>
+        <Title level={3} aria-label="Scilifelab OMOP">
+          OMOP at Scilifelab
+        </Title>
+        <p>
+          Few lines on what is going on at SciLifeLab in relation to OMOP and in Sweden. Perhaps this is the place to put some future perspectives.
+        </p>
+        <Title level={3} aria-label="OMOP gallery">
+          OMOP CDM Gallery
+        </Title>
+        <p>
+          List of interesting published works that were possible because of data OMOPIZATION
+        </p>
+        <Title level={3} aria-label="OMOP resources">
+          Links and Resources
+        </Title>
+        <p>
+          A list of links and reseources with description:
+          <ul>
+            <li>Swedish OMOP page</li>
+            <li>OMOP common data model page</li>
+            <li>OHDSI academy</li>
+            <li>List of OHDSI OMOP related tools (GitHub repositories)</li>
+          </ul>
+        </p>
+        <Title level={3} aria-label="OMOP contact">
+          Contact
+        </Title>
+        <p>
+          Contact form or link to contact page
+        </p>
+      </div>
+      <div className="mt-8">
+        <LastUpdated date="26-08-2025" />
+      </div>
+    </div>
+  );
+}

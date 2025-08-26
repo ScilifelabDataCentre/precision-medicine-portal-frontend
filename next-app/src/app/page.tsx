@@ -45,6 +45,7 @@ export default function HomePage(): ReactElement {
                         aria-label="Data sources navigation"
                         role="navigation"
                       >
+                        <Button/>
                         <Button asChild variant="secondary">
                           <Link
                             href="/data-sources/quality-registries"
