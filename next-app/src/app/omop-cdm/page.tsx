@@ -37,8 +37,8 @@ export default function OMOPCDMPage(): ReactElement {
         className="flex flex-col gap-y-4"
         aria-label="What is OMOP"
       >
-        <Title level={3}>What is the OMOP CDM?</Title>
-        <p>
+        <Title level={3} aria-label="What is the OMOP CDM">What is the OMOP CDM?</Title>
+{/*     <div>
           <ul>
             <li>Definition of OMOP common data model</li>
             <li>Few lines of OMOP history</li>
@@ -46,19 +46,24 @@ export default function OMOPCDMPage(): ReactElement {
             <li>OMOP CDM features</li>
             <li>Few lines on the current status of OMOP in Sweden</li>
           </ul>
-        </p>
+        </div> */}
         <p>
           The OMOP Common Data Model (CDM) is an open, community-driven standard designed to harmonize the structure and content of observational data. It was created to help researchers share and analyze information across the wide range of healthcare data sources.<br/>
-          The Observational Medical Outcomes Partnership (OMOP) was launched in 2008 in the United States as a public–private initiative focused on improving drug safety surveillance and the analysis of observational healthcare data. To enable this work, OMOP introduced a common format for structuring disparate datasets. Over time, the OMOP CDM grew beyond its initial focus on drug development, becoming a widely adopted standard with an independent life of its own.<br/>
-          Today, the OMOP CDM is maintained by the Observational Health Data Sciences and Informatics (OHDSI) community, a global, open-science collaborative. Beyond the data model itself, OHDSI also develops and maintains standardized vocabularies, open-source software tools, and methodological frameworks that together support the full lifecycle of observational research using OMOP.<br/>
-          Up to 2024, 544 data sources coming from 54 different countries have been standardized to the OMOP CDM. These data include electronic health records, administrative claims, registries, hospital systems, genomics and biobanks. Together, these data sources conservatively  cover more than 974 million unique patient records (approximately 12% fo the world’s population).[2024 OHDSI annual report]<br/>
           The OMOP CDM offers a unified structure for diverse healthcare data, including patient demographics, conditions, procedures, drug exposures, and clinical measurements. It provides standardized vocabularies, relationships across medical concepts, and a framework that supports reproducible analytics across multiple datasets.<br/>
           In Sweden, interest in OMOP is steadily growing. Several universities and healthcare organizations (including the Karolinska Institutet) are exploring its potential to support national and international collaborations in medical research via the OMOP CDM. Pilot projects are underway to map Swedish healthcare data to OMOP, with the aim of enabling large-scale studies and improved comparability with global research initiatives.
+        </p>
+        <Title level={3} aria-label="What does OMOP mean">
+          What does OMOP mean? A bit of history
+        </Title>
+        <p>
+          The Observational Medical Outcomes Partnership (OMOP) was launched in 2008 in the United States as a public–private initiative focused on improving drug safety surveillance and the analysis of observational healthcare data. To enable this work, OMOP introduced a common format for structuring disparate datasets. Over time, the OMOP CDM grew beyond its initial focus on drug development, becoming a widely adopted standard with an independent life of its own.<br/>
+          Today, the OMOP CDM is maintained by the Observational Health Data Sciences and Informatics (OHDSI) community, a global, open-science collaborative. Beyond the data model itself, OHDSI also develops and maintains standardized vocabularies, open-source software tools, and methodological frameworks that together support the full lifecycle of observational research using OMOP.<br/>
+          Up to 2024, 544 data sources coming from 54 different countries have been standardized to the OMOP CDM. These data include electronic health records, administrative claims, registries, hospital systems, genomics and biobanks. Together, these data sources conservatively  cover more than 974 million unique patient records (approximately 12% fo the world’s population). [ref. 2024 OHDSI annual report]<br/>
         </p>
         <Title level={3} aria-label="Why OMOP">
           Why should I use the OMOP CDM?
         </Title>
-        <p>
+{/*     <div>
           <ul>
             <li>General intro on the variety of health care data and on the problem of sharing sensitive data</li>
             <li>Introduction of the concept of federated data</li>
@@ -67,7 +72,7 @@ export default function OMOPCDMPage(): ReactElement {
             <li>Few lines on OMOP OHDSI very active community</li>
             <li>Few lines on the future OMOP perspectives in Sweden</li>
           </ul>
-        </p>
+        </div> */}
         <p>
           Health data is characterized by a wide variety of formats, database systems, information models, vocabularies, and tools for data management and analysis. This diversity stems from the complexity of the healthcare ecosystem, where numerous organizations collect data for different purposes and under varying regulatory constraints.<br/>
           While an individual data model may serve the needs of a specific organization, the sheer diversity of data sources and models creates major challenges for researchers seeking to combine and analyze information across multiple data sources.<br/>
@@ -78,14 +83,14 @@ export default function OMOPCDMPage(): ReactElement {
         <Title level={3} aria-label="How OMOP">
           How does the OMOP CDM work?
         </Title>
-        <p>
+{/*     <div>
           <ul>
             <li>OMOP CDM: just a standardised way to represent information in your dataset</li>
             <li>Few words on mapping and data transition</li>
             <li>Few words on OHDSI tools for mapping, data transition, and analysis</li>
             <li>Current status of SciLifeLab as OMOP service provider</li>
           </ul>
-        </p>
+        </div> */}
         <p>
           The OMOP CDM is, at its core, simply a standardized way to represent the information in a dataset, making it easier to compare and analyze across different sources. Moving data into this format requires a process known as mapping, where local codes and structures are translated into the standardized OMOP vocabulary. To support this transition, the OHDSI community provides a range of open-source tools for mapping, data transformation, and downstream analysis.<br/>
           It is important to take in mind that the OMOP CDM will not substitute the need for local data models and vocabularies, but rather provide a common framework for data integration and analysis across multiple sources. In other words, an OMOP CDM instance represents an interface that allows different source data to be combined and analyzed, regardless of their underlying data models or vocabularies.<br/>
@@ -107,7 +112,7 @@ export default function OMOPCDMPage(): ReactElement {
         <Title level={3} aria-label="OMOP resources">
           Links and Resources
         </Title>
-        <p>
+{/*     <p>
           A list of links and reseources with description:
           <ul>
             <li>Swedish OMOP page</li>
@@ -115,7 +120,15 @@ export default function OMOPCDMPage(): ReactElement {
             <li>OHDSI academy</li>
             <li>List of OHDSI OMOP related tools (GitHub repositories)</li>
           </ul>
-        </p>
+        </p> */}
+        <div>
+          <ul>
+            <li><a href="https://www.vinnova.se/en/p/omop-4-sweden-preparation-project-/">OMOP 4 Sweden</a>, the preparation project page for the OMOP initiative in Sweden</li>
+            <li><a href="https://ohdsi.github.io/CommonDataModel/">OMOP common data model webpage</a></li>
+            <li><a href="https://www.ohdsi.org/data-standardization"> OHDSI webpage</a></li>
+            <li><a href="https://academy.ehden.eu/">EHDEN Academy</a>, training and development programmes developed by the OHDSI and EHDEN community</li>
+          </ul>
+        </div>
         <Title level={3} aria-label="OMOP contact">
           Contact
         </Title>
