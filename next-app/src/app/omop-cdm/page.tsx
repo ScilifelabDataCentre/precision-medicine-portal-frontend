@@ -86,11 +86,17 @@ export default function OMOPCDMPage(): ReactElement {
             <li>Current status of SciLifeLab as OMOP service provider</li>
           </ul>
         </p>
+        <p>
+          The OMOP CDM is, at its core, simply a standardized way to represent the information in a dataset, making it easier to compare and analyze across different sources. Moving data into this format requires a process known as mapping, where local codes and structures are translated into the standardized OMOP vocabulary. To support this transition, the OHDSI community provides a range of open-source tools for mapping, data transformation, and downstream analysis.<br/>
+          It is important to take in mind that the OMOP CDM will not substitute the need for local data models and vocabularies, but rather provide a common framework for data integration and analysis across multiple sources. In other words, an OMOP CDM instance represents an interface that allows different source data to be combined and analyzed, regardless of their underlying data models or vocabularies.<br/>
+          In Sweden, SciLifeLab is emerging as a service provider for OMOP, offering expertise and infrastructure to help researchers adopt the model and connect with the international OHDSI network.
+        </p>
         <Title level={3} aria-label="Scilifelab OMOP">
           OMOP at Scilifelab
         </Title>
         <p>
-          Few lines on what is going on at SciLifeLab in relation to OMOP and in Sweden. Perhaps this is the place to put some future perspectives.
+          Sweden is undertaking a national initiative (OMOP 4 Sweden) to create the conditions needed to accelerate the adoption of the OMOP standard. The project brings together a multi-helix consortium for long-term collaboration, aiming to build a clear OMOP case for Sweden while aligning international expertise with local needs and regulations.<br/> 
+          SciLifeLab is contributing actively by driving pilot projects, such as the harmonization of the PREDDLUNG dataset. Through this work, SciLifeLab is helping to define national use cases, demonstrate OMOP’s value for the Swedish health data ecosystem, and capture best practices that will support wider implementation in the years ahead.
         </p>
         <Title level={3} aria-label="OMOP gallery">
           OMOP CDM Gallery
