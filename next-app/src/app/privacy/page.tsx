@@ -37,7 +37,7 @@ export default function PrivacyPage(): ReactElement {
   // };
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container px-4 py-8">
       <nav aria-label="Breadcrumb navigation" role="navigation">
         <Breadcrumb>
           <BreadcrumbList>
