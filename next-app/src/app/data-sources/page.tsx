@@ -45,9 +45,9 @@ export default function DataSourcesPage(): ReactElement {
         </p>
         <div
           className="flex flex-row items-center"
-          aria-label="Swedish research projects or databases section"
+          aria-label="Swedish research projects and databases section"
         >
-          <Title level={2}>Swedish research projects or databases</Title>
+          <Title level={2}>Swedish research projects and databases</Title>
           <Link
             href="/data-sources/swedish-research-projects"
             aria-label="Go to Swedish research projects page"
@@ -69,37 +69,83 @@ export default function DataSourcesPage(): ReactElement {
         </div>
         <p>
           It is possible to request existing data from several research projects
-          or research databases in Sweden. Projects can be found, for example,
-          on the website of the project&apos;s entity responsible for the
-          research, the{" "}
-          <a
-            href="https://snd.se/en/catalogue/search"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-primary hover:text-black underline focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"
-            aria-label="Visit Swedish National Data Service catalogue (opens in new tab)"
-          >
-            Swedish National Data Service (SND)
-          </a>
-          , or the{" "}
-          <a
-            href="https://precision-medicine-portal.scilifelab.se/swedishresearchprojects"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-primary hover:text-black underline focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"
-            aria-label="Visit Precision Medicine Portal Swedish research projects (opens in new tab)"
-          >
-            Precision Medicine Portal
-          </a>
-          .
+          or research databases in Sweden. Projects and research data can be
+          found on the website of the entity responsible for the research, or in
+          registries, data catalogs, and other compilations such as:
         </p>
-        <p>
-          In the research data catalogue at SND, it is possible to search for
-          research projects and data from several disciplines. Some data and
-          metadata can be downloaded directly from the catalogue. SND also
-          provides information about data management and a service for data
-          sharing.
-        </p>
+        <ul
+          className="list-disc pl-4"
+          role="list"
+          aria-label="Swedish research projects and databases list"
+        >
+          <li role="listitem">
+            <a
+              href="https://precision-medicine-portal.scilifelab.se/data-sources/swedish-research-projects"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-primary hover:text-black underline focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"
+              aria-label="Visit Precision Medicine Portal Swedish Research Projects website (opens in new tab)"
+            >
+              Precision Medicine Portal
+            </a>
+            : This page highlights selected research projects tied to biobanks,
+            showcasing their significant role in advancing scientific research
+            and medical innovation. These projects address key scientific
+            questions, drive technological development, and improve healthcare
+            outcomes.
+          </li>
+          <li role="listitem">
+            <a
+              href="https://snd.se/en/catalogue/search"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-primary hover:text-black underline focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"
+              aria-label="Visit Swedish National Data Service catalogue (opens in new tab)"
+            >
+              Swedish National Data Service (SND)
+            </a>
+            : In the research data catalogue at SND, it is possible to search
+            for research projects and data from several disciplines. Some data
+            and metadata can be downloaded directly from the catalogue. SND also
+            provides information about data management and a service for data
+            sharing.
+          </li>
+          <li role="listitem">
+            <a
+              href="https://dataguiden.se/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-primary hover:text-black underline focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"
+              aria-label="Visit Dataguiden.se website (opens in new tab)"
+            >
+              Dataguiden.se
+            </a>
+            : Dataguiden.se is the Swedish Research Council&apos;s research
+            guide for registry and health data. It presents different data
+            sources, outlines the research process (including laws and
+            regulations), and offers support and guidance for data users.
+          </li>
+          <li role="listitem">
+            <a
+              href="https://rut.registerforskning.se/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-primary hover:text-black underline focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"
+              aria-label="Visit Register Utiliser Tool (RUT) website (opens in new tab)"
+            >
+              Register Utiliser Tool (RUT)
+            </a>
+            : RUT is a web-based metadata tool developed by the Swedish Research
+            Council to support register-based research. It allows researchers to
+            search, explore, and compare metadata from Swedish public authority
+            registers, a selection of quality registers and biobank sample
+            collections. RUT helps identify relevant variables for research
+            questions, facilitating more precise data requests and ethical
+            review preparations. The tool does not contain individual-level data
+            but provides structured metadata to guide researchers in evaluating
+            the potential of available data sources.
+          </li>
+        </ul>
         <div
           className="flex flex-row items-center"
           aria-label="Quality registries section"
@@ -237,18 +283,36 @@ export default function DataSourcesPage(): ReactElement {
             </a>
           </li>
         </ul>
-        <Title level={2} aria-label="Patient and medical records section">
-          Patient and medical records
+        <Title level={2} aria-label="Patient records and data access section">
+          Patient records and data access
         </Title>
         <p>
-          Healthcare staff document patient interactions, and after a
-          confidentiality assessment, this information can be requested for
-          medical research by lämna in en begäran om utlämnande av patientdata.
-          In Sweden, the 21 regions are responsible for most healthcare
-          services, while municipalities handle services like home care, and
-          private practitioners manage their own records. Consequently, to
-          conduct research using patient records from across the country, it may
-          be necessary to request data from multiple sources.
+          In Sweden, healthcare professionals routinely document patient
+          interactions in electronic health records. These records may be
+          accessed for medical research purposes, provided a confidentiality
+          assessment is conducted and a formal data access request is submitted.
+        </p>
+        <p>
+          Sweden&apos;s healthcare system is decentralized: the 21 regions
+          manage most hospital and outpatient care, municipalities are
+          responsible for services such as home care, and private practitioners
+          maintain their own patient records. As a result, researchers often
+          need to coordinate with multiple data controllers to obtain
+          comprehensive health data for nationwide studies.
+        </p>
+        <p>
+          <a
+            href="https://kliniskastudier.se/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-primary hover:text-black underline focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"
+            aria-label="Visit Kliniska Studier Sverige website (opens in new tab)"
+          >
+            Kliniska Studier Sverige
+          </a>{" "}
+          provides guidance on how to navigate this process, including
+          region-specific procedures, legal considerations, and contact points
+          for submitting data requests.
         </p>
         <Title level={2} aria-label="Research data management section">
           Research data management
@@ -364,7 +428,7 @@ export default function DataSourcesPage(): ReactElement {
             </a>
           </li>
         </ul>
-        <LastUpdated date="06-08-2025" />
+        <LastUpdated date="14-08-2025" />
       </div>
     </div>
   );
