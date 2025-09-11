@@ -16,7 +16,7 @@ export const LoadingState = () => (
           role="status"
           aria-label="Loading spinner"
         ></div>
-        <p className="text-muted-foreground">Loading registries...</p>
+        <p className="text-muted-foreground">Loading data...</p>
       </div>
     </div>
   </div>
