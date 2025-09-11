@@ -271,30 +271,65 @@ function calculateSearchScore(
   registry: IRegistrySource,
   searchTerms: string[]
 ): number {
-  let maxScore = 0;
-
   // Expand search terms with Swedish translations
   const expandedSearchTerms = expandSearchTerms(searchTerms);
 
-  // Search through all relevant fields
-  const searchableTexts = [
-    registry.name,
-    registry.Information,
-    ...registry.search_tags,
-    ...registry.category,
-    ...registry.registry_centre,
-  ];
+  // Field weights - more important fields get higher weights
+  const fieldWeights = {
+    name: 3.0,
+    search_tags: 2.5,
+    category: 2.0,
+    registry_centre: 1.5,
+    Information: 1.0,
+  };
+
+  let totalScore = 0;
+  let termCount = 0;
 
   for (const searchTerm of expandedSearchTerms) {
+    const normalizedSearchTerm = normalizeText(searchTerm);
     let termScore = 0;
 
-    for (const text of searchableTexts) {
-      const similarity = calculateSimilarity(searchTerm, text);
-      termScore = Math.max(termScore, similarity);
+    // Check name field (highest weight)
+    const nameSimilarity = calculateSimilarity(searchTerm, registry.name);
+    if (nameSimilarity > 0) {
+      termScore += nameSimilarity * fieldWeights.name;
+    }
+
+    // Check search tags (high weight)
+    for (const tag of registry.search_tags) {
+      const tagSimilarity = calculateSimilarity(searchTerm, tag);
+      if (tagSimilarity > 0) {
+        termScore += tagSimilarity * fieldWeights.search_tags;
+      }
+    }
+
+    // Check category (medium-high weight)
+    for (const category of registry.category) {
+      const categorySimilarity = calculateSimilarity(searchTerm, category);
+      if (categorySimilarity > 0) {
+        termScore += categorySimilarity * fieldWeights.category;
+      }
+    }
+
+    // Check registry centre (medium weight)
+    for (const centre of registry.registry_centre) {
+      const centreSimilarity = calculateSimilarity(searchTerm, centre);
+      if (centreSimilarity > 0) {
+        termScore += centreSimilarity * fieldWeights.registry_centre;
+      }
+    }
+
+    // Check information/description (lowest weight)
+    const infoSimilarity = calculateSimilarity(
+      searchTerm,
+      registry.Information
+    );
+    if (infoSimilarity > 0) {
+      termScore += infoSimilarity * fieldWeights.Information;
     }
 
     // Bonus for exact matches in name or search tags
-    const normalizedSearchTerm = normalizeText(searchTerm);
     const normalizedName = normalizeText(registry.name);
     const normalizedTags = registry.search_tags.map((tag) =>
       normalizeText(tag)
@@ -304,13 +339,33 @@ function calculateSearchScore(
       normalizedName.includes(normalizedSearchTerm) ||
       normalizedTags.some((tag) => tag.includes(normalizedSearchTerm))
     ) {
-      termScore = Math.max(termScore, 0.95);
+      termScore += 2.0; // Significant bonus for exact matches
     }
 
-    maxScore = Math.max(maxScore, termScore);
+    // Add term frequency bonus (more mentions = higher score)
+    const allText = [
+      registry.name,
+      registry.Information,
+      ...registry.search_tags,
+      ...registry.category,
+      ...registry.registry_centre,
+    ]
+      .join(" ")
+      .toLowerCase();
+
+    const termFrequency = (
+      allText.match(new RegExp(normalizedSearchTerm, "g")) || []
+    ).length;
+    if (termFrequency > 1) {
+      termScore += Math.log(termFrequency) * 0.5; // Logarithmic bonus for frequency
+    }
+
+    totalScore += termScore;
+    termCount++;
   }
 
-  return maxScore;
+  // Return average score per term, but ensure minimum threshold
+  return termCount > 0 ? totalScore / termCount : 0;
 }
 
 // Custom hook for debouncing
