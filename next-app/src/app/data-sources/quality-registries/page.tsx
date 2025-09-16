@@ -661,7 +661,7 @@ export default function QualityRegistryPage() {
                 </span>
                 &quot;
                 {filteredAndSearchedRegistries.length > 0 &&
-                  " (ordered by relevance)"}
+                  " (ordered by search ranking)"}
               </div>
             )}
 
@@ -707,12 +707,11 @@ export default function QualityRegistryPage() {
               role="list"
               aria-label={`${filteredAndSearchedRegistries.length} quality registries found`}
             >
-              {filteredAndSearchedRegistries.map((result, index) => (
+              {filteredAndSearchedRegistries.map((result) => (
                 <div key={result.registry.name} role="listitem">
                   <QualityRegistryCard
                     registry={result.registry}
                     searchTerms={searchTerms}
-                    index={index}
                     expandSearchTerms={expandSearchTerms}
                     highlightSearchTerms={highlightSearchTerms}
                     organisationLinks={ORGANISATION_LINKS}
@@ -724,7 +723,7 @@ export default function QualityRegistryPage() {
         </section>
       </div>
 
-      <LastUpdated date="20-08-2025" />
+      <LastUpdated date="16-09-2025" />
     </div>
   );
 }

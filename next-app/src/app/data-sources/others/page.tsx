@@ -747,13 +747,12 @@ export default function DataSourcesOthersPage(): ReactElement {
               role="list"
               aria-label={`${filteredAndSearchedDataSources.length} data sources found`}
             >
-              {filteredAndSearchedDataSources.map((result, index) => (
+              {filteredAndSearchedDataSources.map((result) => (
                 <DataSourceCard
                   key={result.dataSource.name}
                   dataSource={result.dataSource}
                   searchTerms={searchTerms}
                   highlightSearchTerms={highlightSearchTerms}
-                  index={index}
                 />
               ))}
             </div>

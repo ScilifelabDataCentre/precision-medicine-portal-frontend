@@ -15,14 +15,12 @@ interface DataSourceCardProps {
   };
   searchTerms: string[];
   highlightSearchTerms: (text: string, searchTerms: string[]) => string;
-  index: number;
 }
 
 export const DataSourceCard = ({
   dataSource,
   searchTerms,
   highlightSearchTerms,
-  index,
 }: DataSourceCardProps) => (
   <article key={dataSource.name} role="listitem" className="mb-6">
     <Card className="h-full">
