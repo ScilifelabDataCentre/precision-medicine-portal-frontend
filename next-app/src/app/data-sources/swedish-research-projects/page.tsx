@@ -113,7 +113,7 @@ export default function SwedishResearchProjectsPage() {
     fetchProjectData();
   }, []);
 
-  function getCountForType(type: string, isParticipant: boolean): number {
+  function getCountForType(type: string): number {
     return projectData.filter((project) => {
       return project.tags.participants.some(
         (tag) => tag.toLowerCase() === type.toLowerCase()
@@ -295,7 +295,7 @@ export default function SwedishResearchProjectsPage() {
                         >
                           {tag}{" "}
                           <span id={`participant-count-${index}`}>
-                            ({getCountForType(tag, true)})
+                            ({getCountForType(tag)})
                           </span>
                         </label>
                       </div>
