@@ -21,10 +21,17 @@ export default function HomePage(): ReactElement {
           role="region"
         >
           <article
-            className="overflow-hidden transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-xl"
+            className="overflow-hidden transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-xl cursor-pointer relative"
             role="listitem"
           >
-            <Card className="h-full">
+            {/* Invisible clickable overlay for card navigation */}
+            <Link
+              href="/data-sources"
+              className="absolute inset-0 z-10"
+              aria-label="Navigate to Data Sources overview"
+            />
+
+            <Card className="h-full relative z-20 pointer-events-none">
               <CardContent className="p-0">
                 <div className="relative h-[32rem]">
                   <Image
@@ -41,7 +48,7 @@ export default function HomePage(): ReactElement {
                         Data sources
                       </CardTitle>
                       <nav
-                        className="flex flex-col space-y-3 h-36"
+                        className="flex flex-col space-y-3 h-36 relative z-30 pointer-events-auto"
                         aria-label="Data sources navigation"
                         role="navigation"
                       >

@@ -88,12 +88,7 @@ export const filters: IRegistryFilters = {
     "Registercentrum Syd",
     "Registercentrum Sydost",
     "Registercentrum Västra Götaland",
-    "RCC Mellansverige",
-    "RCC Norr",
-    "RCC Stockholm Gotland",
-    "RCC Syd",
-    "RCC Sydöst",
-    "RCC Väst",
+    "Regionala Cancercentrum i Samverkan",
     "Uppsala Clinical Research Center",
   ],
   registryCategory: [

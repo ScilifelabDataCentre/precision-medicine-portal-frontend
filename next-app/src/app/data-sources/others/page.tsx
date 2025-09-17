@@ -1,13 +1,13 @@
 "use client";
 
-import { ReactElement } from "react";
+import { ReactElement, useMemo, useCallback, useState, useEffect } from "react";
+import axios from "axios";
 
 import { LastUpdated } from "@/components/common/last-updated";
-import { useState, useEffect } from "react";
-import axios from "axios";
+import { LoadingState } from "@/components/common/LoadingState";
+import { FilterSection } from "@/components/common/FilterSection";
+import { DataSourceCard } from "@/components/DataSourceCard";
 import { Input } from "@/components/ui/input";
-import { Checkbox } from "@/components/ui/checkbox";
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import Title from "@/components/common/title";
 import {
   Breadcrumb,
@@ -16,11 +16,6 @@ import {
   BreadcrumbList,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
-import {
-  sanitizeURL,
-  createSafeImageSrc,
-  sanitizeText,
-} from "@/lib/security-utils";
 
 interface IDataSourceFilters {
   dataTypes: string[];
@@ -38,13 +33,390 @@ interface IDataSourcesDC {
   search_tags: string[];
 }
 
+// Configuration constants
+const SEARCH_CONFIG = {
+  SCORE_THRESHOLD: 0.3,
+  DEBOUNCE_DELAY: 300,
+} as const;
+
+// Swedish to English medical and scientific term translations
+const swedishToEnglishTerms: { [key: string]: string[] } = {
+  // Medical conditions and diseases
+  cancer: ["cancer", "tumor", "neoplasia", "oncology"],
+  hjärtinfarkt: ["heart attack", "myocardial infarction", "cardiac"],
+  hjärninfarkt: [
+    "cerebral infarction",
+    "brain stroke",
+    "cerebrovascular accident",
+    "cva",
+  ],
+  stroke: ["stroke", "cerebrovascular", "brain"],
+  diabetes: ["diabetes", "diabetic"],
+  parkinson: ["parkinson", "parkinson's"],
+  alzheimer: ["alzheimer", "dementia"],
+  demens: ["dementia", "cognitive", "alzheimer"],
+  epilepsi: ["epilepsy", "seizure"],
+  astma: ["asthma", "respiratory"],
+  artrit: ["arthritis", "rheumatoid"],
+  reumatism: ["rheumatism", "rheumatic", "arthritis"],
+  osteoporos: ["osteoporosis", "bone"],
+  obesitas: ["obesity", "overweight"],
+  hemofili: ["hemophilia", "bleeding disorder"],
+  leukemi: ["leukemia", "leukaemia", "blood cancer"],
+  lymfom: ["lymphoma", "lymphatic cancer"],
+  fibros: ["fibrosis", "scarring"],
+  dermatit: ["dermatitis", "eczema", "skin condition"],
+  katarakt: ["cataract", "lens opacity"],
+
+  // Body parts and systems
+  hjärta: ["heart", "cardiac", "cardiovascular"],
+  lungor: ["lung", "pulmonary", "respiratory"],
+  lever: ["liver", "hepatic"],
+  gallblåsa: ["gallbladder", "biliary"],
+  gallvägar: ["bile ducts", "biliary tract"],
+  njurar: ["kidney", "renal"],
+  hjärna: ["brain", "cerebral", "neurological"],
+  blod: ["blood", "hematological"],
+  ben: ["bone", "skeletal"],
+  leder: ["joint", "articular"],
+  muskler: ["muscle", "muscular"],
+  nervsystem: ["nervous system", "neurological"],
+  hud: ["skin", "dermatological"],
+  ögon: ["eyes", "ocular", "ophthalmology"],
+  öron: ["ears", "auditory", "otology"],
+
+  // Medical procedures and treatments
+  kirurgi: ["surgery", "surgical"],
+  handkirurgi: ["hand surgery", "microsurgery"],
+  thoraxkirurgi: ["thoracic surgery", "chest surgery"],
+  kärlkirurgi: ["vascular surgery", "vessel surgery"],
+  hjärtkirurgi: ["cardiac surgery", "heart surgery"],
+  bråckkirurgi: ["hernia surgery", "hernia repair"],
+  barnkirurgi: ["pediatric surgery", "children surgery"],
+  kemoterapi: ["chemotherapy", "cancer treatment"],
+  strålbehandling: ["radiation", "radiotherapy"],
+  transplantation: ["transplant", "transplantation"],
+  dialys: ["dialysis", "renal replacement"],
+  anestesi: ["anesthesia", "anesthetic"],
+  intensivvård: ["intensive care", "icu", "critical care"],
+  behandling: ["treatment", "therapy"],
+  medicin: ["medicine", "medication", "drug"],
+
+  // Patient groups
+  barn: ["child", "pediatric", "children"],
+  äldre: ["elderly", "geriatric", "aging"],
+  vuxna: ["adult", "adults"],
+  spädbarn: ["infant", "newborn", "neonatal"],
+  gravid: ["pregnant", "pregnancy", "maternal"],
+  neonatal: ["newborn", "neonatal", "infant"],
+
+  // Medical specialties
+  neurologi: ["neurology", "neurological"],
+  onkologi: ["oncology", "cancer"],
+  kardiologi: ["cardiology", "cardiac"],
+  urologi: ["urology", "urological"],
+  gynekologi: ["gynecology", "gynecological"],
+  ortopedi: ["orthopedics", "orthopedic"],
+  reumatologi: ["rheumatology", "rheumatic"],
+  endokrinologi: ["endocrinology", "hormonal"],
+  gastroenterologi: ["gastroenterology", "digestive"],
+
+  // Scientific and technical terms
+  genetik: ["genetics", "genetic", "gene"],
+  genomik: ["genomics", "genomic", "genome"],
+  proteomik: ["proteomics", "proteomic", "protein"],
+  metabolomik: ["metabolomics", "metabolic", "metabolite"],
+  transkriptomik: ["transcriptomics", "transcriptomic"],
+  epigenetik: ["epigenetics", "epigenetic", "epigenome"],
+  bioinformatik: ["bioinformatics", "computational biology"],
+  biokemi: ["biochemistry", "biochemical"],
+  molekylärbiologi: ["molecular biology", "molecular", "molecule"],
+  cellbiologi: ["cell biology", "cellular"],
+  mikrobiologi: ["microbiology", "microbial", "microbe"],
+  immunologi: ["immunology", "immune", "antibody"],
+  farmakologi: ["pharmacology", "pharmaceutical", "drug"],
+  toxikologi: ["toxicology", "toxic", "poison"],
+  epidemiologi: ["epidemiology", "epidemiological", "epidemic"],
+  patologi: ["pathology", "pathological", "disease"],
+  fysiologi: ["physiology", "physiological"],
+  anatomi: ["anatomy", "anatomical", "body"],
+
+  // Data types and research terms
+  register: ["registry", "register", "database"],
+  biobank: ["biobank", "biobanking"],
+  prov: ["sample", "specimen"],
+  data: ["data", "dataset"],
+  forskning: ["research", "study"],
+  studie: ["study", "research"],
+  experiment: ["experiment", "experimental"],
+  analys: ["analysis", "analytical"],
+  mätning: ["measurement", "measure"],
+  observation: ["observation", "observational"],
+  undersökning: ["investigation", "examination"],
+  kartläggning: ["mapping", "survey"],
+  uppföljning: ["follow-up", "monitoring"],
+  screening: ["screening", "screening"],
+  diagnostik: ["diagnostics", "diagnostic"],
+  prognos: ["prognosis", "prognostic"],
+  läkemedel: ["drug", "medication", "pharmaceutical"],
+  vaccin: ["vaccine", "vaccination"],
+  terapi: ["therapy", "therapeutic"],
+
+  // Common Swedish medical abbreviations
+  hiv: ["hiv", "aids"],
+  covid: ["covid", "coronavirus"],
+  ms: ["multiple sclerosis", "ms"],
+  cf: ["cystic fibrosis", "cf"],
+  ivf: ["in vitro fertilization", "ivf"],
+  acls: ["anterior cruciate ligament", "acl"],
+
+  // Swedish institutions and organizations
+  karolinska: ["karolinska", "ki", "karolinska institutet"],
+  uppsala: ["uppsala", "uppsala university"],
+  lund: ["lund", "lund university"],
+  göteborg: ["gothenburg", "göteborg"],
+  stockholm: ["stockholm"],
+  sverige: ["sweden", "swedish"],
+  folkhälsomyndigheten: ["public health agency", "fohm"],
+  socialstyrelsen: ["national board of health and welfare"],
+  vetenskapsrådet: ["swedish research council", "vr"],
+  scb: ["statistics sweden", "scb"],
+  snd: ["swedish national data service", "snd"],
+  digg: ["myndigheten for digital förvaltning", "digg"],
+  elixir: ["elixir", "elixir europe"],
+  scilifelab: ["scilifelab", "science for life laboratory"],
+  nbis: ["nbis", "national bioinformatics infrastructure"],
+  sbdi: ["sbdi", "swedish biodiversity data infrastructure"],
+  fega: ["fega", "federated european genome-phenome archive"],
+  scapis: ["scapis", "swedish cardiopulmonary bioimage study"],
+  bbmri: [
+    "bbmri",
+    "biobanking and biomolecular resources research infrastructure",
+  ],
+  embl: ["embl", "european molecular biology laboratory"],
+  ebi: ["ebi", "european bioinformatics institute"],
+  ncbi: ["ncbi", "national center for biotechnology information"],
+  nih: ["nih", "national institutes of health"],
+  who: ["who", "world health organization"],
+  cdc: ["cdc", "centers for disease control and prevention"],
+  ecdc: ["ecdc", "european centre for disease prevention and control"],
+};
+
+// Function to expand search terms with Swedish translations
+function expandSearchTerms(terms: string[]): string[] {
+  const expandedTerms = [...terms];
+
+  terms.forEach((term) => {
+    const normalizedTerm = term.toLowerCase().trim();
+
+    // Check if the term is Swedish and has English translations
+    if (swedishToEnglishTerms[normalizedTerm]) {
+      expandedTerms.push(...swedishToEnglishTerms[normalizedTerm]);
+    }
+
+    // Also check for reverse mapping (English to Swedish)
+    Object.entries(swedishToEnglishTerms).forEach(([swedish, englishTerms]) => {
+      if (
+        englishTerms.some((english) => english.toLowerCase() === normalizedTerm)
+      ) {
+        expandedTerms.push(swedish, ...englishTerms);
+      }
+    });
+  });
+
+  // Remove duplicates and return
+  return [...new Set(expandedTerms)];
+}
+
+// Utility functions for improved search
+function normalizeText(text: string): string {
+  return text
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "") // Remove diacritics
+    .replace(/[^\w\s]/g, " ") // Replace punctuation with spaces
+    .replace(/\s+/g, " ") // Normalize whitespace
+    .trim();
+}
+
+function highlightSearchTerms(text: string, searchTerms: string[]): string {
+  if (!text || searchTerms.length === 0) return text;
+
+  let highlightedText = text;
+
+  // Escape special regex characters in search terms
+  const escapedTerms = searchTerms.map((term) =>
+    term.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")
+  );
+
+  escapedTerms.forEach((term) => {
+    if (term.trim()) {
+      const regex = new RegExp(`(${term})`, "gi");
+      highlightedText = highlightedText.replace(
+        regex,
+        '<mark class="bg-accent">$1</mark>'
+      );
+    }
+  });
+
+  return highlightedText;
+}
+
+function calculateSimilarity(text1: string, text2: string): number {
+  const normalized1 = normalizeText(text1);
+  const normalized2 = normalizeText(text2);
+
+  // Exact match gets highest score
+  if (normalized1 === normalized2) return 1.0;
+
+  // Check if one contains the other
+  if (normalized1.includes(normalized2) || normalized2.includes(normalized1)) {
+    return 0.9;
+  }
+
+  // Word-based similarity
+  const words1 = new Set(normalized1.split(" "));
+  const words2 = new Set(normalized2.split(" "));
+
+  const intersection = new Set([...words1].filter((x) => words2.has(x)));
+  const union = new Set([...words1, ...words2]);
+
+  return intersection.size / union.size;
+}
+
+function calculateSearchScore(
+  dataSource: IDataSourcesDC,
+  searchTerms: string[]
+): number {
+  // Expand search terms with Swedish translations
+  const expandedSearchTerms = expandSearchTerms(searchTerms);
+
+  // Field weights - more important fields get higher weights
+  const fieldWeights = {
+    name: 3.0,
+    search_tags: 2.5,
+    data: 2.0,
+    disease_type: 1.5,
+    description: 1.0,
+  };
+
+  let totalScore = 0;
+  let termCount = 0;
+
+  for (const searchTerm of expandedSearchTerms) {
+    const normalizedSearchTerm = normalizeText(searchTerm);
+    let termScore = 0;
+
+    // Check name field (highest weight)
+    const nameSimilarity = calculateSimilarity(searchTerm, dataSource.name);
+    if (nameSimilarity > 0) {
+      termScore += nameSimilarity * fieldWeights.name;
+    }
+
+    // Check search tags (high weight)
+    for (const tag of dataSource.search_tags) {
+      const tagSimilarity = calculateSimilarity(searchTerm, tag);
+      if (tagSimilarity > 0) {
+        termScore += tagSimilarity * fieldWeights.search_tags;
+      }
+    }
+
+    // Check data types (medium-high weight)
+    for (const dataType of dataSource.data) {
+      const dataSimilarity = calculateSimilarity(searchTerm, dataType);
+      if (dataSimilarity > 0) {
+        termScore += dataSimilarity * fieldWeights.data;
+      }
+    }
+
+    // Check disease types (medium weight)
+    for (const diseaseType of dataSource.disease_type) {
+      const diseaseSimilarity = calculateSimilarity(searchTerm, diseaseType);
+      if (diseaseSimilarity > 0) {
+        termScore += diseaseSimilarity * fieldWeights.disease_type;
+      }
+    }
+
+    // Check description (lowest weight)
+    const descSimilarity = calculateSimilarity(
+      searchTerm,
+      dataSource.description
+    );
+    if (descSimilarity > 0) {
+      termScore += descSimilarity * fieldWeights.description;
+    }
+
+    // Bonus for exact matches in name or search tags
+    const normalizedName = normalizeText(dataSource.name);
+    const normalizedTags = dataSource.search_tags.map((tag) =>
+      normalizeText(tag)
+    );
+
+    if (
+      normalizedName.includes(normalizedSearchTerm) ||
+      normalizedTags.some((tag) => tag.includes(normalizedSearchTerm))
+    ) {
+      termScore += 2.0; // Significant bonus for exact matches
+    }
+
+    // Add term frequency bonus (more mentions = higher score)
+    const allText = [
+      dataSource.name,
+      dataSource.description,
+      ...dataSource.search_tags,
+      ...dataSource.data,
+      ...dataSource.disease_type,
+    ]
+      .join(" ")
+      .toLowerCase();
+
+    const termFrequency = (
+      allText.match(new RegExp(normalizedSearchTerm, "g")) || []
+    ).length;
+    if (termFrequency > 1) {
+      termScore += Math.log(termFrequency) * 0.5; // Logarithmic bonus for frequency
+    }
+
+    totalScore += termScore;
+    termCount++;
+  }
+
+  // Return average score per term, but ensure minimum threshold
+  return termCount > 0 ? totalScore / termCount : 0;
+}
+
+// Custom hook for debouncing
+function useDebounce<T>(value: T, delay: number): T {
+  const [debouncedValue, setDebouncedValue] = useState<T>(value);
+
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      setDebouncedValue(value);
+    }, delay);
+
+    return () => {
+      clearTimeout(handler);
+    };
+  }, [value, delay]);
+
+  return debouncedValue;
+}
+
 export default function DataSourcesOthersPage(): ReactElement {
   const [dataSourcesJSON, setDataSourcesJSON] = useState<IDataSourcesDC[]>([]);
   const [selectedFilters, setSelectedFilters] = useState<IDataSourceFilters>({
     dataTypes: [],
     diseaseTypes: [],
   });
-  const [searchBar, setSearchBar] = useState<string>("");
+  const [searchTerm, setSearchTerm] = useState<string>("");
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  // Debounce search term for better performance
+  const debouncedSearchTerm = useDebounce(
+    searchTerm,
+    SEARCH_CONFIG.DEBOUNCE_DELAY
+  );
 
   const filters: IDataSourceFilters = {
     dataTypes: [
@@ -79,23 +451,25 @@ export default function DataSourcesOthersPage(): ReactElement {
     ],
   };
 
-  const nrOfCheckboxes = filters.dataTypes.concat(filters.diseaseTypes).length;
-  const [checkedList, setCheckedList] = useState<boolean[]>(
-    new Array(nrOfCheckboxes).fill(false)
-  );
-
   const dataSourcesURI: string =
     "https://raw.githubusercontent.com/ScilifelabDataCentre/data.scilifelab.se/develop/data/data_sources.json";
 
-  function getCountForType(type: string, isDataType: boolean): number {
-    return dataSourcesJSON.filter((source) => {
-      const tags = isDataType ? source.data : source.disease_type;
-      return tags.some((tag) => tag.toLowerCase() === type.toLowerCase());
-    }).length;
-  }
+  // Memoized filter counts for performance
+  const getCountForType = useCallback(
+    (type: string, isDataType: boolean): number => {
+      return dataSourcesJSON.filter((source) => {
+        const tags = isDataType ? source.data : source.disease_type;
+        return tags.some((tag) => tag.toLowerCase() === type.toLowerCase());
+      }).length;
+    },
+    [dataSourcesJSON]
+  );
 
   async function getData() {
     try {
+      setIsLoading(true);
+      setError(null);
+
       const response = await axios.get(dataSourcesURI);
       const tmpDataSourcesJSON = response.data
         .filter((element: IDataSourcesDC) =>
@@ -106,72 +480,100 @@ export default function DataSourcesOthersPage(): ReactElement {
         ); // Exclude "SCAPIS"
       setDataSourcesJSON(tmpDataSourcesJSON);
     } catch (error) {
+      const errorMessage =
+        error instanceof Error ? error.message : "Failed to load data sources";
+      setError(errorMessage);
       console.error("Error fetching data:", error);
+    } finally {
+      setIsLoading(false);
     }
   }
 
-  function checkedDataFilter(
-    tagType: keyof IDataSourceFilters,
-    tagName: string,
-    boxIndex: number
-  ) {
-    setSelectedFilters((prev) => {
-      const newFilters = { ...prev };
-      const key = tagType === "dataTypes" ? "dataTypes" : "diseaseTypes";
-      if (newFilters[key].includes(tagName)) {
-        newFilters[key] = newFilters[key].filter((item) => item !== tagName);
-      } else {
-        newFilters[key].push(tagName);
-      }
-      return newFilters;
+  // Filter management
+  const updateFilter = useCallback(
+    (filterType: keyof IDataSourceFilters, filterName: string) => {
+      setSelectedFilters((prev) => {
+        const newFilters = { ...prev };
+        if (newFilters[filterType].includes(filterName)) {
+          newFilters[filterType] = newFilters[filterType].filter(
+            (item) => item !== filterName
+          );
+        } else {
+          newFilters[filterType] = [...newFilters[filterType], filterName];
+        }
+        return newFilters;
+      });
+    },
+    []
+  );
+
+  // Search and filter logic
+  const searchTerms = useMemo(() => {
+    return debouncedSearchTerm
+      .toLowerCase()
+      .split(/\s+/)
+      .filter((term) => term.length > 0);
+  }, [debouncedSearchTerm]);
+
+  const filteredAndSearchedDataSources = useMemo(() => {
+    // Apply filters first
+    const filtered = dataSourcesJSON.filter((dataSource) => {
+      const dataTypeFilter =
+        selectedFilters.dataTypes.length === 0 ||
+        selectedFilters.dataTypes.some((filter) =>
+          dataSource.data.some(
+            (tag) => tag.toLowerCase() === filter.toLowerCase()
+          )
+        );
+
+      const diseaseTypeFilter =
+        selectedFilters.diseaseTypes.length === 0 ||
+        selectedFilters.diseaseTypes.some((filter) =>
+          dataSource.disease_type.some(
+            (tag) => tag.toLowerCase() === filter.toLowerCase()
+          )
+        );
+
+      return dataTypeFilter && diseaseTypeFilter;
     });
 
-    setCheckedList((prev) => {
-      const newCheckedList = [...prev];
-      newCheckedList[boxIndex] = !newCheckedList[boxIndex];
-      return newCheckedList;
-    });
-  }
+    // Apply search if there are search terms
+    if (searchTerms.length === 0) {
+      return filtered
+        .sort((a, b) => a.name.localeCompare(b.name))
+        .map((dataSource) => ({ dataSource, score: 0 }));
+    }
 
-  function applyDataTypeFilter(dataSource: IDataSourcesDC) {
-    return (
-      selectedFilters.dataTypes.length === 0 ||
-      selectedFilters.dataTypes.some((filter) =>
-        dataSource.data.some(
-          (tag) => tag.toLowerCase() === filter.toLowerCase()
-        )
-      )
-    );
-  }
-
-  function applyDiseaseTypeFilter(dataSource: IDataSourcesDC) {
-    return (
-      selectedFilters.diseaseTypes.length === 0 ||
-      selectedFilters.diseaseTypes.some((filter) =>
-        dataSource.disease_type.some(
-          (tag) => tag.toLowerCase() === filter.toLowerCase()
-        )
-      )
-    );
-  }
-
-  function applySearchBar(dataSource: IDataSourcesDC) {
-    if (searchBar.length === 0) return true;
-    const searchBarLower = searchBar.toLowerCase();
-    const searchTags = searchBarLower.split(" ");
-    return (
-      dataSource.name.toLowerCase().includes(searchBarLower) ||
-      searchTags.some((tag) =>
-        dataSource.search_tags.some((searchTag) =>
-          searchTag.toLowerCase().includes(tag)
-        )
-      )
-    );
-  }
+    return filtered
+      .map((dataSource) => ({
+        dataSource,
+        score: calculateSearchScore(dataSource, searchTerms),
+      }))
+      .filter((result) => result.score >= SEARCH_CONFIG.SCORE_THRESHOLD)
+      .sort((a, b) => b.score - a.score);
+  }, [dataSourcesJSON, selectedFilters, searchTerms]);
 
   useEffect(() => {
     getData();
   }, []);
+
+  // Loading state
+  if (isLoading) {
+    return <LoadingState />;
+  }
+
+  // Error state
+  if (error) {
+    return (
+      <div className="container mx-auto px-4 py-8">
+        <div className="text-center py-12">
+          <p className="text-muted-foreground">
+            Error loading data sources: {error}
+          </p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -225,104 +627,55 @@ export default function DataSourcesOthersPage(): ReactElement {
                   id="search"
                   type="text"
                   name="search"
-                  placeholder="Search by name or keyword"
-                  value={searchBar}
-                  onChange={(e) => setSearchBar(e.target.value)}
+                  placeholder="Search by name or keywords"
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
                   className="bg-muted"
                   aria-describedby="search-help"
                 />
-                <div id="search-help" className="sr-only">
-                  Search data sources by name or keyword
-                </div>
+                {searchTerm.length === 0 && (
+                  <div
+                    id="search-help"
+                    className="text-sm text-muted-foreground"
+                    role="region"
+                    aria-label="Search examples"
+                  >
+                    <p className="mb-2">Examples:</p>
+                    <ul className="space-y-1 text-sm" role="list">
+                      <li role="listitem">
+                        &quot;protein&quot; / &quot;proteomik&quot; - finds
+                        proteomic data
+                      </li>
+                      <li role="listitem">
+                        &quot;hjärta&quot; / &quot;heart&quot; - finds
+                        cardiovascular data
+                      </li>
+                    </ul>
+                  </div>
+                )}
               </div>
             </section>
 
+            {/* Data Type Filters */}
             <section aria-label="Filter by data type">
-              <div className="space-y-4">
-                <h2 className="font-bold text-2xl text-foreground">
-                  Data Type
-                </h2>
-                <Card>
-                  <CardContent className="pt-6">
-                    <fieldset>
-                      <legend className="sr-only">
-                        Select data types to filter by
-                      </legend>
-                      {filters.dataTypes.map((element, index) => (
-                        <div
-                          className="flex items-center space-x-3 mb-4"
-                          key={element}
-                        >
-                          <Checkbox
-                            id={`dataType-${index}`}
-                            checked={checkedList[index]}
-                            onCheckedChange={() =>
-                              checkedDataFilter("dataTypes", element, index)
-                            }
-                            aria-describedby={`dataType-${index}-count`}
-                          />
-                          <label
-                            htmlFor={`dataType-${index}`}
-                            className="text-base leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                          >
-                            {element}{" "}
-                            <span id={`dataType-${index}-count`}>
-                              ({getCountForType(element, true)})
-                            </span>
-                          </label>
-                        </div>
-                      ))}
-                    </fieldset>
-                  </CardContent>
-                </Card>
-              </div>
+              <FilterSection
+                title="Data Type"
+                items={filters.dataTypes}
+                selectedItems={selectedFilters.dataTypes}
+                onFilterChange={(item) => updateFilter("dataTypes", item)}
+                getItemCount={(item) => getCountForType(item, true)}
+              />
             </section>
 
+            {/* Disease Type Filters */}
             <section aria-label="Filter by disease type">
-              <div className="space-y-4">
-                <h2 className="font-bold text-2xl text-foreground">
-                  Disease Type
-                </h2>
-                <Card>
-                  <CardContent className="pt-6">
-                    <fieldset>
-                      <legend className="sr-only">
-                        Select disease types to filter by
-                      </legend>
-                      {filters.diseaseTypes.map((element, index) => (
-                        <div
-                          className="flex items-center space-x-3 mb-4"
-                          key={element}
-                        >
-                          <Checkbox
-                            id={`diseaseType-${index}`}
-                            checked={
-                              checkedList[filters.dataTypes.length + index]
-                            }
-                            onCheckedChange={() =>
-                              checkedDataFilter(
-                                "diseaseTypes",
-                                element,
-                                filters.dataTypes.length + index
-                              )
-                            }
-                            aria-describedby={`diseaseType-${index}-count`}
-                          />
-                          <label
-                            htmlFor={`diseaseType-${index}`}
-                            className="text-base leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                          >
-                            {element}{" "}
-                            <span id={`diseaseType-${index}-count`}>
-                              ({getCountForType(element, false)})
-                            </span>
-                          </label>
-                        </div>
-                      ))}
-                    </fieldset>
-                  </CardContent>
-                </Card>
-              </div>
+              <FilterSection
+                title="Disease Type"
+                items={filters.diseaseTypes}
+                selectedItems={selectedFilters.diseaseTypes}
+                onFilterChange={(item) => updateFilter("diseaseTypes", item)}
+                getItemCount={(item) => getCountForType(item, false)}
+              />
             </section>
           </div>
         </aside>
@@ -332,52 +685,78 @@ export default function DataSourcesOthersPage(): ReactElement {
           aria-label="Data sources results"
           role="region"
         >
+          {/* Results summary */}
           <div
-            role="list"
-            aria-label={`${
-              dataSourcesJSON
-                .filter((data) => applyDataTypeFilter(data))
-                .filter((data) => applyDiseaseTypeFilter(data))
-                .filter((data) => applySearchBar(data)).length
-            } data sources found`}
+            className="space-y-2 mb-6"
+            role="status"
+            aria-live="polite"
+            aria-label="Search and filter results summary"
           >
-            {dataSourcesJSON
-              .filter((data) => applyDataTypeFilter(data))
-              .filter((data) => applyDiseaseTypeFilter(data))
-              .filter((data) => applySearchBar(data))
-              .sort((a, b) => a.name.localeCompare(b.name))
-              .map((item, index) => (
-                <article key={index} role="listitem" className="mb-6">
-                  <Card className="h-full">
-                    <CardHeader className="bg-muted">
-                      <CardTitle className="flex flex-row justify-between items-center gap-4 sm:flex-row">
-                        <a
-                          href={sanitizeURL(item.url)}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-xl text-primary hover:underline flex-grow focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"
-                          aria-label={`Visit ${sanitizeText(
-                            item.name
-                          )} website (opens in new tab)`}
-                        >
-                          {sanitizeText(item.name)}
-                        </a>
-                        <img
-                          className="w-40 h-10 object-contain object-right"
-                          src={createSafeImageSrc(item.thumbnail)}
-                          alt=""
-                          role="presentation"
-                          aria-hidden="true"
-                        />
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent className="pt-4">
-                      <p>{item.description}</p>
-                    </CardContent>
-                  </Card>
-                </article>
-              ))}
+            {searchTerms.length > 0 && (
+              <div className="text-sm text-muted-foreground">
+                Found {filteredAndSearchedDataSources.length} result
+                {filteredAndSearchedDataSources.length !== 1 ? "s" : ""} for
+                &quot;
+                <span className="font-medium text-foreground">
+                  {debouncedSearchTerm}
+                </span>
+                &quot;
+                {filteredAndSearchedDataSources.length > 0 &&
+                  " (ordered by search ranking)"}
+              </div>
+            )}
+
+            <div className="flex items-center justify-between text-sm text-muted-foreground">
+              <span>
+                Showing {filteredAndSearchedDataSources.length} of{" "}
+                {dataSourcesJSON.length} data sources
+                {(selectedFilters.dataTypes.length > 0 ||
+                  selectedFilters.diseaseTypes.length > 0) &&
+                  " (filtered)"}
+              </span>
+
+              {filteredAndSearchedDataSources.length === 0 &&
+                dataSourcesJSON.length > 0 && (
+                  <span className="text-error">No matches found</span>
+                )}
+            </div>
           </div>
+
+          {/* Data source cards or empty state */}
+          {filteredAndSearchedDataSources.length === 0 ? (
+            <div
+              className="text-center py-16"
+              role="status"
+              aria-label="No results found"
+            >
+              <div className="text-muted-foreground space-y-2">
+                <p className="text-lg font-medium">
+                  {searchTerms.length > 0
+                    ? "No data sources found matching your search"
+                    : "No data sources match the selected filters"}
+                </p>
+                <p className="text-sm">
+                  {searchTerms.length > 0
+                    ? "Try adjusting your search terms or removing filters"
+                    : "Try selecting different filter options"}
+                </p>
+              </div>
+            </div>
+          ) : (
+            <div
+              role="list"
+              aria-label={`${filteredAndSearchedDataSources.length} data sources found`}
+            >
+              {filteredAndSearchedDataSources.map((result) => (
+                <DataSourceCard
+                  key={result.dataSource.name}
+                  dataSource={result.dataSource}
+                  searchTerms={searchTerms}
+                  highlightSearchTerms={highlightSearchTerms}
+                />
+              ))}
+            </div>
+          )}
         </section>
       </div>
 
