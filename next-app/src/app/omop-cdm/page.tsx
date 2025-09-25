@@ -1,6 +1,7 @@
 "use client";
 
 import { ReactElement } from "react";
+import type { Metadata } from "next";
 
 import {
   Breadcrumb,
@@ -10,6 +11,7 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import { LastUpdated } from "@/components/common/last-updated";
+import Title from "@/components/common/title";
 
 export default function OMOPCDMPage(): ReactElement {
   return (
@@ -30,11 +32,14 @@ export default function OMOPCDMPage(): ReactElement {
         </Breadcrumb>
       </nav>
 
-      <div className="py-8 md:py-16 w-11/12 lg:w-10/12 xl:w-1200 m-auto">
-        <div className="space-y-16">
-          <div className="space-y-8 md:space-y-0 text-center md:text-left md:space-x-16 md:justify-center md:flex md:items-center ">
+      <div className="flex flex-col gap-y-4">
+        <Title level={1} className="mb-6">
+          Introduction to OMOP-CDM
+        </Title>
+        <section aria-labelledby="omop-what" className="mb-6">
+          <div className="space-y-8 md:space-y-0 text-left md:space-x-16 md:justify-center md:flex md:items-center">
             <div className="w-full md:w-1/2 space-y-4">
-              <h3 className="font-medium text-2xl">What is the OMOP CDM?</h3>
+              <Title level={2}>What is the OMOP CDM?</Title>
               <p>
                 The OMOP Common Data Model (CDM) is an open, community-driven
                 standard designed to harmonize the structure and content of
@@ -51,11 +56,11 @@ export default function OMOPCDMPage(): ReactElement {
             </div>
             <div className="mx-auto w-1/2 md:w-1/3">Image placeholder</div>
           </div>
-          <div className="space-y-8 md:space-y-0 text-center md:text-left md:space-x-16 md:justify-center md:flex md:items-center md:flex-row-reverse">
+        </section>
+        <section aria-labelledby="omop-history" className="mb-6">
+          <div className="space-y-8 md:space-y-0 text-left md:space-x-16 md:justify-center md:flex md:items-center md:flex-row-reverse">
             <div className="w-full md:w-1/2 space-y-4">
-              <h3 className="font-medium text-2xl">
-                What does OMOP mean? A bit of history
-              </h3>
+              <Title level={2}>What does OMOP mean? A bit of history</Title>
               <p>
                 The Observational Medical Outcomes Partnership (OMOP) was
                 launched in 2008 in the United States as a public–private
@@ -74,13 +79,13 @@ export default function OMOPCDMPage(): ReactElement {
                 together support the full lifecycle of observational research
                 using OMOP.
                 <br />
-                Up to 2024, 544 data sources coming from 54 different countries
-                have been standardized to the OMOP CDM. These data include
-                electronic health records, administrative claims, registries,
-                hospital systems, genomics and biobanks. Together, these data
-                sources conservatively cover more than 974 million unique
-                patient records (approximately 12% fo the world’s population).
-                [ref. 2024 OHDSI annual report]
+                As of 2024, 544 data sources from 54 different countries have
+                been standardized to the OMOP CDM. These data include electronic
+                health records, administrative claims, registries, hospital
+                systems, genomics and biobanks. Together, these data sources
+                conservatively cover more than 974 million unique patient
+                records (approximately 12% of the world’s population). [ref.
+                2024 OHDSI annual report]
                 <br />
               </p>
             </div>
@@ -88,11 +93,11 @@ export default function OMOPCDMPage(): ReactElement {
               Placeholder vertical timeline
             </div>
           </div>
-          <div className="space-y-8 md:space-y-0 text-center md:text-left md:space-x-16 md:justify-center md:flex md:items-center ">
+        </section>
+        <section aria-labelledby="omop-why" className="mb-6">
+          <div className="space-y-8 md:space-y-0 text-left md:space-x-16 md:justify-center md:flex md:items-center">
             <div className="w-full md:w-1/2 space-y-4">
-              <h3 className="font-medium text-2xl">
-                Why should I use the OMOP CDM?
-              </h3>
+              <Title level={2}>Why should I use the OMOP CDM?</Title>
               <p>
                 Health data is characterized by a wide variety of formats,
                 database systems, information models, vocabularies, and tools
@@ -125,11 +130,11 @@ export default function OMOPCDMPage(): ReactElement {
             </div>
             <div className="mx-auto w-1/2 md:w-1/3">Image placeholder</div>
           </div>
-          <div className="space-y-8 md:space-y-0 text-center md:text-left md:space-x-16 md:justify-center md:flex md:items-center md:flex-row-reverse">
+        </section>
+        <section aria-labelledby="omop-how" className="mb-6">
+          <div className="space-y-8 md:space-y-0 text-left md:space-x-16 md:justify-center md:flex md:items-center md:flex-row-reverse">
             <div className="w-full md:w-1/2 space-y-4">
-              <h3 className="font-medium text-2xl">
-                How does the OMOP CDM work?
-              </h3>
+              <Title level={2}>How does the OMOP CDM work?</Title>
               <p>
                 The OMOP CDM is, at its core, simply a standardized way to
                 represent the information in a dataset, making it easier to
@@ -141,7 +146,7 @@ export default function OMOPCDMPage(): ReactElement {
                 transformation, and downstream analysis.
                 <br />
                 It is important to take in mind that the OMOP CDM will not
-                substitute the need for local data models and vocabularies, but
+                replace the need for local data models and vocabularies, but
                 rather provide a common framework for data integration and
                 analysis across multiple sources. In other words, an OMOP CDM
                 instance represents an interface that allows different source
@@ -156,9 +161,11 @@ export default function OMOPCDMPage(): ReactElement {
             </div>
             <div className="mx-auto w-1/2 md:w-1/3">Image placeholder</div>
           </div>
-          <div className="space-y-8 md:space-y-0 text-center md:text-left md:space-x-16 md:justify-center md:flex md:items-center ">
+        </section>
+        <section aria-labelledby="omop-scilifelab" className="mb-6">
+          <div className="space-y-8 md:space-y-0 text-left md:space-x-16 md:justify-center md:flex md:items-center">
             <div className="w-full md:w-1/2 space-y-4">
-              <h3 className="font-medium text-2xl">OMOP at Scilifelab</h3>
+              <Title level={2}>OMOP at SciLifeLab</Title>
               <p>
                 Sweden is undertaking a national initiative (OMOP 4 Sweden) to
                 create the conditions needed to accelerate the adoption of the
@@ -177,38 +184,68 @@ export default function OMOPCDMPage(): ReactElement {
             </div>
             <div className="mx-auto w-1/2 md:w-1/3">Image placeholder</div>
           </div>
-          <h3 className="font-medium text-2xl">Links and Resources</h3>
+        </section>
+        <section aria-labelledby="omop-resources" className="mb-6">
+          <Title level={2}>Links and Resources</Title>
           <div>
-            <ul>
-              <li>
-                <a href="https://www.vinnova.se/en/p/omop-4-sweden-preparation-project-/">
+            <ul
+              className="list-disc pl-4"
+              role="list"
+              aria-label="OMOP resources and links"
+            >
+              <li role="listitem">
+                <a
+                  href="https://www.vinnova.se/en/p/omop-4-sweden-preparation-project-/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-primary hover:text-black underline focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"
+                  aria-label="Visit OMOP 4 Sweden preparation project page (opens in new tab)"
+                >
                   OMOP 4 Sweden
                 </a>
                 , the preparation project page for the OMOP initiative in Sweden
               </li>
-              <li>
-                <a href="https://ohdsi.github.io/CommonDataModel/">
+              <li role="listitem">
+                <a
+                  href="https://ohdsi.github.io/CommonDataModel/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-primary hover:text-black underline focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"
+                  aria-label="Visit OMOP common data model webpage (opens in new tab)"
+                >
                   OMOP common data model webpage
                 </a>
               </li>
-              <li>
-                <a href="https://www.ohdsi.org/data-standardization">
-                  {" "}
+              <li role="listitem">
+                <a
+                  href="https://www.ohdsi.org/data-standardization"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-primary hover:text-black underline focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"
+                  aria-label="Visit OHDSI webpage (opens in new tab)"
+                >
                   OHDSI webpage
                 </a>
               </li>
-              <li>
-                <a href="https://academy.ehden.eu/">EHDEN Academy</a>, training
-                and development programmes developed by the OHDSI and EHDEN
-                community
+              <li role="listitem">
+                <a
+                  href="https://academy.ehden.eu/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-primary hover:text-black underline focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"
+                  aria-label="Visit EHDEN Academy webpage (opens in new tab)"
+                >
+                  EHDEN Academy
+                </a>
+                , training and development programmes developed by the OHDSI and
+                EHDEN community
               </li>
             </ul>
           </div>
-          <h3 className="font-medium text-2xl">Contact</h3>
-        </div>
+        </section>
       </div>
       <div className="mt-8">
-        <LastUpdated date="05-09-2025" />
+        <LastUpdated date="25-09-2025" />
       </div>
     </div>
   );
