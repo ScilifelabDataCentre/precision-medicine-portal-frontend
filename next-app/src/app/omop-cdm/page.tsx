@@ -1,7 +1,6 @@
 "use client";
 
 import { ReactElement } from "react";
-import type { Metadata } from "next";
 
 import {
   Breadcrumb,
@@ -12,10 +11,11 @@ import {
 } from "@/components/ui/breadcrumb";
 import { LastUpdated } from "@/components/common/last-updated";
 import Title from "@/components/common/title";
+import Image from "next/image";
 
 export default function OMOPCDMPage(): ReactElement {
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container max-w-4xl mx-auto py-8">
       <nav aria-label="Breadcrumb navigation" role="navigation">
         <Breadcrumb>
           <BreadcrumbList>
@@ -37,8 +37,8 @@ export default function OMOPCDMPage(): ReactElement {
           Introduction to OMOP-CDM
         </Title>
         <section aria-labelledby="omop-what" className="mb-6">
-          <div className="space-y-8 md:space-y-0 text-left md:space-x-16 md:justify-center md:flex md:items-center">
-            <div className="w-full md:w-1/2 space-y-4">
+          <div className="space-y-8 md:space-y-0 text-left md:space-x-16 md:justify-between md:flex md:items-center">
+            <div className="w-full md:w-2/3 space-y-4">
               <Title level={2}>What is the OMOP CDM?</Title>
               <p>
                 The OMOP Common Data Model (CDM) is an open, community-driven
@@ -54,12 +54,27 @@ export default function OMOPCDMPage(): ReactElement {
                 national and international collaborations in medical research.
               </p>
             </div>
-            <div className="mx-auto w-1/2 md:w-1/3">Image placeholder</div>
+            <Image
+              className="mx-auto w-1/2 md:w-1/3"
+              src="/img/omop/what_is_omop.png"
+              alt="What is OMOP?"
+              width={100}
+              height={100}
+              priority
+            />
           </div>
         </section>
         <section aria-labelledby="omop-history" className="mb-6">
-          <div className="space-y-8 md:space-y-0 text-left md:space-x-16 md:justify-center md:flex md:items-center md:flex-row-reverse">
-            <div className="w-full md:w-1/2 space-y-4">
+          <div className="space-y-8 md:space-y-0 text-left md:space-x-16 md:justify-between md:flex md:items-center">
+            <Image
+              className=" w-1/2 md:w-1/3"
+              src="/img/omop/what_does_omop_mean.png"
+              alt="What does OMOP mean? A bit of history"
+              width={100}
+              height={100}
+              priority
+            />
+            <div className="w-full md:w-2/3 space-y-4">
               <Title level={2}>What does OMOP mean? A bit of history</Title>
               <p>
                 The Observational Medical Outcomes Partnership (OMOP) was
@@ -89,14 +104,11 @@ export default function OMOPCDMPage(): ReactElement {
                 <br />
               </p>
             </div>
-            <div className="mx-auto w-1/2 md:w-1/3">
-              Placeholder vertical timeline
-            </div>
           </div>
         </section>
         <section aria-labelledby="omop-why" className="mb-6">
-          <div className="space-y-8 md:space-y-0 text-left md:space-x-16 md:justify-center md:flex md:items-center">
-            <div className="w-full md:w-1/2 space-y-4">
+          <div className="space-y-8 md:space-y-0 text-left md:space-x-16 md:justify-between md:flex md:items-center">
+            <div className="w-full md:w-2/3 space-y-4">
               <Title level={2}>Why should I use the OMOP CDM?</Title>
               <p>
                 Health data is characterized by a wide variety of formats,
@@ -128,12 +140,27 @@ export default function OMOPCDMPage(): ReactElement {
                 open and collaborative nature.
               </p>
             </div>
-            <div className="mx-auto w-1/2 md:w-1/3">Image placeholder</div>
+            <Image
+              className="mx-auto w-1/2 md:w-1/3"
+              src="/img/omop/why_using_omop.png"
+              alt="Why should I use the OMOP CDM?"
+              width={100}
+              height={100}
+              priority
+            />
           </div>
         </section>
         <section aria-labelledby="omop-how" className="mb-6">
-          <div className="space-y-8 md:space-y-0 text-left md:space-x-16 md:justify-center md:flex md:items-center md:flex-row-reverse">
-            <div className="w-full md:w-1/2 space-y-4">
+          <div className="space-y-8 md:space-y-0 text-left md:space-x-16 md:justify-between md:flex md:items-center">
+            <Image
+              className="mx-auto w-1/2 md:w-1/3"
+              src="/img/omop/how_does_omop_work.png"
+              alt="How does the OMOP CDM work?"
+              width={100}
+              height={100}
+              priority
+            />
+            <div className="w-full md:w-2/3 space-y-4">
               <Title level={2}>How does the OMOP CDM work?</Title>
               <p>
                 The OMOP CDM is, at its core, simply a standardized way to
@@ -159,12 +186,11 @@ export default function OMOPCDMPage(): ReactElement {
                 network.
               </p>
             </div>
-            <div className="mx-auto w-1/2 md:w-1/3">Image placeholder</div>
           </div>
         </section>
         <section aria-labelledby="omop-scilifelab" className="mb-6">
-          <div className="space-y-8 md:space-y-0 text-left md:space-x-16 md:justify-center md:flex md:items-center">
-            <div className="w-full md:w-1/2 space-y-4">
+          <div className="space-y-8 md:space-y-0 text-left md:space-x-16 md:justify-between md:flex md:items-center">
+            <div className="w-full md:w-2/3 space-y-4">
               <Title level={2}>OMOP at SciLifeLab</Title>
               <p>
                 Sweden is undertaking a national initiative (OMOP 4 Sweden) to
@@ -182,7 +208,14 @@ export default function OMOPCDMPage(): ReactElement {
                 implementation in the years ahead.
               </p>
             </div>
-            <div className="mx-auto w-1/2 md:w-1/3">Image placeholder</div>
+            <Image
+              className="mx-auto w-1/2 md:w-1/3"
+              src="/img/omop/omop_at_scilifelab.png"
+              alt="OMOP at SciLifeLab"
+              width={100}
+              height={100}
+              priority
+            />
           </div>
         </section>
         <section aria-labelledby="omop-resources" className="mb-6">
@@ -245,7 +278,7 @@ export default function OMOPCDMPage(): ReactElement {
         </section>
       </div>
       <div className="mt-8">
-        <LastUpdated date="25-09-2025" />
+        <LastUpdated date="01-10-2025" />
       </div>
     </div>
   );
