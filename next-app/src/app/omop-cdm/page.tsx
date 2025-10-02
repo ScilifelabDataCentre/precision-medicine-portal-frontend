@@ -99,8 +99,13 @@ export default function OMOPCDMPage(): ReactElement {
                 health records, administrative claims, registries, hospital
                 systems, genomics and biobanks. Together, these data sources
                 conservatively cover more than 974 million unique patient
-                records (approximately 12% of the world’s population). [ref.
-                2024 OHDSI annual report]
+                records (approximately 12% of the world’s population, see the <a
+                  href="https://www.ohdsi.org/wp-content/uploads/2024/10/OurJourney2024.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-primary hover:text-black underline focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"
+                  aria-label="2024 OHDSI annual report"
+                >2024 OHDSI annual report</a>).
                 <br />
               </p>
             </div>
