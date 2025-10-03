@@ -23,20 +23,17 @@ type Project = {
   tags: {
     disease?: string[];
     participants: string[];
-    contextual: string[];
   };
 };
 
 // Tag colours
 const TAG_COLOURS: { [key: string]: string } = {
   participants: "bg-[#82AEB2] text-black",
-  contextual: "bg-[#E9F2D1] text-black",
   snd: "bg-[#649ED2] text-black", // Custom SND button colour
 };
 
 interface IProjectFilters {
   participants: string[];
-  contextual: string[];
 }
 
 export default function SwedishResearchProjectsPage() {
@@ -44,7 +41,6 @@ export default function SwedishResearchProjectsPage() {
   const [isLoading, setIsLoading] = useState(true);
   const [selectedFilters, setSelectedFilters] = useState<IProjectFilters>({
     participants: [],
-    contextual: [],
   });
   const [searchBar, setSearchBar] = useState<string>("");
 
@@ -54,12 +50,9 @@ export default function SwedishResearchProjectsPage() {
       project.tags.participants?.forEach((tag) => {
         if (!acc.participants.includes(tag)) acc.participants.push(tag);
       });
-      project.tags.contextual?.forEach((tag) => {
-        if (!acc.contextual.includes(tag)) acc.contextual.push(tag);
-      });
       return acc;
     },
-    { participants: [], contextual: [] } as IProjectFilters
+    { participants: [] } as IProjectFilters
   );
 
   // Helper function to get the minimum number from a range string
@@ -96,11 +89,9 @@ export default function SwedishResearchProjectsPage() {
       const minB = getMinNumberFromRange(b);
       return minA - minB;
     }),
-    contextual: [...uniqueTags.contextual].sort((a, b) => a.localeCompare(b)),
   };
 
-  const nrOfCheckboxes =
-    sortedTags.participants.length + sortedTags.contextual.length;
+  const nrOfCheckboxes = sortedTags.participants.length;
   const [checkedList, setCheckedList] = useState<boolean[]>(
     new Array(nrOfCheckboxes).fill(false)
   );
@@ -122,12 +113,11 @@ export default function SwedishResearchProjectsPage() {
     fetchProjectData();
   }, []);
 
-  function getCountForType(type: string, isParticipant: boolean): number {
+  function getCountForType(type: string): number {
     return projectData.filter((project) => {
-      const tags = isParticipant
-        ? project.tags.participants
-        : project.tags.contextual;
-      return tags.some((tag) => tag.toLowerCase() === type.toLowerCase());
+      return project.tags.participants.some(
+        (tag) => tag.toLowerCase() === type.toLowerCase()
+      );
     }).length;
   }
 
@@ -166,17 +156,6 @@ export default function SwedishResearchProjectsPage() {
     );
   }
 
-  function applyContextualFilter(project: Project) {
-    return (
-      selectedFilters.contextual.length === 0 ||
-      selectedFilters.contextual.some((filter) =>
-        project.tags.contextual.some(
-          (tag) => tag.toLowerCase() === filter.toLowerCase()
-        )
-      )
-    );
-  }
-
   function applySearchBar(project: Project) {
     if (searchBar.length === 0) return true;
     const searchBarLower = searchBar.toLowerCase();
@@ -185,8 +164,8 @@ export default function SwedishResearchProjectsPage() {
       project.name.toLowerCase().includes(searchBarLower) ||
       project.description.toLowerCase().includes(searchBarLower) ||
       searchTags.some((tag) =>
-        [...project.tags.participants, ...project.tags.contextual].some(
-          (searchTag) => searchTag.toLowerCase().includes(tag)
+        project.tags.participants.some((searchTag) =>
+          searchTag.toLowerCase().includes(tag)
         )
       )
     );
@@ -316,51 +295,7 @@ export default function SwedishResearchProjectsPage() {
                         >
                           {tag}{" "}
                           <span id={`participant-count-${index}`}>
-                            ({getCountForType(tag, true)})
-                          </span>
-                        </label>
-                      </div>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            </fieldset>
-          </section>
-
-          <section aria-label="Filter by contextual information">
-            <fieldset className="space-y-4">
-              <legend className="font-bold text-2xl text-foreground">
-                Contextual
-              </legend>
-              <Card>
-                <CardContent className="pt-6">
-                  <div role="group" aria-label="Contextual filters">
-                    {sortedTags.contextual.map((tag, index) => (
-                      <div
-                        className="flex items-center space-x-3 mb-4"
-                        key={tag}
-                      >
-                        <Checkbox
-                          id={`contextual-${index}`}
-                          checked={
-                            checkedList[sortedTags.participants.length + index]
-                          }
-                          onCheckedChange={() =>
-                            checkedFilter(
-                              "contextual",
-                              tag,
-                              sortedTags.participants.length + index
-                            )
-                          }
-                          aria-describedby={`contextual-count-${index}`}
-                        />
-                        <label
-                          htmlFor={`contextual-${index}`}
-                          className="text-base leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                        >
-                          {tag}{" "}
-                          <span id={`contextual-count-${index}`}>
-                            ({getCountForType(tag, false)})
+                            ({getCountForType(tag)})
                           </span>
                         </label>
                       </div>
@@ -383,13 +318,11 @@ export default function SwedishResearchProjectsPage() {
             aria-label={`${
               projectData
                 .filter((project) => applyParticipantFilter(project))
-                .filter((project) => applyContextualFilter(project))
                 .filter((project) => applySearchBar(project)).length
             } research projects found`}
           >
             {projectData
               .filter((project) => applyParticipantFilter(project))
-              .filter((project) => applyContextualFilter(project))
               .filter((project) => applySearchBar(project))
               .sort((a, b) => a.name.localeCompare(b.name))
               .map((project, index) => (
@@ -464,7 +397,7 @@ export default function SwedishResearchProjectsPage() {
           </div>
         </section>
       </div>
-      <LastUpdated date="21-05-2025" />
+      <LastUpdated date="20-08-2025" />
     </div>
   );
 }

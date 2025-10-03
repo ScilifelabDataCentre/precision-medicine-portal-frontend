@@ -25,7 +25,6 @@ import { IRegistrySource } from "@/interfaces/types";
 interface QualityRegistryCardProps {
   registry: IRegistrySource;
   searchTerms: string[];
-  index: number;
   expandSearchTerms: (terms: string[]) => string[];
   highlightSearchTerms: (text: string, terms: string[]) => string;
   organisationLinks: Record<string, string>;

@@ -16,7 +16,7 @@ import {
 
 export default function CitationAndLicensePage(): ReactElement {
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container max-w-4xl mx-auto py-8">
       <nav aria-label="Breadcrumb navigation" role="navigation">
         <Breadcrumb>
           <BreadcrumbList>
@@ -259,7 +259,7 @@ export default function CitationAndLicensePage(): ReactElement {
         </p>
       </div>
       <div className="mt-8">
-        <LastUpdated date="09-06-2025" />
+        <LastUpdated date="09-09-2025" />
       </div>
     </div>
   );
