@@ -180,6 +180,17 @@ function DesktopNav() {
         <NavigationMenuItem role="none">
           <NavigationMenuLink asChild>
             <Link
+              href="/omop-cdm"
+              className={navigationMenuTriggerStyle()}
+              aria-label="OMOP common data model"
+            >
+              OMOP CDM
+            </Link>
+          </NavigationMenuLink>
+        </NavigationMenuItem>
+        <NavigationMenuItem role="none">
+          <NavigationMenuLink asChild>
+            <Link
               href="/contact"
               className={navigationMenuTriggerStyle()}
               aria-label="Contact us"
@@ -270,6 +281,13 @@ function MobileNav() {
             <Badge variant="accent" className="ml-1" aria-label="Demo version">
               Demo
             </Badge>
+          </Link>
+          <Link
+            href="/omop-cdm"
+            className=""
+            aria-label="OMOP common data model"
+          >
+            OMOP CDM
           </Link>
           <Link href="/contact" className="" aria-label="Contact us">
             Contact
