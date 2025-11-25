@@ -31,7 +31,7 @@ export default function HomePage(): ReactElement {
               aria-label="Navigate to Data Sources overview"
             />
 
-            <Card className="h-full relative z-20 pointer-events-none">
+            <Card className="h-full relative">
               <CardContent className="p-0">
                 <div className="relative h-[32rem]">
                   <Image
@@ -48,11 +48,15 @@ export default function HomePage(): ReactElement {
                         Data sources
                       </CardTitle>
                       <nav
-                        className="flex flex-col space-y-3 h-36 relative z-30 pointer-events-auto"
+                        className="flex flex-col space-y-3 h-36 relative z-20"
                         aria-label="Data sources navigation"
                         role="navigation"
                       >
-                        <Button asChild variant="secondary">
+                        <Button
+                          asChild
+                          variant="secondary"
+                          className="relative z-20"
+                        >
                           <Link
                             href="/data-sources/quality-registries"
                             aria-label="Access Swedish quality registries for healthcare data"
@@ -60,7 +64,11 @@ export default function HomePage(): ReactElement {
                             Quality registries
                           </Link>
                         </Button>
-                        <Button asChild variant="secondary">
+                        <Button
+                          asChild
+                          variant="secondary"
+                          className="relative z-20"
+                        >
                           <Link
                             href="/data-sources/swedish-research-projects"
                             aria-label="Browse Swedish research projects and databases"
@@ -68,7 +76,11 @@ export default function HomePage(): ReactElement {
                             Swedish research projects
                           </Link>
                         </Button>
-                        <Button asChild variant="secondary">
+                        <Button
+                          asChild
+                          variant="secondary"
+                          className="relative z-20"
+                        >
                           <Link
                             href="/data-sources/others"
                             aria-label="Explore other data sources and research databases"
