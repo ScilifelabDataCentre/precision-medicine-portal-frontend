@@ -87,7 +87,7 @@ export default function Footer(): ReactElement {
           >
             <div className="w-20 lg:w-auto">
               <Image
-                src="/Partner logo/KI_digital_logotyp_negativ_vert.png"
+                src="/partner-logo/KI_digital_logotyp_negativ_vert.png"
                 alt="Karolinska Institutet logo"
                 width={110}
                 height={131}
@@ -95,7 +95,7 @@ export default function Footer(): ReactElement {
             </div>
             <div className="w-16 lg:w-auto">
               <Image
-                src="/Partner logo/SciLifeLab_symbol_NEG.png"
+                src="/partner-logo/SciLifeLab_symbol_NEG.png"
                 alt="SciLifeLab Logo"
                 width={70}
                 height={66}
@@ -103,7 +103,7 @@ export default function Footer(): ReactElement {
             </div>
             <div className="w-20 lg:w-auto">
               <Image
-                src="/Partner logo/KAW Logotype Medium 1.png"
+                src="/partner-logo/KAW Logotype Medium 1.png"
                 alt="Knut and Alice Wallenberg Foundation logo"
                 width={151}
                 height={87}

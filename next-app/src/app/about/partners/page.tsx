@@ -13,12 +13,12 @@ import { LastUpdated } from "@/components/common/last-updated";
 import Image from "next/image";
 
 const logos: { [key: string]: string } = {
-  dc: "/Partner logo/dc.png",
-  nbis: "/Partner logo/nbislogo_orange_txt_3cb0778d90.svg",
-  kaw: "/Partner logo/kaw_sv_300x300.png",
-  ki: "/Partner logo/KI_digital_logotyp_positiv_RGB.png",
-  scilifelab: "/Partner logo/SciLifeLab_Logotype_Green_POS.png",
-  tef: "/Partner logo/tefhealth_logo.png",
+  dc: "/partner-logo/dc.png",
+  nbis: "/partner-logo/nbislogo_orange_txt_3cb0778d90.svg",
+  kaw: "/partner-logo/kaw_sv_300x300.png",
+  ki: "/partner-logo/KI_digital_logotyp_positiv_RGB.png",
+  scilifelab: "/partner-logo/SciLifeLab_Logotype_Green_POS.png",
+  tef: "/partner-logo/tefhealth_logo.png",
 };
 
 interface Partner {
