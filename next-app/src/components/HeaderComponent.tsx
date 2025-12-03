@@ -85,7 +85,7 @@ export default function HeaderComponent() {
           <Image
             width={600}
             height={59.5}
-            src={"/SciLifeLab logo/Precisionmedicineportal_logo_white.png"}
+            src={"/scilifelab-logo/Precisionmedicineportal_logo_white.png"}
             alt="Precision Medicine Portal - SciLifeLab"
             priority
             className="w-auto h-7 lg:h-14"
