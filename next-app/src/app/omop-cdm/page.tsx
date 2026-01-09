@@ -43,15 +43,14 @@ export default function OMOPCDMPage(): ReactElement {
               <p>
                 The OMOP Common Data Model (CDM) is an open, community-driven
                 standard designed to harmonize the structure and content of
-                observational data. The OMOP CDM offers a unified structure for
-                diverse observational data, including patient demographics,
+                observational data. In general, a common data model defines a shared way of 
+                organizing data so that information from different sources can 
+                be represented in the same format. This makes it easier to compare, 
+                analyze, and reuse data across institutions and studies. The OMOP CDM applies 
+                these principles through a standardized structure and shared vocabularies 
+                specifically designed for observational data, including patient demographics,
                 conditions, procedures, drug exposures, and clinical
                 measurements.
-                <br />
-                In Sweden, interest in OMOP is steadily growing. Several
-                universities and healthcare organizations (including the
-                Karolinska Institutet) are exploring its potential to support
-                national and international collaborations in medical research.
               </p>
             </div>
             <Image
@@ -64,6 +63,122 @@ export default function OMOPCDMPage(): ReactElement {
             />
           </div>
         </section>
+
+        <section aria-labelledby="omop-why" className="mb-6">
+          <div className="space-y-8 md:space-y-0 text-left md:space-x-16 md:justify-between md:flex md:items-center">
+            <Image
+              className="w-1/2 md:w-1/3"
+              src="/img/omop/why_using_omop.png"
+              alt="Why use the OMOP CDM?"
+              width={100}
+              height={100}
+              priority
+            />
+            <div className="w-full md:w-2/3 space-y-4">
+              <Title level={2}>Why use the OMOP CDM?</Title>
+              <p>
+                Health data comes in many formats and systems. While an 
+                individual data model may serve the needs of a specific
+                organization, the sheer diversity of data sources and models
+                creates major challenges for researchers seeking to combine and
+                analyze information across multiple data sources. Furthermore, AI 
+                applications require large, diverse, and high-quality datasets to perform well,
+                and the heterogeneity of health data can hinder the development 
+                of robust and generalizable models.
+                <br />
+                In this context, the OMOP CDM provides a unified structure that
+                enables researchers to share and analyze data from diverse
+                sources, regardless of their underlying data models or
+                vocabulary. Advantages of using the OMOP CDM include:
+                <ul class="list-disc list-inside">
+                  <li>
+                    <strong>Standardization Across Sources</strong><br />
+                    <p>
+                      OMOP CDM provides a unified structure and vocabulary, making it easier to
+                      integrate data from multiple healthcare systems, EHRs, and claims databases.
+                    </p>
+                  </li>
+                  <li>
+                    <strong>Interoperability for Research</strong><br />
+                    <p>
+                      Enables consistent analysis across institutions and countries, supporting
+                      collaborative studies and large-scale observational research.
+                    </p>
+                  </li>
+                  <li>
+                    <strong>Scalability for Big Data Analytics</strong><br />
+                    <p>
+                      Designed to handle large, complex healthcare datasets efficiently, making it suitable
+                      for population-level studies and predictive modeling.
+                    </p>
+                  </li>
+                  <li>
+                    <strong>Rich Vocabulary Mapping</strong><br />
+                    <p>
+                      Includes standardized vocabularies (SNOMED, RxNorm, LOINC, etc.), ensuring
+                      semantic consistency and reducing ambiguity in clinical concepts.
+                    </p>
+                  </li>
+                  <li>
+                    <strong>Access to OHDSI Tools &amp; Community</strong><br />
+                    <p>
+                      Using OMOP CDM unlocks a suite of open-source tools (e.g., ATHENA, Usagi, Achilles) and a
+                      global research network, accelerating analytics and methodological development.
+                    </p>
+                  </li>
+                </ul>
+              </p>
+            </div>
+
+          </div>
+        </section>
+
+        <section aria-labelledby="omop-how" className="mb-6">
+          <div className="space-y-8 md:space-y-0 text-left md:space-x-16 md:justify-between md:flex md:items-center">
+
+            <div className="w-full md:w-2/3 space-y-4">
+              <Title level={2}>How does the OMOP CDM work?</Title>
+              <p>
+                The OMOP CDM is, at its core, simply a standardized way to
+                represent the information in a dataset. It is important to bear 
+                in mind that the OMOP CDM will not replace the need for local data 
+                models and vocabularies. Indeed, preparing a dataset for use with 
+                the OMOP CDM primarily involves translating the source data 
+                into the standardized OMOP structure, creating a clear and 
+                reproducible mapping between local representations 
+                and the OMOP conventions.
+                <br />
+                In practice, this typically involves:
+                <ul class="list-decimal list-inside">
+                  <li>reviewing the structure and content of the source dataset</li>
+                  <li>mapping local tables and fields to the corresponding OMOP CDM tables</li>
+                  <li>translating local fields/codes into standardized OMOP vocabularies</li>
+                  <li>checking the transformed data using established validation tools</li>
+                </ul>
+                In this way, the OMOP CDM instance will allow local data to be combined and analyzed with
+                other databases that have also been standardized to OMOP.
+                <br />
+                Researchers are not expected to approach this process alone.
+                The OHDSI community provides a rich ecosystem of open-source tools,
+                documentation, and shared best practices that support each step of the
+                transformation. Moreover, the widespread adoption of the OMOP CDM across
+                institutions and countries means that many real-world examples, mappings,
+                and workflows already exist, making it easier to learn from and build upon
+                prior experience.
+              </p>
+            </div>
+
+            <Image
+              className="mx-auto w-1/2 md:w-1/3"
+              src="/img/omop/how_does_omop_work.png"
+              alt="How does the OMOP CDM work?"
+              width={100}
+              height={100}
+              priority
+            />
+          </div>
+        </section>
+
         <section aria-labelledby="omop-history" className="mb-6">
           <div className="space-y-8 md:space-y-0 text-left md:space-x-16 md:justify-between md:flex md:items-center">
             <Image
@@ -111,102 +226,34 @@ export default function OMOPCDMPage(): ReactElement {
             </div>
           </div>
         </section>
-        <section aria-labelledby="omop-why" className="mb-6">
-          <div className="space-y-8 md:space-y-0 text-left md:space-x-16 md:justify-between md:flex md:items-center">
-            <div className="w-full md:w-2/3 space-y-4">
-              <Title level={2}>Why should I use the OMOP CDM?</Title>
-              <p>
-                Health data is characterized by a wide variety of formats,
-                database systems, information models, vocabularies, and tools
-                for data management and analysis. This diversity stems from the
-                complexity of the healthcare ecosystem, where numerous
-                organizations collect data for different purposes and under
-                varying regulatory constraints.
-                <br />
-                While an individual data model may serve the needs of a specific
-                organization, the sheer diversity of data sources and models
-                creates major challenges for researchers seeking to combine and
-                analyze information across multiple data sources.
-                <br />
-                In this context, the OMOP CDM provides a unified structure that
-                enables researchers to share and analyze data from diverse
-                sources, regardless of their underlying data models or
-                vocabulary.
-                <br />
-                Another important aspect of data standardization, especially
-                considering the most recent advances in artificial intelligence
-                (AI), is ensuring that data from different sources can be
-                reliably combined, enabling the development of robust machine
-                learning models and fair evaluations across populations.
-                <br />
-                Among any other possible solution for data standardization, OMOP
-                CDM stands out for its proven efficacy in supporting federated
-                data (data remain local, analyses run across sites) and for its
-                open and collaborative nature.
-              </p>
-            </div>
-            <Image
-              className="mx-auto w-1/2 md:w-1/3"
-              src="/img/omop/why_using_omop.png"
-              alt="Why should I use the OMOP CDM?"
-              width={100}
-              height={100}
-              priority
-            />
-          </div>
-        </section>
-        <section aria-labelledby="omop-how" className="mb-6">
-          <div className="space-y-8 md:space-y-0 text-left md:space-x-16 md:justify-between md:flex md:items-center">
-            <Image
-              className="mx-auto w-1/2 md:w-1/3"
-              src="/img/omop/how_does_omop_work.png"
-              alt="How does the OMOP CDM work?"
-              width={100}
-              height={100}
-              priority
-            />
-            <div className="w-full md:w-2/3 space-y-4">
-              <Title level={2}>How does the OMOP CDM work?</Title>
-              <p>
-                The OMOP CDM is, at its core, simply a standardized way to
-                represent the information in a dataset, making it easier to
-                compare and analyze across different sources. Moving data into
-                this format requires a process known as mapping, where local
-                codes and structures are translated into the standardized OMOP
-                vocabulary. To support this transition, the OHDSI community
-                provides a range of open-source tools for mapping, data
-                transformation, and downstream analysis.
-                <br />
-                It is important to take in mind that the OMOP CDM will not
-                replace the need for local data models and vocabularies, but
-                rather provide a common framework for data integration and
-                analysis across multiple sources. In other words, an OMOP CDM
-                instance represents an interface that allows different source
-                data to be combined and analyzed, regardless of their underlying
-                data models or vocabularies.
-                <br />
-                In Sweden, SciLifeLab is emerging as a service provider for
-                OMOP, offering expertise and infrastructure to help researchers
-                adopt the model and connect with the international OHDSI
-                network.
-              </p>
-            </div>
-          </div>
-        </section>
+
         <section aria-labelledby="omop-scilifelab" className="mb-6">
           <div className="space-y-8 md:space-y-0 text-left md:space-x-16 md:justify-between md:flex md:items-center">
             <div className="w-full md:w-2/3 space-y-4">
-              <Title level={2}>OMOP at SciLifeLab</Title>
+              <Title level={2}>Building a national OMOP ecosystem</Title>
               <p>
-                Sweden is undertaking a national initiative (OMOP 4 Sweden) to
-                create the conditions needed to accelerate the adoption of the
-                OMOP standard. The project brings together a multi-helix
-                consortium for long-term collaboration, aiming to build a clear
-                OMOP case for Sweden while aligning international expertise with
-                local needs and regulations.
+                In Sweden, interest in OMOP is steadily growing. Several 
+                universities and healthcare organizations, including 
+                Karolinska Institutet and Karolinska University Hospital, 
+                are exploring their potential to support national and international 
+                collaborations in medical research. 
                 <br />
-                SciLifeLab is contributing actively by driving pilot projects,
-                such as the harmonization of the PREDDLUNG dataset. Through this
+                A national initiative (OMOP 4 Sweden) is being carried out
+                to create the conditions needed to accelerate the adoption of the OMOP standard.
+                This project brings together a multi-helix consortium for long-term collaboration,
+                aiming to build a clear OMOP case for Sweden while aligning international expertise
+                with local needs and regulations.
+                <br />
+                SciLifeLab is emerging as a service provider for OMOP, offering expertise and
+                infrastructure to help researchers adopt the model and connect with the international
+                OHDSI network that provides a range of open-source tools for mapping, data
+                transformation, and downstream analysis. Moreover, SciLifeLab is contributing actively by driving pilot projects, such as the
+                harmonization of the <a href="https://www.karolinska.se/forskning-och-utbildning/kliniska-provningar/pagaende-
+kliniska-studier/preddlung/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-primary hover:text-black underline focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"
+                  aria-label="PreDDlung study link">PreDDlung dataset</a>. Through this
                 work, SciLifeLab is helping to define national use cases,
                 demonstrate OMOP’s value for the Swedish health data ecosystem,
                 and capture best practices that will support wider
@@ -223,6 +270,7 @@ export default function OMOPCDMPage(): ReactElement {
             />
           </div>
         </section>
+
         <section aria-labelledby="omop-resources" className="mb-6">
           <Title level={2}>Links and Resources</Title>
           <div>
