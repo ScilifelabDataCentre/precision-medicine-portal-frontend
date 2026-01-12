@@ -5,9 +5,15 @@ interface TitleProps {
   level?: 1 | 2 | 3 | 4;
   children: React.ReactNode;
   className?: string;
+  id?: string;
 }
 
-export default function Title({ level = 1, children, className }: TitleProps) {
+export default function Title({
+  level = 1,
+  children,
+  className,
+  id,
+}: TitleProps) {
   const baseStyles = "text-left text-black font-semibold";
 
   const sizeStyles = {
@@ -21,6 +27,7 @@ export default function Title({ level = 1, children, className }: TitleProps) {
 
   return (
     <Tag
+      id={id}
       className={cn(
         baseStyles,
         sizeStyles[level as keyof typeof sizeStyles],
