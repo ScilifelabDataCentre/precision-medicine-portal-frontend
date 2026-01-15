@@ -57,11 +57,11 @@ export default function OMOPCDMPage(): ReactElement {
               </p>
             </div>
             <Image
-              className="mx-auto w-1/2 md:w-1/3"
+              className="mx-auto w-full md:w-1/2"
               src="/img/omop/what_is_omop.png"
               alt="What is OMOP?"
-              width={100}
-              height={100}
+              width={500}
+              height={500}
               priority
             />
           </div>
@@ -69,14 +69,14 @@ export default function OMOPCDMPage(): ReactElement {
 
         <section aria-labelledby="omop-why" className="mb-6">
           <div className="space-y-8 md:space-y-0 text-left md:space-x-16 md:justify-between md:flex md:items-center">
-            <Image
-              className="w-1/2 md:w-1/3"
-              src="/img/omop/why_using_omop.png"
-              alt="Why use the OMOP CDM?"
-              width={100}
-              height={100}
-              priority
-            />
+              <Image
+                className="mx-auto w-full md:w-1/3"
+                src="/img/omop/why_using_omop.png"
+                alt="Why use the OMOP CDM?"
+                width={600}
+                height={600}
+                priority
+              />
             <div className="w-full md:w-2/3 space-y-4">
               <Title id="omop-why" level={2}>
                 Why use the OMOP CDM?
@@ -195,28 +195,48 @@ export default function OMOPCDMPage(): ReactElement {
               </p>
             </div>
 
-            <Image
-              className="mx-auto w-1/2 md:w-1/3"
-              src="/img/omop/how_does_omop_work.png"
-              alt="How does the OMOP CDM work?"
-              width={100}
-              height={100}
-              priority
-            />
+            <div className="w-full md:w-1/3 flex flex-col gap-4">
+              <Image
+                className="mx-auto w-full h-auto"
+                src="/img/omop/how_does_omop_work.png"
+                alt="How does the OMOP CDM work?"
+                width={500}
+                height={500}
+                priority
+              />
+              <Image
+                className="mx-auto w-full h-auto"
+                src="/img/omop/OHDSI_galaxy.png"
+                alt="OHDSI Galaxy of Tools"
+                width={500}
+                height={500}
+                priority
+              />
+            </div>
           </div>
         </section>
 
         <section aria-labelledby="omop-history" className="mb-6">
           <div className="space-y-8 md:space-y-0 text-left md:space-x-16 md:justify-between md:flex md:items-center">
-            <Image
-              className=" w-1/2 md:w-1/3"
-              src="/img/omop/what_does_omop_mean.png"
-              alt="What’s the history of OMOP?"
-              width={100}
-              height={100}
-              priority
-            />
-            <div className="w-full md:w-2/3 space-y-4">
+            <div className="w-full md:w-1/2 flex flex-col gap-3">
+              <Image
+                className="mx-auto w-full h-auto"
+                src="/img/omop/what_does_omop_mean.png"
+                alt="What’s the history of OMOP?"
+                width={500}
+                height={500}
+                priority
+              />
+              <Image
+                className="mx-auto w-full h-auto"
+                src="/img/omop/OHDSI_Collaborators_July2025.png"
+                alt="OHDSI Collaborators July 2025"
+                width={500}
+                height={500}
+                priority
+              />
+            </div>
+            <div className="w-full md:w-1/2 space-y-4">
               <Title id="omop-history" level={2}>
                 What’s the history of OMOP?
               </Title>
@@ -306,11 +326,11 @@ export default function OMOPCDMPage(): ReactElement {
               </p>
             </div>
             <Image
-              className="mx-auto w-1/2 md:w-1/3"
+              className="mx-auto w-full md:w-1/2"
               src="/img/omop/omop_at_scilifelab.png"
               alt="OMOP at SciLifeLab"
-              width={100}
-              height={100}
+              width={500}
+              height={500}
               priority
             />
           </div>
