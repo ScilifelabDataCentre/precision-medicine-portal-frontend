@@ -1,23 +1,19 @@
-cff-version: 1.2.2
-message: "If you use or reuse this software, please cite it using the following metadata."
+cff-version: 1.2.0
+message: >
+  If you use Precision Medicine Portal in your research, please cite the Precision Medicine Portal
+  (RRID: SCR_026653) and, when relevant, also cite this software.
+type: software
 authors:
-  - family-names: "Lorenz"
-    given-names: "Jan"
-    orcid: 0009-0004-1933-6281
-  - family-names: "Lindbom Gunnari"
-    given-names: "Sebastian"
-    orcid: 0009-0004-4571-6915
-  - family-names: "Benzian Olsson"
-    given-names: "Natashia"
-    orcid: 0000-0002-5287-7707
-  - family-names: "Ahlsén"
-    given-names: "Maria"
-    orcid: 0009-0000-4576-4985
-  - family-names: "Rassam"
-    given-names: "Saman"
-    orcid: 0009-0006-0765-9352
-  - family-names: "Rapisarda"
-    given-names: "Stefano"
-    orcid: 0000-0002-6751-6453
-title: "Precision Medicine Portal (Frontend)"
-url: "https://github.com/ScilifelabDataCentre/precision-medicine-portal-frontend"
+  - name: SciLifeLab Data Centre
+    affiliation: SciLifeLab, Sweden
+title: "Precision Medicine Portal frontend"
+version: 1.1.4
+date-released: 2026-02-27
+url: "https://precision-medicine-portal.scilifelab.se"
+repository-code: "https://github.com/ScilifelabDataCentre/precision-medicine-portal-frontend"
+license: MIT
+keywords:
+  - Precision Medicine Portal
+  - FAIR
+  - research infrastructure
+  - frontend
