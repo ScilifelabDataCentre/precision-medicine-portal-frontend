@@ -7,8 +7,8 @@ authors:
   - name: SciLifeLab Data Centre
     affiliation: SciLifeLab, Sweden
 title: "Precision Medicine Portal frontend"
-version: 1.0.0
-date-released: 2026-02-25
+version: 1.1.4
+date-released: 2026-02-27
 url: "https://precision-medicine-portal.scilifelab.se"
 repository-code: "https://github.com/ScilifelabDataCentre/precision-medicine-portal-frontend"
 license: MIT
@@ -16,4 +16,4 @@ keywords:
   - Precision Medicine Portal
   - FAIR
   - research infrastructure
-  - backend
+  - frontend
