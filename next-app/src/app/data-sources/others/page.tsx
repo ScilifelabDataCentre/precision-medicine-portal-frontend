@@ -246,7 +246,7 @@ function highlightSearchTerms(text: string, searchTerms: string[]): string {
 
   // Escape special regex characters in search terms
   const escapedTerms = searchTerms.map((term) =>
-    term.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")
+    term.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"),
   );
 
   escapedTerms.forEach((term) => {
@@ -254,7 +254,7 @@ function highlightSearchTerms(text: string, searchTerms: string[]): string {
       const regex = new RegExp(`(${term})`, "gi");
       highlightedText = highlightedText.replace(
         regex,
-        '<mark class="bg-accent">$1</mark>'
+        '<mark class="bg-accent">$1</mark>',
       );
     }
   });
@@ -286,7 +286,7 @@ function calculateSimilarity(text1: string, text2: string): number {
 
 function calculateSearchScore(
   dataSource: IDataSourcesDC,
-  searchTerms: string[]
+  searchTerms: string[],
 ): number {
   // Expand search terms with Swedish translations
   const expandedSearchTerms = expandSearchTerms(searchTerms);
@@ -340,7 +340,7 @@ function calculateSearchScore(
     // Check description (lowest weight)
     const descSimilarity = calculateSimilarity(
       searchTerm,
-      dataSource.description
+      dataSource.description,
     );
     if (descSimilarity > 0) {
       termScore += descSimilarity * fieldWeights.description;
@@ -349,7 +349,7 @@ function calculateSearchScore(
     // Bonus for exact matches in name or search tags
     const normalizedName = normalizeText(dataSource.name);
     const normalizedTags = dataSource.search_tags.map((tag) =>
-      normalizeText(tag)
+      normalizeText(tag),
     );
 
     if (
@@ -415,7 +415,7 @@ export default function DataSourcesOthersPage(): ReactElement {
   // Debounce search term for better performance
   const debouncedSearchTerm = useDebounce(
     searchTerm,
-    SEARCH_CONFIG.DEBOUNCE_DELAY
+    SEARCH_CONFIG.DEBOUNCE_DELAY,
   );
 
   const filters: IDataSourceFilters = {
@@ -462,7 +462,7 @@ export default function DataSourcesOthersPage(): ReactElement {
         return tags.some((tag) => tag.toLowerCase() === type.toLowerCase());
       }).length;
     },
-    [dataSourcesJSON]
+    [dataSourcesJSON],
   );
 
   async function getData() {
@@ -473,10 +473,10 @@ export default function DataSourcesOthersPage(): ReactElement {
       const response = await axios.get(dataSourcesURI);
       const tmpDataSourcesJSON = response.data
         .filter((element: IDataSourcesDC) =>
-          element.ddls.includes("Precision Medicine and Diagnostics")
+          element.ddls.includes("Precision Medicine and Diagnostics"),
         )
         .filter(
-          (element: IDataSourcesDC) => element.name !== "SCAPIS database"
+          (element: IDataSourcesDC) => element.name !== "SCAPIS database",
         ); // Exclude "SCAPIS"
       setDataSourcesJSON(tmpDataSourcesJSON);
     } catch (error) {
@@ -496,7 +496,7 @@ export default function DataSourcesOthersPage(): ReactElement {
         const newFilters = { ...prev };
         if (newFilters[filterType].includes(filterName)) {
           newFilters[filterType] = newFilters[filterType].filter(
-            (item) => item !== filterName
+            (item) => item !== filterName,
           );
         } else {
           newFilters[filterType] = [...newFilters[filterType], filterName];
@@ -504,7 +504,7 @@ export default function DataSourcesOthersPage(): ReactElement {
         return newFilters;
       });
     },
-    []
+    [],
   );
 
   // Search and filter logic
@@ -522,16 +522,16 @@ export default function DataSourcesOthersPage(): ReactElement {
         selectedFilters.dataTypes.length === 0 ||
         selectedFilters.dataTypes.some((filter) =>
           dataSource.data.some(
-            (tag) => tag.toLowerCase() === filter.toLowerCase()
-          )
+            (tag) => tag.toLowerCase() === filter.toLowerCase(),
+          ),
         );
 
       const diseaseTypeFilter =
         selectedFilters.diseaseTypes.length === 0 ||
         selectedFilters.diseaseTypes.some((filter) =>
           dataSource.disease_type.some(
-            (tag) => tag.toLowerCase() === filter.toLowerCase()
-          )
+            (tag) => tag.toLowerCase() === filter.toLowerCase(),
+          ),
         );
 
       return dataTypeFilter && diseaseTypeFilter;
@@ -760,7 +760,7 @@ export default function DataSourcesOthersPage(): ReactElement {
         </section>
       </div>
 
-      <LastUpdated date="09-06-2025" />
+      <LastUpdated date="27-02-2026" />
     </div>
   );
 }
