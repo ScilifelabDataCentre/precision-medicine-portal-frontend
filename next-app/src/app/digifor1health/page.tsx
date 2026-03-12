@@ -2,6 +2,8 @@
 
 import { ReactElement } from "react";
 import Title from "@/components/common/title";
+import PartnerCoordinationDiagram from "@/components/digifor1health/partner-coordination-diagram";
+import PuzzleCategoriesDiagram from "@/components/digifor1health/puzzle-categories-diagram";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -24,11 +26,13 @@ interface KeyMessageCategory {
   title: string;
   subtitle: string;
   messages: string[];
+  anchorId: string;
 }
 
 const categories: KeyMessageCategory[] = [
   {
     title: "Vision & Strategy",
+    anchorId: "category-vision-strategy",
     subtitle:
       "The overarching goals and strategic approach for managing health data in Sweden towards the European Health Data Space (EHDS).",
     messages: [
@@ -40,6 +44,7 @@ const categories: KeyMessageCategory[] = [
   },
   {
     title: "Collaboration & Governance",
+    anchorId: "category-collaboration-governance",
     subtitle:
       "Need for collaboration, clear leadership, and stakeholder involvement.",
     messages: [
@@ -51,6 +56,7 @@ const categories: KeyMessageCategory[] = [
   },
   {
     title: "Systemic Change & Resources",
+    anchorId: "category-systemic-change-resources",
     subtitle:
       "Resources and mindset shifts needed for the transformation of the health data landscape.",
     messages: [
@@ -62,6 +68,7 @@ const categories: KeyMessageCategory[] = [
   },
   {
     title: "Implementation & Infrastructure",
+    anchorId: "category-implementation-infrastructure",
     subtitle:
       "Practical steps and structures required to build a functional and unified health data system.",
     messages: [
@@ -108,15 +115,15 @@ export default function Digifor1healthPage(): ReactElement {
             DIGIfor1healthSE
           </a>{" "}
           is a national collaboration project which aims to create synergies and
-          increase coordination nationally for sustainable access and utilization
-          of health data in Sweden and within the EU by supporting the
-          implementation of the European Health Data Space (EHDS).
+          increase coordination nationally for sustainable access and
+          utilization of health data in Sweden and within the EU by supporting
+          the implementation of the European Health Data Space (EHDS).
         </p>
 
         <p className="text-base leading-relaxed text-foreground mb-8">
           Collaborating within DIGIfor1healthSE are two national strategic
-          initiatives and five EU-funded DIGITAL-programme projects. The national
-          initiatives are{" "}
+          initiatives and five EU-funded DIGITAL-programme projects. The
+          national initiatives are{" "}
           <a
             href="https://genomicmedicine.se/"
             target="_blank"
@@ -189,6 +196,8 @@ export default function Digifor1healthPage(): ReactElement {
           (GoE).
         </p>
 
+        <PartnerCoordinationDiagram />
+
         <Alert className="border-primary/30 bg-primary/5">
           <AlertTitle className="text-base font-semibold">
             Project funding and coordination
@@ -259,6 +268,8 @@ export default function Digifor1healthPage(): ReactElement {
           .
         </p>
 
+        <PuzzleCategoriesDiagram />
+
         <div
           className="grid grid-cols-1 md:grid-cols-2 gap-6"
           role="list"
@@ -266,7 +277,10 @@ export default function Digifor1healthPage(): ReactElement {
         >
           {categories.map((category, index) => (
             <article key={index} role="listitem" className="h-full">
-              <Card className="shadow-md h-full flex flex-col">
+              <Card
+                id={category.anchorId}
+                className="shadow-md h-full flex flex-col scroll-mt-8"
+              >
                 <CardHeader className="bg-muted p-6">
                   <CardTitle className="text-lg">{category.title}</CardTitle>
                   <CardDescription className="text-sm leading-relaxed">
@@ -295,7 +309,7 @@ export default function Digifor1healthPage(): ReactElement {
       </section>
 
       <div className="mt-8">
-        <LastUpdated date="19-02-2026" />
+        <LastUpdated date="11-03-2026" />
       </div>
     </div>
   );
