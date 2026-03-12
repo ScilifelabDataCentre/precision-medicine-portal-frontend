@@ -3,6 +3,14 @@
 import { motion, useReducedMotion, type Transition } from "framer-motion";
 import { useCallback } from "react";
 
+/** Colors from tailwind.config.ts — keep in sync with the theme palette */
+const COLORS = {
+  primary: "#045c64",
+  info: "#491f53",
+  primaryLight: "#0e7e88",
+  infoLight: "#6e3d7a",
+} as const;
+
 interface PuzzlePiece {
   label: string;
   textLines: string[];
@@ -20,7 +28,7 @@ const pieces: PuzzlePiece[] = [
     label: "Vision & Strategy",
     textLines: ["Vision", "& Strategy"],
     path: "M 0,0 L 200,0 L 200,78 A 22,22 0 0,1 200,122 L 200,200 L 118,200 A 22,22 0 0,1 82,200 L 0,200 Z",
-    fill: "#045c64",
+    fill: COLORS.primary,
     anchorId: "category-vision-strategy",
     textX: 90,
     textY: 90,
@@ -31,7 +39,7 @@ const pieces: PuzzlePiece[] = [
     label: "Collaboration & Governance",
     textLines: ["Collaboration", "& Governance"],
     path: "M 200,0 L 400,0 L 400,200 L 318,200 A 22,22 0 0,1 282,200 L 200,200 L 200,122 A 22,22 0 0,0 200,78 L 200,0 Z",
-    fill: "#491f53",
+    fill: COLORS.info,
     anchorId: "category-collaboration-governance",
     textX: 310,
     textY: 90,
@@ -42,7 +50,7 @@ const pieces: PuzzlePiece[] = [
     label: "Implementation & Infrastructure",
     textLines: ["Implementation", "& Infrastructure"],
     path: "M 0,200 L 82,200 A 22,22 0 0,0 118,200 L 200,200 L 200,278 A 22,22 0 0,1 200,322 L 200,400 L 0,400 Z",
-    fill: "#0e7e88",
+    fill: COLORS.primaryLight,
     anchorId: "category-implementation-infrastructure",
     textX: 90,
     textY: 310,
@@ -53,7 +61,7 @@ const pieces: PuzzlePiece[] = [
     label: "Systemic Change & Resources",
     textLines: ["Systemic Change", "& Resources"],
     path: "M 200,200 L 282,200 A 22,22 0 0,0 318,200 L 400,200 L 400,400 L 200,400 L 200,322 A 22,22 0 0,0 200,278 L 200,200 Z",
-    fill: "#6e3d7a",
+    fill: COLORS.infoLight,
     anchorId: "category-systemic-change-resources",
     textX: 312,
     textY: 310,
@@ -91,10 +99,10 @@ export default function PuzzleCategoriesDiagram() {
   );
 
   return (
-    <figure className="my-8 flex flex-col items-center" role="figure">
+    <figure className="my-8 flex flex-col items-center">
       <div
-        role="img"
-        aria-label="Four interlocking puzzle pieces representing the key message categories: Vision and Strategy (top left), Collaboration and Governance (top right), Implementation and Infrastructure (bottom left), and Systemic Change and Resources (bottom right)."
+        role="group"
+        aria-label="Four interlocking puzzle pieces representing the key message categories. Click any piece to jump to its key messages."
       >
         <p className="sr-only">
           The four categories — Vision &amp; Strategy, Collaboration &amp;
@@ -136,7 +144,7 @@ export default function PuzzleCategoriesDiagram() {
               aria-label={`View ${piece.label} key messages`}
               onClick={() => handlePieceClick(piece.anchorId)}
               onKeyDown={(e) => handleKeyDown(e, piece.anchorId)}
-              className="cursor-pointer outline-none"
+              className="cursor-pointer rounded-sm outline-offset-2 focus-visible:outline-2 focus-visible:outline-primary"
             >
               <path
                 d={piece.path}

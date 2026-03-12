@@ -68,6 +68,9 @@ const partners: Partner[] = [
   },
 ];
 
+/** Matches `primary` in tailwind.config.ts */
+const COLOR_PRIMARY = "#045c64";
+
 const LINE_ENDPOINTS_X = [86, 171, 257, 343, 429, 514];
 const SVG_CENTER_X = 300;
 const SVG_TOP_Y = 8;
@@ -102,7 +105,7 @@ export default function PartnerCoordinationDiagram() {
     : { duration: 0.6, ease: "easeInOut" };
 
   return (
-    <figure className="my-8 flex flex-col items-center" role="figure">
+    <figure className="my-8 flex flex-col items-center">
       <div
         className="w-full max-w-3xl"
         role="img"
@@ -131,6 +134,7 @@ export default function PartnerCoordinationDiagram() {
               aria-hidden="true"
               width={3376}
               height={734}
+              sizes="200px"
               className="h-8 md:h-10 w-auto"
             />
           </motion.div>
@@ -146,7 +150,7 @@ export default function PartnerCoordinationDiagram() {
               cx={SVG_CENTER_X}
               cy={SVG_TOP_Y}
               r={6}
-              fill="#045c64"
+              fill={COLOR_PRIMARY}
               initial={{ scale: 0, opacity: 0 }}
               whileInView={{ scale: 1, opacity: 1 }}
               viewport={{ once: true }}
@@ -164,7 +168,7 @@ export default function PartnerCoordinationDiagram() {
                 y1={SVG_TOP_Y}
                 x2={endX}
                 y2={SVG_BOTTOM_Y}
-                stroke="#045c64"
+                stroke={COLOR_PRIMARY}
                 strokeWidth={1}
                 strokeDasharray="6 4"
                 initial={{ pathLength: 0, opacity: 0 }}
@@ -209,7 +213,7 @@ export default function PartnerCoordinationDiagram() {
                 variants={logoVariants}
                 whileHover={shouldReduceMotion ? {} : { scale: 1.05 }}
                 whileTap={shouldReduceMotion ? {} : { scale: 0.97 }}
-                className="flex items-center justify-center h-10 md:h-12 w-full max-w-[120px] md:max-w-none px-1 rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 transition-shadow"
+                className="flex items-center justify-center h-10 md:h-12 w-full max-w-28 md:max-w-none px-1 rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 transition-shadow"
               >
                 <Image
                   src={partner.logoSrc}
