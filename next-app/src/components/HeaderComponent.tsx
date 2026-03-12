@@ -57,7 +57,7 @@ const ListItem = React.forwardRef<
           ref={ref}
           className={cn(
             "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-neutral hover:text-neutral-foreground focus:bg-secondary/20 focus:text-secondary-foreground",
-            className
+            className,
           )}
           role={role}
           {...props}
@@ -164,16 +164,9 @@ function DesktopNav() {
             <Link
               href="/kiarva"
               className={navigationMenuTriggerStyle()}
-              aria-label="KIARVA dashboard - Demo"
+              aria-label="KIARVA dashboard"
             >
               KIARVA dashboard
-              <Badge
-                variant="accent"
-                className="ml-1"
-                aria-label="Demo version"
-              >
-                Demo
-              </Badge>
             </Link>
           </NavigationMenuLink>
         </NavigationMenuItem>
