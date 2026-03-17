@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, ReactElement } from "react";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import Title from "@/components/common/title";
 import { LastUpdated } from "@/components/common/last-updated";
@@ -13,36 +13,22 @@ import {
 } from "@/components/ui/breadcrumb";
 import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
-import {
-  Users,
-  Dna,
-  Scan,
-  ClipboardList,
-  Database,
-  Layers,
-  Activity,
-  Beaker,
-  type LucideIcon,
-} from "lucide-react";
+import { Users, Dna, Activity } from "lucide-react";
 
-export type StudyType =
+type StudyType =
   | "population_cohort"
   | "disease_specific_cohort"
   | "biobank_study"
   | "cohort_infrastructure";
 
-export type DataType =
+type DataType =
   | "genomics"
   | "clinical_data"
   | "imaging"
   | "registry_linkage"
   | "multi_omics";
 
-export type DiseaseArea =
-  | "cancer"
-  | "cardiovascular"
-  | "metabolic"
-  | "neurology";
+type DiseaseArea = "cancer" | "cardiovascular" | "metabolic" | "neurology";
 
 type DataSource = {
   title: string;
@@ -78,21 +64,6 @@ const DISEASE_AREA_LABELS: Record<DiseaseArea, string> = {
   neurology: "Neurology",
 };
 
-const DATA_TYPE_ICONS: Record<DataType, LucideIcon> = {
-  genomics: Dna,
-  clinical_data: ClipboardList,
-  imaging: Scan,
-  registry_linkage: Database,
-  multi_omics: Layers,
-};
-
-const STUDY_TYPE_ICONS: Record<StudyType, LucideIcon> = {
-  population_cohort: Users,
-  disease_specific_cohort: Activity,
-  biobank_study: Beaker,
-  cohort_infrastructure: Layers,
-};
-
 const TAG_COLOURS: { [key: string]: string } = {
   snd: "bg-[#649ED2] text-black",
   tag: "bg-muted text-muted-foreground",
@@ -104,7 +75,7 @@ interface Filters {
   disease_area: DiseaseArea[];
 }
 
-export default function SwedishResearchCohortsPage() {
+export default function SwedishResearchCohortsPage(): ReactElement {
   const [dataSources, setDataSources] = useState<DataSource[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [filters, setFilters] = useState<Filters>({
@@ -116,9 +87,8 @@ export default function SwedishResearchCohortsPage() {
 
   async function fetchData() {
     try {
-      const data = await import(
-        "@/assets/Sorted_Swedish_Research_Projects.json"
-      );
+      const data =
+        await import("@/assets/Sorted_Swedish_Research_Projects.json");
       setDataSources(data.dataSources as DataSource[]);
     } catch (error) {
       console.error("Error fetching cohort data:", error);
@@ -159,13 +129,21 @@ export default function SwedishResearchCohortsPage() {
   }
 
   function matchesFilters(item: DataSource): boolean {
-    if (filters.study_type.length > 0 && !filters.study_type.includes(item.study_type)) return false;
+    if (
+      filters.study_type.length > 0 &&
+      !filters.study_type.includes(item.study_type)
+    )
+      return false;
     if (filters.data_types.length > 0) {
-      const hasMatch = filters.data_types.some((dt) => item.data_types.includes(dt));
+      const hasMatch = filters.data_types.some((dt) =>
+        item.data_types.includes(dt),
+      );
       if (!hasMatch) return false;
     }
     if (filters.disease_area.length > 0) {
-      const hasMatch = filters.disease_area.some((da) => item.disease_area?.includes(da));
+      const hasMatch = filters.disease_area.some((da) =>
+        item.disease_area?.includes(da),
+      );
       if (!hasMatch) return false;
     }
     return true;
@@ -181,7 +159,9 @@ export default function SwedishResearchCohortsPage() {
       ...item.data_types.map((d) => DATA_TYPE_LABELS[d]),
       STUDY_TYPE_LABELS[item.study_type],
       ...(item.disease_area ?? []).map((d) => DISEASE_AREA_LABELS[d]),
-    ].join(" ").toLowerCase();
+    ]
+      .join(" ")
+      .toLowerCase();
     return words.every((word) => searchable.includes(word));
   }
 
@@ -273,7 +253,8 @@ export default function SwedishResearchCohortsPage() {
                 aria-describedby="search-help"
               />
               <div id="search-help" className="sr-only">
-                Search by name, description, study type, data type, or disease area
+                Search by name, description, study type, data type, or disease
+                area
               </div>
             </div>
           </section>
@@ -300,31 +281,34 @@ export default function SwedishResearchCohortsPage() {
 
             <fieldset className="space-y-4">
               <legend className="font-bold text-xl text-foreground flex items-center gap-2">
-                <Users className="h-5 w-5" aria-hidden />
+                <Users className="h-5 w-5" aria-hidden="true" />
                 Study type
               </legend>
               <Card>
                 <CardContent className="pt-4 pb-4">
-                  <div className="space-y-3" role="group" aria-label="Study type filters">
-                    {(Object.keys(STUDY_TYPE_LABELS) as StudyType[]).map((key) => (
-                      <div
-                        className="flex items-center space-x-3"
-                        key={key}
-                      >
-                        <Checkbox
-                          id={`study-${key}`}
-                          checked={filters.study_type.includes(key)}
-                          onCheckedChange={() => toggleStudyType(key)}
-                          aria-label={STUDY_TYPE_LABELS[key]}
-                        />
-                        <label
-                          htmlFor={`study-${key}`}
-                          className="text-sm cursor-pointer"
-                        >
-                          {STUDY_TYPE_LABELS[key]}
-                        </label>
-                      </div>
-                    ))}
+                  <div
+                    className="space-y-3"
+                    role="group"
+                    aria-label="Study type filters"
+                  >
+                    {(Object.keys(STUDY_TYPE_LABELS) as StudyType[]).map(
+                      (key) => (
+                        <div className="flex items-center space-x-3" key={key}>
+                          <Checkbox
+                            id={`study-${key}`}
+                            checked={filters.study_type.includes(key)}
+                            onCheckedChange={() => toggleStudyType(key)}
+                            aria-label={STUDY_TYPE_LABELS[key]}
+                          />
+                          <label
+                            htmlFor={`study-${key}`}
+                            className="text-sm cursor-pointer"
+                          >
+                            {STUDY_TYPE_LABELS[key]}
+                          </label>
+                        </div>
+                      ),
+                    )}
                   </div>
                 </CardContent>
               </Card>
@@ -332,31 +316,34 @@ export default function SwedishResearchCohortsPage() {
 
             <fieldset className="space-y-4">
               <legend className="font-bold text-xl text-foreground flex items-center gap-2">
-                <Dna className="h-5 w-5" aria-hidden />
+                <Dna className="h-5 w-5" aria-hidden="true" />
                 Data type
               </legend>
               <Card>
                 <CardContent className="pt-4 pb-4">
-                  <div className="space-y-3" role="group" aria-label="Data type filters">
-                    {(Object.keys(DATA_TYPE_LABELS) as DataType[]).map((key) => (
-                      <div
-                        className="flex items-center space-x-3"
-                        key={key}
-                      >
-                        <Checkbox
-                          id={`data-${key}`}
-                          checked={filters.data_types.includes(key)}
-                          onCheckedChange={() => toggleDataType(key)}
-                          aria-label={DATA_TYPE_LABELS[key]}
-                        />
-                        <label
-                          htmlFor={`data-${key}`}
-                          className="text-sm cursor-pointer"
-                        >
-                          {DATA_TYPE_LABELS[key]}
-                        </label>
-                      </div>
-                    ))}
+                  <div
+                    className="space-y-3"
+                    role="group"
+                    aria-label="Data type filters"
+                  >
+                    {(Object.keys(DATA_TYPE_LABELS) as DataType[]).map(
+                      (key) => (
+                        <div className="flex items-center space-x-3" key={key}>
+                          <Checkbox
+                            id={`data-${key}`}
+                            checked={filters.data_types.includes(key)}
+                            onCheckedChange={() => toggleDataType(key)}
+                            aria-label={DATA_TYPE_LABELS[key]}
+                          />
+                          <label
+                            htmlFor={`data-${key}`}
+                            className="text-sm cursor-pointer"
+                          >
+                            {DATA_TYPE_LABELS[key]}
+                          </label>
+                        </div>
+                      ),
+                    )}
                   </div>
                 </CardContent>
               </Card>
@@ -364,31 +351,34 @@ export default function SwedishResearchCohortsPage() {
 
             <fieldset className="space-y-4">
               <legend className="font-bold text-xl text-foreground flex items-center gap-2">
-                <Activity className="h-5 w-5" aria-hidden />
+                <Activity className="h-5 w-5" aria-hidden="true" />
                 Disease area
               </legend>
               <Card>
                 <CardContent className="pt-4 pb-4">
-                  <div className="space-y-3" role="group" aria-label="Disease area filters">
-                    {(Object.keys(DISEASE_AREA_LABELS) as DiseaseArea[]).map((key) => (
-                      <div
-                        className="flex items-center space-x-3"
-                        key={key}
-                      >
-                        <Checkbox
-                          id={`disease-${key}`}
-                          checked={filters.disease_area.includes(key)}
-                          onCheckedChange={() => toggleDiseaseArea(key)}
-                          aria-label={DISEASE_AREA_LABELS[key]}
-                        />
-                        <label
-                          htmlFor={`disease-${key}`}
-                          className="text-sm cursor-pointer"
-                        >
-                          {DISEASE_AREA_LABELS[key]}
-                        </label>
-                      </div>
-                    ))}
+                  <div
+                    className="space-y-3"
+                    role="group"
+                    aria-label="Disease area filters"
+                  >
+                    {(Object.keys(DISEASE_AREA_LABELS) as DiseaseArea[]).map(
+                      (key) => (
+                        <div className="flex items-center space-x-3" key={key}>
+                          <Checkbox
+                            id={`disease-${key}`}
+                            checked={filters.disease_area.includes(key)}
+                            onCheckedChange={() => toggleDiseaseArea(key)}
+                            aria-label={DISEASE_AREA_LABELS[key]}
+                          />
+                          <label
+                            htmlFor={`disease-${key}`}
+                            className="text-sm cursor-pointer"
+                          >
+                            {DISEASE_AREA_LABELS[key]}
+                          </label>
+                        </div>
+                      ),
+                    )}
                   </div>
                 </CardContent>
               </Card>
@@ -406,8 +396,8 @@ export default function SwedishResearchCohortsPage() {
             role="list"
             aria-label={`${filtered.length} resources found`}
           >
-            {filtered.map((item, index) => (
-              <article key={index} role="listitem">
+            {filtered.map((item) => (
+              <article key={item.title} role="listitem">
                 <Card className="bg-muted border border-neutral rounded-lg shadow-sm hover:shadow-md transition-shadow">
                   <CardHeader className="bg-muted p-4">
                     <CardTitle className="text-lg font-medium text-primary hover:underline">
@@ -460,7 +450,7 @@ export default function SwedishResearchCohortsPage() {
                         >
                           {STUDY_TYPE_LABELS[item.study_type]}
                         </span>
-                        {item.data_types.slice(0, 4).map((dt) => (
+                        {item.data_types.map((dt) => (
                           <span
                             key={dt}
                             className={`px-3 py-1 rounded-full text-sm shrink-0 ${TAG_COLOURS.tag}`}
@@ -475,6 +465,12 @@ export default function SwedishResearchCohortsPage() {
                 </Card>
               </article>
             ))}
+            {filtered.length === 0 && (
+              <p className="text-center text-muted-foreground py-8">
+                No matching cohorts or studies found. Try adjusting your search
+                or filters.
+              </p>
+            )}
           </div>
         </section>
       </div>

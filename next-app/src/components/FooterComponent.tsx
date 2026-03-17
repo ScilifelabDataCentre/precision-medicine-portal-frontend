@@ -21,8 +21,8 @@ export default function Footer(): ReactElement {
       link: "/data-sources/quality-registries",
     },
     l3: {
-      text: "Swedish research cohorts and biobank studies",
-      link: "/data-sources/swedish-research-projects",
+      text: "Swedish research cohorts",
+      link: "/data-sources/swedish-research-cohorts",
     },
     l4: {
       text: "Other data sources",

@@ -49,7 +49,7 @@ export default function DataSourcesPage(): ReactElement {
         >
           <Title level={2}>Swedish research cohorts and biobank studies</Title>
           <Link
-            href="/data-sources/swedish-research-projects"
+            href="/data-sources/swedish-research-cohorts"
             aria-label="Go to Swedish research cohorts and biobank studies page"
             className="focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"
           >

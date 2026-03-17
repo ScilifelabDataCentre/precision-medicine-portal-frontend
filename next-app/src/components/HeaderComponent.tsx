@@ -57,7 +57,7 @@ const ListItem = React.forwardRef<
           ref={ref}
           className={cn(
             "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-neutral hover:text-neutral-foreground focus:bg-secondary/20 focus:text-secondary-foreground",
-            className
+            className,
           )}
           role={role}
           {...props}
@@ -143,8 +143,8 @@ function DesktopNav() {
                 health data
               </ListItem>
               <ListItem
-                href="/data-sources/swedish-research-projects"
-                title="Swedish research cohorts and biobank studies"
+                href="/data-sources/swedish-research-cohorts"
+                title="Swedish research cohorts"
                 role="menuitem"
               >
                 Discover Swedish research cohorts and biobank-based studies
@@ -259,11 +259,11 @@ function MobileNav() {
             Quality registries
           </Link>
           <Link
-            href="/data-sources/swedish-research-projects"
+            href="/data-sources/swedish-research-cohorts"
             className="text-sm pl-4"
             aria-label="Swedish research cohorts and biobank studies"
           >
-            Swedish research cohorts and biobank studies
+            Swedish research cohorts
           </Link>
           <Link
             href="/data-sources/others"

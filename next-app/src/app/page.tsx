@@ -70,10 +70,10 @@ export default function HomePage(): ReactElement {
                           className="relative z-20"
                         >
                           <Link
-                            href="/data-sources/swedish-research-projects"
+                            href="/data-sources/swedish-research-cohorts"
                             aria-label="Browse Swedish research cohorts and biobank studies"
                           >
-                            Swedish research cohorts and biobank studies
+                            Swedish research cohorts
                           </Link>
                         </Button>
                         <Button
