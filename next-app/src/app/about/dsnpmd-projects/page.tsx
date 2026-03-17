@@ -145,7 +145,7 @@ export default function AboutDSNPMDProjectsPage() {
       </section>
 
       <div className="mt-8">
-        <LastUpdated date="21-05-2025" />
+        <LastUpdated date="17-03-2026" />
       </div>
     </div>
   );
