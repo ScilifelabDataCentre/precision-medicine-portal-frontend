@@ -47,17 +47,18 @@ export default function OMOPCDMPage(): ReactElement {
                 standard designed to harmonize the structure and content of
                 observational data.
               </p>
-              <p> In general, a common data model defines a
-                shared way of organizing data so that information from different
-                sources can be represented in the same format. This makes it
-                easier to compare, analyze, and reuse data across institutions
-                and studies. 
+              <p>
+                In general, a common data model defines a shared way of
+                organizing data so that information from different sources can
+                be represented in the same format. This makes it easier to
+                compare, analyze, and reuse data across institutions and
+                studies.
               </p>
-              <p>The OMOP CDM applies these principles through a
-                standardized structure and shared vocabularies specifically
-                designed for observational data, including patient demographics,
-                conditions, procedures, drug exposures, and clinical
-                measurements.
+              <p>
+                The OMOP CDM applies these principles through a standardized
+                structure and shared vocabularies specifically designed for
+                observational data, including patient demographics, conditions,
+                procedures, drug exposures, and clinical measurements.
               </p>
             </div>
             <Image
@@ -73,14 +74,14 @@ export default function OMOPCDMPage(): ReactElement {
 
         <section aria-labelledby="omop-why" className="mb-6">
           <div className="space-y-8 md:space-y-0 text-left md:space-x-16 md:justify-between md:flex md:items-center">
-              <Image
-                className="mx-auto w-full md:w-1/3"
-                src="/img/omop/why_using_omop.png"
-                alt="Why use the OMOP CDM?"
-                width={600}
-                height={600}
-                priority
-              />
+            <Image
+              className="mx-auto w-full md:w-1/3"
+              src="/img/omop/why_using_omop.png"
+              alt="Why use the OMOP CDM?"
+              width={600}
+              height={600}
+              priority
+            />
             <div className="w-full md:w-2/3 space-y-4">
               <Title id="omop-why" level={2}>
                 Why use the OMOP CDM?
@@ -107,20 +108,27 @@ export default function OMOPCDMPage(): ReactElement {
                   <p>
                     OMOP CDM provides a unified structure and vocabulary, making
                     it easier to integrate data from multiple healthcare
-                    systems, EHRs, and claims databases (<a                                                                                                                                     
-                      href="https://www.pnas.org/doi/10.1073/pnas.1510502113"                                                                              
-                      target="_blank"                                                                                                                      
+                    systems, EHRs, and claims databases (
+                    <a
+                      href="https://www.pnas.org/doi/10.1073/pnas.1510502113"
+                      target="_blank"
                       rel="noopener noreferrer"
                       className="text-primary hover:text-black underline focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"
-                      aria-label="OHDSI treatment pathways study"                                                                                          
-                    >OHDSI Treatment Pathways</a>,{" "}                                                                                                    
-                    <a                                                                                                                                     
-                      href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10746315/"                                                                            
-                      target="_blank"                                                                                                                      
+                      aria-label="OHDSI treatment pathways study"
+                    >
+                      OHDSI Treatment Pathways
+                    </a>
+                    ,{" "}
+                    <a
+                      href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10746315/"
+                      target="_blank"
                       rel="noopener noreferrer"
-                      className="text-primary hover:text-black underline focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"   
-                      aria-label="EHDEN network paper"                                                                                                     
-                    >EHDEN Network</a>).
+                      className="text-primary hover:text-black underline focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"
+                      aria-label="EHDEN network paper"
+                    >
+                      EHDEN Network
+                    </a>
+                    ).
                   </p>
                 </li>
                 <li className="mt-1">
@@ -128,20 +136,27 @@ export default function OMOPCDMPage(): ReactElement {
                   <p>
                     Enables consistent analysis across institutions and
                     countries, supporting collaborative studies and large-scale
-                    observational research (<a                                                                                                                                     
-                      href="https://www.thelancet.com/journals/lanrhe/article/PIIS2665-9913(20)30276-9/fulltext"                                           
-                      target="_blank"                                                                                                                      
-                      rel="noopener noreferrer"                                                                                                            
-                      className="text-primary hover:text-black underline focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"   
-                      aria-label="COVID-19 HCQ safety study"                                                                                               
-                    >COVID-19 HCQ Safety</a>,{" "}                                                                                                         
-                    <a                                                                                                                                     
-                      href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6924620/"                                                                             
-                      target="_blank"                                                                                                                      
+                    observational research (
+                    <a
+                      href="https://www.thelancet.com/journals/lanrhe/article/PIIS2665-9913(20)30276-9/fulltext"
+                      target="_blank"
                       rel="noopener noreferrer"
-                      className="text-primary hover:text-black underline focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"   
-                      aria-label="LEGEND hypertension study"                                                                                               
-                    >LEGEND Hypertension</a>).
+                      className="text-primary hover:text-black underline focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"
+                      aria-label="COVID-19 HCQ safety study"
+                    >
+                      COVID-19 HCQ Safety
+                    </a>
+                    ,{" "}
+                    <a
+                      href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6924620/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-primary hover:text-black underline focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"
+                      aria-label="LEGEND hypertension study"
+                    >
+                      LEGEND Hypertension
+                    </a>
+                    ).
                   </p>
                 </li>
                 <li className="mt-1">
@@ -149,20 +164,27 @@ export default function OMOPCDMPage(): ReactElement {
                   <p>
                     Designed to handle large, complex healthcare datasets
                     efficiently, making it suitable for population-level studies
-                    and predictive modeling (<a                                                                                                                                     
-            href="https://www.ohdsi.org/data-standardization/"                                                                                   
-            target="_blank"                                                                                                                      
-            rel="noopener noreferrer"
-            className="text-primary hover:text-black underline focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"   
-            aria-label="OHDSI global network"                                                                                                    
-          >OHDSI Global Network</a>,{" "}                                                                                                        
-          <a                                                                                                                                     
-            href="https://www.nature.com/articles/s41598-024-52723-y"                                                                            
-            target="_blank"                                                                                                                      
-            rel="noopener noreferrer"
-            className="text-primary hover:text-black underline focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"
-            aria-label="Patient-level prediction study"                                                                                          
-          >Patient-Level Prediction</a>).
+                    and predictive modeling (
+                    <a
+                      href="https://www.ohdsi.org/data-standardization/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-primary hover:text-black underline focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"
+                      aria-label="OHDSI global network"
+                    >
+                      OHDSI Global Network
+                    </a>
+                    ,{" "}
+                    <a
+                      href="https://www.nature.com/articles/s41598-024-52723-y"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-primary hover:text-black underline focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"
+                      aria-label="Patient-level prediction study"
+                    >
+                      Patient-Level Prediction
+                    </a>
+                    ).
                   </p>
                 </li>
                 <li className="mt-1">
@@ -170,13 +192,17 @@ export default function OMOPCDMPage(): ReactElement {
                   <p>
                     Includes standardized vocabularies (SNOMED, RxNorm, LOINC,
                     etc.), ensuring semantic consistency and reducing ambiguity
-                    in clinical concepts (<a                                                                                                                                     
-                      href="https://academic.oup.com/jamia/article/31/3/583/7510741"                                                                       
-                      target="_blank"                                                                                                                      
-                      rel="noopener noreferrer"                                                                                                            
+                    in clinical concepts (
+                    <a
+                      href="https://academic.oup.com/jamia/article/31/3/583/7510741"
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="text-primary hover:text-black underline focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"
-                      aria-label="OHDSI standardized vocabularies paper"                                                                                   
-                    >Standardized Vocabularies</a>).
+                      aria-label="OHDSI standardized vocabularies paper"
+                    >
+                      Standardized Vocabularies
+                    </a>
+                    ).
                   </p>
                 </li>
                 <li className="mt-1">
@@ -184,13 +210,17 @@ export default function OMOPCDMPage(): ReactElement {
                   <p>
                     Using OMOP CDM unlocks a suite of open-source tools (e.g.,
                     ATHENA, Usagi, Achilles) and a global research network,
-                    accelerating analytics and methodological development (<a                                                                                                                                     
-                      href="https://www.ohdsi.org/software-tools/"                                                                                         
-                      target="_blank"                                                                                                                      
+                    accelerating analytics and methodological development (
+                    <a
+                      href="https://www.ohdsi.org/software-tools/"
+                      target="_blank"
                       rel="noopener noreferrer"
-                      className="text-primary hover:text-black underline focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"   
+                      className="text-primary hover:text-black underline focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"
                       aria-label="OHDSI software tools"
-                    >OHDSI Software Tools</a>).
+                    >
+                      OHDSI Software Tools
+                    </a>
+                    ).
                   </p>
                 </li>
               </ul>
@@ -268,30 +298,28 @@ export default function OMOPCDMPage(): ReactElement {
                 priority
               />
             </div>
-            
           </div>
         </section>
 
         <section aria-labelledby="omop-history" className="mb-6">
           <div className="space-y-8 md:space-y-0 text-left md:space-x-16 md:justify-between md:flex md:items-center">
-            
             <div className="w-full md:w-1/2 flex flex-col gap-4">
-                <Image
-                  className="object-contain"
-                  src="/img/omop/omop_timeline.png"
-                  alt="What's the history of OMOP?"
-                  width={500}
-                  height={500}
-                  priority
-                />
-                <Image
-                  className="object-contain"
-                  src="/img/omop/OHDSI_Collaborators_July2025.png"
-                  alt="OHDSI Collaborators July 2025"
-                  width={500}
-                  height={500}
-                  priority
-                />
+              <Image
+                className="object-contain"
+                src="/img/omop/omop_timeline.png"
+                alt="What's the history of OMOP?"
+                width={500}
+                height={500}
+                priority
+              />
+              <Image
+                className="object-contain"
+                src="/img/omop/OHDSI_Collaborators_July2025.png"
+                alt="OHDSI Collaborators July 2025"
+                width={500}
+                height={500}
+                priority
+              />
             </div>
 
             <div className="w-full md:w-1/2 space-y-4">
@@ -367,10 +395,10 @@ export default function OMOPCDMPage(): ReactElement {
                 range of open-source tools for mapping, data transformation, and
                 downstream analysis. Moreover, SciLifeLab is contributing
                 actively by driving pilot projects, such as the harmonization of
-                oncology data. Through this work, SciLifeLab is helping to define national
-                use cases, demonstrate OMOP’s value for the Swedish health data
-                ecosystem, and capture best practices that will support wider
-                implementation in the years ahead.
+                oncology data. Through this work, SciLifeLab is helping to
+                define national use cases, demonstrate OMOP’s value for the
+                Swedish health data ecosystem, and capture best practices that
+                will support wider implementation in the years ahead.
               </p>
             </div>
             <Image
@@ -384,8 +412,8 @@ export default function OMOPCDMPage(): ReactElement {
           </div>
         </section>
 
-        <section aria-labelledby="Contact us" className="mb-6">
-          <Title id="Contact us" level={2}>
+        <section aria-labelledby="contact-us" className="mb-6">
+          <Title id="contact-us" level={2}>
             Contact us
           </Title>
           <p>
@@ -400,7 +428,6 @@ export default function OMOPCDMPage(): ReactElement {
               stefano.rapisarda@scilifelab.se
             </a>
           </p>
-
         </section>
 
         <section aria-labelledby="omop-resources" className="mb-6">
@@ -465,7 +492,7 @@ export default function OMOPCDMPage(): ReactElement {
         </section>
       </div>
       <div className="mt-8">
-        <LastUpdated date="12-01-2026" />
+        <LastUpdated date="17-03-2026" />
       </div>
     </div>
   );
