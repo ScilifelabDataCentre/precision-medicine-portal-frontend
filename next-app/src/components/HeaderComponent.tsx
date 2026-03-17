@@ -184,6 +184,17 @@ function DesktopNav() {
         <NavigationMenuItem role="none">
           <NavigationMenuLink asChild>
             <Link
+              href="/digifor1health"
+              className={navigationMenuTriggerStyle()}
+              aria-label="DIGIfor1healthSE initiative"
+            >
+              DIGIfor1healthSE
+            </Link>
+          </NavigationMenuLink>
+        </NavigationMenuItem>
+        <NavigationMenuItem role="none">
+          <NavigationMenuLink asChild>
+            <Link
               href="/contact"
               className={navigationMenuTriggerStyle()}
               aria-label="Contact us"
@@ -281,6 +292,13 @@ function MobileNav() {
             aria-label="OMOP common data model"
           >
             OMOP CDM
+          </Link>
+          <Link
+            href="/digifor1health"
+            className=""
+            aria-label="DIGIfor1healthSE initiative"
+          >
+            DIGIfor1healthSE
           </Link>
           <Link href="/contact" className="" aria-label="Contact us">
             Contact
