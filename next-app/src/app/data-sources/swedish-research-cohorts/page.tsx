@@ -14,6 +14,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Users, Dna, Activity } from "lucide-react";
+import { sanitizeURL } from "@/lib/security-utils";
 
 type StudyType =
   | "population_cohort"
@@ -434,7 +435,7 @@ export default function SwedishResearchCohortsPage(): ReactElement {
                   <CardHeader className="bg-muted p-4">
                     <CardTitle className="text-lg font-medium text-primary hover:underline">
                       <a
-                        href={item.link}
+                        href={sanitizeURL(item.link)}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"
@@ -451,7 +452,7 @@ export default function SwedishResearchCohortsPage(): ReactElement {
                     <div className="flex flex-col gap-3">
                       {item.SND && (
                         <a
-                          href={item.SND}
+                          href={sanitizeURL(item.SND)}
                           target="_blank"
                           rel="noopener noreferrer"
                           className={`inline-flex items-center gap-2 px-3 py-1 text-sm font-medium rounded-full text-black ${TAG_COLOURS.snd} hover:opacity-90 self-start transition-opacity duration-100 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2`}
