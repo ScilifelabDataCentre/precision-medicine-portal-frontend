@@ -30,7 +30,7 @@ const projects: Project[] = [
   {
     name: "SciLifeLab Precision Medicine (PM) Portal",
     description:
-      "The PM Portal is a new service for researchers in the precision medicine field, designed to support and accelerate data-driven life science research in Sweden. It provides links to various data sources, customised dashboards, and resources for navigating data management challenges. Researchers can also find guidance on handling sensitive data and links to relevant tools and services.\n\nThe portal aims to promote open science by helping research groups make their data FAIR and publicly accessible. The portal is part of the SciLifeLab Data Platform, operated by the SciLifeLab Data Centre.",
+      "The PM Portal is a service for researchers in the precision medicine field, designed to support and accelerate data-driven life science research in Sweden. It provides links to various data sources, customised dashboards, and resources for navigating data management challenges. Researchers can also find guidance on handling sensitive data and links to relevant tools and services.\n\nThe portal aims to promote open science by helping research groups make their data FAIR and publicly accessible. The portal is part of the SciLifeLab Data Platform, operated by the SciLifeLab Data Centre.",
     url: "https://precision-medicine-portal.scilifelab.se",
     logoKey: "pmPortal",
   },
@@ -45,12 +45,6 @@ const projects: Project[] = [
     description:
       "This project is part of the Personalised Cancer Medicine Program at KI, aiming to improve the use of cancer patient samples for advanced profiling to enhance precision medicine. It addresses challenges in sample handling, data integration, and stakeholder coordination while ensuring high-quality preparation and data integrity. The DSN-PMD drives Work Package 2, with the key goal of developing unique sample ID and pseudonymisation tools to track samples and safeguard patient data. Funded by Radiumhemmet.",
     url: "https://ki.se/en/cancer-research-ki/research/personalised-cancer-medicine-pcm-program",
-  },
-  {
-    name: "RAGnar",
-    description:
-      "RAGnar is a retrieval-augmented generation (RAG) AI tool aiming to support researchers and students in the field of precision medicine. It combines the capabilities of large language models with the ability to retrieve relevant information from external knowledge sources, ensuring that responses are accurate and well-grounded in reliable data.\n\nCurrently, RAGnar leverages open-access publications and abstracts from PubMed, referencing any paper it bases its answers on. This approach enhances transparency and credibility, making it a valuable resource for exploring precision medicine topics. RAGnar will be launched as a standalone page and will also be prominently featured on the Precision Medicine Portal.",
-    url: "https://precision-medicine-portal.scilifelab.se",
   },
   {
     name: "TEF-Health",
