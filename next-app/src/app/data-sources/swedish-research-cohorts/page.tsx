@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, ReactElement } from "react";
+import { useState, useEffect, useCallback, useMemo, ReactElement } from "react";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import Title from "@/components/common/title";
 import { LastUpdated } from "@/components/common/last-updated";
@@ -75,6 +75,26 @@ interface Filters {
   disease_area: DiseaseArea[];
 }
 
+const SEARCH_CONFIG = {
+  DEBOUNCE_DELAY: 300,
+} as const;
+
+function useDebounce<T>(value: T, delay: number): T {
+  const [debouncedValue, setDebouncedValue] = useState<T>(value);
+
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      setDebouncedValue(value);
+    }, delay);
+
+    return () => {
+      clearTimeout(handler);
+    };
+  }, [value, delay]);
+
+  return debouncedValue;
+}
+
 export default function SwedishResearchCohortsPage(): ReactElement {
   const [dataSources, setDataSources] = useState<DataSource[]>([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -84,6 +104,10 @@ export default function SwedishResearchCohortsPage(): ReactElement {
     disease_area: [],
   });
   const [searchBar, setSearchBar] = useState("");
+  const debouncedSearchTerm = useDebounce(
+    searchBar,
+    SEARCH_CONFIG.DEBOUNCE_DELAY,
+  );
 
   async function fetchData() {
     try {
@@ -101,74 +125,82 @@ export default function SwedishResearchCohortsPage(): ReactElement {
     fetchData();
   }, []);
 
-  function toggleStudyType(value: StudyType) {
+  const toggleStudyType = useCallback((value: StudyType) => {
     setFilters((prev) => ({
       ...prev,
       study_type: prev.study_type.includes(value)
         ? prev.study_type.filter((t) => t !== value)
         : [...prev.study_type, value],
     }));
-  }
+  }, []);
 
-  function toggleDataType(value: DataType) {
+  const toggleDataType = useCallback((value: DataType) => {
     setFilters((prev) => ({
       ...prev,
       data_types: prev.data_types.includes(value)
         ? prev.data_types.filter((t) => t !== value)
         : [...prev.data_types, value],
     }));
-  }
+  }, []);
 
-  function toggleDiseaseArea(value: DiseaseArea) {
+  const toggleDiseaseArea = useCallback((value: DiseaseArea) => {
     setFilters((prev) => ({
       ...prev,
       disease_area: prev.disease_area.includes(value)
         ? prev.disease_area.filter((d) => d !== value)
         : [...prev.disease_area, value],
     }));
-  }
+  }, []);
 
-  function matchesFilters(item: DataSource): boolean {
-    if (
-      filters.study_type.length > 0 &&
-      !filters.study_type.includes(item.study_type)
-    )
-      return false;
-    if (filters.data_types.length > 0) {
-      const hasMatch = filters.data_types.some((dt) =>
-        item.data_types.includes(dt),
-      );
-      if (!hasMatch) return false;
+  const searchWords = useMemo(() => {
+    return debouncedSearchTerm
+      .toLowerCase()
+      .split(/\s+/)
+      .filter((term) => term.length > 0);
+  }, [debouncedSearchTerm]);
+
+  const filtered = useMemo(() => {
+    const afterFilters = dataSources.filter((item) => {
+      if (
+        filters.study_type.length > 0 &&
+        !filters.study_type.includes(item.study_type)
+      )
+        return false;
+      if (filters.data_types.length > 0) {
+        const hasMatch = filters.data_types.some((dt) =>
+          item.data_types.includes(dt),
+        );
+        if (!hasMatch) return false;
+      }
+      if (filters.disease_area.length > 0) {
+        const hasMatch = filters.disease_area.some((da) =>
+          item.disease_area.includes(da),
+        );
+        if (!hasMatch) return false;
+      }
+      return true;
+    });
+
+    if (searchWords.length === 0) {
+      return afterFilters.sort((a, b) => a.title.localeCompare(b.title));
     }
-    if (filters.disease_area.length > 0) {
-      const hasMatch = filters.disease_area.some((da) =>
-        item.disease_area?.includes(da),
-      );
-      if (!hasMatch) return false;
-    }
-    return true;
-  }
 
-  function matchesSearch(item: DataSource): boolean {
-    if (!searchBar.trim()) return true;
-    const words = searchBar.toLowerCase().split(/\s+/).filter(Boolean);
-    const searchable = [
-      item.title,
-      item.description,
-      ...(item.tags ?? []),
-      ...item.data_types.map((d) => DATA_TYPE_LABELS[d]),
-      STUDY_TYPE_LABELS[item.study_type],
-      ...(item.disease_area ?? []).map((d) => DISEASE_AREA_LABELS[d]),
-    ]
-      .join(" ")
-      .toLowerCase();
-    return words.every((word) => searchable.includes(word));
-  }
-
-  const filtered = dataSources
-    .filter(matchesFilters)
-    .filter(matchesSearch)
-    .sort((a, b) => a.title.localeCompare(b.title));
+    return afterFilters
+      .filter((item) => {
+        const searchable = [
+          item.title,
+          item.description,
+          ...(item.tags ?? []),
+          ...item.data_types.map((d) => DATA_TYPE_LABELS[d]),
+          STUDY_TYPE_LABELS[item.study_type],
+          ...item.disease_area.map((d) => DISEASE_AREA_LABELS[d]),
+        ]
+          .join(" ")
+          .toLowerCase();
+        return searchWords.every((word) => searchable.includes(word));
+      })
+      .sort((a, b) => a.title.localeCompare(b.title));
+  }, [dataSources, filters, searchWords]);
 
   if (isLoading) {
     return (
