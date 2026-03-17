@@ -13,166 +13,189 @@ import {
 } from "@/components/ui/breadcrumb";
 import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
+import {
+  Users,
+  Dna,
+  Scan,
+  ClipboardList,
+  Database,
+  Layers,
+  Activity,
+  Beaker,
+  type LucideIcon,
+} from "lucide-react";
 
-// Define the type for a single project
-type Project = {
-  name: string;
+export type StudyType =
+  | "population_cohort"
+  | "disease_specific_cohort"
+  | "biobank_study"
+  | "cohort_infrastructure";
+
+export type DataType =
+  | "genomics"
+  | "clinical_data"
+  | "imaging"
+  | "registry_linkage"
+  | "multi_omics";
+
+export type DiseaseArea =
+  | "cancer"
+  | "cardiovascular"
+  | "metabolic"
+  | "neurology";
+
+type DataSource = {
+  title: string;
   link: string;
+  SND?: string;
+  category: string;
+  study_type: StudyType;
+  data_types: DataType[];
+  disease_area: DiseaseArea[];
   description: string;
-  SND?: string; // Optional SND field
-  tags: {
-    disease?: string[];
-    participants: string[];
-  };
+  tags?: string[];
 };
 
-// Tag colours
+const STUDY_TYPE_LABELS: Record<StudyType, string> = {
+  population_cohort: "Population cohort",
+  disease_specific_cohort: "Disease-specific cohort",
+  biobank_study: "Biobank study",
+  cohort_infrastructure: "Cohort infrastructure",
+};
+
+const DATA_TYPE_LABELS: Record<DataType, string> = {
+  genomics: "Genomics",
+  clinical_data: "Clinical data",
+  imaging: "Imaging",
+  registry_linkage: "Registry linkage",
+  multi_omics: "Multi-omics",
+};
+
+const DISEASE_AREA_LABELS: Record<DiseaseArea, string> = {
+  cancer: "Cancer",
+  cardiovascular: "Cardiovascular",
+  metabolic: "Metabolic",
+  neurology: "Neurology",
+};
+
+const DATA_TYPE_ICONS: Record<DataType, LucideIcon> = {
+  genomics: Dna,
+  clinical_data: ClipboardList,
+  imaging: Scan,
+  registry_linkage: Database,
+  multi_omics: Layers,
+};
+
+const STUDY_TYPE_ICONS: Record<StudyType, LucideIcon> = {
+  population_cohort: Users,
+  disease_specific_cohort: Activity,
+  biobank_study: Beaker,
+  cohort_infrastructure: Layers,
+};
+
 const TAG_COLOURS: { [key: string]: string } = {
-  participants: "bg-[#82AEB2] text-black",
-  snd: "bg-[#649ED2] text-black", // Custom SND button colour
+  snd: "bg-[#649ED2] text-black",
+  tag: "bg-muted text-muted-foreground",
 };
 
-interface IProjectFilters {
-  participants: string[];
+interface Filters {
+  study_type: StudyType[];
+  data_types: DataType[];
+  disease_area: DiseaseArea[];
 }
 
-export default function SwedishResearchProjectsPage() {
-  const [projectData, setProjectData] = useState<Project[]>([]);
+export default function SwedishResearchCohortsPage() {
+  const [dataSources, setDataSources] = useState<DataSource[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [selectedFilters, setSelectedFilters] = useState<IProjectFilters>({
-    participants: [],
+  const [filters, setFilters] = useState<Filters>({
+    study_type: [],
+    data_types: [],
+    disease_area: [],
   });
-  const [searchBar, setSearchBar] = useState<string>("");
+  const [searchBar, setSearchBar] = useState("");
 
-  // Get unique tags for each category
-  const uniqueTags = projectData.reduce(
-    (acc, project) => {
-      project.tags.participants?.forEach((tag) => {
-        if (!acc.participants.includes(tag)) acc.participants.push(tag);
-      });
-      return acc;
-    },
-    { participants: [] } as IProjectFilters
-  );
-
-  // Helper function to get the minimum number from a range string
-  function getMinNumberFromRange(range: string): number {
-    // Remove thousand separators and convert to number
-    const cleanNumber = (str: string) => {
-      return parseInt(str.replace(/\./g, "").replace(/[^0-9]/g, "")) || 0;
-    };
-
-    // Handle "less than" case
-    if (range.includes("<")) {
-      return cleanNumber(range) - 1; // Make it appear before the actual number
-    }
-
-    // Handle "greater than" case
-    if (range.includes(">")) {
-      return cleanNumber(range) + 1; // Make it appear after the actual number
-    }
-
-    // Handle single numbers
-    if (!range.includes("-")) {
-      return cleanNumber(range);
-    }
-
-    // Handle ranges (e.g., "1.000-10.000")
-    const [min] = range.split("-").map((num) => cleanNumber(num));
-    return min;
-  }
-
-  // Sort participants by numerical range and contextual alphabetically
-  const sortedTags = {
-    participants: [...uniqueTags.participants].sort((a, b) => {
-      const minA = getMinNumberFromRange(a);
-      const minB = getMinNumberFromRange(b);
-      return minA - minB;
-    }),
-  };
-
-  const nrOfCheckboxes = sortedTags.participants.length;
-  const [checkedList, setCheckedList] = useState<boolean[]>(
-    new Array(nrOfCheckboxes).fill(false)
-  );
-
-  async function fetchProjectData() {
+  async function fetchData() {
     try {
       const data = await import(
         "@/assets/Sorted_Swedish_Research_Projects.json"
       );
-      setProjectData(data.Projects as Project[]);
-      setIsLoading(false);
+      setDataSources(data.dataSources as DataSource[]);
     } catch (error) {
-      console.error("Error fetching project data:", error);
+      console.error("Error fetching cohort data:", error);
+    } finally {
       setIsLoading(false);
     }
   }
 
   useEffect(() => {
-    fetchProjectData();
+    fetchData();
   }, []);
 
-  function getCountForType(type: string): number {
-    return projectData.filter((project) => {
-      return project.tags.participants.some(
-        (tag) => tag.toLowerCase() === type.toLowerCase()
-      );
-    }).length;
+  function toggleStudyType(value: StudyType) {
+    setFilters((prev) => ({
+      ...prev,
+      study_type: prev.study_type.includes(value)
+        ? prev.study_type.filter((t) => t !== value)
+        : [...prev.study_type, value],
+    }));
   }
 
-  function checkedFilter(
-    filterType: keyof IProjectFilters,
-    filterName: string,
-    boxIndex: number
-  ) {
-    setSelectedFilters((prev) => {
-      const newFilters = { ...prev };
-      if (newFilters[filterType].includes(filterName)) {
-        newFilters[filterType] = newFilters[filterType].filter(
-          (item) => item !== filterName
-        );
-      } else {
-        newFilters[filterType].push(filterName);
-      }
-      return newFilters;
-    });
-
-    setCheckedList((prev) => {
-      const newCheckedList = [...prev];
-      newCheckedList[boxIndex] = !newCheckedList[boxIndex];
-      return newCheckedList;
-    });
+  function toggleDataType(value: DataType) {
+    setFilters((prev) => ({
+      ...prev,
+      data_types: prev.data_types.includes(value)
+        ? prev.data_types.filter((t) => t !== value)
+        : [...prev.data_types, value],
+    }));
   }
 
-  function applyParticipantFilter(project: Project) {
-    return (
-      selectedFilters.participants.length === 0 ||
-      selectedFilters.participants.some((filter) =>
-        project.tags.participants.some(
-          (tag) => tag.toLowerCase() === filter.toLowerCase()
-        )
-      )
-    );
+  function toggleDiseaseArea(value: DiseaseArea) {
+    setFilters((prev) => ({
+      ...prev,
+      disease_area: prev.disease_area.includes(value)
+        ? prev.disease_area.filter((d) => d !== value)
+        : [...prev.disease_area, value],
+    }));
   }
 
-  function applySearchBar(project: Project) {
-    if (searchBar.length === 0) return true;
-    const searchBarLower = searchBar.toLowerCase();
-    const searchTags = searchBarLower.split(" ");
-    return (
-      project.name.toLowerCase().includes(searchBarLower) ||
-      project.description.toLowerCase().includes(searchBarLower) ||
-      searchTags.some((tag) =>
-        project.tags.participants.some((searchTag) =>
-          searchTag.toLowerCase().includes(tag)
-        )
-      )
-    );
+  function matchesFilters(item: DataSource): boolean {
+    if (filters.study_type.length > 0 && !filters.study_type.includes(item.study_type)) return false;
+    if (filters.data_types.length > 0) {
+      const hasMatch = filters.data_types.some((dt) => item.data_types.includes(dt));
+      if (!hasMatch) return false;
+    }
+    if (filters.disease_area.length > 0) {
+      const hasMatch = filters.disease_area.some((da) => item.disease_area?.includes(da));
+      if (!hasMatch) return false;
+    }
+    return true;
   }
+
+  function matchesSearch(item: DataSource): boolean {
+    if (!searchBar.trim()) return true;
+    const words = searchBar.toLowerCase().split(/\s+/).filter(Boolean);
+    const searchable = [
+      item.title,
+      item.description,
+      ...(item.tags ?? []),
+      ...item.data_types.map((d) => DATA_TYPE_LABELS[d]),
+      STUDY_TYPE_LABELS[item.study_type],
+      ...(item.disease_area ?? []).map((d) => DISEASE_AREA_LABELS[d]),
+    ].join(" ").toLowerCase();
+    return words.every((word) => searchable.includes(word));
+  }
+
+  const filtered = dataSources
+    .filter(matchesFilters)
+    .filter(matchesSearch)
+    .sort((a, b) => a.title.localeCompare(b.title));
 
   if (isLoading) {
-    return <div className="text-center py-6">Loading...</div>;
+    return (
+      <div className="container mx-auto px-4 py-8">
+        <div className="text-center py-6">Loading...</div>
+      </div>
+    );
   }
 
   return (
@@ -190,7 +213,7 @@ export default function SwedishResearchProjectsPage() {
             <BreadcrumbSeparator />
             <BreadcrumbItem>
               <BreadcrumbLink href="/data-sources/swedish-research-projects">
-                Swedish research projects
+                Swedish research cohorts and biobank studies
               </BreadcrumbLink>
             </BreadcrumbItem>
           </BreadcrumbList>
@@ -198,40 +221,27 @@ export default function SwedishResearchProjectsPage() {
       </nav>
 
       <Title level={1} className="mb-4">
-        Swedish Research Projects
+        Swedish research cohorts and biobank studies
       </Title>
 
       <div
-        className="text-justify mx-auto mb-4"
+        className="text-justify mx-auto mb-6"
         role="doc-abstract"
         aria-label="Page introduction and overview"
       >
         <p className="mb-2">
-          This page highlights selected research projects tied to biobanks,
-          showcasing their significant role in advancing scientific research and
-          medical innovation. These projects, conducted by academic
-          institutions, healthcare providers, and industry collaborators in
-          Sweden, address key scientific questions, drive technological
-          development, and improve healthcare outcomes.
-        </p>
-        <p>
-          The information on this page is based on the brochure{" "}
-          <a
-            href="https://biobanksverige.se/wp-content/uploads/2022/11/digital-broschyr-15-svenska-forskningsprojekt-version-10.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-primary hover:underline focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"
-            aria-label="Read 15 Swedish Research Projects brochure (opens in new tab)"
-          >
-            &quot;15 Swedish Research Projects&quot;
-          </a>{" "}
-          published by Biobank Sweden. See the brochure for a more comprehensive
-          overview of the projects.
+          This page highlights major Swedish research cohorts and biobank-based
+          studies that collect biological samples and health data. These are
+          typically long-term research resources used by multiple studies rather
+          than single projects. In Sweden, such data are often linked with
+          national quality registries and health registers, enabling large-scale
+          precision medicine research.
         </p>
       </div>
+
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
         <aside
-          className="space-y-8"
+          className="space-y-6"
           aria-label="Search and filter options"
           role="complementary"
         >
@@ -244,7 +254,7 @@ export default function SwedishResearchProjectsPage() {
             submit data requests, and set up data management agreements.
           </div>
 
-          <section aria-label="Search research projects">
+          <section aria-label="Search cohorts and biobank studies">
             <div className="space-y-4">
               <label
                 htmlFor="search"
@@ -263,40 +273,119 @@ export default function SwedishResearchProjectsPage() {
                 aria-describedby="search-help"
               />
               <div id="search-help" className="sr-only">
-                Search through research project names, descriptions, and tags
+                Search by name, description, study type, data type, or disease area
               </div>
             </div>
           </section>
 
-          <section aria-label="Filter by number of participants">
+          <section aria-label="Filters" className="space-y-6">
+            {(filters.study_type.length > 0 ||
+              filters.data_types.length > 0 ||
+              filters.disease_area.length > 0) && (
+              <button
+                type="button"
+                onClick={() =>
+                  setFilters({
+                    study_type: [],
+                    data_types: [],
+                    disease_area: [],
+                  })
+                }
+                className="text-sm text-primary hover:underline focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"
+                aria-label="Clear all filters"
+              >
+                Clear all filters
+              </button>
+            )}
+
             <fieldset className="space-y-4">
-              <legend className="font-bold text-2xl text-foreground">
-                Participants
+              <legend className="font-bold text-xl text-foreground flex items-center gap-2">
+                <Users className="h-5 w-5" aria-hidden />
+                Study type
               </legend>
               <Card>
-                <CardContent className="pt-6">
-                  <div role="group" aria-label="Participant count filters">
-                    {sortedTags.participants.map((tag, index) => (
+                <CardContent className="pt-4 pb-4">
+                  <div className="space-y-3" role="group" aria-label="Study type filters">
+                    {(Object.keys(STUDY_TYPE_LABELS) as StudyType[]).map((key) => (
                       <div
-                        className="flex items-center space-x-3 mb-4"
-                        key={tag}
+                        className="flex items-center space-x-3"
+                        key={key}
                       >
                         <Checkbox
-                          id={`participant-${index}`}
-                          checked={checkedList[index]}
-                          onCheckedChange={() =>
-                            checkedFilter("participants", tag, index)
-                          }
-                          aria-describedby={`participant-count-${index}`}
+                          id={`study-${key}`}
+                          checked={filters.study_type.includes(key)}
+                          onCheckedChange={() => toggleStudyType(key)}
+                          aria-label={STUDY_TYPE_LABELS[key]}
                         />
                         <label
-                          htmlFor={`participant-${index}`}
-                          className="text-base leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                          htmlFor={`study-${key}`}
+                          className="text-sm cursor-pointer"
                         >
-                          {tag}{" "}
-                          <span id={`participant-count-${index}`}>
-                            ({getCountForType(tag)})
-                          </span>
+                          {STUDY_TYPE_LABELS[key]}
+                        </label>
+                      </div>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            </fieldset>
+
+            <fieldset className="space-y-4">
+              <legend className="font-bold text-xl text-foreground flex items-center gap-2">
+                <Dna className="h-5 w-5" aria-hidden />
+                Data type
+              </legend>
+              <Card>
+                <CardContent className="pt-4 pb-4">
+                  <div className="space-y-3" role="group" aria-label="Data type filters">
+                    {(Object.keys(DATA_TYPE_LABELS) as DataType[]).map((key) => (
+                      <div
+                        className="flex items-center space-x-3"
+                        key={key}
+                      >
+                        <Checkbox
+                          id={`data-${key}`}
+                          checked={filters.data_types.includes(key)}
+                          onCheckedChange={() => toggleDataType(key)}
+                          aria-label={DATA_TYPE_LABELS[key]}
+                        />
+                        <label
+                          htmlFor={`data-${key}`}
+                          className="text-sm cursor-pointer"
+                        >
+                          {DATA_TYPE_LABELS[key]}
+                        </label>
+                      </div>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            </fieldset>
+
+            <fieldset className="space-y-4">
+              <legend className="font-bold text-xl text-foreground flex items-center gap-2">
+                <Activity className="h-5 w-5" aria-hidden />
+                Disease area
+              </legend>
+              <Card>
+                <CardContent className="pt-4 pb-4">
+                  <div className="space-y-3" role="group" aria-label="Disease area filters">
+                    {(Object.keys(DISEASE_AREA_LABELS) as DiseaseArea[]).map((key) => (
+                      <div
+                        className="flex items-center space-x-3"
+                        key={key}
+                      >
+                        <Checkbox
+                          id={`disease-${key}`}
+                          checked={filters.disease_area.includes(key)}
+                          onCheckedChange={() => toggleDiseaseArea(key)}
+                          aria-label={DISEASE_AREA_LABELS[key]}
+                        />
+                        <label
+                          htmlFor={`disease-${key}`}
+                          className="text-sm cursor-pointer"
+                        >
+                          {DISEASE_AREA_LABELS[key]}
                         </label>
                       </div>
                     ))}
@@ -309,94 +398,113 @@ export default function SwedishResearchProjectsPage() {
 
         <section
           className="lg:col-span-3 space-y-6"
-          aria-label="Research projects results"
+          aria-label="Cohorts and biobank studies results"
           role="region"
         >
           <div
             className="space-y-6"
             role="list"
-            aria-label={`${
-              projectData
-                .filter((project) => applyParticipantFilter(project))
-                .filter((project) => applySearchBar(project)).length
-            } research projects found`}
+            aria-label={`${filtered.length} resources found`}
           >
-            {projectData
-              .filter((project) => applyParticipantFilter(project))
-              .filter((project) => applySearchBar(project))
-              .sort((a, b) => a.name.localeCompare(b.name))
-              .map((project, index) => (
-                <article key={index} role="listitem">
-                  <Card className="bg-muted border border-neutral rounded-lg shadow-sm hover:shadow-md transition-shadow">
-                    <CardHeader className="bg-muted p-4">
-                      <CardTitle className="text-lg font-medium text-primary hover:underline">
+            {filtered.map((item, index) => (
+              <article key={index} role="listitem">
+                <Card className="bg-muted border border-neutral rounded-lg shadow-sm hover:shadow-md transition-shadow">
+                  <CardHeader className="bg-muted p-4">
+                    <CardTitle className="text-lg font-medium text-primary hover:underline">
+                      <a
+                        href={item.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"
+                        aria-label={`Visit ${item.title} (opens in new tab)`}
+                      >
+                        {item.title}
+                      </a>
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="bg-card p-4">
+                    <p className="text-muted-foreground mb-4">
+                      {item.description}
+                    </p>
+                    <div className="flex flex-col gap-3">
+                      {item.SND && (
                         <a
-                          href={project.link}
+                          href={item.SND}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"
-                          aria-label={`Visit ${project.name} project website (opens in new tab)`}
+                          className={`inline-flex items-center gap-2 px-3 py-1 text-sm font-medium rounded-full text-black ${TAG_COLOURS.snd} hover:opacity-90 self-start transition-opacity duration-100 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2`}
+                          aria-label={`View SND metadata for ${item.title} (opens in new tab)`}
                         >
-                          {project.name}
-                        </a>
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent className="bg-card p-4">
-                      <p className="text-muted-foreground mb-4">
-                        {project.description || "Description not provided."}
-                      </p>
-                      <div className="flex flex-col gap-3">
-                        {/* SND Button */}
-                        {project.SND && (
-                          <a
-                            href={project.SND}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className={`inline-flex items-center gap-2 px-3 py-1 text-sm font-medium rounded-full text-black ${TAG_COLOURS.snd} hover:opacity-90 self-start transition-opacity duration-100 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2`}
-                            aria-label={`View SND metadata for ${project.name} (opens in new tab)`}
+                          SND Metadata
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="20"
+                            height="20.092"
+                            className="flex-shrink-0"
+                            aria-hidden="true"
+                            role="presentation"
                           >
-                            SND Metadata
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              width="20"
-                              height="20.092"
-                              className="flex-shrink-0"
-                              aria-hidden="true"
-                              role="presentation"
-                            >
-                              <path d="m12 0 2.561 2.537-6.975 6.976 2.828 2.828 6.988-6.988L20 7.927 19.998 0H12z" />
-                              <path d="M9 4.092v-2H0v18h18v-9h-2v7H2v-14h7z" />
-                            </svg>
-                          </a>
-                        )}
-                        {/* Other Tags */}
-                        <div
-                          className="flex flex-wrap gap-2"
-                          role="list"
-                          aria-label="Project tags"
+                            <path d="m12 0 2.561 2.537-6.975 6.976 2.828 2.828 6.988-6.988L20 7.927 19.998 0H12z" />
+                            <path d="M9 4.092v-2H0v18h18v-9h-2v7H2v-14h7z" />
+                          </svg>
+                        </a>
+                      )}
+                      <div
+                        className="flex flex-wrap gap-2"
+                        role="list"
+                        aria-label="Resource type and data types"
+                      >
+                        <span
+                          className={`px-3 py-1 rounded-full text-sm shrink-0 ${TAG_COLOURS.tag}`}
+                          role="listitem"
                         >
-                          {Object.entries(project.tags).map(
-                            ([category, tags]) =>
-                              category !== "disease" &&
-                              tags?.map((tag, i) => (
-                                <span
-                                  key={`${category}-${i}`}
-                                  className={`px-3 py-1 rounded-full text-sm ${TAG_COLOURS[category]}`}
-                                  role="listitem"
-                                >
-                                  {tag}
-                                </span>
-                              ))
-                          )}
-                        </div>
+                          {STUDY_TYPE_LABELS[item.study_type]}
+                        </span>
+                        {item.data_types.slice(0, 4).map((dt) => (
+                          <span
+                            key={dt}
+                            className={`px-3 py-1 rounded-full text-sm shrink-0 ${TAG_COLOURS.tag}`}
+                            role="listitem"
+                          >
+                            {DATA_TYPE_LABELS[dt]}
+                          </span>
+                        ))}
                       </div>
-                    </CardContent>
-                  </Card>
-                </article>
-              ))}
+                    </div>
+                  </CardContent>
+                </Card>
+              </article>
+            ))}
           </div>
         </section>
       </div>
+
+      <div
+        className="mt-8 p-4 bg-muted/50 border border-neutral rounded-lg text-sm text-muted-foreground"
+        role="complementary"
+        aria-label="Context on Swedish data linkage"
+      >
+        <p className="mb-2">
+          In Sweden, cohort and biobank data are often linked with clinical
+          registries and national health registers, creating rich datasets for
+          precision medicine research. Researchers can apply for access through
+          the responsible institutions or national catalogues.
+        </p>
+        <p>
+          For a broader catalogue of Swedish research data, see the{" "}
+          <a
+            href="https://snd.se/en/catalogue/search"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-primary hover:underline focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"
+            aria-label="Swedish National Data Service catalogue search (opens in new tab)"
+          >
+            Swedish National Data Service (SND) search
+          </a>
+          .
+        </p>
+      </div>
+
       <LastUpdated date="20-08-2025" />
     </div>
   );

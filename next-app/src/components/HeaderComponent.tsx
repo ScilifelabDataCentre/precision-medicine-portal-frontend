@@ -144,10 +144,10 @@ function DesktopNav() {
               </ListItem>
               <ListItem
                 href="/data-sources/swedish-research-projects"
-                title="Swedish research projects"
+                title="Swedish research cohorts and biobank studies"
                 role="menuitem"
               >
-                Discover Swedish research projects and databases
+                Discover Swedish research cohorts and biobank-based studies
               </ListItem>
               <ListItem
                 href="/data-sources/others"
@@ -261,9 +261,9 @@ function MobileNav() {
           <Link
             href="/data-sources/swedish-research-projects"
             className="text-sm pl-4"
-            aria-label="Swedish research projects"
+            aria-label="Swedish research cohorts and biobank studies"
           >
-            Swedish research projects
+            Swedish research cohorts and biobank studies
           </Link>
           <Link
             href="/data-sources/others"
