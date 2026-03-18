@@ -760,7 +760,7 @@ export default function DataSourcesOthersPage(): ReactElement {
         </section>
       </div>
 
-      <LastUpdated date="27-02-2026" />
+      <LastUpdated date="17-03-2026" />
     </div>
   );
 }
