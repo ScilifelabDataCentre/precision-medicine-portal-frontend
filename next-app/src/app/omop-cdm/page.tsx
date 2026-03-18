@@ -421,12 +421,13 @@ export default function OMOPCDMPage(): ReactElement {
             to learn more about how to get involved with the OMOP initiative in
             Sweden, please don’t hesitate to reach out to us at{" "}
             <a
-              href="mailto:stefano.rapisarda@scilifelab.se"
+              href="mailto:precisionmedicine@scilifelab.se"
               className="text-primary hover:text-black underline focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"
-              aria-label="Send email to SciLifeLab"
+              aria-label="Send email to precisionmedicine@scilifelab.se"
             >
-              stefano.rapisarda@scilifelab.se
+              precisionmedicine@scilifelab.se
             </a>
+            .
           </p>
         </section>
 
