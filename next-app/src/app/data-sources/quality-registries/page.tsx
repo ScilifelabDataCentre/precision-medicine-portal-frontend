@@ -15,6 +15,7 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import { IRegistryFilters, IRegistrySource, filters } from "@/interfaces/types";
+import { Building2, FolderOpen } from "lucide-react";
 
 // Configuration constants
 const ORGANISATION_LINKS: Record<string, string> = {
@@ -613,10 +614,28 @@ export default function QualityRegistryPage() {
               </div>
             </section>
 
-            {/* Organisation Filters */}
+            {(selectedFilters.registryCentre.length > 0 ||
+              selectedFilters.registryCategory.length > 0) && (
+              <button
+                type="button"
+                onClick={() =>
+                  setSelectedFilters({
+                    registryCentre: [],
+                    registryCategory: [],
+                  })
+                }
+                className="text-sm text-primary hover:underline focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"
+                aria-label="Clear all filters"
+              >
+                Clear all filters
+              </button>
+            )}
+
+            {/* Organisation filters */}
             <section aria-label="Filter by organisation">
               <FilterSection
                 title="Organisation"
+                icon={<Building2 className="h-5 w-5" aria-hidden />}
                 items={filters.registryCentre}
                 selectedItems={selectedFilters.registryCentre}
                 onFilterChange={(item) => updateFilter("registryCentre", item)}
@@ -624,10 +643,11 @@ export default function QualityRegistryPage() {
               />
             </section>
 
-            {/* Category Filters */}
+            {/* Category filters */}
             <section aria-label="Filter by category">
               <FilterSection
                 title="Category"
+                icon={<FolderOpen className="h-5 w-5" aria-hidden />}
                 items={filters.registryCategory}
                 selectedItems={selectedFilters.registryCategory}
                 onFilterChange={(item) =>
