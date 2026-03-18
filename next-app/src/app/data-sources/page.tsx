@@ -45,12 +45,12 @@ export default function DataSourcesPage(): ReactElement {
         </p>
         <div
           className="flex flex-row items-center"
-          aria-label="Swedish research projects and databases section"
+          aria-label="Swedish research cohorts and biobank studies section"
         >
-          <Title level={2}>Swedish research projects and databases</Title>
+          <Title level={2}>Swedish research cohorts and biobank studies</Title>
           <Link
-            href="/data-sources/swedish-research-projects"
-            aria-label="Go to Swedish research projects page"
+            href="/data-sources/swedish-research-cohorts"
+            aria-label="Go to Swedish research cohorts and biobank studies page"
             className="focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"
           >
             <svg
@@ -68,15 +68,15 @@ export default function DataSourcesPage(): ReactElement {
           </Link>
         </div>
         <p>
-          It is possible to request existing data from several research projects
-          or research databases in Sweden. Projects and research data can be
-          found on the website of the entity responsible for the research, or in
-          registries, data catalogs, and other compilations such as:
+          It is possible to request existing data from several research cohorts
+          and biobank-based studies in Sweden. Data can be found on the website
+          of the responsible institution, or in registries, data catalogues, and
+          other compilations such as:
         </p>
         <ul
           className="list-disc pl-4"
           role="list"
-          aria-label="Swedish research projects and databases list"
+          aria-label="Swedish research cohorts and biobank studies list"
         >
           <li role="listitem">
             <a
@@ -84,15 +84,14 @@ export default function DataSourcesPage(): ReactElement {
               target="_blank"
               rel="noopener noreferrer"
               className="text-primary hover:text-black underline focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"
-              aria-label="Visit Precision Medicine Portal Swedish Research Projects website (opens in new tab)"
+              aria-label="Visit Precision Medicine Portal Swedish research cohorts and biobank studies (opens in new tab)"
             >
               Precision Medicine Portal
             </a>
-            : This page highlights selected research projects tied to biobanks,
-            showcasing their significant role in advancing scientific research
-            and medical innovation. These projects address key scientific
-            questions, drive technological development, and improve healthcare
-            outcomes.
+            : A curated selection of major Swedish research cohorts and
+            biobank-based studies that collect biological samples and health
+            data, often linked with national registries for precision medicine
+            research.
           </li>
           <li role="listitem">
             <a
