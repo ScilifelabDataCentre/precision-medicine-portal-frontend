@@ -12,7 +12,7 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import { Input } from "@/components/ui/input";
-import { Checkbox } from "@/components/ui/checkbox";
+import { FilterSection } from "@/components/common/FilterSection";
 import { Users, Dna, Activity } from "lucide-react";
 import { sanitizeURL } from "@/lib/security-utils";
 
@@ -64,6 +64,29 @@ const DISEASE_AREA_LABELS: Record<DiseaseArea, string> = {
   metabolic: "Metabolic",
   neurology: "Neurology",
 };
+
+const STUDY_TYPE_ITEMS = (Object.keys(STUDY_TYPE_LABELS) as StudyType[]).map(
+  (k) => STUDY_TYPE_LABELS[k],
+);
+const DATA_TYPE_ITEMS = (Object.keys(DATA_TYPE_LABELS) as DataType[]).map(
+  (k) => DATA_TYPE_LABELS[k],
+);
+const DISEASE_AREA_ITEMS = (
+  Object.keys(DISEASE_AREA_LABELS) as DiseaseArea[]
+).map((k) => DISEASE_AREA_LABELS[k]);
+
+function labelToStudyType(label: string): StudyType | undefined {
+  const entry = Object.entries(STUDY_TYPE_LABELS).find(([, v]) => v === label);
+  return entry ? (entry[0] as StudyType) : undefined;
+}
+function labelToDataType(label: string): DataType | undefined {
+  const entry = Object.entries(DATA_TYPE_LABELS).find(([, v]) => v === label);
+  return entry ? (entry[0] as DataType) : undefined;
+}
+function labelToDiseaseArea(label: string): DiseaseArea | undefined {
+  const entry = Object.entries(DISEASE_AREA_LABELS).find(([, v]) => v === label);
+  return entry ? (entry[0] as DiseaseArea) : undefined;
+}
 
 const TAG_COLOURS: { [key: string]: string } = {
   snd: "bg-[#649ED2] text-black",
@@ -312,110 +335,60 @@ export default function SwedishResearchCohortsPage(): ReactElement {
               </button>
             )}
 
-            <fieldset className="space-y-4">
-              <legend className="font-bold text-xl text-foreground flex items-center gap-2">
-                <Users className="h-5 w-5" aria-hidden="true" />
-                Study type
-              </legend>
-              <Card>
-                <CardContent className="pt-4 pb-4">
-                  <div
-                    className="space-y-3"
-                    role="group"
-                    aria-label="Study type filters"
-                  >
-                    {(Object.keys(STUDY_TYPE_LABELS) as StudyType[]).map(
-                      (key) => (
-                        <div className="flex items-center space-x-3" key={key}>
-                          <Checkbox
-                            id={`study-${key}`}
-                            checked={filters.study_type.includes(key)}
-                            onCheckedChange={() => toggleStudyType(key)}
-                            aria-label={STUDY_TYPE_LABELS[key]}
-                          />
-                          <label
-                            htmlFor={`study-${key}`}
-                            className="text-sm cursor-pointer"
-                          >
-                            {STUDY_TYPE_LABELS[key]}
-                          </label>
-                        </div>
-                      ),
-                    )}
-                  </div>
-                </CardContent>
-              </Card>
-            </fieldset>
+            <FilterSection
+              title="Study type"
+              icon={<Users className="h-5 w-5" aria-hidden />}
+              items={STUDY_TYPE_ITEMS}
+              selectedItems={filters.study_type.map((k) => STUDY_TYPE_LABELS[k])}
+              onFilterChange={(label) => {
+                const key = labelToStudyType(label);
+                if (key) toggleStudyType(key);
+              }}
+              getItemCount={(label) => {
+                const key = labelToStudyType(label);
+                return key
+                  ? dataSources.filter((d) => d.study_type === key).length
+                  : 0;
+              }}
+            />
 
-            <fieldset className="space-y-4">
-              <legend className="font-bold text-xl text-foreground flex items-center gap-2">
-                <Dna className="h-5 w-5" aria-hidden="true" />
-                Data type
-              </legend>
-              <Card>
-                <CardContent className="pt-4 pb-4">
-                  <div
-                    className="space-y-3"
-                    role="group"
-                    aria-label="Data type filters"
-                  >
-                    {(Object.keys(DATA_TYPE_LABELS) as DataType[]).map(
-                      (key) => (
-                        <div className="flex items-center space-x-3" key={key}>
-                          <Checkbox
-                            id={`data-${key}`}
-                            checked={filters.data_types.includes(key)}
-                            onCheckedChange={() => toggleDataType(key)}
-                            aria-label={DATA_TYPE_LABELS[key]}
-                          />
-                          <label
-                            htmlFor={`data-${key}`}
-                            className="text-sm cursor-pointer"
-                          >
-                            {DATA_TYPE_LABELS[key]}
-                          </label>
-                        </div>
-                      ),
-                    )}
-                  </div>
-                </CardContent>
-              </Card>
-            </fieldset>
+            <FilterSection
+              title="Data type"
+              icon={<Dna className="h-5 w-5" aria-hidden />}
+              items={DATA_TYPE_ITEMS}
+              selectedItems={filters.data_types.map((k) => DATA_TYPE_LABELS[k])}
+              onFilterChange={(label) => {
+                const key = labelToDataType(label);
+                if (key) toggleDataType(key);
+              }}
+              getItemCount={(label) => {
+                const key = labelToDataType(label);
+                return key
+                  ? dataSources.filter((d) => d.data_types.includes(key)).length
+                  : 0;
+              }}
+            />
 
-            <fieldset className="space-y-4">
-              <legend className="font-bold text-xl text-foreground flex items-center gap-2">
-                <Activity className="h-5 w-5" aria-hidden="true" />
-                Disease area
-              </legend>
-              <Card>
-                <CardContent className="pt-4 pb-4">
-                  <div
-                    className="space-y-3"
-                    role="group"
-                    aria-label="Disease area filters"
-                  >
-                    {(Object.keys(DISEASE_AREA_LABELS) as DiseaseArea[]).map(
-                      (key) => (
-                        <div className="flex items-center space-x-3" key={key}>
-                          <Checkbox
-                            id={`disease-${key}`}
-                            checked={filters.disease_area.includes(key)}
-                            onCheckedChange={() => toggleDiseaseArea(key)}
-                            aria-label={DISEASE_AREA_LABELS[key]}
-                          />
-                          <label
-                            htmlFor={`disease-${key}`}
-                            className="text-sm cursor-pointer"
-                          >
-                            {DISEASE_AREA_LABELS[key]}
-                          </label>
-                        </div>
-                      ),
-                    )}
-                  </div>
-                </CardContent>
-              </Card>
-            </fieldset>
+            <FilterSection
+              title="Disease area"
+              icon={<Activity className="h-5 w-5" aria-hidden />}
+              items={DISEASE_AREA_ITEMS}
+              selectedItems={filters.disease_area.map((k) =>
+                DISEASE_AREA_LABELS[k],
+              )}
+              onFilterChange={(label) => {
+                const key = labelToDiseaseArea(label);
+                if (key) toggleDiseaseArea(key);
+              }}
+              getItemCount={(label) => {
+                const key = labelToDiseaseArea(label);
+                return key
+                  ? dataSources.filter((d) =>
+                      d.disease_area.includes(key),
+                    ).length
+                  : 0;
+              }}
+            />
           </section>
         </aside>
 
