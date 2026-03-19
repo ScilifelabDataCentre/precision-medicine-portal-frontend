@@ -74,25 +74,17 @@ export default function AboutTeamPage(): ReactElement {
           </div>
           <div role="listitem">
             <ProfileComponent
-              imageUrl="/TeamPics/MarTeamPic.png"
-              name="Maria Ahlsén"
-              title="Coordinator"
-              bgColor="bg-muted"
-            />
-          </div>
-          <div role="listitem">
-            <ProfileComponent
               imageUrl="/TeamPics/SteTeamPic.jpg"
               name="Stefano Rapisarda"
               title="Database Coordinator"
-              bgColor="bg-neutral"
+              bgColor="bg-muted"
             />
           </div>
         </div>
       </section>
 
       <div className="mt-8">
-        <LastUpdated date="22-07-2025" />
+        <LastUpdated date="17-03-2026" />
       </div>
     </div>
   );

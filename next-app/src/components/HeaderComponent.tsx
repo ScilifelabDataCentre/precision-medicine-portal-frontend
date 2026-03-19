@@ -164,16 +164,9 @@ function DesktopNav() {
             <Link
               href="/kiarva"
               className={navigationMenuTriggerStyle()}
-              aria-label="KIARVA dashboard - Demo"
+              aria-label="KIARVA dashboard"
             >
               KIARVA dashboard
-              <Badge
-                variant="accent"
-                className="ml-1"
-                aria-label="Demo version"
-              >
-                Demo
-              </Badge>
             </Link>
           </NavigationMenuLink>
         </NavigationMenuItem>
@@ -185,6 +178,17 @@ function DesktopNav() {
               aria-label="OMOP common data model"
             >
               OMOP CDM
+            </Link>
+          </NavigationMenuLink>
+        </NavigationMenuItem>
+        <NavigationMenuItem role="none">
+          <NavigationMenuLink asChild>
+            <Link
+              href="/digifor1health"
+              className={navigationMenuTriggerStyle()}
+              aria-label="DIGIfor1healthSE initiative"
+            >
+              DIGIfor1healthSE
             </Link>
           </NavigationMenuLink>
         </NavigationMenuItem>
@@ -288,6 +292,13 @@ function MobileNav() {
             aria-label="OMOP common data model"
           >
             OMOP CDM
+          </Link>
+          <Link
+            href="/digifor1health"
+            className=""
+            aria-label="DIGIfor1healthSE initiative"
+          >
+            DIGIfor1healthSE
           </Link>
           <Link href="/contact" className="" aria-label="Contact us">
             Contact
