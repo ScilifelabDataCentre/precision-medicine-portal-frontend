@@ -7,6 +7,7 @@ import { Card, CardContent } from "@/components/ui/card";
  */
 interface FilterSectionProps {
   title: string;
+  icon?: React.ReactNode;
   items: string[];
   selectedItems: string[];
   onFilterChange: (item: string) => void;
@@ -15,13 +16,17 @@ interface FilterSectionProps {
 
 export const FilterSection = ({
   title,
+  icon,
   items,
   selectedItems,
   onFilterChange,
   getItemCount,
 }: FilterSectionProps) => (
   <div className="space-y-4">
-    <h2 className="font-bold text-2xl text-foreground">{title}</h2>
+    <h2 className="font-bold text-2xl text-foreground flex items-center gap-2">
+      {icon && <span aria-hidden="true">{icon}</span>}
+      {title}
+    </h2>
     <Card>
       <CardContent className="pt-6">
         {items.map((item) => (

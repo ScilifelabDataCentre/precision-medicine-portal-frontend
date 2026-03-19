@@ -16,6 +16,7 @@ import {
   BreadcrumbList,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
+import { Dna, Activity } from "lucide-react";
 
 interface IDataSourceFilters {
   dataTypes: string[];
@@ -656,10 +657,25 @@ export default function DataSourcesOthersPage(): ReactElement {
               </div>
             </section>
 
-            {/* Data Type Filters */}
+            {(selectedFilters.dataTypes.length > 0 ||
+              selectedFilters.diseaseTypes.length > 0) && (
+              <button
+                type="button"
+                onClick={() =>
+                  setSelectedFilters({ dataTypes: [], diseaseTypes: [] })
+                }
+                className="text-sm text-primary hover:underline focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"
+                aria-label="Clear all filters"
+              >
+                Clear all filters
+              </button>
+            )}
+
+            {/* Data type filters */}
             <section aria-label="Filter by data type">
               <FilterSection
-                title="Data Type"
+                title="Data type"
+                icon={<Dna className="h-5 w-5" aria-hidden />}
                 items={filters.dataTypes}
                 selectedItems={selectedFilters.dataTypes}
                 onFilterChange={(item) => updateFilter("dataTypes", item)}
@@ -667,10 +683,11 @@ export default function DataSourcesOthersPage(): ReactElement {
               />
             </section>
 
-            {/* Disease Type Filters */}
+            {/* Disease type filters */}
             <section aria-label="Filter by disease type">
               <FilterSection
-                title="Disease Type"
+                title="Disease type"
+                icon={<Activity className="h-5 w-5" aria-hidden />}
                 items={filters.diseaseTypes}
                 selectedItems={selectedFilters.diseaseTypes}
                 onFilterChange={(item) => updateFilter("diseaseTypes", item)}
@@ -760,7 +777,7 @@ export default function DataSourcesOthersPage(): ReactElement {
         </section>
       </div>
 
-      <LastUpdated date="27-02-2026" />
+      <LastUpdated date="17-03-2026" />
     </div>
   );
 }
