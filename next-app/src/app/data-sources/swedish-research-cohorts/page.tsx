@@ -84,7 +84,9 @@ function labelToDataType(label: string): DataType | undefined {
   return entry ? (entry[0] as DataType) : undefined;
 }
 function labelToDiseaseArea(label: string): DiseaseArea | undefined {
-  const entry = Object.entries(DISEASE_AREA_LABELS).find(([, v]) => v === label);
+  const entry = Object.entries(DISEASE_AREA_LABELS).find(
+    ([, v]) => v === label,
+  );
   return entry ? (entry[0] as DiseaseArea) : undefined;
 }
 
@@ -335,60 +337,70 @@ export default function SwedishResearchCohortsPage(): ReactElement {
               </button>
             )}
 
-            <FilterSection
-              title="Study type"
-              icon={<Users className="h-5 w-5" aria-hidden />}
-              items={STUDY_TYPE_ITEMS}
-              selectedItems={filters.study_type.map((k) => STUDY_TYPE_LABELS[k])}
-              onFilterChange={(label) => {
-                const key = labelToStudyType(label);
-                if (key) toggleStudyType(key);
-              }}
-              getItemCount={(label) => {
-                const key = labelToStudyType(label);
-                return key
-                  ? dataSources.filter((d) => d.study_type === key).length
-                  : 0;
-              }}
-            />
+            <section aria-label="Filter by study type">
+              <FilterSection
+                title="Study type"
+                icon={<Users className="h-5 w-5" aria-hidden />}
+                items={STUDY_TYPE_ITEMS}
+                selectedItems={filters.study_type.map(
+                  (k) => STUDY_TYPE_LABELS[k],
+                )}
+                onFilterChange={(label) => {
+                  const key = labelToStudyType(label);
+                  if (key) toggleStudyType(key);
+                }}
+                getItemCount={(label) => {
+                  const key = labelToStudyType(label);
+                  return key
+                    ? dataSources.filter((d) => d.study_type === key).length
+                    : 0;
+                }}
+              />
+            </section>
 
-            <FilterSection
-              title="Data type"
-              icon={<Dna className="h-5 w-5" aria-hidden />}
-              items={DATA_TYPE_ITEMS}
-              selectedItems={filters.data_types.map((k) => DATA_TYPE_LABELS[k])}
-              onFilterChange={(label) => {
-                const key = labelToDataType(label);
-                if (key) toggleDataType(key);
-              }}
-              getItemCount={(label) => {
-                const key = labelToDataType(label);
-                return key
-                  ? dataSources.filter((d) => d.data_types.includes(key)).length
-                  : 0;
-              }}
-            />
+            <section aria-label="Filter by data type">
+              <FilterSection
+                title="Data type"
+                icon={<Dna className="h-5 w-5" aria-hidden />}
+                items={DATA_TYPE_ITEMS}
+                selectedItems={filters.data_types.map(
+                  (k) => DATA_TYPE_LABELS[k],
+                )}
+                onFilterChange={(label) => {
+                  const key = labelToDataType(label);
+                  if (key) toggleDataType(key);
+                }}
+                getItemCount={(label) => {
+                  const key = labelToDataType(label);
+                  return key
+                    ? dataSources.filter((d) => d.data_types.includes(key))
+                        .length
+                    : 0;
+                }}
+              />
+            </section>
 
-            <FilterSection
-              title="Disease area"
-              icon={<Activity className="h-5 w-5" aria-hidden />}
-              items={DISEASE_AREA_ITEMS}
-              selectedItems={filters.disease_area.map((k) =>
-                DISEASE_AREA_LABELS[k],
-              )}
-              onFilterChange={(label) => {
-                const key = labelToDiseaseArea(label);
-                if (key) toggleDiseaseArea(key);
-              }}
-              getItemCount={(label) => {
-                const key = labelToDiseaseArea(label);
-                return key
-                  ? dataSources.filter((d) =>
-                      d.disease_area.includes(key),
-                    ).length
-                  : 0;
-              }}
-            />
+            <section aria-label="Filter by disease area">
+              <FilterSection
+                title="Disease area"
+                icon={<Activity className="h-5 w-5" aria-hidden />}
+                items={DISEASE_AREA_ITEMS}
+                selectedItems={filters.disease_area.map(
+                  (k) => DISEASE_AREA_LABELS[k],
+                )}
+                onFilterChange={(label) => {
+                  const key = labelToDiseaseArea(label);
+                  if (key) toggleDiseaseArea(key);
+                }}
+                getItemCount={(label) => {
+                  const key = labelToDiseaseArea(label);
+                  return key
+                    ? dataSources.filter((d) => d.disease_area.includes(key))
+                        .length
+                    : 0;
+                }}
+              />
+            </section>
           </section>
         </aside>
 
