@@ -4,6 +4,8 @@ import { useState, useEffect, useCallback, useMemo, ReactElement } from "react";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import Title from "@/components/common/title";
 import { LastUpdated } from "@/components/common/last-updated";
+import { LoadingState } from "@/components/common/LoadingState";
+import { FilterSection } from "@/components/common/FilterSection";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -12,9 +14,9 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import { Input } from "@/components/ui/input";
-import { FilterSection } from "@/components/common/FilterSection";
 import { Users, Dna, Activity } from "lucide-react";
 import { sanitizeURL } from "@/lib/security-utils";
+import { useDebounce } from "@/hooks/useDebounce";
 
 type StudyType =
   | "population_cohort"
@@ -65,30 +67,11 @@ const DISEASE_AREA_LABELS: Record<DiseaseArea, string> = {
   neurology: "Neurology",
 };
 
-const STUDY_TYPE_ITEMS = (Object.keys(STUDY_TYPE_LABELS) as StudyType[]).map(
-  (k) => STUDY_TYPE_LABELS[k],
-);
-const DATA_TYPE_ITEMS = (Object.keys(DATA_TYPE_LABELS) as DataType[]).map(
-  (k) => DATA_TYPE_LABELS[k],
-);
-const DISEASE_AREA_ITEMS = (
-  Object.keys(DISEASE_AREA_LABELS) as DiseaseArea[]
-).map((k) => DISEASE_AREA_LABELS[k]);
-
-function labelToStudyType(label: string): StudyType | undefined {
-  const entry = Object.entries(STUDY_TYPE_LABELS).find(([, v]) => v === label);
-  return entry ? (entry[0] as StudyType) : undefined;
-}
-function labelToDataType(label: string): DataType | undefined {
-  const entry = Object.entries(DATA_TYPE_LABELS).find(([, v]) => v === label);
-  return entry ? (entry[0] as DataType) : undefined;
-}
-function labelToDiseaseArea(label: string): DiseaseArea | undefined {
-  const entry = Object.entries(DISEASE_AREA_LABELS).find(
-    ([, v]) => v === label,
-  );
-  return entry ? (entry[0] as DiseaseArea) : undefined;
-}
+const FILTER_OPTIONS = {
+  studyType: Object.values(STUDY_TYPE_LABELS),
+  dataTypes: Object.values(DATA_TYPE_LABELS),
+  diseaseArea: Object.values(DISEASE_AREA_LABELS),
+} as const;
 
 const TAG_COLOURS: { [key: string]: string } = {
   snd: "bg-[#649ED2] text-black",
@@ -96,38 +79,23 @@ const TAG_COLOURS: { [key: string]: string } = {
 };
 
 interface Filters {
-  study_type: StudyType[];
-  data_types: DataType[];
-  disease_area: DiseaseArea[];
+  studyType: string[];
+  dataTypes: string[];
+  diseaseArea: string[];
 }
 
 const SEARCH_CONFIG = {
   DEBOUNCE_DELAY: 300,
 } as const;
 
-function useDebounce<T>(value: T, delay: number): T {
-  const [debouncedValue, setDebouncedValue] = useState<T>(value);
-
-  useEffect(() => {
-    const handler = setTimeout(() => {
-      setDebouncedValue(value);
-    }, delay);
-
-    return () => {
-      clearTimeout(handler);
-    };
-  }, [value, delay]);
-
-  return debouncedValue;
-}
-
 export default function SwedishResearchCohortsPage(): ReactElement {
   const [dataSources, setDataSources] = useState<DataSource[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [filters, setFilters] = useState<Filters>({
-    study_type: [],
-    data_types: [],
-    disease_area: [],
+  const [error, setError] = useState<string | null>(null);
+  const [selectedFilters, setSelectedFilters] = useState<Filters>({
+    studyType: [],
+    dataTypes: [],
+    diseaseArea: [],
   });
   const [searchBar, setSearchBar] = useState("");
   const debouncedSearchTerm = useDebounce(
@@ -135,48 +103,64 @@ export default function SwedishResearchCohortsPage(): ReactElement {
     SEARCH_CONFIG.DEBOUNCE_DELAY,
   );
 
-  async function fetchData() {
-    try {
-      const data =
-        await import("@/assets/Sorted_Swedish_Research_Projects.json");
-      setDataSources(data.dataSources as DataSource[]);
-    } catch (error) {
-      console.error("Error fetching cohort data:", error);
-    } finally {
-      setIsLoading(false);
-    }
-  }
-
   useEffect(() => {
+    const fetchData = async () => {
+      try {
+        setIsLoading(true);
+        setError(null);
+
+        const data =
+          await import("@/assets/Sorted_Swedish_Research_Projects.json");
+        setDataSources(data.dataSources as DataSource[]);
+      } catch (err) {
+        const errorMessage =
+          err instanceof Error ? err.message : "Failed to load cohort data";
+        setError(errorMessage);
+        console.error("Error fetching cohort data:", err);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
     fetchData();
   }, []);
 
-  const toggleStudyType = useCallback((value: StudyType) => {
-    setFilters((prev) => ({
-      ...prev,
-      study_type: prev.study_type.includes(value)
-        ? prev.study_type.filter((t) => t !== value)
-        : [...prev.study_type, value],
-    }));
-  }, []);
+  const updateFilter = useCallback(
+    (filterType: keyof Filters, filterName: string) => {
+      setSelectedFilters((prev) => {
+        const newFilters = { ...prev };
+        if (newFilters[filterType].includes(filterName)) {
+          newFilters[filterType] = newFilters[filterType].filter(
+            (item) => item !== filterName,
+          );
+        } else {
+          newFilters[filterType] = [...newFilters[filterType], filterName];
+        }
+        return newFilters;
+      });
+    },
+    [],
+  );
 
-  const toggleDataType = useCallback((value: DataType) => {
-    setFilters((prev) => ({
-      ...prev,
-      data_types: prev.data_types.includes(value)
-        ? prev.data_types.filter((t) => t !== value)
-        : [...prev.data_types, value],
-    }));
-  }, []);
-
-  const toggleDiseaseArea = useCallback((value: DiseaseArea) => {
-    setFilters((prev) => ({
-      ...prev,
-      disease_area: prev.disease_area.includes(value)
-        ? prev.disease_area.filter((d) => d !== value)
-        : [...prev.disease_area, value],
-    }));
-  }, []);
+  const getCountForType = useCallback(
+    (label: string, category: keyof Filters): number => {
+      return dataSources.filter((source) => {
+        switch (category) {
+          case "studyType":
+            return STUDY_TYPE_LABELS[source.study_type] === label;
+          case "dataTypes":
+            return source.data_types.some(
+              (dt) => DATA_TYPE_LABELS[dt] === label,
+            );
+          case "diseaseArea":
+            return source.disease_area.some(
+              (da) => DISEASE_AREA_LABELS[da] === label,
+            );
+        }
+      }).length;
+    },
+    [dataSources],
+  );
 
   const searchWords = useMemo(() => {
     return debouncedSearchTerm
@@ -187,24 +171,23 @@ export default function SwedishResearchCohortsPage(): ReactElement {
 
   const filtered = useMemo(() => {
     const afterFilters = dataSources.filter((item) => {
-      if (
-        filters.study_type.length > 0 &&
-        !filters.study_type.includes(item.study_type)
-      )
-        return false;
-      if (filters.data_types.length > 0) {
-        const hasMatch = filters.data_types.some((dt) =>
-          item.data_types.includes(dt),
+      const studyTypeMatch =
+        selectedFilters.studyType.length === 0 ||
+        selectedFilters.studyType.includes(STUDY_TYPE_LABELS[item.study_type]);
+
+      const dataTypeMatch =
+        selectedFilters.dataTypes.length === 0 ||
+        selectedFilters.dataTypes.some((dt) =>
+          item.data_types.some((d) => DATA_TYPE_LABELS[d] === dt),
         );
-        if (!hasMatch) return false;
-      }
-      if (filters.disease_area.length > 0) {
-        const hasMatch = filters.disease_area.some((da) =>
-          item.disease_area.includes(da),
+
+      const diseaseAreaMatch =
+        selectedFilters.diseaseArea.length === 0 ||
+        selectedFilters.diseaseArea.some((da) =>
+          item.disease_area.some((d) => DISEASE_AREA_LABELS[d] === da),
         );
-        if (!hasMatch) return false;
-      }
-      return true;
+
+      return studyTypeMatch && dataTypeMatch && diseaseAreaMatch;
     });
 
     if (searchWords.length === 0) {
@@ -226,12 +209,20 @@ export default function SwedishResearchCohortsPage(): ReactElement {
         return searchWords.every((word) => searchable.includes(word));
       })
       .sort((a, b) => a.title.localeCompare(b.title));
-  }, [dataSources, filters, searchWords]);
+  }, [dataSources, selectedFilters, searchWords]);
 
   if (isLoading) {
+    return <LoadingState />;
+  }
+
+  if (error) {
     return (
       <div className="container mx-auto px-4 py-8">
-        <div className="text-center py-6">Loading...</div>
+        <div className="text-center py-12">
+          <p className="text-muted-foreground">
+            Error loading cohort data: {error}
+          </p>
+        </div>
       </div>
     );
   }
@@ -318,16 +309,16 @@ export default function SwedishResearchCohortsPage(): ReactElement {
           </section>
 
           <section aria-label="Filters" className="space-y-6">
-            {(filters.study_type.length > 0 ||
-              filters.data_types.length > 0 ||
-              filters.disease_area.length > 0) && (
+            {(selectedFilters.studyType.length > 0 ||
+              selectedFilters.dataTypes.length > 0 ||
+              selectedFilters.diseaseArea.length > 0) && (
               <button
                 type="button"
                 onClick={() =>
-                  setFilters({
-                    study_type: [],
-                    data_types: [],
-                    disease_area: [],
+                  setSelectedFilters({
+                    studyType: [],
+                    dataTypes: [],
+                    diseaseArea: [],
                   })
                 }
                 className="text-sm text-primary hover:underline focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"
@@ -341,20 +332,10 @@ export default function SwedishResearchCohortsPage(): ReactElement {
               <FilterSection
                 title="Study type"
                 icon={<Users className="h-5 w-5" aria-hidden />}
-                items={STUDY_TYPE_ITEMS}
-                selectedItems={filters.study_type.map(
-                  (k) => STUDY_TYPE_LABELS[k],
-                )}
-                onFilterChange={(label) => {
-                  const key = labelToStudyType(label);
-                  if (key) toggleStudyType(key);
-                }}
-                getItemCount={(label) => {
-                  const key = labelToStudyType(label);
-                  return key
-                    ? dataSources.filter((d) => d.study_type === key).length
-                    : 0;
-                }}
+                items={FILTER_OPTIONS.studyType}
+                selectedItems={selectedFilters.studyType}
+                onFilterChange={(item) => updateFilter("studyType", item)}
+                getItemCount={(item) => getCountForType(item, "studyType")}
               />
             </section>
 
@@ -362,21 +343,10 @@ export default function SwedishResearchCohortsPage(): ReactElement {
               <FilterSection
                 title="Data type"
                 icon={<Dna className="h-5 w-5" aria-hidden />}
-                items={DATA_TYPE_ITEMS}
-                selectedItems={filters.data_types.map(
-                  (k) => DATA_TYPE_LABELS[k],
-                )}
-                onFilterChange={(label) => {
-                  const key = labelToDataType(label);
-                  if (key) toggleDataType(key);
-                }}
-                getItemCount={(label) => {
-                  const key = labelToDataType(label);
-                  return key
-                    ? dataSources.filter((d) => d.data_types.includes(key))
-                        .length
-                    : 0;
-                }}
+                items={FILTER_OPTIONS.dataTypes}
+                selectedItems={selectedFilters.dataTypes}
+                onFilterChange={(item) => updateFilter("dataTypes", item)}
+                getItemCount={(item) => getCountForType(item, "dataTypes")}
               />
             </section>
 
@@ -384,21 +354,10 @@ export default function SwedishResearchCohortsPage(): ReactElement {
               <FilterSection
                 title="Disease area"
                 icon={<Activity className="h-5 w-5" aria-hidden />}
-                items={DISEASE_AREA_ITEMS}
-                selectedItems={filters.disease_area.map(
-                  (k) => DISEASE_AREA_LABELS[k],
-                )}
-                onFilterChange={(label) => {
-                  const key = labelToDiseaseArea(label);
-                  if (key) toggleDiseaseArea(key);
-                }}
-                getItemCount={(label) => {
-                  const key = labelToDiseaseArea(label);
-                  return key
-                    ? dataSources.filter((d) => d.disease_area.includes(key))
-                        .length
-                    : 0;
-                }}
+                items={FILTER_OPTIONS.diseaseArea}
+                selectedItems={selectedFilters.diseaseArea}
+                onFilterChange={(item) => updateFilter("diseaseArea", item)}
+                getItemCount={(item) => getCountForType(item, "diseaseArea")}
               />
             </section>
           </section>
@@ -519,7 +478,7 @@ export default function SwedishResearchCohortsPage(): ReactElement {
         </p>
       </div>
 
-      <LastUpdated date="20-08-2025" />
+      <LastUpdated date="23-03-2026" />
     </div>
   );
 }
