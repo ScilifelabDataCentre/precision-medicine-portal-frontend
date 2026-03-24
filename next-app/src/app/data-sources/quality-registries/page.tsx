@@ -16,6 +16,7 @@ import {
 } from "@/components/ui/breadcrumb";
 import { IRegistryFilters, IRegistrySource, filters } from "@/interfaces/types";
 import { Building2, FolderOpen } from "lucide-react";
+import { useDebounce } from "@/hooks/useDebounce";
 
 // Configuration constants
 const ORGANISATION_LINKS: Record<string, string> = {
@@ -367,23 +368,6 @@ function calculateSearchScore(
 
   // Return average score per term, but ensure minimum threshold
   return termCount > 0 ? totalScore / termCount : 0;
-}
-
-// Custom hook for debouncing
-function useDebounce<T>(value: T, delay: number): T {
-  const [debouncedValue, setDebouncedValue] = useState<T>(value);
-
-  useEffect(() => {
-    const handler = setTimeout(() => {
-      setDebouncedValue(value);
-    }, delay);
-
-    return () => {
-      clearTimeout(handler);
-    };
-  }, [value, delay]);
-
-  return debouncedValue;
 }
 
 export default function QualityRegistryPage() {
