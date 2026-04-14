@@ -232,7 +232,7 @@ export default function Digifor1healthPage(): ReactElement {
           >
             DIGIfor1healthSE
           </a>{" "}
-          presents the following four categories with key messages that captures
+          presents the following four categories with key messages that capture
           the work needed in order to achieve sustainable access and utilization
           of health data in Sweden. These key messages have been summarized from
           the nationwide{" "}
