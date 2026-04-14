@@ -17,6 +17,7 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import { Dna, Activity } from "lucide-react";
+import { useDebounce } from "@/hooks/useDebounce";
 
 interface IDataSourceFilters {
   dataTypes: string[];
@@ -384,23 +385,6 @@ function calculateSearchScore(
 
   // Return average score per term, but ensure minimum threshold
   return termCount > 0 ? totalScore / termCount : 0;
-}
-
-// Custom hook for debouncing
-function useDebounce<T>(value: T, delay: number): T {
-  const [debouncedValue, setDebouncedValue] = useState<T>(value);
-
-  useEffect(() => {
-    const handler = setTimeout(() => {
-      setDebouncedValue(value);
-    }, delay);
-
-    return () => {
-      clearTimeout(handler);
-    };
-  }, [value, delay]);
-
-  return debouncedValue;
 }
 
 export default function DataSourcesOthersPage(): ReactElement {
