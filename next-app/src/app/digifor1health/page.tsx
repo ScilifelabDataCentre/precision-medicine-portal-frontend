@@ -282,8 +282,8 @@ export default function Digifor1healthPage(): ReactElement {
                 className="shadow-md h-full flex flex-col scroll-mt-8"
               >
                 <CardHeader className="bg-muted p-6">
-                  <CardTitle className="text-lg">{category.title}</CardTitle>
-                  <CardDescription className="text-sm leading-relaxed">
+                  <CardTitle className="text-lg text-foreground">{category.title}</CardTitle>
+                  <CardDescription className="text-sm leading-relaxed text-foreground">
                     {category.subtitle}
                   </CardDescription>
                 </CardHeader>
