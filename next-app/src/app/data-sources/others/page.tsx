@@ -16,6 +16,8 @@ import {
   BreadcrumbList,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
+import { Dna, Activity } from "lucide-react";
+import { useDebounce } from "@/hooks/useDebounce";
 
 interface IDataSourceFilters {
   dataTypes: string[];
@@ -246,7 +248,7 @@ function highlightSearchTerms(text: string, searchTerms: string[]): string {
 
   // Escape special regex characters in search terms
   const escapedTerms = searchTerms.map((term) =>
-    term.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")
+    term.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"),
   );
 
   escapedTerms.forEach((term) => {
@@ -254,7 +256,7 @@ function highlightSearchTerms(text: string, searchTerms: string[]): string {
       const regex = new RegExp(`(${term})`, "gi");
       highlightedText = highlightedText.replace(
         regex,
-        '<mark class="bg-accent">$1</mark>'
+        '<mark class="bg-accent">$1</mark>',
       );
     }
   });
@@ -286,7 +288,7 @@ function calculateSimilarity(text1: string, text2: string): number {
 
 function calculateSearchScore(
   dataSource: IDataSourcesDC,
-  searchTerms: string[]
+  searchTerms: string[],
 ): number {
   // Expand search terms with Swedish translations
   const expandedSearchTerms = expandSearchTerms(searchTerms);
@@ -340,7 +342,7 @@ function calculateSearchScore(
     // Check description (lowest weight)
     const descSimilarity = calculateSimilarity(
       searchTerm,
-      dataSource.description
+      dataSource.description,
     );
     if (descSimilarity > 0) {
       termScore += descSimilarity * fieldWeights.description;
@@ -349,7 +351,7 @@ function calculateSearchScore(
     // Bonus for exact matches in name or search tags
     const normalizedName = normalizeText(dataSource.name);
     const normalizedTags = dataSource.search_tags.map((tag) =>
-      normalizeText(tag)
+      normalizeText(tag),
     );
 
     if (
@@ -385,23 +387,6 @@ function calculateSearchScore(
   return termCount > 0 ? totalScore / termCount : 0;
 }
 
-// Custom hook for debouncing
-function useDebounce<T>(value: T, delay: number): T {
-  const [debouncedValue, setDebouncedValue] = useState<T>(value);
-
-  useEffect(() => {
-    const handler = setTimeout(() => {
-      setDebouncedValue(value);
-    }, delay);
-
-    return () => {
-      clearTimeout(handler);
-    };
-  }, [value, delay]);
-
-  return debouncedValue;
-}
-
 export default function DataSourcesOthersPage(): ReactElement {
   const [dataSourcesJSON, setDataSourcesJSON] = useState<IDataSourcesDC[]>([]);
   const [selectedFilters, setSelectedFilters] = useState<IDataSourceFilters>({
@@ -415,7 +400,7 @@ export default function DataSourcesOthersPage(): ReactElement {
   // Debounce search term for better performance
   const debouncedSearchTerm = useDebounce(
     searchTerm,
-    SEARCH_CONFIG.DEBOUNCE_DELAY
+    SEARCH_CONFIG.DEBOUNCE_DELAY,
   );
 
   const filters: IDataSourceFilters = {
@@ -462,7 +447,7 @@ export default function DataSourcesOthersPage(): ReactElement {
         return tags.some((tag) => tag.toLowerCase() === type.toLowerCase());
       }).length;
     },
-    [dataSourcesJSON]
+    [dataSourcesJSON],
   );
 
   async function getData() {
@@ -473,10 +458,10 @@ export default function DataSourcesOthersPage(): ReactElement {
       const response = await axios.get(dataSourcesURI);
       const tmpDataSourcesJSON = response.data
         .filter((element: IDataSourcesDC) =>
-          element.ddls.includes("Precision Medicine and Diagnostics")
+          element.ddls.includes("Precision Medicine and Diagnostics"),
         )
         .filter(
-          (element: IDataSourcesDC) => element.name !== "SCAPIS database"
+          (element: IDataSourcesDC) => element.name !== "SCAPIS database",
         ); // Exclude "SCAPIS"
       setDataSourcesJSON(tmpDataSourcesJSON);
     } catch (error) {
@@ -496,7 +481,7 @@ export default function DataSourcesOthersPage(): ReactElement {
         const newFilters = { ...prev };
         if (newFilters[filterType].includes(filterName)) {
           newFilters[filterType] = newFilters[filterType].filter(
-            (item) => item !== filterName
+            (item) => item !== filterName,
           );
         } else {
           newFilters[filterType] = [...newFilters[filterType], filterName];
@@ -504,7 +489,7 @@ export default function DataSourcesOthersPage(): ReactElement {
         return newFilters;
       });
     },
-    []
+    [],
   );
 
   // Search and filter logic
@@ -522,16 +507,16 @@ export default function DataSourcesOthersPage(): ReactElement {
         selectedFilters.dataTypes.length === 0 ||
         selectedFilters.dataTypes.some((filter) =>
           dataSource.data.some(
-            (tag) => tag.toLowerCase() === filter.toLowerCase()
-          )
+            (tag) => tag.toLowerCase() === filter.toLowerCase(),
+          ),
         );
 
       const diseaseTypeFilter =
         selectedFilters.diseaseTypes.length === 0 ||
         selectedFilters.diseaseTypes.some((filter) =>
           dataSource.disease_type.some(
-            (tag) => tag.toLowerCase() === filter.toLowerCase()
-          )
+            (tag) => tag.toLowerCase() === filter.toLowerCase(),
+          ),
         );
 
       return dataTypeFilter && diseaseTypeFilter;
@@ -607,7 +592,7 @@ export default function DataSourcesOthersPage(): ReactElement {
         >
           <div className="space-y-8">
             <div
-              className="w-full max-w-lg bg-muted border border-neutral rounded-lg p-4 text-sm text-muted-foreground text-left mx-auto"
+              className="w-full max-w-lg bg-muted border border-neutral rounded-lg p-4 text-sm text-foreground text-left mx-auto"
               role="note"
               aria-label="Data access information"
             >
@@ -630,13 +615,13 @@ export default function DataSourcesOthersPage(): ReactElement {
                   placeholder="Search by name or keywords"
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="bg-muted"
+                  className="bg-muted text-foreground placeholder:text-foreground/70"
                   aria-describedby="search-help"
                 />
                 {searchTerm.length === 0 && (
                   <div
                     id="search-help"
-                    className="text-sm text-muted-foreground"
+                    className="text-sm text-foreground"
                     role="region"
                     aria-label="Search examples"
                   >
@@ -656,10 +641,25 @@ export default function DataSourcesOthersPage(): ReactElement {
               </div>
             </section>
 
-            {/* Data Type Filters */}
+            {(selectedFilters.dataTypes.length > 0 ||
+              selectedFilters.diseaseTypes.length > 0) && (
+              <button
+                type="button"
+                onClick={() =>
+                  setSelectedFilters({ dataTypes: [], diseaseTypes: [] })
+                }
+                className="text-sm text-primary hover:underline focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"
+                aria-label="Clear all filters"
+              >
+                Clear all filters
+              </button>
+            )}
+
+            {/* Data type filters */}
             <section aria-label="Filter by data type">
               <FilterSection
-                title="Data Type"
+                title="Data type"
+                icon={<Dna className="h-5 w-5" aria-hidden />}
                 items={filters.dataTypes}
                 selectedItems={selectedFilters.dataTypes}
                 onFilterChange={(item) => updateFilter("dataTypes", item)}
@@ -667,10 +667,11 @@ export default function DataSourcesOthersPage(): ReactElement {
               />
             </section>
 
-            {/* Disease Type Filters */}
+            {/* Disease type filters */}
             <section aria-label="Filter by disease type">
               <FilterSection
-                title="Disease Type"
+                title="Disease type"
+                icon={<Activity className="h-5 w-5" aria-hidden />}
                 items={filters.diseaseTypes}
                 selectedItems={selectedFilters.diseaseTypes}
                 onFilterChange={(item) => updateFilter("diseaseTypes", item)}
@@ -760,7 +761,7 @@ export default function DataSourcesOthersPage(): ReactElement {
         </section>
       </div>
 
-      <LastUpdated date="09-06-2025" />
+      <LastUpdated date="17-03-2026" />
     </div>
   );
 }

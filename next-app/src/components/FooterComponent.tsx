@@ -21,8 +21,8 @@ export default function Footer(): ReactElement {
       link: "/data-sources/quality-registries",
     },
     l3: {
-      text: "Swedish research projects",
-      link: "/data-sources/swedish-research-projects",
+      text: "Swedish research cohorts",
+      link: "/data-sources/swedish-research-cohorts",
     },
     l4: {
       text: "Other data sources",
@@ -32,6 +32,7 @@ export default function Footer(): ReactElement {
 
   const linksCol2: { [id: string]: ILink } = {
     l5: { text: "KIARVA", link: "/kiarva" },
+    l5b: { text: "DIGIfor1healthSE", link: "/digifor1health" },
   };
 
   const linksCol3: { [id: string]: ILink } = {
@@ -202,10 +203,10 @@ export default function Footer(): ReactElement {
 
           {/* Fourth column - Links */}
           <div className="space-y-6">
-            <h3 className="text-sm font-semibold mb-4">Dashboards</h3>
+            <h3 className="text-sm font-semibold mb-4">Initiatives</h3>
             <nav
               className="flex flex-col space-y-4"
-              aria-label="Dashboard navigation"
+              aria-label="Initiatives navigation"
             >
               {Object.keys(linksCol2).map((key) => (
                 <Link

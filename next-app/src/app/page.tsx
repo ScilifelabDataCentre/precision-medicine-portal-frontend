@@ -36,7 +36,7 @@ export default function HomePage(): ReactElement {
                 <div className="relative h-[32rem]">
                   <Image
                     src={dataSourcesImg}
-                    alt="Data Sources - Access to quality registries, research projects, and other data sources for precision medicine research"
+                    alt="Data Sources - Access to quality registries, research cohorts and biobank studies, and other data sources for precision medicine research"
                     fill
                     priority
                     sizes="(max-width: 768px) 100vw, 50vw"
@@ -70,10 +70,10 @@ export default function HomePage(): ReactElement {
                           className="relative z-20"
                         >
                           <Link
-                            href="/data-sources/swedish-research-projects"
-                            aria-label="Browse Swedish research projects and databases"
+                            href="/data-sources/swedish-research-cohorts"
+                            aria-label="Browse Swedish research cohorts and biobank studies"
                           >
-                            Swedish research projects
+                            Swedish research cohorts
                           </Link>
                         </Button>
                         <Button
@@ -119,7 +119,7 @@ export default function HomePage(): ReactElement {
                     <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent">
                       <div className="absolute inset-x-0 bottom-0 p-6 h-full flex flex-col justify-end">
                         <CardTitle className="text-white mb-2 text-2xl group-hover:text-3xl transition-all duration-300">
-                          KIARVA <Badge variant="accent">Demo</Badge>
+                          KIARVA
                         </CardTitle>
                         <p className="text-white h-36">
                           The Karolinska Institutet Adaptive Immune Receptor

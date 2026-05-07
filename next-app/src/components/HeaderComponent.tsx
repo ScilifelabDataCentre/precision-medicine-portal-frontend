@@ -57,7 +57,7 @@ const ListItem = React.forwardRef<
           ref={ref}
           className={cn(
             "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-neutral hover:text-neutral-foreground focus:bg-secondary/20 focus:text-secondary-foreground",
-            className
+            className,
           )}
           role={role}
           {...props}
@@ -143,11 +143,11 @@ function DesktopNav() {
                 health data
               </ListItem>
               <ListItem
-                href="/data-sources/swedish-research-projects"
-                title="Swedish research projects"
+                href="/data-sources/swedish-research-cohorts"
+                title="Swedish research cohorts"
                 role="menuitem"
               >
-                Discover Swedish research projects and databases
+                Discover Swedish research cohorts and biobank-based studies
               </ListItem>
               <ListItem
                 href="/data-sources/others"
@@ -164,16 +164,9 @@ function DesktopNav() {
             <Link
               href="/kiarva"
               className={navigationMenuTriggerStyle()}
-              aria-label="KIARVA dashboard - Demo"
+              aria-label="KIARVA dashboard"
             >
               KIARVA dashboard
-              <Badge
-                variant="accent"
-                className="ml-1"
-                aria-label="Demo version"
-              >
-                Demo
-              </Badge>
             </Link>
           </NavigationMenuLink>
         </NavigationMenuItem>
@@ -185,6 +178,17 @@ function DesktopNav() {
               aria-label="OMOP common data model"
             >
               OMOP CDM
+            </Link>
+          </NavigationMenuLink>
+        </NavigationMenuItem>
+        <NavigationMenuItem role="none">
+          <NavigationMenuLink asChild>
+            <Link
+              href="/digifor1health"
+              className={navigationMenuTriggerStyle()}
+              aria-label="DIGIfor1healthSE initiative"
+            >
+              DIGIfor1healthSE
             </Link>
           </NavigationMenuLink>
         </NavigationMenuItem>
@@ -259,11 +263,11 @@ function MobileNav() {
             Quality registries
           </Link>
           <Link
-            href="/data-sources/swedish-research-projects"
+            href="/data-sources/swedish-research-cohorts"
             className="text-sm pl-4"
-            aria-label="Swedish research projects"
+            aria-label="Swedish research cohorts and biobank studies"
           >
-            Swedish research projects
+            Swedish research cohorts
           </Link>
           <Link
             href="/data-sources/others"
@@ -288,6 +292,13 @@ function MobileNav() {
             aria-label="OMOP common data model"
           >
             OMOP CDM
+          </Link>
+          <Link
+            href="/digifor1health"
+            className=""
+            aria-label="DIGIfor1healthSE initiative"
+          >
+            DIGIfor1healthSE
           </Link>
           <Link href="/contact" className="" aria-label="Contact us">
             Contact
