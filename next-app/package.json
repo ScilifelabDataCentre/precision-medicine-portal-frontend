@@ -36,7 +36,7 @@
     "react-iframe": "^1.8.5",
     "react-markdown": "^9.1.0",
     "remark-gfm": "^4.0.1",
-    "tailwind-merge": "^2.6.1",
+    "tailwind-merge": "^3.0.0",
     "tailwindcss-animate": "^1.0.7",
     "validator": "^13.15.35"
   },
