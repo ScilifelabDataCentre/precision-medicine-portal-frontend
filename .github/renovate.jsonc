@@ -7,9 +7,6 @@
     "docker:pinDigests" // Pin Docker images to digests to avoid unexpected changes
   ],
   "minimumReleaseAge": "7 days",
-  "lockFileMaintenance": {
-    "enabled": true
-  },
   "packageRules": [
     {
       "description": "Group digest updates for GitHub Actions (minor and patch are grouped in the preset)",
