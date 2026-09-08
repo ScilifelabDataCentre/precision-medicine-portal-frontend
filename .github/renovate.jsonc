@@ -22,7 +22,3 @@
     }
   ]
 }
-
-// - Pinning docker images digests -- override preset? grouping not affected? 
-// - Do they want the dependency dashboard disabled?
-// - Update packagerule about minimumRelease age for lockfile maintenance - shorter description? Comment at the top? 
