@@ -11,6 +11,12 @@
   },
   "packageRules": [
     {
+      "description": "Group digest updates for GitHub Actions (minor and patch are grouped in the preset)",
+      "matchManagers": ["github-actions"],
+      "matchUpdateTypes": ["digest", "pinDigest"], // pinDigest is for the initial pinning of the action to a digest
+      "groupName": "GitHub Actions (digest)"
+    },
+    {
       "matchCategories": ["docker"],
       "pinDigests": true
     },
@@ -22,9 +28,10 @@
   ]
 }
 
-// - Group github action digests? 
 // - Override the 3 days from preset to the 7 days we want - all packages?
 // - Pinning docker images digests -- override preset? grouping not affected? 
 // - Do they want the dependency dashboard disabled?
 // - Lockfilemaintenance enabled - needed with the preset? 
 // - Update packagerule about minimumRelease age for lockfile maintenance - shorter description? Comment at the top? 
+
+// - Group github action digests? -- have asked Jan
