@@ -6,7 +6,7 @@
     "helpers:pinGitHubActionDigests", // Pin GitHub Actions to digests to avoid unexpected changes
     "docker:pinDigests" // Pin Docker images to digests to avoid unexpected changes
   ],
-  "minimumReleaseAge": "7 days",
+  "minimumReleaseAge": "7 days", // Stricter than the preset's 3 days
   "packageRules": [
     {
       "description": "Group digest updates for GitHub Actions (minor and patch are grouped in the preset)",
