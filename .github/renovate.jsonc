@@ -2,9 +2,8 @@
 // Extends the custom preset defined in the data-centre-template repo
 {
   "extends": [
-    "github>ScilifelabDataCentre/data-centre-template//.config/renovate/default.jsonc#v1.0.0",
-    "config:recommended", 
-    "helpers:pinGitHubActionDigests"
+    "github>ScilifelabDataCentre/data-centre-template//.config/renovate/default.jsonc#v1.0.0", // Custom preset for the Data Centre
+    "helpers:pinGitHubActionDigests" // Pin GitHub Actions to digests to avoid unexpected changes
   ],
   "minimumReleaseAge": "7 days",
   "lockFileMaintenance": {
@@ -22,3 +21,10 @@
     }
   ]
 }
+
+// - Group github action digests? 
+// - Override the 3 days from preset to the 7 days we want - all packages?
+// - Pinning docker images digests -- override preset? grouping not affected? 
+// - Do they want the dependency dashboard disabled?
+// - Lockfilemaintenance enabled - needed with the preset? 
+// - Update packagerule about minimumRelease age for lockfile maintenance - shorter description? Comment at the top? 
