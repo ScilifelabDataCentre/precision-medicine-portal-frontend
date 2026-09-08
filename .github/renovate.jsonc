@@ -15,6 +15,12 @@
       "groupName": "GitHub Actions (digest)"
     },
     {
+      "description": "Group digest updates for Docker",
+      "matchCategories": ["docker"],
+      "matchUpdateTypes": ["digest", "pinDigest"], // pinDigest is for the initial pinning of the image to a digest
+      "groupName": "Docker (digest)"
+    },
+    {
       "description": "minimumReleaseAge cannot be enforced for lock file maintenance: the package manager resolves the versions itself, so Renovate has no per-release age to check. Left as null rather than an unenforceable 7 days.",
       "matchUpdateTypes": ["lockFileMaintenance"],
       "minimumReleaseAge": null
@@ -24,5 +30,4 @@
 
 // - Pinning docker images digests -- override preset? grouping not affected? 
 // - Do they want the dependency dashboard disabled?
-// - Lockfilemaintenance enabled - needed with the preset? 
 // - Update packagerule about minimumRelease age for lockfile maintenance - shorter description? Comment at the top? 
