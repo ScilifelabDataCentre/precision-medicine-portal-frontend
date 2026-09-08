@@ -1,6 +1,11 @@
+// Renovate configuration for this repository
+// Extends the custom preset defined in the data-centre-template repo
 {
-  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:recommended", "helpers:pinGitHubActionDigests"],
+  "extends": [
+    "github>ScilifelabDataCentre/data-centre-template//.config/renovate/default.jsonc#v1.0.0",
+    "config:recommended", 
+    "helpers:pinGitHubActionDigests"
+  ],
   "minimumReleaseAge": "7 days",
   "lockFileMaintenance": {
     "enabled": true
