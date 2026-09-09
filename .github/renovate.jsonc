@@ -8,16 +8,18 @@
   ],
   "minimumReleaseAge": "7 days", // Stricter than the preset's 3 days
   "packageRules": [
+    // Group digest updates for GitHub Actions and Docker images to reduce noise
+    // pinDigest is for the initial pinning of the action/image to a digest
     {
       "description": "Group digest updates for GitHub Actions (minor and patch are grouped in the preset)",
       "matchManagers": ["github-actions"],
-      "matchUpdateTypes": ["digest", "pinDigest"], // pinDigest is for the initial pinning of the action to a digest
+      "matchUpdateTypes": ["digest", "pinDigest"],
       "groupName": "GitHub Actions (digest)"
     },
     {
       "description": "Group digest updates for Docker",
       "matchCategories": ["docker"],
-      "matchUpdateTypes": ["digest", "pinDigest"], // pinDigest is for the initial pinning of the image to a digest
+      "matchUpdateTypes": ["digest", "pinDigest"],
       "groupName": "Docker (digest)"
     }
   ]
