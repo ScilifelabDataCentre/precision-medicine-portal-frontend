@@ -14,13 +14,15 @@
       "description": "Group digest updates for GitHub Actions (minor and patch are grouped in the preset)",
       "matchManagers": ["github-actions"],
       "matchUpdateTypes": ["digest", "pinDigest"],
-      "groupName": "GitHub Actions (digest)"
+      "groupName": "GitHub Actions (digest)",
+      "groupSlug": "github-actions-digest"
     },
     {
       "description": "Group digest updates for Docker",
       "matchCategories": ["docker"],
       "matchUpdateTypes": ["digest", "pinDigest"],
-      "groupName": "Docker (digest)"
+      "groupName": "Docker (digest)",
+      "groupSlug": "docker-digest"
     }
   ]
 }
