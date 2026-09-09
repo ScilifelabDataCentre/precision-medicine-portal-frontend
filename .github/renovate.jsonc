@@ -1,6 +1,7 @@
 // Renovate configuration for this repository
 // Extends the custom preset defined in the data-centre-template repo
 {
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "github>ScilifelabDataCentre/data-centre-template//.config/renovate/default.jsonc#v1.1.0", // Custom preset for the Data Centre
     "helpers:pinGitHubActionDigests", // Pin GitHub Actions to digests to avoid unexpected changes
