@@ -1,0 +1,29 @@
+// Renovate configuration for this repository
+// Extends the custom preset defined in the data-centre-template repo
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "github>ScilifelabDataCentre/data-centre-template//.config/renovate/default.jsonc#v1.1.0", // Custom preset for the Data Centre
+    "helpers:pinGitHubActionDigests", // Pin GitHub Actions to digests to avoid unexpected changes
+    "docker:pinDigests" // Pin Docker images to digests to avoid unexpected changes
+  ],
+  "minimumReleaseAge": "7 days", // Stricter than the preset's 3 days
+  "packageRules": [
+    // Group digest updates for GitHub Actions and Docker images to reduce noise
+    // pinDigest is for the initial pinning of the action/image to a digest
+    {
+      "description": "Group digest updates for GitHub Actions (minor and patch are grouped in the preset)",
+      "matchManagers": ["github-actions"],
+      "matchUpdateTypes": ["digest", "pinDigest"],
+      "groupName": "GitHub Actions (digest)",
+      "groupSlug": "github-actions-digest"
+    },
+    {
+      "description": "Group digest updates for Docker",
+      "matchCategories": ["docker"],
+      "matchUpdateTypes": ["digest", "pinDigest"],
+      "groupName": "Docker (digest)",
+      "groupSlug": "docker-digest"
+    }
+  ]
+}
