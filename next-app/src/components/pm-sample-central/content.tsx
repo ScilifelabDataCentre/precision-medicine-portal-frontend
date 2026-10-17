@@ -173,12 +173,14 @@ export const PILOTS = {
     {
       name: "PreDDLung",
       cancer: "Lung cancer",
-      partners: ["Karolinska Institutet", "Karolinska Hospital"],
+      partners: ["Karolinska Institutet", "Karolinska University Hospital"],
       body: "PreDDLung is a feasibility study testing whether multimodal profiling can guide the use of immune checkpoint inhibitors in non-small-cell lung cancer. It brings together healthcare, clinical laboratories and researchers to improve how lung cancer samples are collected, processed and profiled. The project has helped bring clinical proteomics into healthcare. It now supports pre-implementation of further precision medicine diagnostics, showing in practice how new molecular technologies can move from research into the clinic.",
     },
     {
-      // Draft: "Sarcoma ()" gives no study name, cancer line or partners.
+      // Draft: "Sarcoma ()" gave no cancer line or partners; Jan supplied them.
       name: "Sarcoma",
+      cancer: "Sarcoma",
+      partners: ["Karolinska University Hospital"],
       body: "A workflow covering both diagnostics and research. For diagnostic cases, DNA and RNA are extracted from tumour samples and sent for genomic profiling and methylation-based classification. Results go back into the clinical workflow to support diagnosis and treatment planning. In parallel, protein extracts are prepared for proteomics, adding molecular data for research and future clinical use. The long-term aim is to make these multimodal data available through the MTB Portal for Molecular Tumour Board discussions.",
     },
     {
