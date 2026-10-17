@@ -6,7 +6,8 @@ import Link from "next/link";
  * (September 2026), including its spelling and terminology. Edits: hard
  * grammar and typing fixes ("This PMSC works" to "PMSC works", the missing
  * comma in "Each sample, and each piece cut from it, is", the missing space
- * before "(Qubit)", the empty "()" after Sarcoma), and, at Jan's request
+ * before "(Qubit)", the empty "()" after Sarcoma, now its cancer line and
+ * partner), and, at Jan's request
  * (October 2026), no dashes as connectors: the pilot headings' institutions
  * become lists, two sentence dashes become a colon and a comma, and the
  * reference list, its "(2)" marker and the diagram's "Work Package" labels
